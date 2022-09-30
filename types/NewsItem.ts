@@ -1,6 +1,6 @@
-export type NewsItemType = 'article' | 'video';
+type NewsItemType = 'article' | 'video';
 
-export interface NewsListItem {
+interface NewsListItem {
   bgimg?: string;
   citation?: string;
   columnId: string;
@@ -14,16 +14,18 @@ export interface NewsListItem {
   type: NewsItemType;
 }
 
-export interface Article extends NewsListItem {
+interface Article extends NewsListItem {
   author?: string;
   editor?: string;
   origin?: string;
   fileUrl: string;
 }
 
-export interface Video extends NewsListItem {
+interface Video extends NewsListItem {
   author?: string;
   editor?: string;
   origin?: string;
   videoUrl: string;
 }
+
+export type { NewsItemType, NewsListItem, Article, Video };
