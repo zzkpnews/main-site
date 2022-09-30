@@ -1,11 +1,13 @@
-export interface PictureBlockInfo {
+type PictureBlock = {
   imgsrc?: string;
   href?: string;
   describe?: string;
-}
+};
 
-export interface PagePictureBlockInfo {
-  Top?: PictureBlockInfo;
-  sideTop?: PictureBlockInfo;
-  sideBottom?: PictureBlockInfo;
-}
+type PagePictureBlockInfo = {
+  Top?: PictureBlock;
+  sideTop?: PictureBlock;
+  sideBottom?: PictureBlock;
+};
+
+export type { PictureBlock, PagePictureBlockInfo };

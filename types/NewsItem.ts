@@ -1,4 +1,4 @@
-export type NewsItemType = 'ARTICLE' | 'VIDEO';
+export type NewsItemType = 'article' | 'video';
 
 export interface NewsListItem {
   bgimg?: string;

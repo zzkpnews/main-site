@@ -1,9 +1,7 @@
-/**
- * 话题列表项类型
- */
-export interface TopicListItem {
+type TopicListItem = {
   id: string;
   title: string;
   imgsrc?:string;
 }
 
+export type {TopicListItem}
