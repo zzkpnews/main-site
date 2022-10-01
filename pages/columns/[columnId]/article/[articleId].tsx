@@ -4,7 +4,7 @@ import Head from 'next/head';
 import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
 import SideList from '../../../../views/SideList';
-import TopNavigation from '../../../../views/TopNavigation';
+import ColumnNav from '../../../../views/ColumnNav';
 import { Article } from '../../../../models/NewsItem';
 import { FriendsListItem } from '../../../../models/Friends';
 import { getNavColumnOrder, NavColumn } from '../../../../models/Columns';
@@ -46,7 +46,7 @@ const Article = (props: ArticlePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <TopNavigation selectedIndex={props.columnOrder} navItems={props.navColumns} />
+        <ColumnNav selectedIndex={props.columnOrder} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">

@@ -10,6 +10,7 @@ interface NewsListItem {
   leadTitle?: string;
   subtitle?: string;
   timestamp: number;
+  time:number;
   title: string;
   type: NewsItemType;
 }

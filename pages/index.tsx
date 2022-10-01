@@ -9,7 +9,7 @@ import PageBanner from '../views/PageBanner';
 import PictureBlock from '../views/PictureBlock';
 import SideList from '../views/SideList';
 import TopicList from '../views/TopicList';
-import TopNavigation from '../views/TopNavigation';
+import ColumnNav from '../views/ColumnNav';
 import {
   fetchFriendsList,
   fetchHeadLine,
@@ -23,7 +23,7 @@ import {
 import { FriendsListItem } from '../models/Friends';
 import { HomeCarouselItem } from '../models/HomeCarousel';
 import { Message } from '@arco-design/web-react';
-import { NavColumns } from '../models/Columns';
+import { NavColumn } from '../models/Columns';
 import { NewsListItem } from '../models/NewsItem';
 import { useState } from 'react';
 import { WebsiteInfo } from '../models/WebsiteInfo';
@@ -33,7 +33,7 @@ import ErrorBlock from '../views/ErrorBlock';
 import { HeadLine } from '../models/Headline';
 
 interface HomePageProps {
-  navColumns: NavColumns[];
+  navColumns: NavColumn[];
   friendsList: FriendsListItem[];
   homeList: NewsListItem[];
   homeCarousel: HomeCarouselItem[];
@@ -94,17 +94,15 @@ const Home = (props: HomePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <TopNavigation selectedIndex={0} navItems={props.navColumns} />
+        <ColumnNav selectedIndex={0} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 tw-py-10 md:tw-px-20">
         <PictureBlock
-          describe="学习新思想"
-          href="https://www.people.com.cn"
-          imgsrc="https://www.zzkpnews.com/style/img/kehuduan.jpg"
+          imgsrc={props.pagePictureBlock.Top?.imgsrc}
+          href={props.pagePictureBlock.Top?.href}
+          describe={props.pagePictureBlock.Top?.describe}
         />
-        <HomeHeadline
-          data={props.headLine}
-        />
+        <HomeHeadline data={props.headLine} />
         <HomeCarousel data={props.homeCarousel} />
         <div className=" lg:tw-flex">
           <div className="lg:tw-basis-2/3 tw-my-10">

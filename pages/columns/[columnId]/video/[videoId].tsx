@@ -4,7 +4,7 @@ import Head from 'next/head';
 import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
 import SideList from '../../../../views/SideList';
-import TopNavigation from '../../../../views/TopNavigation';
+import ColumnNav from '../../../../views/ColumnNav';
 import { FriendsListItem } from '../../../../models/Friends';
 import { GetServerSideProps } from 'next';
 import { NavColumns } from '../../../../models/Columns';
@@ -44,7 +44,7 @@ const Video = (props: VideoPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <TopNavigation selectedIndex={props.columnIndex} navItems={props.navColumnsList} />
+        <ColumnNav selectedIndex={props.columnIndex} navItems={props.navColumnsList} />
       </header>
       <main className={classNames('tw-min-h-screen', 'tw-px-5', 'md:tw-px-20')}>
         <div className="tw-flex tw-justify-center tw-my-10">

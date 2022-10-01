@@ -6,9 +6,15 @@ type NavColumn = {
 
 const getNavColumnOrder = (list: NavColumn[], id: string) => {
   return list.findIndex((ele) => {
-    ele.id === id;
+    return ele.id === id;
   });
 };
 
+const getNavColumnTitle = (list: NavColumn[], id: string) => {
+  return list.find((ele) => {
+    return ele.id === id;
+  })?.title;
+};
+
 export type { NavColumn };
-export { getNavColumnOrder };
+export { getNavColumnOrder,getNavColumnTitle };

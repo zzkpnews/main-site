@@ -1,12 +1,7 @@
+import { Tabs } from '@arco-design/web-react';
 import classNames from 'classnames';
-import Footer from '../../../views/Footer';
+import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import LogoBadge from '../../../views/LogoBadge';
-import NewsList from '../../../views/NewsItemsList';
-import PictureBlock from '../../../views/PictureBlock';
-import SideList from '../../../views/SideList';
-import TopNavigation from '../../../views/TopNavigation';
-import { Dispatch, SetStateAction, useState } from 'react';
 import {
   fetchColumnList,
   fetchFriendsList,
@@ -14,17 +9,22 @@ import {
   fetchNavColumnItems,
   fetchPictureBlock,
   fetchWebsiteInfo
-  } from '../../../api/fetchData';
+} from '../../../api/fetchData';
+import useColumnList from '../../../hooks/useColumnList';
+import { getNavColumnOrder, getNavColumnTitle, NavColumn } from '../../../models/Columns';
 import { FriendsListItem } from '../../../models/Friends';
-import { Message, Tabs } from '@arco-design/web-react';
-import { NavColumns } from '../../../models/Columns';
 import { NewsListItem } from '../../../models/NewsItem';
 import { PagePictureBlockInfo } from '../../../models/PictureBlock';
 import { WebsiteInfo } from '../../../models/WebsiteInfo';
-import type { GetServerSideProps } from 'next';
+import ColumnNav from '../../../views/ColumnNav';
+import Footer from '../../../views/Footer';
+import LogoBadge from '../../../views/LogoBadge';
+import NewsList from '../../../views/NewsItemsList';
+import PictureBlock from '../../../views/PictureBlock';
+import SideList from '../../../views/SideList';
 
 interface ColumnIndexPageProps {
-  navColumns: NavColumns[];
+  navColumns: NavColumn[];
   friendsList: FriendsListItem[];
   columnIndex: number;
   title: string;
@@ -38,89 +38,26 @@ interface ColumnIndexPageProps {
 }
 
 const ColumnIndex = (props: ColumnIndexPageProps) => {
-  const [column_default_list_data, set_column_default_list_data] = useState<NewsListItem[]>(props.defaultListData);
-  const [column_default_list_loadable, set_column_default_list_loadable] = useState<boolean>(true);
-  const [column_default_list_loading, set_column_default_list_loading] = useState<boolean>(false);
+  const {
+    data: default_list_data,
+    loadable: default_list_loadable,
+    loading: default_list_loading,
+    handleFetchData: handle_default_list_fetch_data,
+  } = useColumnList(props.defaultListData, props.columnId);
 
-  const [column_article_list_data, set_column_article_list_data] = useState<NewsListItem[]>(props.articleListData);
-  const [column_article_list_loadable, set_column_article_list_loadable] = useState<boolean>(true);
-  const [column_article_list_loading, set_column_article_list_loading] = useState<boolean>(false);
+  const {
+    data: video_list_data,
+    loadable: video_list_loadable,
+    loading: video_list_loading,
+    handleFetchData: handle_video_list_fetch_data,
+  } = useColumnList(props.defaultListData, props.columnId);
 
-  const [column_video_list_data, set_column_video_list_data] = useState<NewsListItem[]>(props.videoListData);
-  const [column_video_list_loadable, set_column_video_list_loadable] = useState<boolean>(true);
-  const [column_video_list_loading, set_column_video_list_loading] = useState<boolean>(false);
-
-  const _loadNewsList = async (
-    type: 'article' | 'video' | undefined,
-    listData: NewsListItem[],
-    setListData: Dispatch<SetStateAction<NewsListItem[]>>,
-    setLoadable: Dispatch<SetStateAction<boolean>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
-  ) => {
-    if (listData.length === 0) {
-      setLoadable(false);
-      setLoading(false);
-      Message.info({
-        content: '加载已经到底了！',
-        closable: true,
-        duration: 5000,
-      });
-      return;
-    }
-    fetchColumnList(props.columnId, type, listData[listData.length - 1].timestamp)
-      .then((moreItems) => {
-        if (moreItems.data.length !== 0) {
-          setLoading(false);
-          setListData([...listData, ...moreItems.data]);
-        } else {
-          setLoadable(false);
-          setLoading(false);
-          Message.info({
-            content: '加载已经到底了！',
-            closable: true,
-            duration: 5000,
-          });
-        }
-      })
-      .catch(() => {
-        setLoading(false);
-        Message.error({
-          content: '加载数据过程中出现错误！',
-          closable: true,
-          duration: 5000,
-        });
-      });
-  };
-
-  const handleLoadDefaultList = (): void => {
-    _loadNewsList(
-      undefined,
-      column_default_list_data,
-      set_column_default_list_data,
-      set_column_default_list_loadable,
-      set_column_default_list_loading
-    );
-  };
-
-  const handleLoadArticleList = (): void => {
-    _loadNewsList(
-      'article',
-      column_article_list_data,
-      set_column_article_list_data,
-      set_column_article_list_loadable,
-      set_column_article_list_loading
-    );
-  };
-
-  const handleLoadVideoList = (): void => {
-    _loadNewsList(
-      'video',
-      column_video_list_data,
-      set_column_video_list_data,
-      set_column_video_list_loadable,
-      set_column_video_list_loading
-    );
-  };
+  const {
+    data: article_list_data,
+    loadable: article_list_loadable,
+    loading: article_list_loading,
+    handleFetchData: handle_article_list_fetch_data,
+  } = useColumnList(props.defaultListData, props.columnId);
 
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
@@ -133,7 +70,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <TopNavigation selectedIndex={props.columnIndex} navItems={props.navColumns} />
+        <ColumnNav selectedIndex={props.columnIndex} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="lg:tw-flex tw-justify-center tw-my-10">
@@ -150,28 +87,28 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
                   <Tabs.TabPane key="1" title={<span className="tw-text-lg tw-font-bold">{'最新'}</span>}>
                     <NewsList
                       bordered={false}
-                      newsList={column_default_list_data}
-                      loadable={column_default_list_loadable}
-                      loading={column_default_list_loading}
-                      loadFunc={handleLoadDefaultList}
+                      newsList={default_list_data}
+                      loadable={default_list_loadable}
+                      loading={default_list_loading}
+                      loadFunc={handle_default_list_fetch_data}
                     />
                   </Tabs.TabPane>
                   <Tabs.TabPane key="2" title={<span className="tw-text-lg tw-font-bold">{'文章'}</span>}>
                     <NewsList
                       bordered={false}
-                      newsList={column_article_list_data}
-                      loadable={column_article_list_loadable}
-                      loading={column_article_list_loading}
-                      loadFunc={handleLoadArticleList}
+                      newsList={article_list_data}
+                      loadable={article_list_loadable}
+                      loading={article_list_loading}
+                      loadFunc={handle_article_list_fetch_data}
                     />
                   </Tabs.TabPane>
                   <Tabs.TabPane key="4" title={<span className="tw-text-lg tw-font-bold">{'视频'}</span>}>
                     <NewsList
                       bordered={false}
-                      newsList={column_video_list_data}
-                      loadable={column_video_list_loadable}
-                      loading={column_video_list_loading}
-                      loadFunc={handleLoadVideoList}
+                      newsList={video_list_data}
+                      loadable={video_list_loadable}
+                      loading={video_list_loading}
+                      loadFunc={handle_video_list_fetch_data}
                     />
                   </Tabs.TabPane>
                 </Tabs>
@@ -202,16 +139,11 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedColumnsData = (await fetchNavColumnItems()).data;
   const fetchedFriendsListData = (await fetchFriendsList()).data;
-
-  const columnIndex =
-    fetchedColumnsData.findIndex((item) => {
-      return item.id === context.query.columnId;
-    }) + 1;
-  const columnTitle = fetchedColumnsData.find((item) => {
-    return item.id === context.query.columnId;
-  })?.title;
   const columnId = context.query.columnId as string;
-
+  const columnIndex = getNavColumnOrder(fetchedColumnsData, columnId);
+  const columnTitle = getNavColumnTitle(fetchedColumnsData, columnId);
+  console.log(columnTitle);
+  console.log(fetchedColumnsData);
   const fetchedDefaultListData = (await fetchColumnList(columnId)).data;
   const fetchedArticleListData = (await fetchColumnList(columnId, 'article')).data;
   const fetchedVideoListData = (await fetchColumnList(columnId, 'video')).data;
@@ -232,7 +164,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     websiteInfo: fetchedWebsiteInfoData,
     pagePictureBlock: fetchedPagePictureBlock,
   };
-  console.log(fetchedPagePictureBlock);
+
   return {
     props: returnProps,
   };
