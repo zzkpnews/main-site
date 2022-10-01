@@ -1,4 +1,4 @@
-export default function TopicList(): JSX.Element {
+const TopicList = (): JSX.Element => {
   return (
     <div className="tw-rounded-lg tw-p-4 tw-mx-2">
       <h2 className="tw-font-bold tw-text-lg tw-text-red-700 tw-my-2">热点话题</h2>
@@ -48,4 +48,6 @@ export default function TopicList(): JSX.Element {
       </div>
     </div>
   );
-}
+};
+
+export default TopicList;

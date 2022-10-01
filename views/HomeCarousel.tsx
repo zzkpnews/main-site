@@ -3,7 +3,7 @@ import { HomeCarouselItem } from '../models/HomeCarousel';
 import { useState } from 'react';
 /* eslint-disable @next/next/no-img-element */
 
-export default function HomeCarousel(props: { data: HomeCarouselItem[] }): JSX.Element {
+const HomeCarousel = (props: { data: HomeCarouselItem[] }): JSX.Element => {
   const [carousel_index, set_carousel_index] = useState<number>(0);
 
   return (
@@ -25,7 +25,7 @@ export default function HomeCarousel(props: { data: HomeCarouselItem[] }): JSX.E
             key={`carousel-img-${index}`}
             className="tw-object-cover tw-rounded-lg tw-select-none"
             alt=""
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
           />
         ))}
       </Carousel>
@@ -46,4 +46,6 @@ export default function HomeCarousel(props: { data: HomeCarouselItem[] }): JSX.E
       </div>
     </div>
   );
-}
+};
+
+export default HomeCarousel;

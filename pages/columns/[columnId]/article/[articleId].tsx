@@ -3,7 +3,7 @@ import Footer from '../../../../views/Footer';
 import Head from 'next/head';
 import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
-import SideItemList from '../../../../views/SideItemList';
+import SideList from '../../../../views/SideList';
 import TopNavigation from '../../../../views/TopNavigation';
 import { Article } from '../../../../models/NewsItem';
 import { FriendsListItem } from '../../../../models/Friends';
@@ -81,9 +81,9 @@ const Article = (props: ArticlePageProps) => {
               href={props.pagePictureBlock.sideBottom?.href}
               describe={props.pagePictureBlock.sideBottom?.describe}
             />
-            <SideItemList title="推荐阅读" data={props.hotList} />
+            <SideList title="推荐阅读" data={props.hotList} />
             <div className="tw-sticky tw-top-20">
-              <SideItemList title="更多文章" data={props.hotList} />
+              <SideList title="更多文章" data={props.hotList} />
             </div>
           </div>
         </div>

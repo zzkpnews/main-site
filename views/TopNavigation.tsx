@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Dropdown, Menu } from '@arco-design/web-react';
 import { NavColumn } from '../models/Columns';
-import { BroadCastBar } from './BroadCastBar';
+import BroadCastBar from './BroadCastBar';
 
 export default function TopNavigation(props: { selectedIndex: number; navItems: NavColumn[] }): JSX.Element {
   return (

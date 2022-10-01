@@ -1,7 +1,7 @@
 import { Button } from '@arco-design/web-react';
 import { useState } from 'react';
 
-export default function PictureBanner(props: { open: boolean; imgsrc: string; href?: string }): JSX.Element | null {
+const PageBanner = (props: { open: boolean; imgsrc: string; href?: string }): JSX.Element | null => {
   const [isClosed, setClosed] = useState<boolean>(false);
   return props.open && props.imgsrc && !isClosed ? (
     <a href={props.href} className="tw-select-none" target="_blank" rel="noreferrer">
@@ -29,8 +29,10 @@ export default function PictureBanner(props: { open: boolean; imgsrc: string; hr
       </div>
     </a>
   ) : null;
-}
+};
 
-PictureBanner.defaultProps = {
+PageBanner.defaultProps = {
   open: false,
 };
+
+export default PageBanner;

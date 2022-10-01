@@ -2,7 +2,7 @@ import { FaGithub, FaWeixin } from 'react-icons/fa';
 import { FriendsListItem } from '../models/Friends';
 import { WebsiteInfo } from '../models/WebsiteInfo';
 
-export default function Footer(props: { friendsList: FriendsListItem[]; websiteInfo: WebsiteInfo }): JSX.Element {
+const Footer = (props: { friendsList: FriendsListItem[]; websiteInfo: WebsiteInfo }): JSX.Element => {
   return (
     <footer className=" tw-bg-gray-800 tw-text-white tw-py-10 tw-px-10 md:tw-px-20 tw-select-none">
       <div className=" md:tw-flex">
@@ -77,4 +77,6 @@ export default function Footer(props: { friendsList: FriendsListItem[]; websiteI
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

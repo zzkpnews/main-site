@@ -4,10 +4,10 @@ import Head from 'next/head';
 import HomeCarousel from '../views/HomeCarousel';
 import HomeHeadline from '../views/HomeHeadline';
 import LogoBadge from '../views/LogoBadge';
-import NewsItemsList from '../views/NewsItemsList';
-import PictureBanner from '../views/PictureBanner';
+import NewsList from '../views/NewsItemsList';
+import PageBanner from '../views/PageBanner';
 import PictureBlock from '../views/PictureBlock';
-import SideItemList from '../views/SideItemList';
+import SideList from '../views/SideList';
 import TopicList from '../views/TopicList';
 import TopNavigation from '../views/TopNavigation';
 import {
@@ -89,7 +89,7 @@ const Home = (props: HomePageProps) => {
         <link rel="shortcut icon" href="favicons.ico" type="image/x-icon" />
         <meta name="description" content="中原科技网" />
       </Head>
-      <PictureBanner imgsrc="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000" href="http://www.baidu.com" />
+      <PageBanner imgsrc="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000" href="http://www.baidu.com" />
       <div className="tw-flex tw-justify-center tw-py-3">
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
@@ -109,7 +109,7 @@ const Home = (props: HomePageProps) => {
         <div className=" lg:tw-flex">
           <div className="lg:tw-basis-2/3 tw-my-10">
             <div className=" tw-sticky tw-top-20">
-              <NewsItemsList
+              <NewsList
                 loading={home_list_loading}
                 loadable={home_list_loadable}
                 newsList={home_list_data}
@@ -130,7 +130,7 @@ const Home = (props: HomePageProps) => {
             />
             <TopicList />
             <div className=" tw-sticky tw-top-20">
-              <SideItemList title="推荐阅读" data={props.hotList} />
+              <SideList title="推荐阅读" data={props.hotList} />
             </div>
           </div>
         </div>

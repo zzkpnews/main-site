@@ -3,7 +3,7 @@ import Footer from '../../../../views/Footer';
 import Head from 'next/head';
 import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
-import SideItemList from '../../../../views/SideItemList';
+import SideList from '../../../../views/SideList';
 import TopNavigation from '../../../../views/TopNavigation';
 import { FriendsListItem } from '../../../../models/Friends';
 import { GetServerSideProps } from 'next';
@@ -84,8 +84,8 @@ const Video = (props: VideoPageProps) => {
               href={props.pagePictureBlock.sideBottom?.href}
               describe={props.pagePictureBlock.sideBottom?.describe}
             />
-            <SideItemList title="精彩后面" data={props.hotList} />
-            <SideItemList title="推荐阅读" data={props.hotList} />
+            <SideList title="精彩后面" data={props.hotList} />
+            <SideList title="推荐阅读" data={props.hotList} />
           </div>
         </div>
       </main>

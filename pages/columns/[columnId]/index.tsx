@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import Footer from '../../../views/Footer';
 import Head from 'next/head';
 import LogoBadge from '../../../views/LogoBadge';
-import NewsItemsList from '../../../views/NewsItemsList';
+import NewsList from '../../../views/NewsItemsList';
 import PictureBlock from '../../../views/PictureBlock';
-import SideItemList from '../../../views/SideItemList';
+import SideList from '../../../views/SideList';
 import TopNavigation from '../../../views/TopNavigation';
 import { Dispatch, SetStateAction, useState } from 'react';
 import {
@@ -148,7 +148,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
                 <h2 className="tw-text-3xl tw-mx-5 tw-my-3 tw-font-bold">{`专栏 - ${props.title}`}</h2>
                 <Tabs key="card" size="large">
                   <Tabs.TabPane key="1" title={<span className="tw-text-lg tw-font-bold">{'最新'}</span>}>
-                    <NewsItemsList
+                    <NewsList
                       bordered={false}
                       newsList={column_default_list_data}
                       loadable={column_default_list_loadable}
@@ -157,7 +157,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
                     />
                   </Tabs.TabPane>
                   <Tabs.TabPane key="2" title={<span className="tw-text-lg tw-font-bold">{'文章'}</span>}>
-                    <NewsItemsList
+                    <NewsList
                       bordered={false}
                       newsList={column_article_list_data}
                       loadable={column_article_list_loadable}
@@ -166,7 +166,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
                     />
                   </Tabs.TabPane>
                   <Tabs.TabPane key="4" title={<span className="tw-text-lg tw-font-bold">{'视频'}</span>}>
-                    <NewsItemsList
+                    <NewsList
                       bordered={false}
                       newsList={column_video_list_data}
                       loadable={column_video_list_loadable}
@@ -190,7 +190,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
               describe={props.pagePictureBlock.sideBottom?.describe}
             />
             <div className=" tw-sticky tw-top-20">
-              <SideItemList title="推荐阅读" data={props.hotList} />
+              <SideList title="推荐阅读" data={props.hotList} />
             </div>
           </div>
         </div>

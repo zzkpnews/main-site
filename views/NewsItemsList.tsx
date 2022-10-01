@@ -2,31 +2,13 @@ import { Button, List, Tag } from '@arco-design/web-react';
 import classNames from 'classnames';
 import { NewsListItem } from '../models/NewsItem';
 
-/**
- * 新闻条目表组件，这是一个纯函数组件
- */
-export default function NewsItemsList(props: {
-  /**
-   * 新闻数据列表
-   */
+const NewsList = (props: {
   newsList: NewsListItem[];
-  /**
-   * 指示列表是否可加载
-   */
   loadable: boolean;
-  /**
-   * 指示列表是否为正在加载状态
-   */
   loading: boolean;
-  /**
-   * 是否显示列表边框
-   */
   bordered: boolean;
-  /**
-   * 加载数据的方法。点击加载按钮后则执行这个方法
-   */
   loadFunc: () => void;
-}): JSX.Element {
+}): JSX.Element => {
   return (
     <div className="tw-bg-white">
       <List
@@ -84,11 +66,13 @@ export default function NewsItemsList(props: {
       </div>
     </div>
   );
-}
+};
 
-NewsItemsList.defaultProps = {
+NewsList.defaultProps = {
   newsList: [],
   loading: false,
   loadable: true,
   bordered: true,
 };
+
+export default NewsList;

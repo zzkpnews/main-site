@@ -1,4 +1,4 @@
-export default function PictureBlock(props: { imgsrc?: string; href?: string; describe?: string }): JSX.Element {
+const PictureBlock = (props: { imgsrc?: string; href?: string; describe?: string }): JSX.Element => {
   return (
     <div className="tw-rounded-lg tw-p-0 tw-mx-2 tw-mb-2 tw-select-none ">
       {props.imgsrc ? (
@@ -8,4 +8,6 @@ export default function PictureBlock(props: { imgsrc?: string; href?: string; de
       ) : null}
     </div>
   );
-}
+};
+
+export default PictureBlock;

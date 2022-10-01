@@ -1,6 +1,6 @@
 import { HeadLine } from '../models/Headline';
 
-export default function HomeHeadline(props: { data: HeadLine }): JSX.Element {
+const HomeHeadline = (props: { data: HeadLine }): JSX.Element => {
   return (
     <div className=" tw-mt-5 tw-mb-5 md:tw-flex tw-justify-center">
       <img src="./headline-icon.png" className="tw-mx-auto md:tw-mx-5 tw-h-24 tw-w-24 tw-my-auto" alt="headline" />
@@ -15,4 +15,6 @@ export default function HomeHeadline(props: { data: HeadLine }): JSX.Element {
       </div>
     </div>
   );
-}
+};
+
+export default HomeHeadline;
