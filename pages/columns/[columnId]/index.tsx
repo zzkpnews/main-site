@@ -50,14 +50,14 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
     loadable: video_list_loadable,
     loading: video_list_loading,
     handleFetchData: handle_video_list_fetch_data,
-  } = useColumnList(props.defaultListData, props.columnId);
+  } = useColumnList(props.videoListData, props.columnId,'video');
 
   const {
     data: article_list_data,
     loadable: article_list_loadable,
     loading: article_list_loading,
     handleFetchData: handle_article_list_fetch_data,
-  } = useColumnList(props.defaultListData, props.columnId);
+  } = useColumnList(props.articleListData, props.columnId,'article');
 
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
@@ -142,8 +142,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.columnId as string;
   const columnIndex = getNavColumnOrder(fetchedColumnsData, columnId);
   const columnTitle = getNavColumnTitle(fetchedColumnsData, columnId);
-  console.log(columnTitle);
-  console.log(fetchedColumnsData);
   const fetchedDefaultListData = (await fetchColumnList(columnId)).data;
   const fetchedArticleListData = (await fetchColumnList(columnId, 'article')).data;
   const fetchedVideoListData = (await fetchColumnList(columnId, 'video')).data;
