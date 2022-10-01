@@ -15,12 +15,12 @@ import {
   fetchPictureBlock,
   fetchWebsiteInfo
   } from '../../../api/fetchData';
-import { FriendsListItem } from '../../../types/Friends';
+import { FriendsListItem } from '../../../models/Friends';
 import { Message, Tabs } from '@arco-design/web-react';
-import { NavColumns } from '../../../types/Columns';
-import { NewsListItem } from '../../../types/NewsItem';
-import { PagePictureBlockInfo } from '../../../types/PictureBlock';
-import { WebsiteInfo } from '../../../types/WebsiteInfo';
+import { NavColumns } from '../../../models/Columns';
+import { NewsListItem } from '../../../models/NewsItem';
+import { PagePictureBlockInfo } from '../../../models/PictureBlock';
+import { WebsiteInfo } from '../../../models/WebsiteInfo';
 import type { GetServerSideProps } from 'next';
 
 interface ColumnIndexPageProps {

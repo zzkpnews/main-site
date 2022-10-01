@@ -1,6 +1,6 @@
 import { Button, List, Tag } from '@arco-design/web-react';
 import classNames from 'classnames';
-import { NewsListItem } from '../types/NewsItem';
+import { NewsListItem } from '../models/NewsItem';
 
 /**
  * 新闻条目表组件，这是一个纯函数组件

@@ -5,12 +5,12 @@ import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
 import SideItemList from '../../../../views/SideItemList';
 import TopNavigation from '../../../../views/TopNavigation';
-import { Article } from '../../../../types/NewsItem';
-import { FriendsListItem } from '../../../../types/Friends';
-import { NavColumns } from '../../../../types/Columns';
-import { NewsListItem } from '../../../../types/NewsItem';
-import { PagePictureBlockInfo } from '../../../../types/PictureBlock';
-import { WebsiteInfo } from '../../../../types/WebsiteInfo';
+import { Article } from '../../../../models/NewsItem';
+import { FriendsListItem } from '../../../../models/Friends';
+import { getNavColumnOrder, NavColumn } from '../../../../models/Columns';
+import { NewsListItem } from '../../../../models/NewsItem';
+import { PagePictureBlockInfo } from '../../../../models/PictureBlock';
+import { WebsiteInfo } from '../../../../models/WebsiteInfo';
 import type { GetServerSideProps } from 'next';
 import {
   fetchArticleContent,
@@ -23,11 +23,11 @@ import {
 } from '../../../../api/fetchData';
 
 interface ArticlePageProps {
-  navColumns: NavColumns[];
+  navColumns: NavColumn[];
   friendsList: FriendsListItem[];
   articleContent: string;
   articleItemDetail: Article;
-  columnIndex: number;
+  columnOrder: number;
   hotList: NewsListItem[];
   websiteInfo: WebsiteInfo;
   pagePictureBlock: PagePictureBlockInfo;
@@ -46,7 +46,7 @@ const Article = (props: ArticlePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <TopNavigation selectedIndex={props.columnIndex} navItems={props.navColumns} />
+        <TopNavigation selectedIndex={props.columnOrder} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">
@@ -105,17 +105,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedHotListData = (await fetchHotList()).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
-  const columnIndex =
-    fetchedNavColumns.findIndex((item) => {
-      return item.id === context.query.columnId;
-    }) + 1;
+  const columnOrder = getNavColumnOrder(fetchedNavColumns, columnId);
 
   const returnProps: ArticlePageProps = {
     navColumns: fetchedNavColumns,
     friendsList: fetchedFriendsListData,
     articleContent: fetchedArticleContentData,
     articleItemDetail: fetchedArticleItemMetaData,
-    columnIndex: columnIndex,
+    columnOrder: columnOrder,
     hotList: fetchedHotListData,
     websiteInfo: fetchedWebsiteInfoData,
     pagePictureBlock: fetchedPagePictureBlock,

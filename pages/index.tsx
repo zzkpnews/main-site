@@ -20,17 +20,17 @@ import {
   fetchPictureBlock,
   fetchWebsiteInfo,
 } from '../api/fetchData';
-import { FriendsListItem } from '../types/Friends';
-import { HomeCarouselItem } from '../types/HomeCarousel';
+import { FriendsListItem } from '../models/Friends';
+import { HomeCarouselItem } from '../models/HomeCarousel';
 import { Message } from '@arco-design/web-react';
-import { NavColumns } from '../types/Columns';
-import { NewsListItem } from '../types/NewsItem';
+import { NavColumns } from '../models/Columns';
+import { NewsListItem } from '../models/NewsItem';
 import { useState } from 'react';
-import { WebsiteInfo } from '../types/WebsiteInfo';
+import { WebsiteInfo } from '../models/WebsiteInfo';
 import type { GetServerSideProps } from 'next';
-import { PagePictureBlockInfo } from '../types/PictureBlock';
+import { PagePictureBlockInfo } from '../models/PictureBlock';
 import ErrorBlock from '../views/ErrorBlock';
-import { HeadLine } from '../types/Headline';
+import { HeadLine } from '../models/Headline';
 
 interface HomePageProps {
   navColumns: NavColumns[];

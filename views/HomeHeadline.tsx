@@ -1,4 +1,4 @@
-import { HeadLine } from '../types/Headline';
+import { HeadLine } from '../models/Headline';
 
 export default function HomeHeadline(props: { data: HeadLine }): JSX.Element {
   return (

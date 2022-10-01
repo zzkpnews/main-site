@@ -1,5 +1,5 @@
 import { List } from '@arco-design/web-react';
-import { NewsListItem } from '../types/NewsItem';
+import { NewsListItem } from '../models/NewsItem';
 export default function SideItemList(props: { title: string; data: NewsListItem[] }): JSX.Element {
   return (
     <div className="tw-border tw-rounded-lg tw-p-4 tw-mx-2 tw-my-3 tw-bg-white">

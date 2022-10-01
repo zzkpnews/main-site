@@ -1,14 +1,14 @@
 import axios, { AxiosPromise } from 'axios';
-import { Article, NewsListItem, Video } from '../types/NewsItem';
-import { FriendsListItem } from '../types/Friends';
-import { HomeCarouselItem } from '../types/HomeCarousel';
-import { NavColumns } from '../types/Columns';
-import { PagePictureBlockInfo } from '../types/PictureBlock';
+import { Article, NewsListItem, Video } from '../models/NewsItem';
+import { FriendsListItem } from '../models/Friends';
+import { HomeCarouselItem } from '../models/HomeCarousel';
+import { NavColumn } from '../models/Columns';
+import { PagePictureBlockInfo } from '../models/PictureBlock';
 import { web_api_url } from './api.register';
-import { WebsiteInfo } from '../types/WebsiteInfo';
-import { HeadLine } from '../types/Headline';
+import { WebsiteInfo } from '../models/WebsiteInfo';
+import { HeadLine } from '../models/Headline';
 
-export const fetchNavColumnItems = (): AxiosPromise<NavColumns[]> => {
+export const fetchNavColumnItems = (): AxiosPromise<NavColumn[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.NavColumnList,

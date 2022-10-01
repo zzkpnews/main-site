@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { Dropdown, Menu } from '@arco-design/web-react';
-import { NavColumns } from '../types/Columns';
+import { NavColumn } from '../models/Columns';
 import { BroadCastBar } from './BroadCastBar';
 
-export default function TopNavigation(props: { selectedIndex: number; navItems: NavColumns[] }): JSX.Element {
+export default function TopNavigation(props: { selectedIndex: number; navItems: NavColumn[] }): JSX.Element {
   return (
     <nav className="tw-px-0  tw-border-b-2 tw-border-t-2 tw-flex tw-flex-col tw-justify-center tw-align-middle ">
       <div className="tw-my-auto tw-flex tw-flex-wrap tw-justify-center ">
@@ -25,7 +25,7 @@ export default function TopNavigation(props: { selectedIndex: number; navItems: 
         >
           {'首页'}
         </a>
-        {((navItems: NavColumns[]) => {
+        {((navItems: NavColumn[]) => {
           const navItemDoms = [];
           for (let index = 0; index < (navItems.length > 12 ? 12 : navItems.length); index++) {
             navItemDoms.push(

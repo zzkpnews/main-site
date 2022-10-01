@@ -5,12 +5,12 @@ import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
 import SideItemList from '../../../../views/SideItemList';
 import TopNavigation from '../../../../views/TopNavigation';
-import { FriendsListItem } from '../../../../types/Friends';
+import { FriendsListItem } from '../../../../models/Friends';
 import { GetServerSideProps } from 'next';
-import { NavColumns } from '../../../../types/Columns';
-import { NewsListItem } from '../../../../types/NewsItem';
-import { Video } from '../../../../types/NewsItem';
-import { WebsiteInfo } from '../../../../types/WebsiteInfo';
+import { NavColumns } from '../../../../models/Columns';
+import { NewsListItem } from '../../../../models/NewsItem';
+import { Video } from '../../../../models/NewsItem';
+import { WebsiteInfo } from '../../../../models/WebsiteInfo';
 import {
   fetchFriendsList,
   fetchHotList,
@@ -19,7 +19,7 @@ import {
   fetchVideoItemMeta,
   fetchWebsiteInfo,
 } from '../../../../api/fetchData';
-import { PagePictureBlockInfo } from '../../../../types/PictureBlock';
+import { PagePictureBlockInfo } from '../../../../models/PictureBlock';
 
 interface VideoPageProps {
   navColumnsList: NavColumns[];
