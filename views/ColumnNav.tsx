@@ -3,7 +3,7 @@ import { Dropdown, Menu } from '@arco-design/web-react';
 import { NavColumn } from '../models/Columns';
 import BroadCastBar from './BroadCastBar';
 
-const ColumnNav = (props: { selectedIndex: number; navItems: NavColumn[] }): JSX.Element => {
+const ColumnNav = (props: { activeColumnOrder: number; navItems: NavColumn[] }): JSX.Element => {
   return (
     <nav className="tw-px-0  tw-border-b-2 tw-border-t-2 tw-flex tw-flex-col tw-justify-center tw-align-middle ">
       <div className="tw-my-auto tw-flex tw-flex-wrap tw-justify-center ">
@@ -17,9 +17,9 @@ const ColumnNav = (props: { selectedIndex: number; navItems: NavColumn[] }): JSX
             'tw-font-bold',
             'tw-text-base',
             'tw-select-none',
-            { 'hover:tw-text-red-700': props.selectedIndex !== 0 },
-            { 'tw-bg-red-700': props.selectedIndex === 0 },
-            { 'tw-text-white': props.selectedIndex === 0 }
+            { 'hover:tw-text-red-700': props.activeColumnOrder !== 0 },
+            { 'tw-bg-red-700': props.activeColumnOrder === 0 },
+            { 'tw-text-white': props.activeColumnOrder === 0 }
           )}
           href={'/'}
         >
@@ -39,9 +39,9 @@ const ColumnNav = (props: { selectedIndex: number; navItems: NavColumn[] }): JSX
                   'tw-font-bold',
                   'tw-text-base',
                   'tw-select-none',
-                  { 'hover:tw-text-red-700': props.selectedIndex !== index + 1 },
-                  { 'tw-bg-red-700': props.selectedIndex === index + 1 },
-                  { 'tw-text-white': props.selectedIndex === index + 1 }
+                  { 'hover:tw-text-red-700': props.activeColumnOrder !== index + 1 },
+                  { 'tw-bg-red-700': props.activeColumnOrder === index + 1 },
+                  { 'tw-text-white': props.activeColumnOrder === index + 1 }
                 )}
                 key={`nav-col-${index}`}
                 href={`/columns/${navItems[index].id}`}

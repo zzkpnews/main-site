@@ -1,26 +1,25 @@
 import classNames from 'classnames';
-import Footer from '../../../../views/Footer';
+import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import {
+  fetchArticleContent,
+  fetchArticleItemMeta,
+  fetchFriendsList,
+  fetchHotList,
+  fetchNavColumnItems,
+  fetchPictureBlock,
+  fetchWebsiteInfo,
+} from '../../../../api/fetchData';
+import { getNavColumnOrder, NavColumn } from '../../../../models/Columns';
+import { FriendsListItem } from '../../../../models/Friends';
+import { Article, NewsListItem } from '../../../../models/NewsItem';
+import { PagePictureBlockInfo } from '../../../../models/PictureBlock';
+import { WebsiteInfo } from '../../../../models/WebsiteInfo';
+import ColumnNav from '../../../../views/ColumnNav';
+import Footer from '../../../../views/Footer';
 import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
 import SideList from '../../../../views/SideList';
-import ColumnNav from '../../../../views/ColumnNav';
-import { Article } from '../../../../models/NewsItem';
-import { FriendsListItem } from '../../../../models/Friends';
-import { getNavColumnOrder, NavColumn } from '../../../../models/Columns';
-import { NewsListItem } from '../../../../models/NewsItem';
-import { PagePictureBlockInfo } from '../../../../models/PictureBlock';
-import { WebsiteInfo } from '../../../../models/WebsiteInfo';
-import type { GetServerSideProps } from 'next';
-import {
-  fetchArticleContent,
-  fetchFriendsList,
-  fetchHotList,
-  fetchArticleItemMeta,
-  fetchNavColumnItems,
-  fetchWebsiteInfo,
-  fetchPictureBlock,
-} from '../../../../api/fetchData';
 
 interface ArticlePageProps {
   navColumns: NavColumn[];
@@ -46,7 +45,7 @@ const Article = (props: ArticlePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnNav selectedIndex={props.columnOrder} navItems={props.navColumns} />
+        <ColumnNav activeColumnOrder={props.columnOrder} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">

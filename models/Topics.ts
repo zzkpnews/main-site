@@ -1,7 +1,7 @@
 type TopicListItem = {
   id: string;
   title: string;
-  imgsrc?:string;
-}
+  imgsrc?: string;
+};
 
-export type {TopicListItem}
+export type { TopicListItem };

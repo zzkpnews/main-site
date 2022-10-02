@@ -1,15 +1,6 @@
 import classNames from 'classnames';
-import Footer from '../views/Footer';
+import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import HomeCarousel from '../views/HomeCarousel';
-import HomeHeadline from '../views/HomeHeadline';
-import LogoBadge from '../views/LogoBadge';
-import NewsList from '../views/NewsItemsList';
-import PageBanner from '../views/PageBanner';
-import PictureBlock from '../views/PictureBlock';
-import SideList from '../views/SideList';
-import TopicList from '../views/TopicList';
-import ColumnNav from '../views/ColumnNav';
 import {
   fetchFriendsList,
   fetchHeadLine,
@@ -18,19 +9,26 @@ import {
   fetchHotList,
   fetchNavColumnItems,
   fetchPictureBlock,
-  fetchWebsiteInfo,
+  fetchWebsiteInfo
 } from '../api/fetchData';
-import { FriendsListItem } from '../models/Friends';
-import { HomeCarouselItem } from '../models/HomeCarousel';
-import { Message } from '@arco-design/web-react';
+import useHomeList from '../hooks/useHomeList';
 import { NavColumn } from '../models/Columns';
-import { NewsListItem } from '../models/NewsItem';
-import { useState } from 'react';
-import { WebsiteInfo } from '../models/WebsiteInfo';
-import type { GetServerSideProps } from 'next';
-import { PagePictureBlockInfo } from '../models/PictureBlock';
-import ErrorBlock from '../views/ErrorBlock';
+import { FriendsListItem } from '../models/Friends';
 import { HeadLine } from '../models/Headline';
+import { HomeCarouselItem } from '../models/HomeCarousel';
+import { NewsListItem } from '../models/NewsItem';
+import { PagePictureBlockInfo } from '../models/PictureBlock';
+import { WebsiteInfo } from '../models/WebsiteInfo';
+import ColumnNav from '../views/ColumnNav';
+import Footer from '../views/Footer';
+import HomeCarousel from '../views/HomeCarousel';
+import HomeHeadline from '../views/HomeHeadline';
+import LogoBadge from '../views/LogoBadge';
+import NewsList from '../views/NewsItemsList';
+import PageBanner from '../views/PageBanner';
+import PictureBlock from '../views/PictureBlock';
+import SideList from '../views/SideList';
+import TopicList from '../views/TopicList';
 
 interface HomePageProps {
   navColumns: NavColumn[];
@@ -44,43 +42,13 @@ interface HomePageProps {
 }
 
 const Home = (props: HomePageProps) => {
-  /**
-   * 指示和设置新闻数据列表
-   */
-  const [home_list_data, set_home_list_data] = useState<NewsListItem[]>(props.homeList);
-  /**
-   * 指示和设置加载按钮是否可用
-   */
-  const [home_list_loadable, set_home_list_loadable] = useState<boolean>(true);
-  /**
-   * 指示和设置更多数据的加载状态
-   */
-  const [home_list_loading, set_home_list_loading] = useState<boolean>(false);
 
-  const handleLoadMore = async () => {
-    set_home_list_loading(true);
-    fetchHomeList(home_list_data[home_list_data.length - 1].timestamp)
-      .then((moreData) => {
-        if (moreData.data.length !== 0) {
-          set_home_list_loading(false);
-          set_home_list_data([...home_list_data, ...moreData.data]);
-        } else {
-          set_home_list_loadable(false);
-          Message.error({
-            content: '加载已经到底了！',
-            closable: true,
-            duration: 5000,
-          });
-        }
-      })
-      .catch(() => {
-        Message.error({
-          content: '加载数据过程中出现错误！',
-          closable: true,
-          duration: 5000,
-        });
-      });
-  };
+  const {
+    data: home_list_data,
+    loadable: home_list_loadable,
+    loading: home_list_loading,
+    handleFetchData: handle_home_list_fetch_data,
+  } = useHomeList(props.homeList);
 
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
@@ -94,7 +62,7 @@ const Home = (props: HomePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnNav selectedIndex={0} navItems={props.navColumns} />
+        <ColumnNav activeColumnOrder={0} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 tw-py-10 md:tw-px-20">
         <PictureBlock
@@ -111,7 +79,7 @@ const Home = (props: HomePageProps) => {
                 loading={home_list_loading}
                 loadable={home_list_loadable}
                 newsList={home_list_data}
-                loadFunc={handleLoadMore}
+                loadFunc={handle_home_list_fetch_data}
               />
             </div>
           </div>

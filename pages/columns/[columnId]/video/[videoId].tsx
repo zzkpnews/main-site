@@ -7,7 +7,7 @@ import SideList from '../../../../views/SideList';
 import ColumnNav from '../../../../views/ColumnNav';
 import { FriendsListItem } from '../../../../models/Friends';
 import { GetServerSideProps } from 'next';
-import { NavColumns } from '../../../../models/Columns';
+import { NavColumn } from '../../../../models/Columns';
 import { NewsListItem } from '../../../../models/NewsItem';
 import { Video } from '../../../../models/NewsItem';
 import { WebsiteInfo } from '../../../../models/WebsiteInfo';
@@ -22,7 +22,7 @@ import {
 import { PagePictureBlockInfo } from '../../../../models/PictureBlock';
 
 interface VideoPageProps {
-  navColumnsList: NavColumns[];
+  navColumnsList: NavColumn[];
   friendsList: FriendsListItem[];
   columnIndex: number;
   hotList: NewsListItem[];
@@ -44,7 +44,7 @@ const Video = (props: VideoPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnNav selectedIndex={props.columnIndex} navItems={props.navColumnsList} />
+        <ColumnNav activeColumnOrder={props.columnIndex} navItems={props.navColumnsList} />
       </header>
       <main className={classNames('tw-min-h-screen', 'tw-px-5', 'md:tw-px-20')}>
         <div className="tw-flex tw-justify-center tw-my-10">

@@ -70,7 +70,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnNav selectedIndex={props.columnIndex} navItems={props.navColumns} />
+        <ColumnNav activeColumnOrder={props.columnIndex} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="lg:tw-flex tw-justify-center tw-my-10">
