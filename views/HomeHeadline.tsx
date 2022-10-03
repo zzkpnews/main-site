@@ -1,4 +1,4 @@
-import { HeadLine } from '../models/Headline';
+import { HeadLine } from '../models/HeadlineNews.model';
 
 const HomeHeadline = (props: { data: HeadLine }): JSX.Element => {
   return (

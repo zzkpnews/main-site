@@ -13,12 +13,12 @@ import {
 } from '../api/fetchData';
 import useHomeList from '../hooks/useHomeList';
 import { NavColumn } from '../models/Columns';
-import { FriendsListItem } from '../models/Friends';
-import { HeadLine } from '../models/Headline';
-import { HomeCarouselItem } from '../models/HomeCarousel';
+import { FriendsListItem } from '../models/FriendLinkList.model';
+import { HeadLine } from '../models/HeadlineNews.model';
+import { HomeCarouselItem } from '../models/HomeCarousel.model';
 import { NewsListItem } from '../models/NewsItem';
-import { PagePictureBlockInfo } from '../models/PictureBlock';
-import { WebsiteInfo } from '../models/WebsiteInfo';
+import { PagePictureBlockInfo } from '../models/PagePictureBlockLayout.model';
+import { WebsiteInfo } from '../models/WebsiteInfo.model';
 import ColumnNav from '../views/ColumnNav';
 import Footer from '../views/Footer';
 import HomeCarousel from '../views/HomeCarousel';

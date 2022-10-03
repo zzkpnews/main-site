@@ -12,10 +12,10 @@ import {
 } from '../../../api/fetchData';
 import useColumnList from '../../../hooks/useColumnList';
 import { getNavColumnOrder, getNavColumnTitle, NavColumn } from '../../../models/Columns';
-import { FriendsListItem } from '../../../models/Friends';
+import { FriendsListItem } from '../../../models/FriendLinkList.model';
 import { NewsListItem } from '../../../models/NewsItem';
-import { PagePictureBlockInfo } from '../../../models/PictureBlock';
-import { WebsiteInfo } from '../../../models/WebsiteInfo';
+import { PagePictureBlockInfo } from '../../../models/PagePictureBlockLayout.model';
+import { WebsiteInfo } from '../../../models/WebsiteInfo.model';
 import ColumnNav from '../../../views/ColumnNav';
 import Footer from '../../../views/Footer';
 import LogoBadge from '../../../views/LogoBadge';

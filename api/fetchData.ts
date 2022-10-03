@@ -1,12 +1,12 @@
 import axios, { AxiosPromise } from 'axios';
 import { Article, NewsListItem, Video } from '../models/NewsItem';
-import { FriendsListItem } from '../models/Friends';
-import { HomeCarouselItem } from '../models/HomeCarousel';
+import { FriendsListItem } from '../models/FriendLinkList.model';
+import { HomeCarouselItem } from '../models/HomeCarousel.model';
 import { NavColumn } from '../models/Columns';
-import { PagePictureBlockInfo } from '../models/PictureBlock';
+import { PagePictureBlockInfo } from '../models/PagePictureBlockLayout.model';
 import { web_api_url } from './api.register';
-import { WebsiteInfo } from '../models/WebsiteInfo';
-import { HeadLine } from '../models/Headline';
+import { WebsiteInfo } from '../models/WebsiteInfo.model';
+import { HeadLine } from '../models/HeadlineNews.model';
 
 export const fetchNavColumnItems = (): AxiosPromise<NavColumn[]> => {
   return axios({

@@ -1,5 +1,5 @@
 import { Carousel } from '@arco-design/web-react';
-import { HomeCarouselItem } from '../models/HomeCarousel';
+import { HomeCarouselItem } from '../models/HomeCarousel.model';
 import { useState } from 'react';
 /* eslint-disable @next/next/no-img-element */
 

@@ -5,12 +5,12 @@ import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
 import SideList from '../../../../views/SideList';
 import ColumnNav from '../../../../views/ColumnNav';
-import { FriendsListItem } from '../../../../models/Friends';
+import { FriendsListItem } from '../../../../models/FriendLinkList.model';
 import { GetServerSideProps } from 'next';
 import { NavColumn } from '../../../../models/Columns';
 import { NewsListItem } from '../../../../models/NewsItem';
 import { Video } from '../../../../models/NewsItem';
-import { WebsiteInfo } from '../../../../models/WebsiteInfo';
+import { WebsiteInfo } from '../../../../models/WebsiteInfo.model';
 import {
   fetchFriendsList,
   fetchHotList,
@@ -19,7 +19,7 @@ import {
   fetchVideoItemMeta,
   fetchWebsiteInfo,
 } from '../../../../api/fetchData';
-import { PagePictureBlockInfo } from '../../../../models/PictureBlock';
+import { PagePictureBlockInfo } from '../../../../models/PagePictureBlockLayout.model';
 
 interface VideoPageProps {
   navColumnsList: NavColumn[];
