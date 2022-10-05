@@ -20,7 +20,7 @@ export const web_api_url = {
   ColumnList: 'http://127.0.0.7:8080/api/column-list.php',
   HomeCarousel: 'http://127.0.0.7:8080/ext-data/home-carousel.json',
   HotList: 'http://127.0.0.7:8080/ext-data/hot-list.json',
-  ArticleItemMeta: 'http://127.0.0.7:8080/api/article-item-meta.php',
+  ArticleNews: 'http://127.0.0.7:8080/api/article-item-meta.php',
   VideoItemMeta: 'http://127.0.0.7:8080/api/video-item-meta.php',
   WebsiteInfo: 'http://127.0.0.7:8080/ext-data/website-info.json',
   PictureBlockInfo: 'http://127.0.0.7:8080/api/picture-block-get.php',

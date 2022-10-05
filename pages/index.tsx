@@ -14,13 +14,13 @@ import {
   TopicList,
 } from '../views';
 import {
-  fetchFriendsList,
+  fetchFriendList,
   fetchHeadLineNews,
-  fetchHomeCarousel,
-  fetchHomeList,
-  fetchHotList,
-  fetchNavColumnItems,
-  fetchPictureBlock,
+  fetchCarouselNews,
+  fetchHotNews,
+  fetchColumnsData,
+  fetchNewsList,
+  fetchPictureBlockNews,
   fetchWebsiteInfo,
 } from '../api/fetchData';
 import type { GetServerSideProps } from 'next';
@@ -35,18 +35,18 @@ import {
 } from '../models';
 
 interface HomePageProps {
-  navColumns: ColumnSummary[];
-  friendsList: FriendLink[];
+  carouselNewsData: CarouselNews[];
+  columnsData: ColumnSummary[];
+  friendListData: FriendLink[];
+  headLineNewsData: HeadLineNews;
   homeList: NewsSummary[];
-  homeCarousel: CarouselNews[];
-  hotList: NewsSummary[];
+  hotNewsData: NewsSummary[];
+  pagePictureBlock: PictureBlockNews | null;
   websiteInfo: WebsiteInfo;
-  pagePictureBlock: PictureBlockNews;
-  headLine: HeadLineNews;
 }
 
 const Home = (props: HomePageProps) => {
-  const { currentColumnOrder } = useNavigation(props.navColumns);
+  const { currentColumnOrder } = useNavigation(props.columnsData);
   const {
     data: home_list_data,
     loadable: home_list_loadable,
@@ -66,16 +66,16 @@ const Home = (props: HomePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.navColumns} />
+        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.columnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 tw-py-10 md:tw-px-20">
         <PictureBlock
-          imgsrc={props.pagePictureBlock.Top?.imgUrl}
-          href={props.pagePictureBlock.Top?.href}
-          describe={props.pagePictureBlock.Top?.describe}
+          imgsrc={props.pagePictureBlock?.Top?.imgUrl}
+          href={props.pagePictureBlock?.Top?.href}
+          describe={props.pagePictureBlock?.Top?.describe}
         />
-        <Headline data={props.headLine} />
-        <Carousel data={props.homeCarousel} />
+        <Headline data={props.headLineNewsData} />
+        <Carousel data={props.carouselNewsData} />
         <div className=" lg:tw-flex">
           <div className="lg:tw-basis-2/3 tw-my-10">
             <div className=" tw-sticky tw-top-20">
@@ -89,46 +89,46 @@ const Home = (props: HomePageProps) => {
           </div>
           <div className="lg:tw-basis-1/3 tw-my-10">
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideTop?.imgUrl}
-              href={props.pagePictureBlock.sideTop?.href}
-              describe={props.pagePictureBlock.sideTop?.describe}
+              imgsrc={props.pagePictureBlock?.sideTop?.imgUrl}
+              href={props.pagePictureBlock?.sideTop?.href}
+              describe={props.pagePictureBlock?.sideTop?.describe}
             />
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideBottom?.imgUrl}
-              href={props.pagePictureBlock.sideBottom?.href}
-              describe={props.pagePictureBlock.sideBottom?.describe}
+              imgsrc={props.pagePictureBlock?.sideBottom?.imgUrl}
+              href={props.pagePictureBlock?.sideBottom?.href}
+              describe={props.pagePictureBlock?.sideBottom?.describe}
             />
             <TopicList />
             <div className=" tw-sticky tw-top-20">
-              <SideList title="推荐阅读" data={props.hotList} />
+              <SideList title="推荐阅读" data={props.hotNewsData} />
             </div>
           </div>
         </div>
       </main>
-      <Footer friendsList={props.friendsList} websiteInfo={props.websiteInfo} />
+      <Footer friendsList={props.friendListData} websiteInfo={props.websiteInfo} />
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const fetchedColumnsData = (await fetchNavColumnItems()).data;
-  const fetchedFriendsListData = (await fetchFriendsList()).data;
-  const fetchedHomeListData = (await fetchHomeList()).data;
-  const fetchedHomeCarouselData = (await fetchHomeCarousel()).data;
-  const fetchedHotListData = (await fetchHotList()).data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
-  const fetchedPagePictureBlock = (await fetchPictureBlock(context.query.columnId as string)).data;
+export const getServerSideProps: GetServerSideProps = async () => {
+  const fetchedColumnsData = (await fetchColumnsData()).data;
+  const fetchedFriendsListData = (await fetchFriendList()).data;
   const fetchedHeadLineData = (await fetchHeadLineNews()).data;
+  const fetchedHomeCarouselData = (await fetchCarouselNews()).data;
+  const fetchedHomeListData = (await fetchNewsList({ from: 'home' })).data;
+  const fetchedHotListData = (await fetchHotNews()).data;
+  const fetchedPagePictureBlock = null;
+  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
   const returnProps: HomePageProps = {
-    navColumns: fetchedColumnsData,
-    friendsList: fetchedFriendsListData,
+    carouselNewsData: fetchedHomeCarouselData,
+    columnsData: fetchedColumnsData,
+    friendListData: fetchedFriendsListData,
+    headLineNewsData: fetchedHeadLineData,
     homeList: fetchedHomeListData,
-    homeCarousel: fetchedHomeCarouselData,
-    hotList: fetchedHotListData,
-    websiteInfo: fetchedWebsiteInfoData,
+    hotNewsData: fetchedHotListData,
     pagePictureBlock: fetchedPagePictureBlock,
-    headLine: fetchedHeadLineData,
+    websiteInfo: fetchedWebsiteInfoData,
   };
 
   return {

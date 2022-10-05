@@ -1,57 +1,44 @@
 import classNames from 'classnames';
 import Head from 'next/head';
-import {
-  ArticleNews,
-  ColumnSummary,
-  FriendLink,
-  NewsSummary,
-  PictureBlockNews,
-  WebsiteInfo
-  } from '../../../../models';
-import {
-  Footer,
-  LogoBadge,
-  Navigation,
-  PictureBlock,
-  SideList
-  } from '../../../../views';
+import { ArticleNews, ColumnSummary, FriendLink, NewsSummary, PictureBlockNews, WebsiteInfo } from '../../../../models';
+import { Footer, LogoBadge, Navigation, PictureBlock, SideList } from '../../../../views';
 import { useNavigation } from '../../../../hooks';
 import type { GetServerSideProps } from 'next';
 import {
   fetchArticleContent,
-  fetchArticleItemMeta,
-  fetchFriendsList,
-  fetchHotList,
-  fetchNavColumnItems,
-  fetchPictureBlock,
+  fetchArticleNews,
+  fetchFriendList,
+  fetchHotNews,
+  fetchColumnsData,
+  fetchPictureBlockNews,
   fetchWebsiteInfo,
 } from '../../../../api/fetchData';
 
 interface ArticlePageProps {
-  navColumns: ColumnSummary[];
-  friendsList: FriendLink[];
+  columnsData: ColumnSummary[];
+  friendListData: FriendLink[];
   articleContent: string;
-  articleItemDetail: ArticleNews;
-  hotList: NewsSummary[];
-  websiteInfo: WebsiteInfo;
-  pagePictureBlock: PictureBlockNews;
+  articleNewsData: ArticleNews;
+  hotNewsData: NewsSummary[];
+  websiteInfoData: WebsiteInfo;
+  pictureBlockNewsData: PictureBlockNews;
 }
 
 const Article = (props: ArticlePageProps) => {
-  const { currentColumnOrder } = useNavigation(props.navColumns);
+  const { currentColumnOrder } = useNavigation(props.columnsData);
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
       <Head>
-        <title>{`${props.articleItemDetail.title} - 中原科技网`}</title>
+        <title>{`${props.articleNewsData.title} - 中原科技网`}</title>
         <link rel="shortcut icon" href="../../../favicons.ico" type="image/x-icon" />
-        <meta name="description" content={props.articleItemDetail.citation!} />
+        <meta name="description" content={props.articleNewsData.citation!} />
         <meta name="keywords" content="" />
       </Head>
       <div className="tw-flex tw-justify-center tw-py-3">
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.navColumns} />
+        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.columnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">
@@ -59,16 +46,16 @@ const Article = (props: ArticlePageProps) => {
             <div className="tw-sticky tw-top-20 tw-py-3 tw-bg-white tw-rounded-xl">
               <div className="tw-border-b  tw-py-4 tw-mx-5">
                 <span className="tw-block tw-font-bold tw-text-lg tw-text-left tw-mx-auto tw-text-gray-500">
-                  {props.articleItemDetail.leadTitle}
+                  {props.articleNewsData.leadTitle}
                 </span>
-                <h2 className="tw-font-bold tw-text-3xl tw-text-left tw-my-1">{props.articleItemDetail.title}</h2>
+                <h2 className="tw-font-bold tw-text-3xl tw-text-left tw-my-1">{props.articleNewsData.title}</h2>
                 <span className="tw-block tw-text-left tw-mx-auto tw-font-bold tw-text-xl">
-                  {props.articleItemDetail.subtitle}
+                  {props.articleNewsData.subtitle}
                 </span>
-                <p className="tw-mx-10 tw-my-4">{props.articleItemDetail.citation}</p>
-                {props.articleItemDetail.bgimg ? (
+                <p className="tw-mx-10 tw-my-4">{props.articleNewsData.citation}</p>
+                {props.articleNewsData.bgimg ? (
                   <div className=" tw-px-10 tw-aspect-h-9 tw-aspect-w-16 tw-object-cover">
-                    <img className="tw-rounded-xl tw-object-cover" src={props.articleItemDetail.bgimg} />
+                    <img className="tw-rounded-xl tw-object-cover" src={props.articleNewsData.bgimg} />
                   </div>
                 ) : null}
               </div>
@@ -77,23 +64,23 @@ const Article = (props: ArticlePageProps) => {
           </div>
           <div className=" tw-basis-1/3">
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideTop?.imgUrl}
-              href={props.pagePictureBlock.sideTop?.href}
-              describe={props.pagePictureBlock.sideTop?.describe}
+              imgsrc={props.pictureBlockNewsData.sideTop?.imgUrl}
+              href={props.pictureBlockNewsData.sideTop?.href}
+              describe={props.pictureBlockNewsData.sideTop?.describe}
             />
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideBottom?.imgUrl}
-              href={props.pagePictureBlock.sideBottom?.href}
-              describe={props.pagePictureBlock.sideBottom?.describe}
+              imgsrc={props.pictureBlockNewsData.sideBottom?.imgUrl}
+              href={props.pictureBlockNewsData.sideBottom?.href}
+              describe={props.pictureBlockNewsData.sideBottom?.describe}
             />
-            <SideList title="推荐阅读" data={props.hotList} />
+            <SideList title="推荐阅读" data={props.hotNewsData} />
             <div className="tw-sticky tw-top-20">
-              <SideList title="更多文章" data={props.hotList} />
+              <SideList title="更多文章" data={props.hotNewsData} />
             </div>
           </div>
         </div>
       </main>
-      <Footer friendsList={props.friendsList} websiteInfo={props.websiteInfo} />
+      <Footer friendsList={props.friendListData} websiteInfo={props.websiteInfoData} />
     </div>
   );
 };
@@ -102,22 +89,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const articleId = context.query.articleId as string;
   const columnId = context.query.columnId as string;
 
-  const fetchedNavColumns = (await fetchNavColumnItems()).data;
-  const fetchedFriendsListData = (await fetchFriendsList()).data;
   const fetchedArticleContentData = (await fetchArticleContent(articleId)).data;
-  const fetchedArticleItemMetaData = (await fetchArticleItemMeta(articleId)).data;
-  const fetchedPagePictureBlock = (await fetchPictureBlock(columnId)).data;
-  const fetchedHotListData = (await fetchHotList()).data;
+  const fetchedArticleNewsData = (await fetchArticleNews(articleId)).data;
+  const fetchedColumnsData = (await fetchColumnsData()).data;
+  const fetchedFriendsListData = (await fetchFriendList()).data;
+  const fetchedHotNewsData = (await fetchHotNews()).data;
+  const fetchedPictureBlockData = (await fetchPictureBlockNews(columnId)).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
   const returnProps: ArticlePageProps = {
-    navColumns: fetchedNavColumns,
-    friendsList: fetchedFriendsListData,
     articleContent: fetchedArticleContentData,
-    articleItemDetail: fetchedArticleItemMetaData,
-    hotList: fetchedHotListData,
-    websiteInfo: fetchedWebsiteInfoData,
-    pagePictureBlock: fetchedPagePictureBlock,
+    articleNewsData: fetchedArticleNewsData,
+    columnsData: fetchedColumnsData,
+    friendListData: fetchedFriendsListData,
+    hotNewsData: fetchedHotNewsData,
+    pictureBlockNewsData: fetchedPictureBlockData,
+    websiteInfoData: fetchedWebsiteInfoData,
   };
 
   return {

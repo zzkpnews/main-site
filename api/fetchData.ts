@@ -29,7 +29,7 @@ export const fetchNewsList = (params: NewsListApiParam): AxiosPromise<NewsSummar
   });
 };
 
-export const fetchNavColumnItems = (): AxiosPromise<ColumnSummary[]> => {
+export const fetchColumnsData = (): AxiosPromise<ColumnSummary[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.NavColumnList,
@@ -37,7 +37,7 @@ export const fetchNavColumnItems = (): AxiosPromise<ColumnSummary[]> => {
   });
 };
 
-export const fetchFriendsList = (): AxiosPromise<FriendLink[]> => {
+export const fetchFriendList = (): AxiosPromise<FriendLink[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.FriendsList,
@@ -53,35 +53,7 @@ export const fetchWebsiteInfo = (): AxiosPromise<WebsiteInfo> => {
   });
 };
 
-export const fetchHomeList = (offset?: number): AxiosPromise<NewsSummary[]> => {
-  return axios({
-    method: 'GET',
-    url: web_api_url.HomeList,
-    params: {
-      offset: offset,
-    },
-    responseType: 'json',
-  });
-};
-
-export const fetchColumnList = (
-  columnId: string,
-  type?: 'article' | 'album' | 'video',
-  offset?: number
-): AxiosPromise<NewsSummary[]> => {
-  return axios({
-    method: 'GET',
-    url: web_api_url.ColumnList,
-    params: {
-      column: columnId,
-      offset: offset,
-      type: type,
-    },
-    responseType: 'json',
-  });
-};
-
-export const fetchHomeCarousel = (offset?: number): AxiosPromise<CarouselNews[]> => {
+export const fetchCarouselNews = (offset?: number): AxiosPromise<CarouselNews[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.HomeCarousel,
@@ -89,7 +61,7 @@ export const fetchHomeCarousel = (offset?: number): AxiosPromise<CarouselNews[]>
   });
 };
 
-export const fetchHotList = (): AxiosPromise<NewsSummary[]> => {
+export const fetchHotNews = (): AxiosPromise<NewsSummary[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.HotList,
@@ -105,16 +77,16 @@ export const fetchArticleContent = (id: string): AxiosPromise<string> => {
   });
 };
 
-export const fetchArticleItemMeta = (id: string): AxiosPromise<ArticleNews> => {
+export const fetchArticleNews = (id: string): AxiosPromise<ArticleNews> => {
   return axios({
     method: 'GET',
-    url: web_api_url.ArticleItemMeta,
+    url: web_api_url.ArticleNews,
     params: { id: id },
     responseType: 'json',
   });
 };
 
-export const fetchVideoItemMeta = (id: string): AxiosPromise<VideoNews> => {
+export const fetchVideoNews = (id: string): AxiosPromise<VideoNews> => {
   return axios({
     method: 'GET',
     url: web_api_url.VideoItemMeta,
@@ -123,7 +95,7 @@ export const fetchVideoItemMeta = (id: string): AxiosPromise<VideoNews> => {
   });
 };
 
-export const fetchPictureBlock = (columnId?: string): AxiosPromise<PictureBlockNews> => {
+export const fetchPictureBlockNews = (columnId?: string): AxiosPromise<PictureBlockNews> => {
   return axios({
     method: 'GET',
     url: web_api_url.PictureBlockInfo,

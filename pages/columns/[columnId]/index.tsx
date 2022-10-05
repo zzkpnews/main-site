@@ -1,29 +1,29 @@
 import classNames from 'classnames';
 import Head from 'next/head';
 import { ColumnSummary, FriendLink, NewsSummary, PictureBlockNews, WebsiteInfo } from '../../../models';
+import {
+  fetchColumnsData,
+  fetchFriendList,
+  fetchHotNews,
+  fetchNewsList,
+  fetchPictureBlockNews,
+  fetchWebsiteInfo,
+} from '../../../api/fetchData';
 import { Footer, LogoBadge, Navigation, NewsList, PictureBlock, SideList } from '../../../views';
 import { Tabs } from '@arco-design/web-react';
 import { useNavigation, useNewsList } from '../../../hooks';
 
 import type { GetServerSideProps } from 'next';
-import {
-  fetchColumnList,
-  fetchFriendsList,
-  fetchHotList,
-  fetchNavColumnItems,
-  fetchPictureBlock,
-  fetchWebsiteInfo,
-} from '../../../api/fetchData';
 
 interface ColumnIndexPageProps {
   articleNewsData: NewsSummary[];
   columnsData: ColumnSummary[];
   defaultNewsData: NewsSummary[];
   friendLinksData: FriendLink[];
-  hotList: NewsSummary[];
-  pagePictureBlock: PictureBlockNews;
+  hotNewsData: NewsSummary[];
+  pictureBlockNewsData: PictureBlockNews;
   videoNewsData: NewsSummary[];
-  websiteInfo: WebsiteInfo;
+  websiteInfoData: WebsiteInfo;
 }
 
 const ColumnIndex = (props: ColumnIndexPageProps) => {
@@ -79,9 +79,9 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
           <div className=" tw-basis-2/3">
             <div className=" tw-sticky tw-top-20">
               <PictureBlock
-                describe={props.pagePictureBlock.Top?.describe}
-                href={props.pagePictureBlock.Top?.href}
-                imgsrc={props.pagePictureBlock.Top?.imgUrl}
+                describe={props.pictureBlockNewsData.Top?.describe}
+                href={props.pictureBlockNewsData.Top?.href}
+                imgsrc={props.pictureBlockNewsData.Top?.imgUrl}
               />
               <div className="tw-border tw-rounded-lg tw-bg-white tw-p-3">
                 <h2 className="tw-text-3xl tw-mx-5 tw-my-3 tw-font-bold">{`专栏 - ${currentColumnTitle}`}</h2>
@@ -119,45 +119,45 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
           </div>
           <div className=" tw-basis-1/3">
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideTop?.imgUrl}
-              href={props.pagePictureBlock.sideTop?.href}
-              describe={props.pagePictureBlock.sideTop?.describe}
+              imgsrc={props.pictureBlockNewsData.sideTop?.imgUrl}
+              href={props.pictureBlockNewsData.sideTop?.href}
+              describe={props.pictureBlockNewsData.sideTop?.describe}
             />
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideBottom?.imgUrl}
-              href={props.pagePictureBlock.sideBottom?.href}
-              describe={props.pagePictureBlock.sideBottom?.describe}
+              imgsrc={props.pictureBlockNewsData.sideBottom?.imgUrl}
+              href={props.pictureBlockNewsData.sideBottom?.href}
+              describe={props.pictureBlockNewsData.sideBottom?.describe}
             />
             <div className=" tw-sticky tw-top-20">
-              <SideList title="推荐阅读" data={props.hotList} />
+              <SideList title="推荐阅读" data={props.hotNewsData} />
             </div>
           </div>
         </div>
       </main>
-      <Footer friendsList={props.friendLinksData} websiteInfo={props.websiteInfo} />
+      <Footer friendsList={props.friendLinksData} websiteInfo={props.websiteInfoData} />
     </div>
   );
 };
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const fetchedColumnsData = (await fetchNavColumnItems()).data;
-  const fetchedFriendsListData = (await fetchFriendsList()).data;
+  const fetchedColumnsData = (await fetchColumnsData()).data;
+  const fetchedFriendsListData = (await fetchFriendList()).data;
   const columnId = context.query.columnId as string;
-  const fetchedDefaultListData = (await fetchColumnList(columnId)).data;
-  const fetchedArticleListData = (await fetchColumnList(columnId, 'article')).data;
-  const fetchedVideoListData = (await fetchColumnList(columnId, 'video')).data;
-  const fetchedHotListData = (await fetchHotList()).data;
+  const fetchedDefaultListData = (await fetchNewsList({ from: 'column', id: columnId })).data;
+  const fetchedArticleListData = (await fetchNewsList({ from: 'column', id: columnId, type: 'article' })).data;
+  const fetchedVideoListData = (await fetchNewsList({ from: 'column', id: columnId, type: 'video' })).data;
+  const fetchedHotListData = (await fetchHotNews()).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
-  const fetchedPagePictureBlock = (await fetchPictureBlock(columnId)).data;
+  const fetchedPagePictureBlock = (await fetchPictureBlockNews(columnId)).data;
 
   const returnProps: ColumnIndexPageProps = {
     articleNewsData: fetchedArticleListData,
     columnsData: fetchedColumnsData,
     defaultNewsData: fetchedDefaultListData,
     friendLinksData: fetchedFriendsListData,
-    hotList: fetchedHotListData,
-    pagePictureBlock: fetchedPagePictureBlock,
+    hotNewsData: fetchedHotListData,
+    pictureBlockNewsData: fetchedPagePictureBlock,
     videoNewsData: fetchedVideoListData,
-    websiteInfo: fetchedWebsiteInfoData,
+    websiteInfoData: fetchedWebsiteInfoData,
   };
 
   return {
