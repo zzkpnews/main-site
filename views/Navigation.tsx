@@ -1,7 +1,8 @@
 import classNames from 'classnames';
+import { BroadCastBar } from './BroadCastBar';
+import { ColumnSummary } from '../models';
 import { Dropdown, Menu } from '@arco-design/web-react';
-import { ColumnSummary } from '../models/ColumnSummary.model';
-import BroadCastBar from './BroadCastBar';
+
 
 const Navigation = (props: { activeColumnOrder: number; navItems: ColumnSummary[] }): JSX.Element => {
   return (
@@ -93,4 +94,4 @@ const Navigation = (props: { activeColumnOrder: number; navItems: ColumnSummary[
   );
 };
 
-export default Navigation;
+export { Navigation };

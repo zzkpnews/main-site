@@ -17,4 +17,4 @@ const Headline = (props: { data: HeadLineNews }): JSX.Element => {
   );
 };
 
-export default Headline;
+export { Headline };

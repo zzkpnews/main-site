@@ -1,18 +1,18 @@
-import Carousel from '../views/Carousel';
 import classNames from 'classnames';
-import Footer from '../views/Footer';
 import Head from 'next/head';
-import HeadBanner from '../views/HeadBanner';
-import Headline from '../views/Headline';
-import LogoBadge from '../views/LogoBadge';
-import Navigation from '../views/Navigation';
-import NewsList from '../views/NewsList';
-import PictureBlock from '../views/PictureBlock';
-import SideList from '../views/SideList';
-import TopicList from '../views/TopicList';
-import useNewsList from '../hooks/useNewsList';
-import { CarouselNews } from '../models/CarouselNews.model';
-import { ColumnSummary } from '../models/ColumnSummary.model';
+import { useNavigation, useNewsList } from '../hooks';
+import {
+  Carousel,
+  Footer,
+  HeadBanner,
+  Headline,
+  LogoBadge,
+  Navigation,
+  NewsList,
+  PictureBlock,
+  SideList,
+  TopicList,
+} from '../views';
 import {
   fetchFriendsList,
   fetchHeadLineNews,
@@ -21,14 +21,18 @@ import {
   fetchHotList,
   fetchNavColumnItems,
   fetchPictureBlock,
-  fetchWebsiteInfo
-  } from '../api/fetchData';
-import { FriendLink } from '../models/FriendLink.model';
-import { HeadLineNews } from '../models/HeadlineNews.model';
-import { NewsSummary } from '../models/NewsSummary.model';
-import { PictureBlockNews } from '../models/PictureBlockNews.model';
-import { WebsiteInfo } from '../models/WebsiteInfo.model';
+  fetchWebsiteInfo,
+} from '../api/fetchData';
 import type { GetServerSideProps } from 'next';
+import {
+  ColumnSummary,
+  FriendLink,
+  NewsSummary,
+  CarouselNews,
+  WebsiteInfo,
+  PictureBlockNews,
+  HeadLineNews,
+} from '../models';
 
 interface HomePageProps {
   navColumns: ColumnSummary[];
@@ -42,6 +46,7 @@ interface HomePageProps {
 }
 
 const Home = (props: HomePageProps) => {
+  const { currentColumnOrder } = useNavigation(props.navColumns);
   const {
     data: home_list_data,
     loadable: home_list_loadable,
@@ -61,7 +66,7 @@ const Home = (props: HomePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={0} navItems={props.navColumns} />
+        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 tw-py-10 md:tw-px-20">
         <PictureBlock

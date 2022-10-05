@@ -1,68 +1,70 @@
-import { Tabs } from '@arco-design/web-react';
 import classNames from 'classnames';
-import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { ColumnSummary, FriendLink, NewsSummary, PictureBlockNews, WebsiteInfo } from '../../../models';
+import { Footer, LogoBadge, Navigation, NewsList, PictureBlock, SideList } from '../../../views';
+import { Tabs } from '@arco-design/web-react';
+import { useNavigation, useNewsList } from '../../../hooks';
+
+import type { GetServerSideProps } from 'next';
 import {
   fetchColumnList,
   fetchFriendsList,
   fetchHotList,
   fetchNavColumnItems,
   fetchPictureBlock,
-  fetchWebsiteInfo
+  fetchWebsiteInfo,
 } from '../../../api/fetchData';
-import useColumnList from '../../../hooks/useColumnList';
-import { getNavColumnOrder, getNavColumnTitle, NavColumn } from '../../../models/Columns';
-import { FriendsListItem } from '../../../models/FriendLink.model';
-import { NewsListItem } from '../../../models/NewsItem';
-import { PagePictureBlockInfo } from '../../../models/PictureBlockNews.model';
-import { WebsiteInfo } from '../../../models/WebsiteInfo.model';
-import Navigation from '../../../views/Navigation';
-import Footer from '../../../views/Footer';
-import LogoBadge from '../../../views/LogoBadge';
-import NewsList from '../../../views/NewsList';
-import PictureBlock from '../../../views/PictureBlock';
-import SideList from '../../../views/SideList';
 
 interface ColumnIndexPageProps {
-  navColumns: NavColumn[];
-  friendsList: FriendsListItem[];
-  columnIndex: number;
-  title: string;
-  columnId: string;
-  hotList: NewsListItem[];
-  defaultListData: NewsListItem[];
-  articleListData: NewsListItem[];
-  videoListData: NewsListItem[];
+  articleNewsData: NewsSummary[];
+  columnsData: ColumnSummary[];
+  defaultNewsData: NewsSummary[];
+  friendLinksData: FriendLink[];
+  hotList: NewsSummary[];
+  pagePictureBlock: PictureBlockNews;
+  videoNewsData: NewsSummary[];
   websiteInfo: WebsiteInfo;
-  pagePictureBlock: PagePictureBlockInfo;
 }
 
 const ColumnIndex = (props: ColumnIndexPageProps) => {
+  const { currentColumnId, currentColumnOrder, currentColumnTitle } = useNavigation(props.columnsData);
+
   const {
     data: default_list_data,
     loadable: default_list_loadable,
     loading: default_list_loading,
     handleFetchData: handle_default_list_fetch_data,
-  } = useColumnList(props.defaultListData, props.columnId);
+  } = useNewsList(props.defaultNewsData, {
+    from: 'column',
+    id: currentColumnId,
+  });
 
   const {
     data: video_list_data,
     loadable: video_list_loadable,
     loading: video_list_loading,
     handleFetchData: handle_video_list_fetch_data,
-  } = useColumnList(props.videoListData, props.columnId,'video');
+  } = useNewsList(props.videoNewsData, {
+    from: 'column',
+    id: currentColumnId,
+    type: 'video',
+  });
 
   const {
     data: article_list_data,
     loadable: article_list_loadable,
     loading: article_list_loading,
     handleFetchData: handle_article_list_fetch_data,
-  } = useColumnList(props.articleListData, props.columnId,'article');
+  } = useNewsList(props.articleNewsData, {
+    from: 'column',
+    id: currentColumnId,
+    type: 'article',
+  });
 
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
       <Head>
-        <title>{`${props.title} - 中原科技网`}</title>
+        <title>{`${currentColumnTitle} - 中原科技网`}</title>
         <link rel="shortcut icon" href="http://localhost:3000/favicons.ico" type="image/x-icon" />
         <meta name="description" content="中原科技网" />
       </Head>
@@ -70,7 +72,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={props.columnIndex} navItems={props.navColumns} />
+        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.columnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="lg:tw-flex tw-justify-center tw-my-10">
@@ -79,10 +81,10 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
               <PictureBlock
                 describe={props.pagePictureBlock.Top?.describe}
                 href={props.pagePictureBlock.Top?.href}
-                imgsrc={props.pagePictureBlock.Top?.imgsrc}
+                imgsrc={props.pagePictureBlock.Top?.imgUrl}
               />
               <div className="tw-border tw-rounded-lg tw-bg-white tw-p-3">
-                <h2 className="tw-text-3xl tw-mx-5 tw-my-3 tw-font-bold">{`专栏 - ${props.title}`}</h2>
+                <h2 className="tw-text-3xl tw-mx-5 tw-my-3 tw-font-bold">{`专栏 - ${currentColumnTitle}`}</h2>
                 <Tabs key="card" size="large">
                   <Tabs.TabPane key="1" title={<span className="tw-text-lg tw-font-bold">{'最新'}</span>}>
                     <NewsList
@@ -117,12 +119,12 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
           </div>
           <div className=" tw-basis-1/3">
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideTop?.imgsrc}
+              imgsrc={props.pagePictureBlock.sideTop?.imgUrl}
               href={props.pagePictureBlock.sideTop?.href}
               describe={props.pagePictureBlock.sideTop?.describe}
             />
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideBottom?.imgsrc}
+              imgsrc={props.pagePictureBlock.sideBottom?.imgUrl}
               href={props.pagePictureBlock.sideBottom?.href}
               describe={props.pagePictureBlock.sideBottom?.describe}
             />
@@ -132,7 +134,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
           </div>
         </div>
       </main>
-      <Footer friendsList={props.friendsList} websiteInfo={props.websiteInfo} />
+      <Footer friendsList={props.friendLinksData} websiteInfo={props.websiteInfo} />
     </div>
   );
 };
@@ -140,8 +142,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedColumnsData = (await fetchNavColumnItems()).data;
   const fetchedFriendsListData = (await fetchFriendsList()).data;
   const columnId = context.query.columnId as string;
-  const columnIndex = getNavColumnOrder(fetchedColumnsData, columnId);
-  const columnTitle = getNavColumnTitle(fetchedColumnsData, columnId);
   const fetchedDefaultListData = (await fetchColumnList(columnId)).data;
   const fetchedArticleListData = (await fetchColumnList(columnId, 'article')).data;
   const fetchedVideoListData = (await fetchColumnList(columnId, 'video')).data;
@@ -150,17 +150,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedPagePictureBlock = (await fetchPictureBlock(columnId)).data;
 
   const returnProps: ColumnIndexPageProps = {
-    columnId: columnId,
-    navColumns: fetchedColumnsData,
-    friendsList: fetchedFriendsListData,
+    articleNewsData: fetchedArticleListData,
+    columnsData: fetchedColumnsData,
+    defaultNewsData: fetchedDefaultListData,
+    friendLinksData: fetchedFriendsListData,
     hotList: fetchedHotListData,
-    columnIndex: columnIndex,
-    title: columnTitle!,
-    defaultListData: fetchedDefaultListData,
-    articleListData: fetchedArticleListData,
-    videoListData: fetchedVideoListData,
-    websiteInfo: fetchedWebsiteInfoData,
     pagePictureBlock: fetchedPagePictureBlock,
+    videoNewsData: fetchedVideoListData,
+    websiteInfo: fetchedWebsiteInfoData,
   };
 
   return {

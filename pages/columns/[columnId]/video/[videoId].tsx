@@ -1,50 +1,42 @@
 import classNames from 'classnames';
-import Footer from '../../../../views/Footer';
-import Head from 'next/head';
-import LogoBadge from '../../../../views/LogoBadge';
-import PictureBlock from '../../../../views/PictureBlock';
-import SideList from '../../../../views/SideList';
-import Navigation from '../../../../views/Navigation';
-import { FriendsListItem } from '../../../../models/FriendLink.model';
+import { ColumnSummary, FriendLink, NewsSummary, PictureBlockNews, VideoNews, WebsiteInfo } from '../../../../models';
+import { Footer, LogoBadge, Navigation, PictureBlock, SideList } from '../../../../views';
 import { GetServerSideProps } from 'next';
-import { NavColumn } from '../../../../models/Columns';
-import { NewsListItem } from '../../../../models/NewsItem';
-import { Video } from '../../../../models/NewsItem';
-import { WebsiteInfo } from '../../../../models/WebsiteInfo.model';
+import { Head } from 'next/document';
+import { useNavigation } from '../../../../hooks';
 import {
+  fetchNavColumnItems,
   fetchFriendsList,
   fetchHotList,
-  fetchNavColumnItems,
-  fetchPictureBlock,
   fetchVideoItemMeta,
+  fetchPictureBlock,
   fetchWebsiteInfo,
 } from '../../../../api/fetchData';
-import { PagePictureBlockInfo } from '../../../../models/PictureBlockNews.model';
 
 interface VideoPageProps {
-  navColumnsList: NavColumn[];
-  friendsList: FriendsListItem[];
-  columnIndex: number;
-  hotList: NewsListItem[];
-  videoItemDetail: Video;
+  navColumnsList: ColumnSummary[];
+  friendsList: FriendLink[];
+  hotList: NewsSummary[];
+  videoItemDetail: VideoNews;
   websiteInfo: WebsiteInfo;
-  pagePictureBlock: PagePictureBlockInfo;
+  pagePictureBlock: PictureBlockNews;
 }
 
 const Video = (props: VideoPageProps) => {
+  const { currentColumnOrder } = useNavigation(props.navColumnsList);
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
       <Head>
         <title>{`${props.videoItemDetail.title} - 中原科技网`}</title>
         <link rel="shortcut icon" href="../../../favicons.ico" type="image/x-icon" />
-        <meta name="description" content={props.videoItemDetail.citation} />
-        <meta name="keywords" content={props.videoItemDetail.keywords} />
+        <meta name="description" content={props.videoItemDetail.citation!} />
+        <meta name="keywords" content={props.videoItemDetail.keywords!} />
       </Head>
       <div className="tw-flex tw-justify-center tw-py-3">
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={props.columnIndex} navItems={props.navColumnsList} />
+        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.navColumnsList} />
       </header>
       <main className={classNames('tw-min-h-screen', 'tw-px-5', 'md:tw-px-20')}>
         <div className="tw-flex tw-justify-center tw-my-10">
@@ -75,12 +67,12 @@ const Video = (props: VideoPageProps) => {
               <p className="tw-my-4 tw-p-4 ">{props.videoItemDetail.citation}</p>
             </div>
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideTop?.imgsrc}
+              imgsrc={props.pagePictureBlock.sideTop?.imgUrl}
               href={props.pagePictureBlock.sideTop?.href}
               describe={props.pagePictureBlock.sideTop?.describe}
             />
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideBottom?.imgsrc}
+              imgsrc={props.pagePictureBlock.sideBottom?.imgUrl}
               href={props.pagePictureBlock.sideBottom?.href}
               describe={props.pagePictureBlock.sideBottom?.describe}
             />
@@ -95,24 +87,20 @@ const Video = (props: VideoPageProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const columnId = context.query.videoId as string;
+  const videoId = context.query.videoId as string;
+  
   const fetchedNavColumnsList = (await fetchNavColumnItems()).data;
   const fetchedFriendsListData = (await fetchFriendsList()).data;
   const fetchedHotListData = (await fetchHotList()).data;
-  const fetchedVideoItemMeta = (await fetchVideoItemMeta(context.query.videoId as string)).data;
-  const fetchedPagePictureBlock = (await fetchPictureBlock(context.query.columnId as string)).data;
-
-  const columnIndex =
-    fetchedNavColumnsList.findIndex((item) => {
-      return item.id === context.query.columnId;
-    }) + 1;
-
+  const fetchedVideoItemMeta = (await fetchVideoItemMeta(columnId)).data;
+  const fetchedPagePictureBlock = (await fetchPictureBlock(videoId)).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
   const returnProps: VideoPageProps = {
     videoItemDetail: fetchedVideoItemMeta,
     navColumnsList: fetchedNavColumnsList,
     friendsList: fetchedFriendsListData,
-    columnIndex: columnIndex,
     hotList: fetchedHotListData,
     websiteInfo: fetchedWebsiteInfoData,
     pagePictureBlock: fetchedPagePictureBlock,

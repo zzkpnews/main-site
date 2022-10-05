@@ -75,4 +75,4 @@ NewsList.defaultProps = {
   bordered: true,
 };
 
-export default NewsList;
+export { NewsList };

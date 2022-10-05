@@ -79,4 +79,4 @@ const Footer = (props: { friendsList: FriendLink[]; websiteInfo: WebsiteInfo }):
   );
 };
 
-export default Footer;
+export { Footer };

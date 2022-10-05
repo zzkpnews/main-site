@@ -16,4 +16,4 @@ const BroadCastBar = (props: { open: boolean; title?: string }): JSX.Element | n
   ) : null;
 };
 
-export default BroadCastBar;
+export {BroadCastBar};

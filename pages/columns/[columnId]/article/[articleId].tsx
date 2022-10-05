@@ -1,6 +1,22 @@
 import classNames from 'classnames';
-import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import {
+  ArticleNews,
+  ColumnSummary,
+  FriendLink,
+  NewsSummary,
+  PictureBlockNews,
+  WebsiteInfo
+  } from '../../../../models';
+import {
+  Footer,
+  LogoBadge,
+  Navigation,
+  PictureBlock,
+  SideList
+  } from '../../../../views';
+import { useNavigation } from '../../../../hooks';
+import type { GetServerSideProps } from 'next';
 import {
   fetchArticleContent,
   fetchArticleItemMeta,
@@ -10,42 +26,32 @@ import {
   fetchPictureBlock,
   fetchWebsiteInfo,
 } from '../../../../api/fetchData';
-import { getNavColumnOrder, NavColumn } from '../../../../models/Columns';
-import { FriendsListItem } from '../../../../models/FriendLink.model';
-import { Article, NewsListItem } from '../../../../models/NewsItem';
-import { PagePictureBlockInfo } from '../../../../models/PictureBlockNews.model';
-import { WebsiteInfo } from '../../../../models/WebsiteInfo.model';
-import Navigation from '../../../../views/Navigation';
-import Footer from '../../../../views/Footer';
-import LogoBadge from '../../../../views/LogoBadge';
-import PictureBlock from '../../../../views/PictureBlock';
-import SideList from '../../../../views/SideList';
 
 interface ArticlePageProps {
-  navColumns: NavColumn[];
-  friendsList: FriendsListItem[];
+  navColumns: ColumnSummary[];
+  friendsList: FriendLink[];
   articleContent: string;
-  articleItemDetail: Article;
-  columnOrder: number;
-  hotList: NewsListItem[];
+  articleItemDetail: ArticleNews;
+  hotList: NewsSummary[];
   websiteInfo: WebsiteInfo;
-  pagePictureBlock: PagePictureBlockInfo;
+  pagePictureBlock: PictureBlockNews;
 }
 
 const Article = (props: ArticlePageProps) => {
+  const { currentColumnOrder } = useNavigation(props.navColumns);
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
       <Head>
         <title>{`${props.articleItemDetail.title} - 中原科技网`}</title>
         <link rel="shortcut icon" href="../../../favicons.ico" type="image/x-icon" />
-        <meta name="description" content={props.articleItemDetail.citation} />
+        <meta name="description" content={props.articleItemDetail.citation!} />
         <meta name="keywords" content="" />
       </Head>
       <div className="tw-flex tw-justify-center tw-py-3">
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={props.columnOrder} navItems={props.navColumns} />
+        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">
@@ -71,12 +77,12 @@ const Article = (props: ArticlePageProps) => {
           </div>
           <div className=" tw-basis-1/3">
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideTop?.imgsrc}
+              imgsrc={props.pagePictureBlock.sideTop?.imgUrl}
               href={props.pagePictureBlock.sideTop?.href}
               describe={props.pagePictureBlock.sideTop?.describe}
             />
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideBottom?.imgsrc}
+              imgsrc={props.pagePictureBlock.sideBottom?.imgUrl}
               href={props.pagePictureBlock.sideBottom?.href}
               describe={props.pagePictureBlock.sideBottom?.describe}
             />
@@ -104,14 +110,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedHotListData = (await fetchHotList()).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
-  const columnOrder = getNavColumnOrder(fetchedNavColumns, columnId);
-
   const returnProps: ArticlePageProps = {
     navColumns: fetchedNavColumns,
     friendsList: fetchedFriendsListData,
     articleContent: fetchedArticleContentData,
     articleItemDetail: fetchedArticleItemMetaData,
-    columnOrder: columnOrder,
     hotList: fetchedHotListData,
     websiteInfo: fetchedWebsiteInfoData,
     pagePictureBlock: fetchedPagePictureBlock,

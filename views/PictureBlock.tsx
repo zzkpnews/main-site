@@ -10,4 +10,4 @@ const PictureBlock = (props: { imgsrc?: string; href?: string; describe?: string
   );
 };
 
-export default PictureBlock;
+export { PictureBlock };

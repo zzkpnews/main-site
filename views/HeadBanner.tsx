@@ -36,4 +36,4 @@ HeadBanner.defaultProps = {
   open: false,
 };
 
-export default HeadBanner;
+export { HeadBanner };

@@ -10,4 +10,4 @@ const LogoBadge = (props: { title: string; logosrc: string }) => {
   );
 };
 
-export default LogoBadge;
+export { LogoBadge };

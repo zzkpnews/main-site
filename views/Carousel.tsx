@@ -48,4 +48,4 @@ const Carousel = (props: { data: CarouselNews[] }): JSX.Element => {
   );
 };
 
-export default Carousel;
+export { Carousel };

@@ -50,4 +50,4 @@ const TopicList = (): JSX.Element => {
   );
 };
 
-export default TopicList;
+export { TopicList };

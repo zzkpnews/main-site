@@ -15,4 +15,4 @@ const ErrorBlock = (props: { message?: string }) => {
   );
 };
 
-export default ErrorBlock;
+export { ErrorBlock };

@@ -1,6 +1,6 @@
 import { List } from '@arco-design/web-react';
-import { NewsListItem } from '../models/NewsItem';
-const SideList = (props: { title: string; data: NewsListItem[] }): JSX.Element => {
+import { NewsSummary } from '../models/NewsSummary.model';
+const SideList = (props: { title: string; data: NewsSummary[] }): JSX.Element => {
   return (
     <div className="tw-border tw-rounded-lg tw-p-4 tw-mx-2 tw-my-3 tw-bg-white">
       <h2 className="tw-font-bold tw-text-lg tw-text-red-700">{props.title}</h2>
@@ -13,7 +13,7 @@ const SideList = (props: { title: string; data: NewsListItem[] }): JSX.Element =
             <a href={`/columns/${item.columnId}/${item.type}/${item.itemId}`} target={'_blank'}>
               <div className="tw-flex tw-cursor-pointer">
                 <div className=" tw-basis-1/3 tw-flex tw-flex-col tw-justify-center">
-                  <img src={item.bgimg} className=" tw-rounded-md tw-object-cover tw-h-20" />
+                  <img src={item.bgimg!} className=" tw-rounded-md tw-object-cover tw-h-20" />
                 </div>
                 <div className=" tw-basis-2/3 tw-px-2 tw-flex tw-justify-center tw-flex-col">
                   <span className="tw-font-bold tw-text-sm">{item.title}</span>
@@ -38,4 +38,4 @@ const SideList = (props: { title: string; data: NewsListItem[] }): JSX.Element =
   );
 };
 
-export default SideList;
+export { SideList };

@@ -41,4 +41,4 @@ const useNewsList = (initialData: NewsSummary[] = [], newslist_params: NewsListP
   return { data, loadable, loading, handleFetchData };
 };
 
-export default useNewsList;
+export {useNewsList};

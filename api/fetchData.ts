@@ -5,15 +5,15 @@ import { ColumnSummary } from '../models/ColumnSummary.model';
 import { FriendLink } from '../models/FriendLink.model';
 import { HeadLineNews } from '../models/HeadlineNews.model';
 import { NewsSummary } from '../models/NewsSummary.model';
-import { PagePictureBlockInfo } from '../models/PictureBlockNews.model';
+import { PictureBlockNews } from '../models/PictureBlockNews.model';
 import { VideoNews } from '../models/VideoNews.model';
 import { WebsiteInfo } from '../models/WebsiteInfo.model';
 import { web_api_url } from './api.register';
 
 export interface NewsListApiParam {
-  from?: 'home'|'column'|'topic';
+  from?: 'home' | 'column' | 'topic';
   id?: string;
-  type?: 'article'|'video';
+  type?: 'article' | 'video';
   offset?: number;
 }
 
@@ -120,7 +120,7 @@ export const fetchVideoItemMeta = (id: string): AxiosPromise<VideoNews> => {
   });
 };
 
-export const fetchPictureBlock = (columnId?: string): AxiosPromise<PagePictureBlockInfo> => {
+export const fetchPictureBlock = (columnId?: string): AxiosPromise<PictureBlockNews> => {
   return axios({
     method: 'GET',
     url: web_api_url.PictureBlockInfo,
