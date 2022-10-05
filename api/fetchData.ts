@@ -1,13 +1,16 @@
 import axios, { AxiosPromise } from 'axios';
-import { ArticleNews } from '../models/ArticleNews.model';
-import { CarouselNews } from '../models/CarouselNews.model';
-import { ColumnSummary } from '../models/ColumnSummary.model';
-import { FriendLink } from '../models/FriendLink.model';
-import { HeadLineNews } from '../models/HeadlineNews.model';
-import { NewsSummary } from '../models/NewsSummary.model';
-import { PictureBlockNews } from '../models/PictureBlockNews.model';
-import { VideoNews } from '../models/VideoNews.model';
-import { WebsiteInfo } from '../models/WebsiteInfo.model';
+import {
+  NewsSummary,
+  ColumnSummary,
+  FriendLink,
+  WebsiteInfo,
+  CarouselNews,
+  ArticleNews,
+  VideoNews,
+  PictureBlockNews,
+  HeadLineNews,
+} from '../models';
+
 import { web_api_url } from './api.register';
 
 export interface NewsListApiParam {

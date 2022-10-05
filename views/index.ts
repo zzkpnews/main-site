@@ -1,16 +1,15 @@
-import { BroadCastBar } from './BroadCastBar';
-import { Carousel } from './Carousel';
-import { HeadBanner } from './HeadBanner';
-import { ErrorBlock } from './ErrorBlock';
-import { Footer } from './Footer';
-import { LogoBadge } from './LogoBadge';
-import { Navigation } from './Navigation';
-import { NewsList } from './NewsList';
-import { PictureBlock } from './PictureBlock';
-import { SideList } from './SideList';
-import { TopicList } from './TopicList';
-import { Headline } from './Headline';
-
+import { Carousel } from './src/Carousel';
+import { BroadCastBar } from './src/BroadCastBar';
+import { ErrorBlock } from './src/ErrorBlock';
+import { Footer } from './src/Footer';
+import { HeadBanner } from './src/HeadBanner';
+import { Headline } from './src/Headline';
+import { LogoBadge } from './src/LogoBadge';
+import { Navigation } from './src/Navigation';
+import { NewsList } from './src/NewsList';
+import { PictureBlock } from './src/PictureBlock';
+import { SideList } from './src/SideList';
+import { TopicList } from './src/TopicList';
 
 export {
   Headline,

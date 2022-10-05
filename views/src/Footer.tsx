@@ -1,6 +1,5 @@
 import { FaGithub, FaWeixin } from 'react-icons/fa';
-import { FriendLink } from '../models/FriendLink.model';
-import { WebsiteInfo } from '../models/WebsiteInfo.model';
+import { FriendLink, WebsiteInfo } from '../../models';
 
 const Footer = (props: { friendsList: FriendLink[]; websiteInfo: WebsiteInfo }): JSX.Element => {
   return (

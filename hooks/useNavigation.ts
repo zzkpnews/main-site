@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { ColumnSummary } from '../models/ColumnSummary.model';
+import { ColumnSummary } from '../models';
 
 const useNavigation = (column_list: ColumnSummary[]) => {
   const router = useRouter();

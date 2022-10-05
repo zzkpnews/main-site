@@ -1,7 +1,7 @@
 import { Message } from '@arco-design/web-react';
 import { useState } from 'react';
 import { fetchNewsList } from '../api/fetchData';
-import { NewsSummary } from '../models/NewsSummary.model';
+import { NewsSummary } from '../models';
 
 interface NewsListParams {
   from: 'home' | 'column' | 'topic';

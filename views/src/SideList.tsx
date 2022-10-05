@@ -1,5 +1,6 @@
 import { List } from '@arco-design/web-react';
-import { NewsSummary } from '../models/NewsSummary.model';
+import { NewsSummary } from '../../models';
+
 const SideList = (props: { title: string; data: NewsSummary[] }): JSX.Element => {
   return (
     <div className="tw-border tw-rounded-lg tw-p-4 tw-mx-2 tw-my-3 tw-bg-white">

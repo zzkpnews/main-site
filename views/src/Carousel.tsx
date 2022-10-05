@@ -1,6 +1,7 @@
 import { Carousel as ArcoCarousel } from '@arco-design/web-react';
-import { CarouselNews } from '../models/CarouselNews.model';
+
 import { useState } from 'react';
+import { CarouselNews } from '../../models';
 /* eslint-disable @next/next/no-img-element */
 
 const Carousel = (props: { data: CarouselNews[] }): JSX.Element => {

@@ -54,7 +54,7 @@ const Video = (props: VideoPageProps) => {
               <div className="tw-mx-5 tw-mb-4 tw-mt-1 tw-aspect-w-16 tw-aspect-h-9">
                 <iframe
                   className=" tw-rounded-xl"
-                  src="https://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=12091baaed62b1d7cfcc0e87209953bc&tvId=1259901735022400&accessToken=2.ef9c39d6c7f1d5b44768e38e5243157d&appKey=8c634248790d4343bcae1f66129c1010&appId=1368&height=100%&width=100%"
+                  src={props.videoItemDetail.videoUrl!}
                   allowFullScreen
                   width="100%"
                   height="300px"
@@ -89,7 +89,7 @@ const Video = (props: VideoPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.videoId as string;
   const videoId = context.query.videoId as string;
-  
+
   const fetchedNavColumnsList = (await fetchNavColumnItems()).data;
   const fetchedFriendsListData = (await fetchFriendsList()).data;
   const fetchedHotListData = (await fetchHotList()).data;
