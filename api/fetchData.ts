@@ -1,14 +1,32 @@
 import axios, { AxiosPromise } from 'axios';
-import { Article, NewsListItem, Video } from '../models/NewsItem';
-import { FriendsListItem } from '../models/FriendLinkList.model';
-import { HomeCarouselItem } from '../models/HomeCarousel.model';
-import { NavColumn } from '../models/Columns';
-import { PagePictureBlockInfo } from '../models/PagePictureBlockLayout.model';
-import { web_api_url } from './api.register';
+import { ArticleNews } from '../models/ArticleNews.model';
+import { CarouselNews } from '../models/CarouselNews.model';
+import { ColumnSummary } from '../models/ColumnSummary.model';
+import { FriendLink } from '../models/FriendLink.model';
+import { HeadLineNews } from '../models/HeadlineNews.model';
+import { NewsSummary } from '../models/NewsSummary.model';
+import { PagePictureBlockInfo } from '../models/PictureBlockNews.model';
+import { VideoNews } from '../models/VideoNews.model';
 import { WebsiteInfo } from '../models/WebsiteInfo.model';
-import { HeadLine } from '../models/HeadlineNews.model';
+import { web_api_url } from './api.register';
 
-export const fetchNavColumnItems = (): AxiosPromise<NavColumn[]> => {
+export interface NewsListApiParam {
+  from?: 'home'|'column'|'topic';
+  id?: string;
+  type?: 'article'|'video';
+  offset?: number;
+}
+
+export const fetchNewsList = (params: NewsListApiParam): AxiosPromise<NewsSummary[]> => {
+  return axios({
+    method: 'GET',
+    url: web_api_url.NewsList,
+    responseType: 'json',
+    params: params,
+  });
+};
+
+export const fetchNavColumnItems = (): AxiosPromise<ColumnSummary[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.NavColumnList,
@@ -16,7 +34,7 @@ export const fetchNavColumnItems = (): AxiosPromise<NavColumn[]> => {
   });
 };
 
-export const fetchFriendsList = (): AxiosPromise<FriendsListItem[]> => {
+export const fetchFriendsList = (): AxiosPromise<FriendLink[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.FriendsList,
@@ -32,7 +50,7 @@ export const fetchWebsiteInfo = (): AxiosPromise<WebsiteInfo> => {
   });
 };
 
-export const fetchHomeList = (offset?: number): AxiosPromise<NewsListItem[]> => {
+export const fetchHomeList = (offset?: number): AxiosPromise<NewsSummary[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.HomeList,
@@ -47,7 +65,7 @@ export const fetchColumnList = (
   columnId: string,
   type?: 'article' | 'album' | 'video',
   offset?: number
-): AxiosPromise<NewsListItem[]> => {
+): AxiosPromise<NewsSummary[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.ColumnList,
@@ -60,7 +78,7 @@ export const fetchColumnList = (
   });
 };
 
-export const fetchHomeCarousel = (offset?: number): AxiosPromise<HomeCarouselItem[]> => {
+export const fetchHomeCarousel = (offset?: number): AxiosPromise<CarouselNews[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.HomeCarousel,
@@ -68,7 +86,7 @@ export const fetchHomeCarousel = (offset?: number): AxiosPromise<HomeCarouselIte
   });
 };
 
-export const fetchHotList = (): AxiosPromise<NewsListItem[]> => {
+export const fetchHotList = (): AxiosPromise<NewsSummary[]> => {
   return axios({
     method: 'GET',
     url: web_api_url.HotList,
@@ -84,7 +102,7 @@ export const fetchArticleContent = (id: string): AxiosPromise<string> => {
   });
 };
 
-export const fetchArticleItemMeta = (id: string): AxiosPromise<Article> => {
+export const fetchArticleItemMeta = (id: string): AxiosPromise<ArticleNews> => {
   return axios({
     method: 'GET',
     url: web_api_url.ArticleItemMeta,
@@ -93,7 +111,7 @@ export const fetchArticleItemMeta = (id: string): AxiosPromise<Article> => {
   });
 };
 
-export const fetchVideoItemMeta = (id: string): AxiosPromise<Video> => {
+export const fetchVideoItemMeta = (id: string): AxiosPromise<VideoNews> => {
   return axios({
     method: 'GET',
     url: web_api_url.VideoItemMeta,
@@ -113,7 +131,7 @@ export const fetchPictureBlock = (columnId?: string): AxiosPromise<PagePictureBl
   });
 };
 
-export const fetchHeadLine = (columnId?: string): AxiosPromise<HeadLine> => {
+export const fetchHeadLineNews = (columnId?: string): AxiosPromise<HeadLineNews> => {
   return axios({
     method: 'GET',
     url: web_api_url.HeadLine,

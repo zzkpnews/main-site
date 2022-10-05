@@ -12,14 +12,14 @@ import {
 } from '../../../api/fetchData';
 import useColumnList from '../../../hooks/useColumnList';
 import { getNavColumnOrder, getNavColumnTitle, NavColumn } from '../../../models/Columns';
-import { FriendsListItem } from '../../../models/FriendLinkList.model';
+import { FriendsListItem } from '../../../models/FriendLink.model';
 import { NewsListItem } from '../../../models/NewsItem';
-import { PagePictureBlockInfo } from '../../../models/PagePictureBlockLayout.model';
+import { PagePictureBlockInfo } from '../../../models/PictureBlockNews.model';
 import { WebsiteInfo } from '../../../models/WebsiteInfo.model';
-import ColumnNav from '../../../views/ColumnNav';
+import Navigation from '../../../views/Navigation';
 import Footer from '../../../views/Footer';
 import LogoBadge from '../../../views/LogoBadge';
-import NewsList from '../../../views/NewsItemsList';
+import NewsList from '../../../views/NewsList';
 import PictureBlock from '../../../views/PictureBlock';
 import SideList from '../../../views/SideList';
 
@@ -70,7 +70,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnNav activeColumnOrder={props.columnIndex} navItems={props.navColumns} />
+        <Navigation activeColumnOrder={props.columnIndex} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="lg:tw-flex tw-justify-center tw-my-10">
@@ -87,28 +87,28 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
                   <Tabs.TabPane key="1" title={<span className="tw-text-lg tw-font-bold">{'最新'}</span>}>
                     <NewsList
                       bordered={false}
-                      newsList={default_list_data}
+                      list={default_list_data}
                       loadable={default_list_loadable}
                       loading={default_list_loading}
-                      loadFunc={handle_default_list_fetch_data}
+                      loadHandler={handle_default_list_fetch_data}
                     />
                   </Tabs.TabPane>
                   <Tabs.TabPane key="2" title={<span className="tw-text-lg tw-font-bold">{'文章'}</span>}>
                     <NewsList
                       bordered={false}
-                      newsList={article_list_data}
+                      list={article_list_data}
                       loadable={article_list_loadable}
                       loading={article_list_loading}
-                      loadFunc={handle_article_list_fetch_data}
+                      loadHandler={handle_article_list_fetch_data}
                     />
                   </Tabs.TabPane>
                   <Tabs.TabPane key="4" title={<span className="tw-text-lg tw-font-bold">{'视频'}</span>}>
                     <NewsList
                       bordered={false}
-                      newsList={video_list_data}
+                      list={video_list_data}
                       loadable={video_list_loadable}
                       loading={video_list_loading}
-                      loadFunc={handle_video_list_fetch_data}
+                      loadHandler={handle_video_list_fetch_data}
                     />
                   </Tabs.TabPane>
                 </Tabs>

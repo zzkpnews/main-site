@@ -1,8 +1,8 @@
-type HeadLine = {
+type HeadLineNews = {
   leadTitle?: string;
   subtitle?: string;
   title: string;
   href?: string;
 };
 
-export type { HeadLine };
+export type { HeadLineNews };

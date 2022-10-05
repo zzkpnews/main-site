@@ -1,14 +1,14 @@
-import { Carousel } from '@arco-design/web-react';
-import { HomeCarouselItem } from '../models/HomeCarousel.model';
+import { Carousel as ArcoCarousel } from '@arco-design/web-react';
+import { CarouselNews } from '../models/CarouselNews.model';
 import { useState } from 'react';
 /* eslint-disable @next/next/no-img-element */
 
-const HomeCarousel = (props: { data: HomeCarouselItem[] }): JSX.Element => {
+const Carousel = (props: { data: CarouselNews[] }): JSX.Element => {
   const [carousel_index, set_carousel_index] = useState<number>(0);
 
   return (
     <div className=" lg:tw-grid tw-grid-cols-3 tw-justify-around tw-rounded-lg">
-      <Carousel
+      <ArcoCarousel
         className="tw-rounded-lg lg:tw-col-span-2 tw-h-96"
         showArrow="hover"
         indicatorType="line"
@@ -21,14 +21,14 @@ const HomeCarousel = (props: { data: HomeCarouselItem[] }): JSX.Element => {
         {props.data.map((item, index) => (
           // eslint-disable-next-line react/jsx-key
           <img
-            src={item.imgsrc}
+            src={item.bgimg}
             key={`carousel-img-${index}`}
             className="tw-object-cover tw-rounded-lg tw-select-none"
-            alt=""
+            alt={item.title}
             style={{ width: '100%' }}
           />
         ))}
-      </Carousel>
+      </ArcoCarousel>
 
       <div className="tw-h-96 lg:tw-col-span-1 tw-bg-gray-100 lg:tw-mx-2 tw-rounded-lg tw-flex tw-flex-col tw-justify-center">
         <div className="tw-overflow-y-scroll tw-my-10 tw-px-10">
@@ -48,4 +48,4 @@ const HomeCarousel = (props: { data: HomeCarouselItem[] }): JSX.Element => {
   );
 };
 
-export default HomeCarousel;
+export default Carousel;

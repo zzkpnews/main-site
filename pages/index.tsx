@@ -1,54 +1,53 @@
+import Carousel from '../views/Carousel';
 import classNames from 'classnames';
-import type { GetServerSideProps } from 'next';
+import Footer from '../views/Footer';
 import Head from 'next/head';
+import HeadBanner from '../views/HeadBanner';
+import Headline from '../views/Headline';
+import LogoBadge from '../views/LogoBadge';
+import Navigation from '../views/Navigation';
+import NewsList from '../views/NewsList';
+import PictureBlock from '../views/PictureBlock';
+import SideList from '../views/SideList';
+import TopicList from '../views/TopicList';
+import useNewsList from '../hooks/useNewsList';
+import { CarouselNews } from '../models/CarouselNews.model';
+import { ColumnSummary } from '../models/ColumnSummary.model';
 import {
   fetchFriendsList,
-  fetchHeadLine,
+  fetchHeadLineNews,
   fetchHomeCarousel,
   fetchHomeList,
   fetchHotList,
   fetchNavColumnItems,
   fetchPictureBlock,
   fetchWebsiteInfo
-} from '../api/fetchData';
-import useHomeList from '../hooks/useHomeList';
-import { NavColumn } from '../models/Columns';
-import { FriendsListItem } from '../models/FriendLinkList.model';
-import { HeadLine } from '../models/HeadlineNews.model';
-import { HomeCarouselItem } from '../models/HomeCarousel.model';
-import { NewsListItem } from '../models/NewsItem';
-import { PagePictureBlockInfo } from '../models/PagePictureBlockLayout.model';
+  } from '../api/fetchData';
+import { FriendLink } from '../models/FriendLink.model';
+import { HeadLineNews } from '../models/HeadlineNews.model';
+import { NewsSummary } from '../models/NewsSummary.model';
+import { PictureBlockNews } from '../models/PictureBlockNews.model';
 import { WebsiteInfo } from '../models/WebsiteInfo.model';
-import ColumnNav from '../views/ColumnNav';
-import Footer from '../views/Footer';
-import HomeCarousel from '../views/HomeCarousel';
-import HomeHeadline from '../views/HomeHeadline';
-import LogoBadge from '../views/LogoBadge';
-import NewsList from '../views/NewsItemsList';
-import PageBanner from '../views/PageBanner';
-import PictureBlock from '../views/PictureBlock';
-import SideList from '../views/SideList';
-import TopicList from '../views/TopicList';
+import type { GetServerSideProps } from 'next';
 
 interface HomePageProps {
-  navColumns: NavColumn[];
-  friendsList: FriendsListItem[];
-  homeList: NewsListItem[];
-  homeCarousel: HomeCarouselItem[];
-  hotList: NewsListItem[];
+  navColumns: ColumnSummary[];
+  friendsList: FriendLink[];
+  homeList: NewsSummary[];
+  homeCarousel: CarouselNews[];
+  hotList: NewsSummary[];
   websiteInfo: WebsiteInfo;
-  pagePictureBlock: PagePictureBlockInfo;
-  headLine: HeadLine;
+  pagePictureBlock: PictureBlockNews;
+  headLine: HeadLineNews;
 }
 
 const Home = (props: HomePageProps) => {
-
   const {
     data: home_list_data,
     loadable: home_list_loadable,
     loading: home_list_loading,
     handleFetchData: handle_home_list_fetch_data,
-  } = useHomeList(props.homeList);
+  } = useNewsList(props.homeList, { from: 'home' });
 
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
@@ -57,40 +56,40 @@ const Home = (props: HomePageProps) => {
         <link rel="shortcut icon" href="favicons.ico" type="image/x-icon" />
         <meta name="description" content="中原科技网" />
       </Head>
-      <PageBanner imgsrc="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000" href="http://www.baidu.com" />
+      <HeadBanner imgsrc="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000" href="http://www.baidu.com" />
       <div className="tw-flex tw-justify-center tw-py-3">
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnNav activeColumnOrder={0} navItems={props.navColumns} />
+        <Navigation activeColumnOrder={0} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 tw-py-10 md:tw-px-20">
         <PictureBlock
-          imgsrc={props.pagePictureBlock.Top?.imgsrc}
+          imgsrc={props.pagePictureBlock.Top?.imgUrl}
           href={props.pagePictureBlock.Top?.href}
           describe={props.pagePictureBlock.Top?.describe}
         />
-        <HomeHeadline data={props.headLine} />
-        <HomeCarousel data={props.homeCarousel} />
+        <Headline data={props.headLine} />
+        <Carousel data={props.homeCarousel} />
         <div className=" lg:tw-flex">
           <div className="lg:tw-basis-2/3 tw-my-10">
             <div className=" tw-sticky tw-top-20">
               <NewsList
                 loading={home_list_loading}
                 loadable={home_list_loadable}
-                newsList={home_list_data}
-                loadFunc={handle_home_list_fetch_data}
+                list={home_list_data}
+                loadHandler={handle_home_list_fetch_data}
               />
             </div>
           </div>
           <div className="lg:tw-basis-1/3 tw-my-10">
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideTop?.imgsrc}
+              imgsrc={props.pagePictureBlock.sideTop?.imgUrl}
               href={props.pagePictureBlock.sideTop?.href}
               describe={props.pagePictureBlock.sideTop?.describe}
             />
             <PictureBlock
-              imgsrc={props.pagePictureBlock.sideBottom?.imgsrc}
+              imgsrc={props.pagePictureBlock.sideBottom?.imgUrl}
               href={props.pagePictureBlock.sideBottom?.href}
               describe={props.pagePictureBlock.sideBottom?.describe}
             />
@@ -114,7 +113,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedHotListData = (await fetchHotList()).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
   const fetchedPagePictureBlock = (await fetchPictureBlock(context.query.columnId as string)).data;
-  const fetchedHeadLineData = (await fetchHeadLine()).data;
+  const fetchedHeadLineData = (await fetchHeadLineNews()).data;
 
   const returnProps: HomePageProps = {
     navColumns: fetchedColumnsData,

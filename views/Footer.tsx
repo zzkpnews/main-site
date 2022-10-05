@@ -1,8 +1,8 @@
 import { FaGithub, FaWeixin } from 'react-icons/fa';
-import { FriendsListItem } from '../models/FriendLinkList.model';
+import { FriendLink } from '../models/FriendLink.model';
 import { WebsiteInfo } from '../models/WebsiteInfo.model';
 
-const Footer = (props: { friendsList: FriendsListItem[]; websiteInfo: WebsiteInfo }): JSX.Element => {
+const Footer = (props: { friendsList: FriendLink[]; websiteInfo: WebsiteInfo }): JSX.Element => {
   return (
     <footer className=" tw-bg-gray-800 tw-text-white tw-py-10 tw-px-10 md:tw-px-20 tw-select-none">
       <div className=" md:tw-flex">
@@ -69,10 +69,10 @@ const Footer = (props: { friendsList: FriendsListItem[]; websiteInfo: WebsiteInf
       </div>
       <div className="tw-my-3 tw-flex tw-flex-col md:tw-flex-row tw-justify-center">
         <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{`版权所有 © 2015-${new Date().getFullYear()} ${
-          props.websiteInfo.owner
+          props.websiteInfo.institution
         }`}</span>
         <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{props.websiteInfo.icp}</span>
-        <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{`Powered By ${props.websiteInfo.poweredBy}`}</span>
+        <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{`Powered By ${props.websiteInfo.technologySupport}`}</span>
         <a className="tw-mr-5 tw-my-1 tw-text-gray-300 hover:tw-text-white tw-cursor-pointer">{'免责声明'}</a>
       </div>
     </footer>

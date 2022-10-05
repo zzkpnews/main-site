@@ -1,13 +1,13 @@
 import { Button, List, Tag } from '@arco-design/web-react';
 import classNames from 'classnames';
-import { NewsListItem } from '../models/NewsItem';
+import { NewsSummary } from '../models/NewsSummary.model';
 
 const NewsList = (props: {
-  newsList: NewsListItem[];
+  list: NewsSummary[];
   loadable: boolean;
   loading: boolean;
   bordered: boolean;
-  loadFunc: () => void;
+  loadHandler: () => void;
 }): JSX.Element => {
   return (
     <div className="tw-bg-white">
@@ -15,7 +15,7 @@ const NewsList = (props: {
         bordered={props.bordered}
         className=""
         size={'default'}
-        dataSource={props.newsList}
+        dataSource={props.list}
         render={(item, index) => (
           <List.Item className="hover:tw-bg-gray-200 active:tw-bg-gray-300 tw-cursor-pointer" key={index}>
             <a href={`/columns/${item.columnId}/${item.type}/${item.itemId}`} target={'_blank'}>
@@ -45,7 +45,7 @@ const NewsList = (props: {
                   })(item.timestamp)}
                 </span>
                 <Tag color="red" defaultChecked>
-                  {item.columnName}
+                  {item.columnTitle}
                 </Tag>
               </div>
             </a>
@@ -59,7 +59,7 @@ const NewsList = (props: {
           size="large"
           loading={props.loading}
           type="primary"
-          onClick={props.loadFunc}
+          onClick={props.loadHandler}
         >
           {'加载更多'}
         </Button>
@@ -69,7 +69,7 @@ const NewsList = (props: {
 };
 
 NewsList.defaultProps = {
-  newsList: [],
+  list: [],
   loading: false,
   loadable: true,
   bordered: true,

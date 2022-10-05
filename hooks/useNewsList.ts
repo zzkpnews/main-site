@@ -1,16 +1,25 @@
 import { Message } from '@arco-design/web-react';
 import { useState } from 'react';
-import { fetchHomeList } from '../api/fetchData';
-import { NewsListItem } from '../models/NewsItem';
+import { fetchNewsList } from '../api/fetchData';
+import { NewsSummary } from '../models/NewsSummary.model';
 
-const useHomeList = (initialData: NewsListItem[] = []) => {
-  const [data, set_data] = useState<NewsListItem[]>(initialData);
+interface NewsListParams {
+  from: 'home' | 'column' | 'topic';
+  id?: string;
+  type?: 'article' | 'video';
+}
+
+const useNewsList = (initialData: NewsSummary[] = [], newslist_params: NewsListParams) => {
+  const [data, set_data] = useState<NewsSummary[]>(initialData);
   const [loadable, set_loadable] = useState<boolean>(true);
   const [loading, set_loading] = useState<boolean>(false);
 
   const fetchData = async () => {
     set_loading(true);
-    fetchHomeList(data[data.length - 1].timestamp)
+    fetchNewsList({
+      ...newslist_params,
+      offset: data[data.length - 1].timestamp,
+    })
       .then((fetched_data) => {
         if (fetched_data.data.length !== 0) {
           set_loading(false);
@@ -32,4 +41,4 @@ const useHomeList = (initialData: NewsListItem[] = []) => {
   return { data, loadable, loading, handleFetchData };
 };
 
-export default useHomeList;
+export default useNewsList;

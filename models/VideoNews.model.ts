@@ -1,6 +1,6 @@
-import { NewsBasicInfo } from './NewsBasicInfo.model';
+import { NewsSummary } from './NewsSummary.model';
 
-interface VideoNews extends NewsBasicInfo {
+interface VideoNews extends NewsSummary {
   /**
    * 视频作者
    */

@@ -1,4 +1,4 @@
-type CarouselNewsList = {
+type CarouselNews = {
   /**
    * 背景图片
    */
@@ -25,4 +25,4 @@ type CarouselNewsList = {
   title: string;
 };
 
-export type { CarouselNewsList };
+export type { CarouselNews };

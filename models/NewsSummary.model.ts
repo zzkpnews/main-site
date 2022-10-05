@@ -1,4 +1,4 @@
-export interface NewsBasicInfo {
+export interface NewsSummary {
   /**
    * 新闻背景图像
    */

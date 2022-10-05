@@ -1,4 +1,4 @@
-type ColumnList = {
+type ColumnSummary = {
   /**
    * 栏目的id
    */
@@ -11,6 +11,6 @@ type ColumnList = {
    * 栏目的标题
    */
   title: string;
-}[];
+};
 
-export type { ColumnList };
+export type { ColumnSummary };

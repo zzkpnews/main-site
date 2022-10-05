@@ -11,11 +11,11 @@ import {
   fetchWebsiteInfo,
 } from '../../../../api/fetchData';
 import { getNavColumnOrder, NavColumn } from '../../../../models/Columns';
-import { FriendsListItem } from '../../../../models/FriendLinkList.model';
+import { FriendsListItem } from '../../../../models/FriendLink.model';
 import { Article, NewsListItem } from '../../../../models/NewsItem';
-import { PagePictureBlockInfo } from '../../../../models/PagePictureBlockLayout.model';
+import { PagePictureBlockInfo } from '../../../../models/PictureBlockNews.model';
 import { WebsiteInfo } from '../../../../models/WebsiteInfo.model';
-import ColumnNav from '../../../../views/ColumnNav';
+import Navigation from '../../../../views/Navigation';
 import Footer from '../../../../views/Footer';
 import LogoBadge from '../../../../views/LogoBadge';
 import PictureBlock from '../../../../views/PictureBlock';
@@ -45,7 +45,7 @@ const Article = (props: ArticlePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnNav activeColumnOrder={props.columnOrder} navItems={props.navColumns} />
+        <Navigation activeColumnOrder={props.columnOrder} navItems={props.navColumns} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">

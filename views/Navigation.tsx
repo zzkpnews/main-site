@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { Dropdown, Menu } from '@arco-design/web-react';
-import { NavColumn } from '../models/Columns';
+import { ColumnSummary } from '../models/ColumnSummary.model';
 import BroadCastBar from './BroadCastBar';
 
-const ColumnNav = (props: { activeColumnOrder: number; navItems: NavColumn[] }): JSX.Element => {
+const Navigation = (props: { activeColumnOrder: number; navItems: ColumnSummary[] }): JSX.Element => {
   return (
     <nav className="tw-px-0  tw-border-b-2 tw-border-t-2 tw-flex tw-flex-col tw-justify-center tw-align-middle ">
       <div className="tw-my-auto tw-flex tw-flex-wrap tw-justify-center ">
@@ -25,7 +25,7 @@ const ColumnNav = (props: { activeColumnOrder: number; navItems: NavColumn[] }):
         >
           {'首页'}
         </a>
-        {((navItems: NavColumn[]) => {
+        {((navItems: ColumnSummary[]) => {
           const navItemDoms = [];
           for (let index = 0; index < (navItems.length > 12 ? 12 : navItems.length); index++) {
             navItemDoms.push(
@@ -44,7 +44,7 @@ const ColumnNav = (props: { activeColumnOrder: number; navItems: NavColumn[] }):
                   { 'tw-text-white': props.activeColumnOrder === index + 1 }
                 )}
                 key={`nav-col-${index}`}
-                href={`/columns/${navItems[index].id}`}
+                href={`/columns/${navItems[index].columnId}`}
               >
                 {navItems[index].title}
               </a>
@@ -60,7 +60,7 @@ const ColumnNav = (props: { activeColumnOrder: number; navItems: NavColumn[] }):
               for (let index = 12; index < navItems.length; index++) {
                 dropItemDoms.push(
                   <Menu.Item className={'tw-font-bold active:tw-text-red-700'} key={`nav-col-${index}`}>
-                    <a className="tw-px-2 tw-py-3" href={`/columns/${navItems[index].id}`} target={'_blank'}>
+                    <a className="tw-px-2 tw-py-3" href={`/columns/${navItems[index].columnId}`} target={'_blank'}>
                       {navItems[index].title}
                     </a>
                   </Menu.Item>
@@ -93,4 +93,4 @@ const ColumnNav = (props: { activeColumnOrder: number; navItems: NavColumn[] }):
   );
 };
 
-export default ColumnNav;
+export default Navigation;
