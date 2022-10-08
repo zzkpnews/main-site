@@ -2,13 +2,13 @@ import { Tabs } from '@arco-design/web-react';
 import classNames from 'classnames';
 import Head from 'next/head';
 import {
-  fetchColumnsData,
-  fetchFriendList,
+  fetchColumnItems,
+  fetchFriendLink,
   fetchHotNews,
-  fetchNewsList,
-  fetchPictureBlockNews,
+  fetchNewsItems,
+  fetchPictureNews,
   fetchWebsiteInfo,
-} from '../../../api/fetchData';
+} from '../../../api/ajax';
 import { useNavigation, useNewsList } from '../../../hooks';
 import { ColumnItem, FriendLink, NewsItem, PictureBlockNews, WebsiteInfo } from '../../../models';
 import { Footer, LogoBadge, Navigation, NewsList, PictureBlock, SideList } from '../../../views';
@@ -129,13 +129,13 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.columnId as string;
 
-  const fetchedArticleListData = (await fetchNewsList({ from: 'column', id: columnId, type: 'article' })).data;
-  const fetchedColumnsData = (await fetchColumnsData()).data;
-  const fetchedDefaultListData = (await fetchNewsList({ from: 'column', id: columnId })).data;
-  const fetchedFriendsListData = (await fetchFriendList()).data;
+  const fetchedArticleListData = (await fetchNewsItems({ from: 'column', id: columnId, type: 'article' })).data;
+  const fetchedColumnsData = (await fetchColumnItems()).data;
+  const fetchedDefaultListData = (await fetchNewsItems({ from: 'column', id: columnId })).data;
+  const fetchedFriendsListData = (await fetchFriendLink()).data;
   const fetchedHotListData = (await fetchHotNews()).data;
-  const fetchedPagePictureBlock = (await fetchPictureBlockNews(columnId)).data;
-  const fetchedVideoListData = (await fetchNewsList({ from: 'column', id: columnId, type: 'video' })).data;
+  const fetchedPagePictureBlock = (await fetchPictureNews(columnId)).data;
+  const fetchedVideoListData = (await fetchNewsItems({ from: 'column', id: columnId, type: 'video' })).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
   const returnProps: ColumnIndexPageProps = {

@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import { ColumnItem, FriendLink, NewsItem, PictureBlockNews, VideoNews, WebsiteInfo } from '../../../../models';
 import {
-  fetchColumnsData,
-  fetchFriendList,
+  fetchColumnItems,
+  fetchFriendLink,
   fetchHotNews,
-  fetchPictureBlockNews,
+  fetchPictureNews,
   fetchVideoNews,
   fetchWebsiteInfo,
-} from '../../../../api/fetchData';
+} from '../../../../api/ajax';
 import { Footer, LogoBadge, Navigation, PictureBlock, SideList } from '../../../../views';
 import { GetServerSideProps } from 'next';
 import { Head } from 'next/document';
@@ -82,11 +82,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.videoId as string;
   const videoId = context.query.videoId as string;
 
-  const fetchedColumnsData = (await fetchColumnsData()).data;
-  const fetchedFriendListData = (await fetchFriendList()).data;
+  const fetchedColumnsData = (await fetchColumnItems()).data;
+  const fetchedFriendListData = (await fetchFriendLink()).data;
   const fetchedHotNewsData = (await fetchHotNews()).data;
   const fetchedVideoNewsData = (await fetchVideoNews(columnId)).data;
-  const fetchedPictureBlockNewsData = (await fetchPictureBlockNews(videoId)).data;
+  const fetchedPictureBlockNewsData = (await fetchPictureNews(videoId)).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
   const returnProps: VideoPageProps = {

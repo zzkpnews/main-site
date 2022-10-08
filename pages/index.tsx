@@ -14,15 +14,15 @@ import {
   TopicList,
 } from '../views';
 import {
-  fetchFriendList,
+  fetchFriendLink,
   fetchHeadLineNews,
   fetchCarouselNews,
   fetchHotNews,
-  fetchColumnsData,
-  fetchNewsList,
-  fetchPictureBlockNews,
+  fetchColumnItems,
+  fetchNewsItems,
+  fetchPictureNews,
   fetchWebsiteInfo,
-} from '../api/fetchData';
+} from '../api/ajax';
 import type { GetServerSideProps } from 'next';
 import {
   ColumnItem,
@@ -99,11 +99,11 @@ const Home = (props: HomePageProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const fetchedColumnsData = (await fetchColumnsData()).data;
-  const fetchedFriendsListData = (await fetchFriendList()).data;
+  const fetchedColumnsData = (await fetchColumnItems()).data;
+  const fetchedFriendsListData = (await fetchFriendLink()).data;
   const fetchedHeadLineData = (await fetchHeadLineNews()).data;
   const fetchedHomeCarouselData = (await fetchCarouselNews()).data;
-  const fetchedHomeListData = (await fetchNewsList({ from: 'home' })).data;
+  const fetchedHomeListData = (await fetchNewsItems({ from: 'home' })).data;
   const fetchedHotListData = (await fetchHotNews()).data;
   const fetchedPagePictureBlock = null;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;

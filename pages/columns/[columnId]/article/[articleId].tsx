@@ -5,14 +5,14 @@ import { Footer, LogoBadge, Navigation, PictureBlock, SideList } from '../../../
 import { useNavigation } from '../../../../hooks';
 import type { GetServerSideProps } from 'next';
 import {
-  fetchArticleContent,
+  fetchArticleData,
   fetchArticleNews,
-  fetchFriendList,
+  fetchFriendLink,
   fetchHotNews,
-  fetchColumnsData,
-  fetchPictureBlockNews,
+  fetchColumnItems,
+  fetchPictureNews,
   fetchWebsiteInfo,
-} from '../../../../api/fetchData';
+} from '../../../../api/ajax';
 
 interface ArticlePageProps {
   columnsData: ColumnItem[];
@@ -81,12 +81,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const articleId = context.query.articleId as string;
   const columnId = context.query.columnId as string;
 
-  const fetchedArticleContentData = (await fetchArticleContent(articleId)).data;
+  const fetchedArticleContentData = (await fetchArticleData(articleId)).data;
   const fetchedArticleNewsData = (await fetchArticleNews(articleId)).data;
-  const fetchedColumnsData = (await fetchColumnsData()).data;
-  const fetchedFriendsListData = (await fetchFriendList()).data;
+  const fetchedColumnsData = (await fetchColumnItems()).data;
+  const fetchedFriendsListData = (await fetchFriendLink()).data;
   const fetchedHotNewsData = (await fetchHotNews()).data;
-  const fetchedPictureBlockData = (await fetchPictureBlockNews(columnId)).data;
+  const fetchedPictureBlockData = (await fetchPictureNews(columnId)).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
   const returnProps: ArticlePageProps = {

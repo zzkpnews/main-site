@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import { BroadCastBar } from './BroadCastBar';
-import { ColumnSummary } from '../models';
+
 import { Dropdown, Menu } from '@arco-design/web-react';
+import { ColumnItem } from '../../models';
 
-
-const Navigation = (props: { activeColumnOrder: number; navItems: ColumnSummary[] }): JSX.Element => {
+const Navigation = (props: { activeColumnOrder: number; navItems: ColumnItem[] }): JSX.Element => {
   return (
     <nav className="tw-px-0  tw-border-b-2 tw-border-t-2 tw-flex tw-flex-col tw-justify-center tw-align-middle ">
       <div className="tw-my-auto tw-flex tw-flex-wrap tw-justify-center ">
@@ -26,7 +26,7 @@ const Navigation = (props: { activeColumnOrder: number; navItems: ColumnSummary[
         >
           {'首页'}
         </a>
-        {((navItems: ColumnSummary[]) => {
+        {((navItems: ColumnItem[]) => {
           const navItemDoms = [];
           for (let index = 0; index < (navItems.length > 12 ? 12 : navItems.length); index++) {
             navItemDoms.push(
@@ -45,7 +45,7 @@ const Navigation = (props: { activeColumnOrder: number; navItems: ColumnSummary[
                   { 'tw-text-white': props.activeColumnOrder === index + 1 }
                 )}
                 key={`nav-col-${index}`}
-                href={`/columns/${navItems[index].columnId}`}
+                href={`/columns/${navItems[index].column_id}`}
               >
                 {navItems[index].title}
               </a>
@@ -61,7 +61,7 @@ const Navigation = (props: { activeColumnOrder: number; navItems: ColumnSummary[
               for (let index = 12; index < navItems.length; index++) {
                 dropItemDoms.push(
                   <Menu.Item className={'tw-font-bold active:tw-text-red-700'} key={`nav-col-${index}`}>
-                    <a className="tw-px-2 tw-py-3" href={`/columns/${navItems[index].columnId}`} target={'_blank'}>
+                    <a className="tw-px-2 tw-py-3" href={`/columns/${navItems[index].column_id}`} target={'_blank'}>
                       {navItems[index].title}
                     </a>
                   </Menu.Item>

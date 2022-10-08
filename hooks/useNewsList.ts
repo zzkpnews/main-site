@@ -1,7 +1,7 @@
 import { Message } from '@arco-design/web-react';
 import { useState } from 'react';
-import { fetchNewsList } from '../api/fetchData';
-import { NewsSummary } from '../models';
+import { fetchNewsItems } from '../api/ajax';
+import { NewsItem } from '../models';
 
 interface NewsListParams {
   from: 'home' | 'column' | 'topic';
@@ -9,14 +9,14 @@ interface NewsListParams {
   type?: 'article' | 'video';
 }
 
-const useNewsList = (initialData: NewsSummary[] = [], newslist_params: NewsListParams) => {
-  const [data, set_data] = useState<NewsSummary[]>(initialData);
+const useNewsList = (initialData: NewsItem[] = [], newslist_params: NewsListParams) => {
+  const [data, set_data] = useState<NewsItem[]>(initialData);
   const [loadable, set_loadable] = useState<boolean>(true);
   const [loading, set_loading] = useState<boolean>(false);
 
   const fetchData = async () => {
     set_loading(true);
-    fetchNewsList({
+    fetchNewsItems({
       ...newslist_params,
       offset: data[data.length - 1].timestamp,
     })

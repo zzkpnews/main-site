@@ -1,9 +1,9 @@
 import { Button, List, Tag } from '@arco-design/web-react';
 import classNames from 'classnames';
-import { NewsSummary } from '../../models/index';
+import { NewsItem } from '../../models/index';
 
 const NewsList = (props: {
-  list: NewsSummary[];
+  list: NewsItem[];
   loadable: boolean;
   loading: boolean;
   bordered: boolean;
