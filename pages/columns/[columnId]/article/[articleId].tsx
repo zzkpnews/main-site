@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import Head from 'next/head';
-import { ArticleNews, ColumnSummary, FriendLink, NewsSummary, PictureBlockNews, WebsiteInfo } from '../../../../models';
+import { ArticleNews, ColumnItem, FriendLink, NewsItem, PictureBlockNews, WebsiteInfo } from '../../../../models';
 import { Footer, LogoBadge, Navigation, PictureBlock, SideList } from '../../../../views';
 import { useNavigation } from '../../../../hooks';
 import type { GetServerSideProps } from 'next';
@@ -15,11 +15,11 @@ import {
 } from '../../../../api/fetchData';
 
 interface ArticlePageProps {
-  columnsData: ColumnSummary[];
+  columnsData: ColumnItem[];
   friendListData: FriendLink[];
   articleContent: string;
   articleNewsData: ArticleNews;
-  hotNewsData: NewsSummary[];
+  hotNewsData: NewsItem[];
   websiteInfoData: WebsiteInfo;
   pictureBlockNewsData: PictureBlockNews;
 }
@@ -63,16 +63,8 @@ const Article = (props: ArticlePageProps) => {
             </div>
           </div>
           <div className=" tw-basis-1/3">
-            <PictureBlock
-              imgsrc={props.pictureBlockNewsData.sideTop?.imgUrl}
-              href={props.pictureBlockNewsData.sideTop?.href}
-              describe={props.pictureBlockNewsData.sideTop?.describe}
-            />
-            <PictureBlock
-              imgsrc={props.pictureBlockNewsData.sideBottom?.imgUrl}
-              href={props.pictureBlockNewsData.sideBottom?.href}
-              describe={props.pictureBlockNewsData.sideBottom?.describe}
-            />
+            <PictureBlock data={props.pictureBlockNewsData.sideTop} />
+            <PictureBlock data={props.pictureBlockNewsData.sideBottom} />
             <SideList title="推荐阅读" data={props.hotNewsData} />
             <div className="tw-sticky tw-top-20">
               <SideList title="更多文章" data={props.hotNewsData} />

@@ -25,9 +25,9 @@ import {
 } from '../api/fetchData';
 import type { GetServerSideProps } from 'next';
 import {
-  ColumnSummary,
+  ColumnItem,
   FriendLink,
-  NewsSummary,
+  NewsItem,
   CarouselNews,
   WebsiteInfo,
   PictureBlockNews,
@@ -36,11 +36,11 @@ import {
 
 interface HomePageProps {
   carouselNewsData: CarouselNews[];
-  columnsData: ColumnSummary[];
+  columnsData: ColumnItem[];
   friendListData: FriendLink[];
   headLineNewsData: HeadLineNews;
-  homeList: NewsSummary[];
-  hotNewsData: NewsSummary[];
+  homeList: NewsItem[];
+  hotNewsData: NewsItem[];
   pictureBlockNews: PictureBlockNews | null;
   websiteInfo: WebsiteInfo;
 }

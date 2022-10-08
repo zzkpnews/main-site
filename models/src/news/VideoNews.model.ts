@@ -1,4 +1,4 @@
-import { NewsItem } from './NewsItem.model';
+import { NewsItem } from '../view/NewsItem.model';
 
 interface VideoNews extends NewsItem {
   /**

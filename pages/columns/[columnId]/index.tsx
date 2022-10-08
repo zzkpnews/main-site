@@ -1,6 +1,6 @@
+import { Tabs } from '@arco-design/web-react';
 import classNames from 'classnames';
 import Head from 'next/head';
-import { ColumnSummary, FriendLink, NewsSummary, PictureBlockNews, WebsiteInfo } from '../../../models';
 import {
   fetchColumnsData,
   fetchFriendList,
@@ -9,20 +9,20 @@ import {
   fetchPictureBlockNews,
   fetchWebsiteInfo,
 } from '../../../api/fetchData';
-import { Footer, LogoBadge, Navigation, NewsList, PictureBlock, SideList } from '../../../views';
-import { Tabs } from '@arco-design/web-react';
 import { useNavigation, useNewsList } from '../../../hooks';
+import { ColumnItem, FriendLink, NewsItem, PictureBlockNews, WebsiteInfo } from '../../../models';
+import { Footer, LogoBadge, Navigation, NewsList, PictureBlock, SideList } from '../../../views';
 
 import type { GetServerSideProps } from 'next';
 
 interface ColumnIndexPageProps {
-  articleNewsData: NewsSummary[];
-  columnsData: ColumnSummary[];
-  defaultNewsData: NewsSummary[];
+  articleNewsData: NewsItem[];
+  columnsData: ColumnItem[];
+  defaultNewsData: NewsItem[];
   friendLinksData: FriendLink[];
-  hotNewsData: NewsSummary[];
+  hotNewsData: NewsItem[];
   pictureBlockNewsData: PictureBlockNews;
-  videoNewsData: NewsSummary[];
+  videoNewsData: NewsItem[];
   websiteInfoData: WebsiteInfo;
 }
 
@@ -78,11 +78,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
         <div className="lg:tw-flex tw-justify-center tw-my-10">
           <div className=" tw-basis-2/3">
             <div className=" tw-sticky tw-top-20">
-              <PictureBlock
-                describe={props.pictureBlockNewsData.Top?.describe}
-                href={props.pictureBlockNewsData.Top?.href}
-                imgsrc={props.pictureBlockNewsData.Top?.imgUrl}
-              />
+              <PictureBlock data={props.pictureBlockNewsData.Top} />
               <div className="tw-border tw-rounded-lg tw-bg-white tw-p-3">
                 <h2 className="tw-text-3xl tw-mx-5 tw-my-3 tw-font-bold">{`专栏 - ${currentColumnTitle}`}</h2>
                 <Tabs key="card" size="large">
@@ -118,16 +114,8 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
             </div>
           </div>
           <div className=" tw-basis-1/3">
-            <PictureBlock
-              imgsrc={props.pictureBlockNewsData.sideTop?.imgUrl}
-              href={props.pictureBlockNewsData.sideTop?.href}
-              describe={props.pictureBlockNewsData.sideTop?.describe}
-            />
-            <PictureBlock
-              imgsrc={props.pictureBlockNewsData.sideBottom?.imgUrl}
-              href={props.pictureBlockNewsData.sideBottom?.href}
-              describe={props.pictureBlockNewsData.sideBottom?.describe}
-            />
+            <PictureBlock data={props.pictureBlockNewsData.sideTop} />
+            <PictureBlock data={props.pictureBlockNewsData.sideBottom} />
             <div className=" tw-sticky tw-top-20">
               <SideList title="推荐阅读" data={props.hotNewsData} />
             </div>

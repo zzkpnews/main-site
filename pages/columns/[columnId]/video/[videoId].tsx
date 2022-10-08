@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ColumnSummary, FriendLink, NewsSummary, PictureBlockNews, VideoNews, WebsiteInfo } from '../../../../models';
+import { ColumnItem, FriendLink, NewsItem, PictureBlockNews, VideoNews, WebsiteInfo } from '../../../../models';
 import {
   fetchColumnsData,
   fetchFriendList,
@@ -14,9 +14,9 @@ import { Head } from 'next/document';
 import { useNavigation } from '../../../../hooks';
 
 interface VideoPageProps {
-  columnsData: ColumnSummary[];
+  columnsData: ColumnItem[];
   friendsListData: FriendLink[];
-  hotNewsData: NewsSummary[];
+  hotNewsData: NewsItem[];
   pictureBlockNewsData: PictureBlockNews;
   videoNewsData: VideoNews;
   websiteInfoData: WebsiteInfo;
