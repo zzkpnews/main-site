@@ -1,8 +1,8 @@
-type ColumnSummary = {
+type ColumnItem = {
   /**
    * 栏目的id
    */
-  columnId: string;
+  column_id: string;
   /**
    * 栏目的绝对顺序
    */
@@ -13,4 +13,4 @@ type ColumnSummary = {
   title: string;
 };
 
-export type { ColumnSummary };
+export type { ColumnItem };

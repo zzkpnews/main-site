@@ -1,6 +1,6 @@
 import { Button, List, Tag } from '@arco-design/web-react';
 import classNames from 'classnames';
-import { NewsSummary } from '../models/NewsSummary.model';
+import { NewsSummary } from '../../models/index';
 
 const NewsList = (props: {
   list: NewsSummary[];
@@ -18,7 +18,7 @@ const NewsList = (props: {
         dataSource={props.list}
         render={(item, index) => (
           <List.Item className="hover:tw-bg-gray-200 active:tw-bg-gray-300 tw-cursor-pointer" key={index}>
-            <a href={`/columns/${item.columnId}/${item.type}/${item.itemId}`} target={'_blank'}>
+            <a href={`/columns/${item.column_id}/${item.type}/${item.item_id}`} target={'_blank'}>
               <div className="tw-flex tw-flex-col md:tw-flex-row">
                 {item.bgimg ? (
                   <div className="md:tw-w-1/3 tw-my-auto">
@@ -31,7 +31,7 @@ const NewsList = (props: {
                     'tw-mx-5 tw-my-3 tw-flex tw-flex-col tw-justify-center'
                   )}
                 >
-                  <span className="tw-font-bold tw-text-gray-600 tw-text-md">{item.leadTitle}</span>
+                  <span className="tw-font-bold tw-text-gray-600 tw-text-md">{item.lead_title}</span>
                   <h2 className="tw-text-lg tw-font-bold tw-my-1">{item.title}</h2>
                   <h3 className=" tw-text-gray-800 tw-font-bold">{item.subtitle}</h3>
                   <p className="tw-my-2 tw-indent-8">{item.citation}</p>
@@ -45,7 +45,7 @@ const NewsList = (props: {
                   })(item.timestamp)}
                 </span>
                 <Tag color="red" defaultChecked>
-                  {item.columnTitle}
+                  {item.column_title}
                 </Tag>
               </div>
             </a>
@@ -76,3 +76,4 @@ NewsList.defaultProps = {
 };
 
 export { NewsList };
+

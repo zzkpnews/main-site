@@ -1,4 +1,4 @@
-export interface NewsSummary {
+export interface NewsItem {
   /**
    * 新闻背景图像
    */
@@ -10,23 +10,23 @@ export interface NewsSummary {
   /**
    * 所属的栏目id
    */
-  columnId: null | string;
+  column_id: null | string;
   /**
    * 所属的栏目标题
    */
-  columnTitle: null | string;
+  column_title: null | string;
   /**
    * 新闻创作者的id
    */
-  creatorId: string;
+  creator_id: string;
   /**
    * 新闻创作者的名称
    */
-  creatorTitle: string;
+  creator_title: string;
   /**
    * 新闻项ID
    */
-  itemId: string;
+  item_id: string;
   /**
    * 新闻的关键词
    */
@@ -34,7 +34,7 @@ export interface NewsSummary {
   /**
    * 新闻的引题
    */
-  leadTitle: null | string;
+  lead_title: null | string;
   /**
    * 新闻的副标题
    */

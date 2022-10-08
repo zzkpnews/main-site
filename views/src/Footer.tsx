@@ -71,7 +71,7 @@ const Footer = (props: { friendsList: FriendLink[]; websiteInfo: WebsiteInfo }):
           props.websiteInfo.institution
         }`}</span>
         <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{props.websiteInfo.icp}</span>
-        <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{`Powered By ${props.websiteInfo.technologySupport}`}</span>
+        <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{`Powered By ${props.websiteInfo.technology_support}`}</span>
         <a className="tw-mr-5 tw-my-1 tw-text-gray-300 hover:tw-text-white tw-cursor-pointer">{'免责声明'}</a>
       </div>
     </footer>

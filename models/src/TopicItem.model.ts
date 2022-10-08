@@ -1,4 +1,4 @@
-type BriefTopicList = {
+type TopicItem = {
   /**
    * 话题描述
    */
@@ -6,7 +6,7 @@ type BriefTopicList = {
   /**
    * 话题logo图片外链
    */
-  logoUrl: string;
+  logo_url: string;
   /**
    * 话题标题
    */
@@ -14,7 +14,7 @@ type BriefTopicList = {
   /**
    * 话题id
    */
-  topicId: string;
-}[];
+  topic_id: string;
+};
 
-export type { BriefTopicList };
+export type { TopicItem };

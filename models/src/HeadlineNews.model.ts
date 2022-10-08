@@ -1,5 +1,5 @@
 type HeadLineNews = {
-  leadTitle?: string;
+  lead_title?: string;
   subtitle?: string;
   title: string;
   href?: string;

@@ -1,15 +1,15 @@
-import { ArticleNews } from "./src/ArticleNews.model";
-import { CarouselNews } from "./src/CarouselNews.model";
-import { ColumnSummary } from "./src/ColumnSummary.model";
-import { FriendLink } from "./src/FriendLink.model";
-import { HeadBannerNews } from "./src/HeadBanner.model";
-import { HeadLineNews } from "./src/HeadlineNews.model";
-import { NewsSummary } from "./src/NewsSummary.model";
-import { PictureBlockNews } from "./src/PictureBlockNews.model";
-import { BriefTopicList } from "./src/TopicSummary.model";
-import { VideoNews } from "./src/VideoNews.model";
-import { WebsiteInfo } from "./src/WebsiteInfo.model";
-
+import { ArticleNews } from './src/ArticleNews.model';
+import { CarouselNews } from './src/CarouselNews.model';
+import { ColumnSummary } from './src/ColumnItem.model';
+import { FriendLink } from './src/FriendLink.model';
+import { HeadBannerNews } from './src/BannerNews.model';
+import { HeadLineNews } from './src/HeadlineNews.model';
+import { NewsItem } from './src/NewsItem.model';
+import { PictureBlockNews } from './src/PictureNews.model';
+import { PictureBlockSummary } from './src/PictureNews.model';
+import { BriefTopicList } from './src/TopicItem.model';
+import { VideoNews } from './src/VideoNews.model';
+import { WebsiteInfo } from './src/WebsiteInfo.model';
 
 export type {
   ArticleNews,
@@ -18,8 +18,9 @@ export type {
   FriendLink,
   HeadBannerNews,
   HeadLineNews,
-  NewsSummary,
+  NewsItem as NewsSummary,
   PictureBlockNews,
+  PictureBlockSummary,
   BriefTopicList,
   VideoNews,
   WebsiteInfo,

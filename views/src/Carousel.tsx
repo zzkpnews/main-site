@@ -1,8 +1,6 @@
 import { Carousel as ArcoCarousel } from '@arco-design/web-react';
-
 import { useState } from 'react';
 import { CarouselNews } from '../../models';
-/* eslint-disable @next/next/no-img-element */
 
 const Carousel = (props: { data: CarouselNews[] }): JSX.Element => {
   const [carousel_index, set_carousel_index] = useState<number>(0);
@@ -34,7 +32,7 @@ const Carousel = (props: { data: CarouselNews[] }): JSX.Element => {
       <div className="tw-h-96 lg:tw-col-span-1 tw-bg-gray-100 lg:tw-mx-2 tw-rounded-lg tw-flex tw-flex-col tw-justify-center">
         <div className="tw-overflow-y-scroll tw-my-10 tw-px-10">
           <span className="tw-text-center tw-block tw-text-lg tw-font-bold tw-text-gray-600">
-            {props.data[carousel_index].leadTitle}
+            {props.data[carousel_index].lead_title}
           </span>
           <h2 className="tw-text-center tw-block tw-text-2xl tw-font-bold tw-my-2">
             {props.data[carousel_index].title}

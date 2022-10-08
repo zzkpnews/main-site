@@ -46,7 +46,7 @@ const Article = (props: ArticlePageProps) => {
             <div className="tw-sticky tw-top-20 tw-py-3 tw-bg-white tw-rounded-xl">
               <div className="tw-border-b  tw-py-4 tw-mx-5">
                 <span className="tw-block tw-font-bold tw-text-lg tw-text-left tw-mx-auto tw-text-gray-500">
-                  {props.articleNewsData.leadTitle}
+                  {props.articleNewsData.lead_title}
                 </span>
                 <h2 className="tw-font-bold tw-text-3xl tw-text-left tw-my-1">{props.articleNewsData.title}</h2>
                 <span className="tw-block tw-text-left tw-mx-auto tw-font-bold tw-text-xl">

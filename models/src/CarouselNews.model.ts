@@ -14,7 +14,7 @@ type CarouselNews = {
   /**
    * 新闻引题
    */
-  leadTitle?: string;
+  lead_title?: string;
   /**
    * 新闻副标题
    */

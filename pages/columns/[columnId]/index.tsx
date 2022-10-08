@@ -139,15 +139,16 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
   );
 };
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const fetchedColumnsData = (await fetchColumnsData()).data;
-  const fetchedFriendsListData = (await fetchFriendList()).data;
   const columnId = context.query.columnId as string;
-  const fetchedDefaultListData = (await fetchNewsList({ from: 'column', id: columnId })).data;
+
   const fetchedArticleListData = (await fetchNewsList({ from: 'column', id: columnId, type: 'article' })).data;
-  const fetchedVideoListData = (await fetchNewsList({ from: 'column', id: columnId, type: 'video' })).data;
+  const fetchedColumnsData = (await fetchColumnsData()).data;
+  const fetchedDefaultListData = (await fetchNewsList({ from: 'column', id: columnId })).data;
+  const fetchedFriendsListData = (await fetchFriendList()).data;
   const fetchedHotListData = (await fetchHotNews()).data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
   const fetchedPagePictureBlock = (await fetchPictureBlockNews(columnId)).data;
+  const fetchedVideoListData = (await fetchNewsList({ from: 'column', id: columnId, type: 'video' })).data;
+  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
   const returnProps: ColumnIndexPageProps = {
     articleNewsData: fetchedArticleListData,

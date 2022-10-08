@@ -10,4 +10,4 @@ type PictureBlockNews = {
   sideBottom?: PictureBlockSummary;
 };
 
-export type { PictureBlockNews };
+export type { PictureBlockNews,PictureBlockSummary };

@@ -41,7 +41,7 @@ interface HomePageProps {
   headLineNewsData: HeadLineNews;
   homeList: NewsSummary[];
   hotNewsData: NewsSummary[];
-  pagePictureBlock: PictureBlockNews | null;
+  pictureBlockNews: PictureBlockNews | null;
   websiteInfo: WebsiteInfo;
 }
 
@@ -69,11 +69,7 @@ const Home = (props: HomePageProps) => {
         <Navigation activeColumnOrder={currentColumnOrder} navItems={props.columnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 tw-py-10 md:tw-px-20">
-        <PictureBlock
-          imgsrc={props.pagePictureBlock?.Top?.imgUrl}
-          href={props.pagePictureBlock?.Top?.href}
-          describe={props.pagePictureBlock?.Top?.describe}
-        />
+        <PictureBlock data={props.pictureBlockNews?.Top} />
         <Headline data={props.headLineNewsData} />
         <Carousel data={props.carouselNewsData} />
         <div className=" lg:tw-flex">
@@ -88,16 +84,8 @@ const Home = (props: HomePageProps) => {
             </div>
           </div>
           <div className="lg:tw-basis-1/3 tw-my-10">
-            <PictureBlock
-              imgsrc={props.pagePictureBlock?.sideTop?.imgUrl}
-              href={props.pagePictureBlock?.sideTop?.href}
-              describe={props.pagePictureBlock?.sideTop?.describe}
-            />
-            <PictureBlock
-              imgsrc={props.pagePictureBlock?.sideBottom?.imgUrl}
-              href={props.pagePictureBlock?.sideBottom?.href}
-              describe={props.pagePictureBlock?.sideBottom?.describe}
-            />
+            <PictureBlock data={props.pictureBlockNews?.sideTop} />
+            <PictureBlock data={props.pictureBlockNews?.sideBottom} />
             <TopicList />
             <div className=" tw-sticky tw-top-20">
               <SideList title="推荐阅读" data={props.hotNewsData} />
@@ -127,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     headLineNewsData: fetchedHeadLineData,
     homeList: fetchedHomeListData,
     hotNewsData: fetchedHotListData,
-    pagePictureBlock: fetchedPagePictureBlock,
+    pictureBlockNews: fetchedPagePictureBlock,
     websiteInfo: fetchedWebsiteInfoData,
   };
 

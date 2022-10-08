@@ -22,7 +22,7 @@ type WebsiteInfo = {
   /**
    * 网站的技术支持单位
    */
-  technologySupport?: string;
+  technology_support?: string;
   /**
    * 网站的主标题，用于首页等展示性页面
    */

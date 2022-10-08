@@ -11,7 +11,7 @@ const SideList = (props: { title: string; data: NewsSummary[] }): JSX.Element =>
         dataSource={props.data}
         render={(item, index) => (
           <List.Item className="hover:tw-bg-gray-200" key={index}>
-            <a href={`/columns/${item.columnId}/${item.type}/${item.itemId}`} target={'_blank'}>
+            <a href={`/columns/${item.column_id}/${item.type}/${item.item_id}`} target={'_blank'}>
               <div className="tw-flex tw-cursor-pointer">
                 <div className=" tw-basis-1/3 tw-flex tw-flex-col tw-justify-center">
                   <img src={item.bgimg!} className=" tw-rounded-md tw-object-cover tw-h-20" />

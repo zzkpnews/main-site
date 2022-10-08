@@ -44,7 +44,7 @@ const Video = (props: VideoPageProps) => {
             <div className=" tw-sticky tw-top-20 tw-border tw-bg-white tw-rounded-xl">
               <div className="tw-py-4 tw-mx-10">
                 <span className="tw-block tw-font-bold tw-text-lg tw-text-left tw-mx-auto tw-text-gray-500">
-                  {props.videoNewsData.leadTitle}
+                  {props.videoNewsData.lead_title}
                 </span>
                 <h2 className="tw-font-bold tw-text-3xl tw-text-left tw-my-1">{props.videoNewsData.title}</h2>
                 <span className="tw-block tw-text-left tw-mx-auto tw-font-bold tw-text-xl">
@@ -54,7 +54,7 @@ const Video = (props: VideoPageProps) => {
               <div className="tw-mx-5 tw-mb-4 tw-mt-1 tw-aspect-w-16 tw-aspect-h-9">
                 <iframe
                   className=" tw-rounded-xl"
-                  src={props.videoNewsData.videoUrl!}
+                  src={props.videoNewsData.video_url!}
                   allowFullScreen
                   width="100%"
                   height="300px"
@@ -66,16 +66,8 @@ const Video = (props: VideoPageProps) => {
             <div className="tw-rounded-lg tw-mx-2 tw-mb-2 tw-select-none tw-border tw-bg-white">
               <p className="tw-my-4 tw-p-4 ">{props.videoNewsData.citation}</p>
             </div>
-            <PictureBlock
-              imgsrc={props.pictureBlockNewsData.sideTop?.imgUrl}
-              href={props.pictureBlockNewsData.sideTop?.href}
-              describe={props.pictureBlockNewsData.sideTop?.describe}
-            />
-            <PictureBlock
-              imgsrc={props.pictureBlockNewsData.sideBottom?.imgUrl}
-              href={props.pictureBlockNewsData.sideBottom?.href}
-              describe={props.pictureBlockNewsData.sideBottom?.describe}
-            />
+            <PictureBlock data={props.pictureBlockNewsData.sideTop} />
+            <PictureBlock data={props.pictureBlockNewsData.sideBottom} />
             <SideList title="精彩后面" data={props.hotNewsData} />
             <SideList title="推荐阅读" data={props.hotNewsData} />
           </div>
