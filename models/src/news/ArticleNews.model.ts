@@ -17,6 +17,10 @@ interface ArticleNews extends NewsItem {
    * 文章来源
    */
   origin?: string;
+  /**
+   * 文章来源链接
+   */
+  origin_url?:string;
 }
 
 export type { ArticleNews };

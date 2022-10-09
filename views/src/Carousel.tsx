@@ -20,7 +20,7 @@ const Carousel = (props: { data: CarouselNews[] }): JSX.Element => {
         {props.data.map((item, index) => (
           // eslint-disable-next-line react/jsx-key
           <img
-            src={item.bgimg}
+            src={item.img_url}
             key={`carousel-img-${index}`}
             className="tw-object-cover tw-rounded-lg tw-select-none"
             alt={item.title}

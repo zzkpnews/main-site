@@ -2,7 +2,7 @@ type CarouselNews = {
   /**
    * 背景图片
    */
-  bgimg: string;
+  img_url: string;
   /**
    * 新闻引言
    */
