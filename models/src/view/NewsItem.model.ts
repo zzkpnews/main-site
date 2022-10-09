@@ -2,19 +2,19 @@ export interface NewsItem {
   /**
    * 新闻背景图像
    */
-  bgimg: null | string;
+  bgimg?: string;
   /**
    * 新闻的引言
    */
-  citation: null | string;
+  citation?: string;
   /**
    * 所属的栏目id
    */
-  column_id: null | string;
+  column_id: string;
   /**
    * 所属的栏目标题
    */
-  column_title: null | string;
+  column_title: string;
   /**
    * 新闻创作者的id
    */
@@ -30,15 +30,15 @@ export interface NewsItem {
   /**
    * 新闻的关键词
    */
-  keywords: null | string;
+  keywords?: string;
   /**
    * 新闻的引题
    */
-  lead_title: null | string;
+  lead_title?: string;
   /**
    * 新闻的副标题
    */
-  subtitle: null | string;
+  subtitle?: string;
   /**
    * 新闻发布时间的时间戳
    */

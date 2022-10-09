@@ -1,5 +1,5 @@
 type FriendLink = {
-  name: string;
+  title: string;
   describe?: string;
   url?: string;
 };

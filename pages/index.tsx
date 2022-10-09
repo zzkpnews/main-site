@@ -61,7 +61,7 @@ const Home = (props: HomePageProps) => {
         <link rel="shortcut icon" href="favicons.ico" type="image/x-icon" />
         <meta name="description" content="中原科技网" />
       </Head>
-      <HeadBanner imgsrc="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000" href="http://www.baidu.com" />
+      <HeadBanner img_url="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000" href="http://www.baidu.com" />
       <div className="tw-flex tw-justify-center tw-py-3">
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>

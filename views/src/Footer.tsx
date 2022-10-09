@@ -58,7 +58,7 @@ const Footer = (props: { friendsList: FriendLink[]; websiteInfo: WebsiteInfo }):
                     target={'_blank'}
                     rel="noreferrer"
                   >
-                    {item.name}
+                    {item.title}
                   </a>
                 );
               })}

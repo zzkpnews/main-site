@@ -1,13 +1,7 @@
-type PictureBlockSummary = {
-  imgUrl?: string;
+type PictureNews = {
+  img_url?: string;
   href?: string;
   describe?: string;
 };
 
-type PictureBlockNews = {
-  Top?: PictureBlockSummary;
-  sideTop?: PictureBlockSummary;
-  sideBottom?: PictureBlockSummary;
-};
-
-export type { PictureBlockNews,PictureBlockSummary };
+export type { PictureNews};

@@ -1,5 +1,5 @@
 type HeadBannerNews = {
-  imgsrc: string;
+  img_url: string;
   href?: string;
   describe?: string;
   open: boolean;
