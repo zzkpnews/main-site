@@ -47,8 +47,4 @@ export interface NewsItem {
    * 新闻的标题
    */
   title: string;
-  /**
-   * 新闻的种类
-   */
-  type: 'article' | 'video';
 }
