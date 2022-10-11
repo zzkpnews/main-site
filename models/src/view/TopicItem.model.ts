@@ -15,6 +15,14 @@ type TopicItem = {
    * 话题id
    */
   topic_id: string;
+  /** 
+   * 话题的绝对顺序
+   */
+  order:number;
+  /** 
+   * 话题的背景图片
+   */
+  bgimg:string;
 };
 
 export type { TopicItem };
