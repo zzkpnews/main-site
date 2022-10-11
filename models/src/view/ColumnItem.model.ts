@@ -6,7 +6,7 @@ type ColumnItem = {
   /**
    * 栏目的绝对顺序
    */
-  order: string;
+  column_order: string;
   /**
    * 栏目的标题
    */

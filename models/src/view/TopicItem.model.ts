@@ -2,7 +2,7 @@ type TopicItem = {
   /**
    * 话题描述
    */
-  describe: string;
+  topic_describe: string;
   /**
    * 话题logo图片外链
    */
@@ -18,7 +18,7 @@ type TopicItem = {
   /** 
    * 话题的绝对顺序
    */
-  order:number;
+  topic_order:number;
   /** 
    * 话题的背景图片
    */
