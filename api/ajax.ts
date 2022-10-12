@@ -7,7 +7,7 @@ import {
   CarouselNews,
   ArticleNews,
   VideoNews,
-  PictureBlockNews,
+  PictureNews,
   HeadLineNews,
 } from '../models';
 
@@ -32,7 +32,7 @@ export const fetchNewsItems = (params: NewsListApiParam): AxiosPromise<NewsItem[
 export const fetchColumnItems = (): AxiosPromise<ColumnItem[]> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.NavColumnList,
+    url: ApiPaths.Columns,
     responseType: 'json',
   });
 };
@@ -40,7 +40,7 @@ export const fetchColumnItems = (): AxiosPromise<ColumnItem[]> => {
 export const fetchFriendLink = (): AxiosPromise<FriendLink[]> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.FriendsList,
+    url: ApiPaths.Friends,
     responseType: 'json',
   });
 };
@@ -69,18 +69,10 @@ export const fetchHotNews = (): AxiosPromise<NewsItem[]> => {
   });
 };
 
-export const fetchArticleData = (id: string): AxiosPromise<string> => {
-  return axios({
-    method: 'GET',
-    url: ApiPaths.ArticleData(id),
-    responseType: 'json',
-  });
-};
-
 export const fetchArticleNews = (id: string): AxiosPromise<ArticleNews> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.ArticleNews,
+    url: ApiPaths.Article,
     params: { id: id },
     responseType: 'json',
   });
@@ -89,16 +81,16 @@ export const fetchArticleNews = (id: string): AxiosPromise<ArticleNews> => {
 export const fetchVideoNews = (id: string): AxiosPromise<VideoNews> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.VideoItemMeta,
+    url: ApiPaths.Video,
     params: { id: id },
     responseType: 'json',
   });
 };
 
-export const fetchPictureNews = (columnId?: string): AxiosPromise<PictureBlockNews> => {
+export const fetchPictureNews = (columnId?: string): AxiosPromise<PictureNews> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.PictureBlockInfo,
+    url: ApiPaths.PictureNews,
     params: {
       column: columnId,
     },
@@ -109,7 +101,7 @@ export const fetchPictureNews = (columnId?: string): AxiosPromise<PictureBlockNe
 export const fetchHeadLineNews = (): AxiosPromise<HeadLineNews> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.HeadLine,
+    url: ApiPaths.Headline,
     responseType: 'json',
   });
 };
