@@ -8,7 +8,7 @@ interface ArticleNews extends NewsItem {
   /**
    * 文章内容请求链接，这个链接将返回纯文本数据
    */
-  data_url?: string;
+  data_url: string;
   /**
    * 文章编辑
    */

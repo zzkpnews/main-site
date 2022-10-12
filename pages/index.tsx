@@ -24,15 +24,7 @@ import {
   fetchWebsiteInfo,
 } from '../api/ajax';
 import type { GetServerSideProps } from 'next';
-import {
-  ColumnItem,
-  FriendLink,
-  NewsItem,
-  CarouselNews,
-  WebsiteInfo,
-  PictureBlockNews,
-  HeadLineNews,
-} from '../models';
+import { ColumnItem, FriendLink, NewsItem, CarouselNews, WebsiteInfo, PictureNews, HeadLineNews } from '../models';
 
 interface HomePageProps {
   carouselNewsData: CarouselNews[];
@@ -41,7 +33,7 @@ interface HomePageProps {
   headLineNewsData: HeadLineNews;
   homeList: NewsItem[];
   hotNewsData: NewsItem[];
-  pictureBlockNews: PictureBlockNews | null;
+  pictureNews: PictureNews[];
   websiteInfo: WebsiteInfo;
 }
 
@@ -52,7 +44,7 @@ const Home = (props: HomePageProps) => {
     loadable: home_list_loadable,
     loading: home_list_loading,
     handleFetchData: handle_home_list_fetch_data,
-  } = useNewsList(props.homeList, { from: 'home' });
+  } = useNewsList(props.homeList);
 
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
@@ -69,7 +61,7 @@ const Home = (props: HomePageProps) => {
         <Navigation activeColumnOrder={currentColumnOrder} navItems={props.columnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 tw-py-10 md:tw-px-20">
-        <PictureBlock data={props.pictureBlockNews?.Top} />
+        <PictureBlock data={props.pictureNews[0]} />
         <Headline data={props.headLineNewsData} />
         <Carousel data={props.carouselNewsData} />
         <div className=" lg:tw-flex">
@@ -84,8 +76,8 @@ const Home = (props: HomePageProps) => {
             </div>
           </div>
           <div className="lg:tw-basis-1/3 tw-my-10">
-            <PictureBlock data={props.pictureBlockNews?.sideTop} />
-            <PictureBlock data={props.pictureBlockNews?.sideBottom} />
+            <PictureBlock data={props.pictureNews[1]} />
+            <PictureBlock data={props.pictureNews[2]} />
             <TopicList />
             <div className=" tw-sticky tw-top-20">
               <SideList title="推荐阅读" data={props.hotNewsData} />
@@ -105,7 +97,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const fetchedHomeCarouselData = (await fetchCarouselNews()).data;
   const fetchedHomeListData = (await fetchNewsItems({ from: 'home' })).data;
   const fetchedHotListData = (await fetchHotNews()).data;
-  const fetchedPagePictureBlock = null;
+  const fetchedPagePictureBlock = (await fetchPictureNews()).data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
 
   const returnProps: HomePageProps = {
@@ -115,7 +107,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     headLineNewsData: fetchedHeadLineData,
     homeList: fetchedHomeListData,
     hotNewsData: fetchedHotListData,
-    pictureBlockNews: fetchedPagePictureBlock,
+    pictureNews: fetchedPagePictureBlock,
     websiteInfo: fetchedWebsiteInfoData,
   };
 

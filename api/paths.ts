@@ -15,7 +15,7 @@ const QueryApiUrl = (api_path: string) => path.join(url_prefix, api_path);
 
 // 在这里填写API地址
 export const ApiPaths = {
-  NewsList: QueryApiUrl('news-list'),
+  NewsItems: QueryApiUrl('news-items'),
   Columns: QueryApiUrl('columns'),
   Topics: QueryApiUrl('topics'),
   Friends: QueryApiUrl('news-list'),

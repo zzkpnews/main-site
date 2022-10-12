@@ -23,7 +23,7 @@ export interface NewsListApiParam {
 export const fetchNewsItems = (params: NewsListApiParam): AxiosPromise<NewsItem[]> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.NewsList,
+    url: ApiPaths.NewsItems,
     responseType: 'json',
     params: params,
   });
@@ -87,7 +87,7 @@ export const fetchVideoNews = (id: string): AxiosPromise<VideoNews> => {
   });
 };
 
-export const fetchPictureNews = (columnId?: string): AxiosPromise<PictureNews> => {
+export const fetchPictureNews = (columnId?: string): AxiosPromise<PictureNews[]> => {
   return axios({
     method: 'GET',
     url: ApiPaths.PictureNews,
@@ -105,3 +105,11 @@ export const fetchHeadLineNews = (): AxiosPromise<HeadLineNews> => {
     responseType: 'json',
   });
 };
+
+export const fetchArticleContent= (data_url:string) :AxiosPromise<string> =>{
+  return axios({
+    method: 'GET',
+    url: data_url,
+    responseType: 'json',
+  });
+}

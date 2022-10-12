@@ -3,13 +3,12 @@ import { useState } from 'react';
 import { fetchNewsItems } from '../api/ajax';
 import { NewsItem } from '../models';
 
-interface NewsListParams {
-  from: 'home' | 'column' | 'topic';
-  id?: string;
-  type?: 'article' | 'video';
-}
-
-const useNewsList = (initialData: NewsItem[] = [], newslist_params: NewsListParams) => {
+const useNewsList = (
+  initialData: NewsItem[] = [],
+  from?: 'topic' | 'column' | 'topic',
+  id?: string,
+  type?: 'article' | 'video'
+) => {
   const [data, set_data] = useState<NewsItem[]>(initialData);
   const [loadable, set_loadable] = useState<boolean>(true);
   const [loading, set_loading] = useState<boolean>(false);
@@ -17,7 +16,9 @@ const useNewsList = (initialData: NewsItem[] = [], newslist_params: NewsListPara
   const fetchData = async () => {
     set_loading(true);
     fetchNewsItems({
-      ...newslist_params,
+      from: from,
+      id: id,
+      type: type,
       offset: data[data.length - 1].timestamp,
     })
       .then((fetched_data) => {
@@ -41,4 +42,4 @@ const useNewsList = (initialData: NewsItem[] = [], newslist_params: NewsListPara
   return { data, loadable, loading, handleFetchData };
 };
 
-export {useNewsList};
+export { useNewsList };
