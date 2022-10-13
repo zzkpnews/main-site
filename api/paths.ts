@@ -26,4 +26,5 @@ export const ApiPaths = {
   WebsiteInfo: QueryApiUrl('website-info'),
   PictureNews: QueryApiUrl('picture-news'),
   Headline: QueryApiUrl('headline'),
+  ArticleContent: QueryApiUrl('article-content'),
 };

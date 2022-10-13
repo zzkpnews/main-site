@@ -10,14 +10,14 @@ const NewsList = (props: {
   loadHandler: () => void;
 }): JSX.Element => {
   return (
-    <div className="tw-bg-white">
+    <div className={`tw-bg-white ${props.bordered ? 'tw-border' : ''} tw-rounded-lg`}>
       <List
-        bordered={props.bordered}
+        bordered={false}
         size={'default'}
         dataSource={props.list}
         render={(item, index) => (
           <List.Item className="hover:tw-bg-gray-200 active:tw-bg-gray-300 tw-cursor-pointer" key={index}>
-            <a href={`/columns/${item.column_id}/${item.type}/${item.item_id}`} target={'_blank'}>
+            <a href={`/columns/${item.column_id}/${item.type}/${item.news_id}`} target={'_blank'}>
               <div className="tw-flex tw-flex-col md:tw-flex-row">
                 {item.bgimg ? (
                   <div className="md:tw-w-1/3 tw-my-auto">

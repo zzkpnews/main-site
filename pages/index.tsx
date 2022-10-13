@@ -22,13 +22,24 @@ import {
   fetchNewsItems,
   fetchPictureNews,
   fetchWebsiteInfo,
+  fetchTopicItems,
 } from '../api/ajax';
 import type { GetServerSideProps } from 'next';
-import { ColumnItem, FriendLink, NewsItem, CarouselNews, WebsiteInfo, PictureNews, HeadLineNews } from '../models';
+import {
+  ColumnItem,
+  FriendLink,
+  NewsItem,
+  CarouselNews,
+  WebsiteInfo,
+  PictureNews,
+  HeadLineNews,
+  TopicItem,
+} from '../models';
 
 interface HomePageProps {
   CarouselNewsData: CarouselNews[];
   ColumnsData: ColumnItem[];
+  TopicsData: TopicItem[];
   FriendsData: FriendLink[];
   HeadlineNewsData: HeadLineNews;
   NewsItemsData: NewsItem[];
@@ -67,6 +78,7 @@ const Home = (props: HomePageProps) => {
           <div className="lg:tw-basis-2/3 tw-my-10">
             <div className=" tw-sticky tw-top-20">
               <NewsList
+                bordered
                 loading={home_list_loading}
                 loadable={home_list_loadable}
                 list={home_list_data}
@@ -77,7 +89,7 @@ const Home = (props: HomePageProps) => {
           <div className="lg:tw-basis-1/3 tw-my-10">
             <PictureBlock data={props.PictureNewsData[1]} />
             <PictureBlock data={props.PictureNewsData[2]} />
-            <TopicList />
+            <TopicList Topics={props.TopicsData} />
             <div className=" tw-sticky tw-top-20">
               <SideList title="推荐阅读" data={props.HotListData} />
             </div>
@@ -98,6 +110,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const fetchedHotListData = (await fetchHotNews()).data.data;
   const fetchedPagePictureBlock = (await fetchPictureNews()).data.data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
+  const fetchedTopicsData = (await fetchTopicItems()).data.data;
 
   const returnProps: HomePageProps = {
     CarouselNewsData: fetchedHomeCarouselData,
@@ -108,6 +121,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     HotListData: fetchedHotListData,
     PictureNewsData: fetchedPagePictureBlock,
     WebsiteInfoData: fetchedWebsiteInfoData,
+    TopicsData: fetchedTopicsData,
   };
 
   return {

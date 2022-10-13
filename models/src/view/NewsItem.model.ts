@@ -26,7 +26,7 @@ export interface NewsItem {
   /**
    * 新闻项ID
    */
-  item_id: string;
+  news_id: string;
   /**
    * 新闻的关键词
    */

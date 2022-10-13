@@ -11,10 +11,14 @@ const SideList = (props: { title: string; data: NewsItem[] }): JSX.Element => {
         dataSource={props.data}
         render={(item, index) => (
           <List.Item className="hover:tw-bg-gray-200" key={index}>
-            <a href={`/columns/${item.column_id}/${item.type}/${item.item_id}`} target={'_blank'}>
-              <div className="tw-flex tw-cursor-pointer">
-                <div className=" tw-basis-1/3 tw-flex tw-flex-col tw-justify-center">
-                  <img src={item.bgimg!} className=" tw-rounded-md tw-object-cover tw-h-20" />
+            <a href={`/columns/${item.column_id}/${item.type}/${item.news_id}`} target={'_blank'}>
+              <div className="tw-flex tw-cursor-pointer tw-p-0">
+                <div className="tw-basis-1/3 tw-flex tw-flex-col tw-justify-center tw-m-0">
+                  <img
+                    src={item.bgimg!}
+                    referrerPolicy="no-referrer"
+                    className="tw-rounded-md tw-object-cover tw-h-20 tw-m-0"
+                  />
                 </div>
                 <div className=" tw-basis-2/3 tw-px-2 tw-flex tw-justify-center tw-flex-col">
                   <span className="tw-font-bold tw-text-sm">{item.title}</span>

@@ -11,7 +11,7 @@ import {
 } from '../../../api/ajax';
 import { useNavigation, useNewsList } from '../../../hooks';
 import { ColumnItem, FriendLink, NewsItem, PictureNews, WebsiteInfo } from '../../../models';
-import { Footer, LogoBadge, Navigation, NewsList, PictureBlock, SideList } from '../../../views';
+import { Footer, LogoBadge, ColumnsNavigator, NewsList, PictureBlock, SideList } from '../../../views';
 
 import type { GetServerSideProps } from 'next';
 
@@ -61,7 +61,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.ColumnsData} />
+        <ColumnsNavigator Active={currentColumnOrder} Columns={props.ColumnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="lg:tw-flex tw-justify-center tw-my-10">
@@ -118,14 +118,14 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.columnId as string;
 
-  const fetchedArticleListData = (await fetchNewsItems({ from: 'column', id: columnId, type: 'article' })).data;
-  const fetchedColumnsData = (await fetchColumnItems()).data;
-  const fetchedDefaultListData = (await fetchNewsItems({ from: 'column', id: columnId })).data;
-  const fetchedFriendsListData = (await fetchFriendLink()).data;
-  const fetchedHotListData = (await fetchHotNews()).data;
-  const fetchedPagePictureBlock = (await fetchPictureNews(columnId)).data;
-  const fetchedVideoListData = (await fetchNewsItems({ from: 'column', id: columnId, type: 'video' })).data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
+  const fetchedArticleListData = (await fetchNewsItems('column', columnId, 'article')).data.data;
+  const fetchedColumnsData = (await fetchColumnItems()).data.data;
+  const fetchedDefaultListData = (await fetchNewsItems('column', columnId)).data.data;
+  const fetchedFriendsListData = (await fetchFriendLink()).data.data;
+  const fetchedHotListData = (await fetchHotNews()).data.data;
+  const fetchedPagePictureBlock = (await fetchPictureNews(columnId)).data.data;
+  const fetchedVideoListData = (await fetchNewsItems('column', columnId, 'video')).data.data;
+  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
 
   const returnProps: ColumnIndexPageProps = {
     ArticleNewsItemsData: fetchedArticleListData,

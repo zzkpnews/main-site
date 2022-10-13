@@ -1,18 +1,18 @@
 import classNames from 'classnames';
-import Head from 'next/head';
-import { ArticleNews, ColumnItem, FriendLink, NewsItem, PictureNews, WebsiteInfo } from '../../../../models';
-import { Footer, LogoBadge, Navigation, PictureBlock, SideList } from '../../../../views';
-import { useNavigation } from '../../../../hooks';
 import type { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import {
+  fetchArticleContent,
   fetchArticleNews,
+  fetchColumnItems,
   fetchFriendLink,
   fetchHotNews,
-  fetchColumnItems,
   fetchPictureNews,
   fetchWebsiteInfo,
-  fetchArticleContent,
 } from '../../../../api/ajax';
+import { useNavigation } from '../../../../hooks';
+import { ArticleNews, ColumnItem, FriendLink, NewsItem, PictureNews, WebsiteInfo } from '../../../../models';
+import { Footer, LogoBadge, ColumnsNavigator, PictureBlock, SideList } from '../../../../views';
 
 interface ArticlePageProps {
   ColumnsData: ColumnItem[];
@@ -38,7 +38,7 @@ const Article = (props: ArticlePageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.ColumnsData} />
+        <ColumnsNavigator Active={currentColumnOrder} Columns={props.ColumnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">
@@ -82,7 +82,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.columnId as string;
 
   const fetchedArticleNewsData = (await fetchArticleNews(articleId)).data.data;
-  const fetchedArticleContentData = (await fetchArticleContent(fetchedArticleNewsData.data_url!)).data.data;
+  const fetchedArticleContentData = (await fetchArticleContent(articleId!)).data;
   const fetchedColumnsData = (await fetchColumnItems()).data.data;
   const fetchedFriendsListData = (await fetchFriendLink()).data.data;
   const fetchedHotNewsData = (await fetchHotNews()).data.data;
@@ -98,7 +98,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     PictureNewsData: fetchedPictureBlockData,
     WebsiteInfoData: fetchedWebsiteInfoData,
   };
-
+  console.log(fetchedArticleNewsData);
   return {
     props: returnProps,
   };

@@ -9,6 +9,7 @@ import {
   VideoNews,
   PictureNews,
   HeadLineNews,
+  TopicItem,
 } from '../models';
 
 import { ApiPaths } from './paths';
@@ -122,10 +123,21 @@ export const fetchHeadLineNews = (): AxiosPromise<APIResponse<HeadLineNews>> => 
   });
 };
 
-export const fetchArticleContent = (data_url: string): AxiosPromise<APIResponse<string>> => {
+export const fetchArticleContent = (id: string): AxiosPromise<string> => {
   return axios({
     method: 'GET',
-    url: data_url,
+    url: ApiPaths.ArticleContent,
+    params: {
+      id: id,
+    },
+    responseType: 'text',
+  });
+};
+
+export const fetchTopicItems = (): AxiosPromise<APIResponse<TopicItem[]>> => {
+  return axios({
+    method: 'GET',
+    url: ApiPaths.Topics,
     responseType: 'json',
   });
 };

@@ -8,9 +8,9 @@ import {
   fetchVideoNews,
   fetchWebsiteInfo,
 } from '../../../../api/ajax';
-import { Footer, LogoBadge, Navigation, PictureBlock, SideList } from '../../../../views';
+import { Footer, LogoBadge, ColumnsNavigator, PictureBlock, SideList } from '../../../../views';
 import { GetServerSideProps } from 'next';
-import { Head } from 'next/document';
+import Head from 'next/head';
 import { useNavigation } from '../../../../hooks';
 
 interface VideoPageProps {
@@ -36,7 +36,7 @@ const Video = (props: VideoPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <Navigation activeColumnOrder={currentColumnOrder} navItems={props.ColumnsData} />
+        <ColumnsNavigator Active={currentColumnOrder} Columns={props.ColumnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="tw-flex tw-justify-center tw-my-10">
@@ -53,6 +53,7 @@ const Video = (props: VideoPageProps) => {
               </div>
               <div className="tw-mx-5 tw-mb-4 tw-mt-1 tw-aspect-w-16 tw-aspect-h-9">
                 <iframe
+                  referrerPolicy="no-referrer"
                   className=" tw-rounded-xl"
                   src={props.VideoData.video_url!}
                   allowFullScreen
@@ -88,7 +89,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedVideoNewsData = (await fetchVideoNews(columnId)).data.data;
   const fetchedPictureBlockNewsData = (await fetchPictureNews(videoId)).data.data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
-
+  console.log(fetchedVideoNewsData);
   const returnProps: VideoPageProps = {
     ColumnsData: fetchedColumnsData,
     FriendsData: fetchedFriendListData,
