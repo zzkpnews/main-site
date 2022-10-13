@@ -91,14 +91,14 @@ const Home = (props: HomePageProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const fetchedColumnsData = (await fetchColumnItems()).data;
-  const fetchedFriendsListData = (await fetchFriendLink()).data;
-  const fetchedHeadLineData = (await fetchHeadLineNews()).data;
-  const fetchedHomeCarouselData = (await fetchCarouselNews()).data;
-  const fetchedHomeListData = (await fetchNewsItems({ from: 'home' })).data;
-  const fetchedHotListData = (await fetchHotNews()).data;
-  const fetchedPagePictureBlock = (await fetchPictureNews()).data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
+  const fetchedColumnsData = (await fetchColumnItems()).data.data;
+  const fetchedFriendsListData = (await fetchFriendLink()).data.data;
+  const fetchedHeadLineData = (await fetchHeadLineNews()).data.data;
+  const fetchedHomeCarouselData = (await fetchCarouselNews()).data.data;
+  const fetchedHomeListData = (await fetchNewsItems({ from: 'home' })).data.data;
+  const fetchedHotListData = (await fetchHotNews()).data.data;
+  const fetchedPagePictureBlock = (await fetchPictureNews()).data.data;
+  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
 
   const returnProps: HomePageProps = {
     carouselNewsData: fetchedHomeCarouselData,

@@ -13,6 +13,12 @@ import {
 
 import { ApiPaths } from './paths';
 
+export interface APIResponse<DataModel> {
+  code: number;
+  message: string;
+  data: DataModel;
+}
+
 export interface NewsListApiParam {
   from?: 'home' | 'column' | 'topic';
   id?: string;
@@ -20,7 +26,7 @@ export interface NewsListApiParam {
   offset?: number;
 }
 
-export const fetchNewsItems = (params: NewsListApiParam): AxiosPromise<NewsItem[]> => {
+export const fetchNewsItems = (params: NewsListApiParam): AxiosPromise<APIResponse<NewsItem[]>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.NewsItems,
@@ -29,7 +35,7 @@ export const fetchNewsItems = (params: NewsListApiParam): AxiosPromise<NewsItem[
   });
 };
 
-export const fetchColumnItems = (): AxiosPromise<ColumnItem[]> => {
+export const fetchColumnItems = (): AxiosPromise<APIResponse<ColumnItem[]>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.Columns,
@@ -37,7 +43,7 @@ export const fetchColumnItems = (): AxiosPromise<ColumnItem[]> => {
   });
 };
 
-export const fetchFriendLink = (): AxiosPromise<FriendLink[]> => {
+export const fetchFriendLink = (): AxiosPromise<APIResponse<FriendLink[]>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.Friends,
@@ -45,7 +51,7 @@ export const fetchFriendLink = (): AxiosPromise<FriendLink[]> => {
   });
 };
 
-export const fetchWebsiteInfo = (): AxiosPromise<WebsiteInfo> => {
+export const fetchWebsiteInfo = (): AxiosPromise<APIResponse<WebsiteInfo>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.WebsiteInfo,
@@ -53,7 +59,7 @@ export const fetchWebsiteInfo = (): AxiosPromise<WebsiteInfo> => {
   });
 };
 
-export const fetchCarouselNews = (): AxiosPromise<CarouselNews[]> => {
+export const fetchCarouselNews = (): AxiosPromise<APIResponse<CarouselNews[]>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.HomeCarousel,
@@ -61,7 +67,7 @@ export const fetchCarouselNews = (): AxiosPromise<CarouselNews[]> => {
   });
 };
 
-export const fetchHotNews = (): AxiosPromise<NewsItem[]> => {
+export const fetchHotNews = (): AxiosPromise<APIResponse<NewsItem[]>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.HotList,
@@ -69,7 +75,7 @@ export const fetchHotNews = (): AxiosPromise<NewsItem[]> => {
   });
 };
 
-export const fetchArticleNews = (id: string): AxiosPromise<ArticleNews> => {
+export const fetchArticleNews = (id: string): AxiosPromise<APIResponse<ArticleNews>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.Article,
@@ -78,7 +84,7 @@ export const fetchArticleNews = (id: string): AxiosPromise<ArticleNews> => {
   });
 };
 
-export const fetchVideoNews = (id: string): AxiosPromise<VideoNews> => {
+export const fetchVideoNews = (id: string): AxiosPromise<APIResponse<VideoNews>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.Video,
@@ -87,7 +93,7 @@ export const fetchVideoNews = (id: string): AxiosPromise<VideoNews> => {
   });
 };
 
-export const fetchPictureNews = (columnId?: string): AxiosPromise<PictureNews[]> => {
+export const fetchPictureNews = (columnId?: string): AxiosPromise<APIResponse<PictureNews[]>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.PictureNews,
@@ -98,7 +104,7 @@ export const fetchPictureNews = (columnId?: string): AxiosPromise<PictureNews[]>
   });
 };
 
-export const fetchHeadLineNews = (): AxiosPromise<HeadLineNews> => {
+export const fetchHeadLineNews = (): AxiosPromise<APIResponse<HeadLineNews>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.Headline,
@@ -106,10 +112,10 @@ export const fetchHeadLineNews = (): AxiosPromise<HeadLineNews> => {
   });
 };
 
-export const fetchArticleContent= (data_url:string) :AxiosPromise<string> =>{
+export const fetchArticleContent = (data_url: string): AxiosPromise<APIResponse<string>> => {
   return axios({
     method: 'GET',
     url: data_url,
     responseType: 'json',
   });
-}
+};

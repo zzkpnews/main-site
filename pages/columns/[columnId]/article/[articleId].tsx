@@ -81,13 +81,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const articleId = context.query.articleId as string;
   const columnId = context.query.columnId as string;
 
-  const fetchedArticleNewsData = (await fetchArticleNews(articleId)).data;
-  const fetchedArticleContentData = (await fetchArticleContent(fetchedArticleNewsData.data_url!)).data;
-  const fetchedColumnsData = (await fetchColumnItems()).data;
-  const fetchedFriendsListData = (await fetchFriendLink()).data;
-  const fetchedHotNewsData = (await fetchHotNews()).data;
-  const fetchedPictureBlockData = (await fetchPictureNews(columnId)).data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
+  const fetchedArticleNewsData = (await fetchArticleNews(articleId)).data.data;
+  const fetchedArticleContentData = (await fetchArticleContent(fetchedArticleNewsData.data_url!)).data.data;
+  const fetchedColumnsData = (await fetchColumnItems()).data.data;
+  const fetchedFriendsListData = (await fetchFriendLink()).data.data;
+  const fetchedHotNewsData = (await fetchHotNews()).data.data;
+  const fetchedPictureBlockData = (await fetchPictureNews(columnId)).data.data;
+  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
 
   const returnProps: ArticlePageProps = {
     ArticleContentData: fetchedArticleContentData,

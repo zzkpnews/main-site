@@ -82,12 +82,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.videoId as string;
   const videoId = context.query.videoId as string;
 
-  const fetchedColumnsData = (await fetchColumnItems()).data;
-  const fetchedFriendListData = (await fetchFriendLink()).data;
-  const fetchedHotNewsData = (await fetchHotNews()).data;
-  const fetchedVideoNewsData = (await fetchVideoNews(columnId)).data;
-  const fetchedPictureBlockNewsData = (await fetchPictureNews(videoId)).data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data;
+  const fetchedColumnsData = (await fetchColumnItems()).data.data;
+  const fetchedFriendListData = (await fetchFriendLink()).data.data;
+  const fetchedHotNewsData = (await fetchHotNews()).data.data;
+  const fetchedVideoNewsData = (await fetchVideoNews(columnId)).data.data;
+  const fetchedPictureBlockNewsData = (await fetchPictureNews(videoId)).data.data;
+  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
 
   const returnProps: VideoPageProps = {
     ColumnsData: fetchedColumnsData,
