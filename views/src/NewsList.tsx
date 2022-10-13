@@ -13,7 +13,6 @@ const NewsList = (props: {
     <div className="tw-bg-white">
       <List
         bordered={props.bordered}
-        className=""
         size={'default'}
         dataSource={props.list}
         render={(item, index) => (
@@ -22,7 +21,11 @@ const NewsList = (props: {
               <div className="tw-flex tw-flex-col md:tw-flex-row">
                 {item.bgimg ? (
                   <div className="md:tw-w-1/3 tw-my-auto">
-                    <img className=" tw-h-44  tw-object-cover tw-flex  tw-w-full tw-rounded-lg" src={item.bgimg} />
+                    <img
+                      className=" tw-h-44  tw-object-cover tw-flex  tw-w-full tw-rounded-lg"
+                      src={item.bgimg}
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
                 ) : null}
                 <div
@@ -76,4 +79,3 @@ NewsList.defaultProps = {
 };
 
 export { NewsList };
-

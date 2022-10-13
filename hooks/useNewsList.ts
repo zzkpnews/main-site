@@ -15,16 +15,11 @@ const useNewsList = (
 
   const fetchData = async () => {
     set_loading(true);
-    fetchNewsItems({
-      from: from,
-      id: id,
-      type: type,
-      offset: data[data.length - 1].timestamp,
-    })
+    fetchNewsItems(from, id, type, data[data.length - 1].timestamp)
       .then((fetched_data) => {
-        if (fetched_data.data.length !== 0) {
+        if (fetched_data.data.data.length !== 0) {
           set_loading(false);
-          set_data([...data, ...fetched_data.data]);
+          set_data([...data, ...fetched_data.data.data]);
         } else {
           set_loadable(false);
           Message.error({ content: '加载已经到底了！', closable: true });

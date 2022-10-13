@@ -20,18 +20,28 @@ export interface APIResponse<DataModel> {
 }
 
 export interface NewsListApiParam {
-  from?: 'home' | 'column' | 'topic';
+  from?: 'creator' | 'column' | 'topic';
   id?: string;
   type?: 'article' | 'video';
   offset?: number;
 }
 
-export const fetchNewsItems = (params: NewsListApiParam): AxiosPromise<APIResponse<NewsItem[]>> => {
+export const fetchNewsItems = (
+  from?: 'creator' | 'column' | 'topic',
+  id?: string,
+  type?: 'article' | 'video',
+  offset?: number
+): AxiosPromise<APIResponse<NewsItem[]>> => {
   return axios({
     method: 'GET',
     url: ApiPaths.NewsItems,
     responseType: 'json',
-    params: params,
+    params: {
+      from: from,
+      id: id,
+      type: type,
+      offset: offset,
+    },
   });
 };
 

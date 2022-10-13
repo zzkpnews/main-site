@@ -2,7 +2,6 @@ import { Button } from '@arco-design/web-react';
 import { useState } from 'react';
 import { HeadBannerNews } from '../../models';
 
-
 const HeadBanner = (props: HeadBannerNews): JSX.Element | null => {
   const [isClosed, setClosed] = useState<boolean>(false);
   return props.open && props.img_url && !isClosed ? (

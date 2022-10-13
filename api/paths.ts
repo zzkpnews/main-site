@@ -6,19 +6,19 @@ const Server: {
 } = {
   protocol: 'http',
   hostname: '127.0.0.1',
-  port: 8800,
+  port: 4000,
 };
 
-const url_prefix = `${Server.protocol}://${Server.hostname}:${Server.port}`;
+const url_prefix = `${Server.protocol}://${Server.hostname}:`;
 
-const QueryApiUrl = (api_path: string) => path.join(url_prefix, api_path);
+const QueryApiUrl = (api_path: string) => `${Server.protocol}://${Server.hostname}:4000/${api_path}`;
 
 // 在这里填写API地址
 export const ApiPaths = {
   NewsItems: QueryApiUrl('news-items'),
   Columns: QueryApiUrl('columns'),
   Topics: QueryApiUrl('topics'),
-  Friends: QueryApiUrl('news-list'),
+  Friends: QueryApiUrl('friends'),
   HomeCarousel: QueryApiUrl('home-carousel'),
   HotList: QueryApiUrl('hot-list'),
   Article: QueryApiUrl('article'),

@@ -6,7 +6,7 @@ const Carousel = (props: { data: CarouselNews[] }): JSX.Element => {
   const [carousel_index, set_carousel_index] = useState<number>(0);
 
   return (
-    <div className=" lg:tw-grid tw-grid-cols-3 tw-justify-around tw-rounded-lg">
+    <div className="lg:tw-grid tw-grid-cols-3 tw-justify-around tw-rounded-lg">
       <ArcoCarousel
         className="tw-rounded-lg lg:tw-col-span-2 tw-h-96"
         showArrow="hover"
@@ -18,7 +18,6 @@ const Carousel = (props: { data: CarouselNews[] }): JSX.Element => {
         autoPlay={{ interval: 5000, hoverToPause: true }}
       >
         {props.data.map((item, index) => (
-          // eslint-disable-next-line react/jsx-key
           <img
             src={item.img_url}
             key={`carousel-img-${index}`}

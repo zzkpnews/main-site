@@ -2,7 +2,7 @@ import { HeadLineNews } from '../../models/index';
 
 const Headline = (props: { data: HeadLineNews }): JSX.Element => {
   return (
-    <div className=" tw-mt-5 tw-mb-5 md:tw-flex tw-justify-center">
+    <div className="tw-mt-5 tw-mb-5 md:tw-flex tw-justify-center">
       <img src="./headline-icon.png" className="tw-mx-auto md:tw-mx-5 tw-h-24 tw-w-24 tw-my-auto" alt="headline" />
       <div className="tw-flex tw-flex-col tw-justify-center">
         <span className="tw-text-center tw-block tw-text-lg tw-font-bold tw-text-gray-600">{props.data.lead_title}</span>

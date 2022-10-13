@@ -111,7 +111,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
           </div>
         </div>
       </main>
-      <Footer friendsList={props.FriendsData} websiteInfo={props.WebsiteInfoData} />
+      <Footer Friends={props.FriendsData} WebsiteInfo={props.WebsiteInfoData} />
     </div>
   );
 };
