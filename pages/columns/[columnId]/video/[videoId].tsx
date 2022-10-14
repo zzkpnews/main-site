@@ -89,7 +89,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedVideoNewsData = (await fetchVideoNews(columnId)).data.data;
   const fetchedPictureBlockNewsData = (await fetchPictureNews(videoId)).data.data;
   const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
-  console.log(fetchedVideoNewsData);
+
   const returnProps: VideoPageProps = {
     ColumnsData: fetchedColumnsData,
     FriendsData: fetchedFriendListData,

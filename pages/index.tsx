@@ -1,40 +1,25 @@
 import classNames from 'classnames';
+import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { useNavigation, useNewsList } from '../hooks';
 import {
-  Carousel,
-  Footer,
+  fetchCarouselNews, fetchColumnItems, fetchFriendLink,
+  fetchHeadLineNews, fetchHotNews, fetchNewsItems,
+  fetchPictureNews, fetchTopicItems, fetchWebsiteInfo
+} from '../api/ajax';
+import { useNewsList } from '../hooks';
+import {
+  CarouselNews, ColumnItem,
+  FriendLink, HeadLineNews, NewsItem, PictureNews, TopicItem, WebsiteInfo
+} from '../models';
+import {
+  Carousel, ColumnsNavigator, Footer,
   HeadBanner,
   Headline,
-  LogoBadge,
-  ColumnsNavigator,
-  NewsList,
+  LogoBadge, NewsList,
   PictureBlock,
   SideList,
-  TopicList,
+  TopicList
 } from '../views';
-import {
-  fetchFriendLink,
-  fetchHeadLineNews,
-  fetchCarouselNews,
-  fetchHotNews,
-  fetchColumnItems,
-  fetchNewsItems,
-  fetchPictureNews,
-  fetchWebsiteInfo,
-  fetchTopicItems,
-} from '../api/ajax';
-import type { GetServerSideProps } from 'next';
-import {
-  ColumnItem,
-  FriendLink,
-  NewsItem,
-  CarouselNews,
-  WebsiteInfo,
-  PictureNews,
-  HeadLineNews,
-  TopicItem,
-} from '../models';
 
 interface HomePageProps {
   CarouselNewsData: CarouselNews[];

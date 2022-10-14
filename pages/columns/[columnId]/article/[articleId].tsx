@@ -43,7 +43,7 @@ const Article = (props: ArticlePageProps) => {
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">
           <div className="tw-basis-2/3">
-            <div className="tw-sticky tw-top-20 tw-py-3 tw-bg-white tw-rounded-xl">
+            <div className="tw-sticky tw-top-20 tw-py-3 tw-bg-white tw-rounded-xl tw-border">
               <div className="tw-border-b  tw-py-4 tw-mx-5">
                 <span className="tw-block tw-font-bold tw-text-lg tw-text-left tw-mx-auto tw-text-gray-500">
                   {props.ArticleData.lead_title}
@@ -59,12 +59,12 @@ const Article = (props: ArticlePageProps) => {
                   </div>
                 ) : null}
               </div>
-              <div className="tw-px-5 tw-my-4 " dangerouslySetInnerHTML={{ __html: props.ArticleContentData }} />
+              <div className="tw-px-5 tw-my-4" dangerouslySetInnerHTML={{ __html: props.ArticleContentData }} />
             </div>
           </div>
           <div className=" tw-basis-1/3">
-            <PictureBlock data={props.PictureNewsData[0]} />
             <PictureBlock data={props.PictureNewsData[1]} />
+            <PictureBlock data={props.PictureNewsData[2]} />
             <SideList title="推荐阅读" data={props.HotListData} />
             <div className="tw-sticky tw-top-20">
               <SideList title="更多文章" data={props.HotListData} />
@@ -98,7 +98,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     PictureNewsData: fetchedPictureBlockData,
     WebsiteInfoData: fetchedWebsiteInfoData,
   };
-  console.log(fetchedArticleNewsData);
+
   return {
     props: returnProps,
   };
