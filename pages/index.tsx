@@ -1,7 +1,8 @@
-import classNames from 'classnames';
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import {
+  APIReply,
+  fetchBannerNews,
   fetchCarouselNews,
   fetchColumnItems,
   fetchFriendLink,
@@ -10,18 +11,19 @@ import {
   fetchNewsItems,
   fetchPictureNews,
   fetchTopicItems,
-  fetchWebsiteInfo,
+  fetchWebsiteInfo
 } from '../api/ajax';
 import { useNewsList } from '../hooks';
 import {
   CarouselNews,
   ColumnItem,
   FriendLink,
-  HeadLineNews,
+  HeadBannerNews,
+  HeadlineNews,
   NewsItem,
   PictureNews,
   TopicItem,
-  WebsiteInfo,
+  WebsiteInfo
 } from '../models';
 import {
   Carousel,
@@ -33,19 +35,20 @@ import {
   NewsList,
   PictureBlock,
   SideList,
-  TopicList,
+  TopicList
 } from '../views';
 
 interface HomePageProps {
-  CarouselNewsData: CarouselNews[];
-  ColumnsData: ColumnItem[];
-  TopicsData: TopicItem[];
-  FriendsData: FriendLink[];
-  HeadlineNewsData: HeadLineNews;
-  NewsItemsData: NewsItem[];
-  HotListData: NewsItem[];
-  PictureNewsData: PictureNews[];
-  WebsiteInfoData: WebsiteInfo;
+  CarouselNewsData: APIReply<CarouselNews[]>;
+  ColumnsData: APIReply<ColumnItem[]>;
+  TopicsData: APIReply<TopicItem[]>;
+  FriendsData: APIReply<FriendLink[]>;
+  HeadlineNewsData: APIReply<HeadlineNews>;
+  NewsItemsData: APIReply<NewsItem[]>;
+  HotListData: APIReply<NewsItem[]>;
+  PictureNewsData: APIReply<PictureNews>;
+  WebsiteInfoData: APIReply<WebsiteInfo>;
+  BannerNews: APIReply<HeadBannerNews>;
 }
 
 const Home = (props: HomePageProps) => {
@@ -57,17 +60,13 @@ const Home = (props: HomePageProps) => {
   } = useNewsList(props.NewsItemsData);
 
   return (
-    <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
+    <div className={'tw-bg-gray-50 tw-min-h-screen'}>
       <Head>
-        <title>{props.WebsiteInfoData.title}</title>
+        <title>{props.WebsiteInfoData.data?.title ?? '中原科技网'}</title>
         <link rel="shortcut icon" href="favicons.ico" type="image/x-icon" />
-        <meta name="description" content="中原科技网" />
+        <meta name="description" content={props.WebsiteInfoData.data?.describe} />
       </Head>
-      <HeadBanner
-        img_url="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000"
-        href="http://www.baidu.com"
-        open={false}
-      />
+      <HeadBanner data={props.BannerNews} />
       <div className="tw-flex tw-justify-center tw-py-3">
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
@@ -75,7 +74,7 @@ const Home = (props: HomePageProps) => {
         <ColumnsNavigator Active={0} Columns={props.ColumnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 tw-py-10 md:tw-px-20">
-        <PictureBlock data={props.PictureNewsData[0]} />
+        <PictureBlock data={props.PictureNewsData} />
         <Headline data={props.HeadlineNewsData} />
         <Carousel data={props.CarouselNewsData} />
         <div className=" lg:tw-flex">
@@ -91,8 +90,8 @@ const Home = (props: HomePageProps) => {
             </div>
           </div>
           <div className="lg:tw-basis-1/3 tw-my-10">
-            <PictureBlock data={props.PictureNewsData[1]} />
-            <PictureBlock data={props.PictureNewsData[2]} />
+            <PictureBlock data={props.PictureNewsData} />
+            <PictureBlock data={props.PictureNewsData} />
             <TopicList Topics={props.TopicsData} />
             <div className=" tw-sticky tw-top-20">
               <SideList title="推荐阅读" data={props.HotListData} />
@@ -106,15 +105,16 @@ const Home = (props: HomePageProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const response_column_items = (await fetchColumnItems()).data.data;
-  const response_friend_links = (await fetchFriendLink()).data.data;
-  const response_headline_news = (await fetchHeadLineNews()).data.data;
-  const response_home_carousel_news = (await fetchCarouselNews()).data.data;
-  const response_news_items = (await fetchNewsItems()).data.data;
-  const response_hot_news_items = (await fetchHotNews()).data.data;
-  const response_picture_news_items = (await fetchPictureNews()).data.data;
-  const response_website_info = (await fetchWebsiteInfo()).data.data;
-  const response_topic_items = (await fetchTopicItems()).data.data;
+  const response_friend_links = await fetchFriendLink();
+  const response_headline_news = await fetchHeadLineNews();
+  const response_home_carousel_news = await fetchCarouselNews();
+  const response_news_items = await fetchNewsItems();
+  const response_hot_news_items = await fetchHotNews();
+  const response_picture_news_items = await fetchPictureNews();
+  const response_website_info = await fetchWebsiteInfo();
+  const response_topic_items = await fetchTopicItems();
+  const response_column_items = await fetchColumnItems();
+  const response_banner_news = await fetchBannerNews();
 
   const returnProps: HomePageProps = {
     CarouselNewsData: response_home_carousel_news,
@@ -126,6 +126,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     PictureNewsData: response_picture_news_items,
     WebsiteInfoData: response_website_info,
     TopicsData: response_topic_items,
+    BannerNews: response_banner_news,
   };
 
   return {

@@ -2,36 +2,37 @@ import classNames from 'classnames';
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import {
+  APIReply,
   fetchArticleContent,
   fetchArticleNews,
   fetchColumnItems,
   fetchFriendLink,
   fetchHotNews,
   fetchPictureNews,
-  fetchWebsiteInfo
+  fetchWebsiteInfo,
 } from '../../../../api/ajax';
 import { useNavigation } from '../../../../hooks';
 import { ArticleNews, ColumnItem, FriendLink, NewsItem, PictureNews, WebsiteInfo } from '../../../../models';
 import { ColumnsNavigator, Footer, LogoBadge, PictureBlock, SideList } from '../../../../views';
 
 interface ArticlePageProps {
-  ColumnsData: ColumnItem[];
-  FriendsData: FriendLink[];
-  ArticleContentData: string;
-  ArticleData: ArticleNews;
-  HotListData: NewsItem[];
-  WebsiteInfoData: WebsiteInfo;
-  PictureNewsData: PictureNews[];
+  ColumnsData: APIReply<ColumnItem[]>;
+  FriendsData: APIReply<FriendLink[]>;
+  ArticleContentData: APIReply<string>;
+  ArticleData: APIReply<ArticleNews>;
+  HotListData: APIReply<NewsItem[]>;
+  WebsiteInfoData: APIReply<WebsiteInfo>;
+  PictureNewsData: APIReply<PictureNews>;
 }
 
 const Article = (props: ArticlePageProps) => {
-  const { currentColumnOrder } = useNavigation(props.ColumnsData);
+  const { currentColumnOrder } = useNavigation(props.ColumnsData.data!);
   return (
     <div className={classNames('tw-bg-gray-50', 'tw-min-h-screen')}>
       <Head>
-        <title>{`${props.ArticleData.title} - 中原科技网`}</title>
+        <title>{`${props.ArticleData.data?.title} - 中原科技网`}</title>
         <link rel="shortcut icon" href="../../../favicons.ico" type="image/x-icon" />
-        <meta name="description" content={props.ArticleData.citation!} />
+        <meta name="description" content={props.ArticleData.data?.citation!} />
         <meta name="keywords" content="" />
       </Head>
       <div className="tw-flex tw-justify-center tw-py-3">
@@ -46,25 +47,25 @@ const Article = (props: ArticlePageProps) => {
             <div className="tw-sticky tw-top-20 tw-py-3 tw-bg-white tw-rounded-xl tw-border">
               <div className="tw-border-b  tw-py-4 tw-mx-5">
                 <span className="tw-block tw-font-bold tw-text-lg tw-text-left tw-mx-auto tw-text-gray-500">
-                  {props.ArticleData.lead_title}
+                  {props.ArticleData.data?.lead_title}
                 </span>
-                <h2 className="tw-font-bold tw-text-3xl tw-text-left tw-my-1">{props.ArticleData.title}</h2>
+                <h2 className="tw-font-bold tw-text-3xl tw-text-left tw-my-1">{props.ArticleData.data?.title}</h2>
                 <span className="tw-block tw-text-left tw-mx-auto tw-font-bold tw-text-xl">
-                  {props.ArticleData.subtitle}
+                  {props.ArticleData.data?.subtitle}
                 </span>
-                <p className="tw-mx-10 tw-my-4">{props.ArticleData.citation}</p>
-                {props.ArticleData.bgimg ? (
+                <p className="tw-mx-10 tw-my-4">{props.ArticleData.data?.citation}</p>
+                {props.ArticleData.data?.bgimg ? (
                   <div className=" tw-px-10 tw-aspect-h-9 tw-aspect-w-16 tw-object-cover">
-                    <img className="tw-rounded-xl tw-object-cover" src={props.ArticleData.bgimg} />
+                    <img className="tw-rounded-xl tw-object-cover" src={props.ArticleData.data.bgimg} />
                   </div>
                 ) : null}
               </div>
-              <div className="tw-px-5 tw-my-4" dangerouslySetInnerHTML={{ __html: props.ArticleContentData }} />
+              <div className="tw-px-5 tw-my-4" dangerouslySetInnerHTML={{ __html: props.ArticleContentData.data! }} />
             </div>
           </div>
           <div className=" tw-basis-1/3">
-            <PictureBlock data={props.PictureNewsData[1]} />
-            <PictureBlock data={props.PictureNewsData[2]} />
+            <PictureBlock data={props.PictureNewsData} />
+            <PictureBlock data={props.PictureNewsData} />
             <SideList title="推荐阅读" data={props.HotListData} />
             <div className="tw-sticky tw-top-20">
               <SideList title="更多文章" data={props.HotListData} />
@@ -79,15 +80,14 @@ const Article = (props: ArticlePageProps) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const articleId = context.query.articleId as string;
-  const columnId = context.query.columnId as string;
 
-  const response_article_news_item = (await fetchArticleNews(articleId)).data.data;
-  const response_article_content = (await fetchArticleContent(articleId!)).data;
-  const response_column_items = (await fetchColumnItems()).data.data;
-  const response_friend_links = (await fetchFriendLink()).data.data;
-  const response_hot_news_items = (await fetchHotNews()).data.data;
-  const response_picture_news_items = (await fetchPictureNews(columnId)).data.data;
-  const response_website_info = (await fetchWebsiteInfo()).data.data;
+  const response_article_news_item = await fetchArticleNews(articleId);
+  const response_article_content = await fetchArticleContent(articleId!);
+  const response_column_items = await fetchColumnItems();
+  const response_friend_links = await fetchFriendLink();
+  const response_hot_news_items = await fetchHotNews();
+  const response_picture_news_items = await fetchPictureNews();
+  const response_website_info = await fetchWebsiteInfo();
 
   const returnProps: ArticlePageProps = {
     ArticleContentData: response_article_content,

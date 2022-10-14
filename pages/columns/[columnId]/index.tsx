@@ -2,6 +2,7 @@ import { Tabs } from '@arco-design/web-react';
 import classNames from 'classnames';
 import Head from 'next/head';
 import {
+  APIReply,
   fetchColumnItems,
   fetchFriendLink,
   fetchHotNews,
@@ -16,18 +17,18 @@ import { Footer, LogoBadge, ColumnsNavigator, NewsList, PictureBlock, SideList }
 import type { GetServerSideProps } from 'next';
 
 interface ColumnIndexPageProps {
-  ArticleNewsItemsData: NewsItem[];
-  ColumnsData: ColumnItem[];
-  DefaultNewsItemsData: NewsItem[];
-  FriendsData: FriendLink[];
-  HotListData: NewsItem[];
-  PictureNewsData: PictureNews[];
-  VideoNewsListData: NewsItem[];
-  WebsiteInfoData: WebsiteInfo;
+  ArticleNewsItemsData: APIReply<NewsItem[]>;
+  ColumnsData: APIReply<ColumnItem[]>;
+  DefaultNewsItemsData: APIReply<NewsItem[]>;
+  FriendsData: APIReply<FriendLink[]>;
+  HotListData: APIReply<NewsItem[]>;
+  PictureNewsData: APIReply<PictureNews>;
+  VideoNewsListData: APIReply<NewsItem[]>;
+  WebsiteInfoData: APIReply<WebsiteInfo>;
 }
 
 const ColumnIndex = (props: ColumnIndexPageProps) => {
-  const { currentColumnId, currentColumnOrder, currentColumnTitle } = useNavigation(props.ColumnsData);
+  const { currentColumnId, currentColumnOrder, currentColumnTitle } = useNavigation(props.ColumnsData.data!);
 
   const {
     data: default_list_data,
@@ -67,7 +68,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
         <div className="lg:tw-flex tw-justify-center tw-my-10">
           <div className=" tw-basis-2/3">
             <div className=" tw-sticky tw-top-20">
-              <PictureBlock data={props.PictureNewsData[0]} />
+              <PictureBlock data={props.PictureNewsData} />
               <div className="tw-border tw-rounded-lg tw-bg-white tw-p-3">
                 <h2 className="tw-text-3xl tw-mx-5 tw-my-3 tw-font-bold">{`专栏 - ${currentColumnTitle}`}</h2>
                 <Tabs key="card" size="large">
@@ -103,8 +104,8 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
             </div>
           </div>
           <div className=" tw-basis-1/3">
-            <PictureBlock data={props.PictureNewsData[1]} />
-            <PictureBlock data={props.PictureNewsData[2]} />
+            <PictureBlock data={props.PictureNewsData} />
+            <PictureBlock data={props.PictureNewsData} />
             <div className=" tw-sticky tw-top-20">
               <SideList title="推荐阅读" data={props.HotListData} />
             </div>
@@ -118,14 +119,14 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.columnId as string;
 
-  const response_news_items_in_article = (await fetchNewsItems('column', columnId, 'article')).data.data;
-  const response_column_items = (await fetchColumnItems()).data.data;
-  const response_news_items_in_default = (await fetchNewsItems('column', columnId)).data.data;
-  const response_friend_links = (await fetchFriendLink()).data.data;
-  const response_hot_news_items = (await fetchHotNews()).data.data;
-  const response_picture_news_items = (await fetchPictureNews(columnId)).data.data;
-  const response_news_items_in_video = (await fetchNewsItems('column', columnId, 'video')).data.data;
-  const response_website_info = (await fetchWebsiteInfo()).data.data;
+  const response_news_items_in_article = await fetchNewsItems('column', columnId, 'article');
+  const response_column_items = await fetchColumnItems();
+  const response_news_items_in_default = await fetchNewsItems('column', columnId);
+  const response_friend_links = await fetchFriendLink();
+  const response_hot_news_items = await fetchHotNews();
+  const response_picture_news_items = await fetchPictureNews();
+  const response_news_items_in_video = await fetchNewsItems('column', columnId, 'video');
+  const response_website_info = await fetchWebsiteInfo();
 
   const returnProps: ColumnIndexPageProps = {
     ArticleNewsItemsData: response_news_items_in_article,

@@ -27,4 +27,5 @@ export const ApiPaths = {
   HeadlineNews: QueryApiUrl('headline'),
   ArticleContent: QueryApiUrl('article-content'),
   CreatorItem:QueryApiUrl('get-creator'),
+  BannerNews:QueryApiUrl('banner-news'),
 };

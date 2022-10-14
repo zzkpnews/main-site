@@ -31,6 +31,10 @@ type WebsiteInfo = {
    * 网站的官方微信地址
    */
   wechat?: string;
+  /**
+   * 网站的简介
+   */
+  describe?:string;
 };
 
 export type { WebsiteInfo };

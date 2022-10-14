@@ -1,15 +1,15 @@
 import { Message } from '@arco-design/web-react';
 import { useState } from 'react';
-import { fetchNewsItems } from '../api/ajax';
+import { APIReply, fetchNewsItems } from '../api/ajax';
 import { NewsItem } from '../models';
 
 const useNewsList = (
-  initialData: NewsItem[] = [],
+  initialData: APIReply<NewsItem[]>,
   from?: 'topic' | 'column' | 'topic',
   id?: string,
   type?: 'article' | 'video'
 ) => {
-  const [data, set_data] = useState<NewsItem[]>(initialData);
+  const [data, set_data] = useState<NewsItem[]>([]);
   const [loadable, set_loadable] = useState<boolean>(true);
   const [loading, set_loading] = useState<boolean>(false);
 

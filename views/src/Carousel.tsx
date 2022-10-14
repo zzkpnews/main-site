@@ -1,9 +1,10 @@
 import { Carousel as ArcoCarousel } from '@arco-design/web-react';
 import React, { useState } from 'react';
+import { APIReply } from '../../api/ajax';
 import { CarouselNews } from '../../models';
 
 const Carousel = React.memo(
-  (props: { data: CarouselNews[] }): JSX.Element => {
+  (props: { data: APIReply<CarouselNews[]> }): JSX.Element => {
     const [carousel_index, set_carousel_index] = useState<number>(0);
 
     return (
@@ -18,7 +19,7 @@ const Carousel = React.memo(
           }}
           autoPlay={{ interval: 5000, hoverToPause: true }}
         >
-          {props.data.map((item, index) => (
+          {props.data.data?.map((item, index) => (
             <img
               src={item.img_url}
               key={`carousel-img-${index}`}
@@ -32,15 +33,15 @@ const Carousel = React.memo(
         <div className="tw-h-96 lg:tw-col-span-1 tw-bg-gray-100 lg:tw-mx-2 tw-rounded-lg tw-flex tw-flex-col tw-justify-center">
           <div className="tw-overflow-y-scroll tw-my-10 tw-px-10">
             <span className="tw-text-center tw-block tw-text-lg tw-font-bold tw-text-gray-600">
-              {props.data[carousel_index].lead_title}
+              {props.data.data && props.data.data[carousel_index].lead_title}
             </span>
             <h2 className="tw-text-center tw-block tw-text-2xl tw-font-bold tw-my-2">
-              {props.data[carousel_index].title}
+              {props.data.data && props.data.data[carousel_index].title}
             </h2>
             <span className="tw-text-center tw-block tw-text-lg tw-font-bold tw-text-gray-600">
-              {props.data[carousel_index].subtitle}
+              {props.data.data && props.data.data[carousel_index].subtitle}
             </span>
-            <span className="tw-mx-10 tw-indent-8">{props.data[carousel_index].citation}</span>
+            <span className="tw-mx-10 tw-indent-8">{props.data.data && props.data.data[carousel_index].citation}</span>
           </div>
         </div>
       </div>

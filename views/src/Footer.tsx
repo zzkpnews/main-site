@@ -1,7 +1,8 @@
 import { FaGithub, FaWeixin } from 'react-icons/fa';
+import { APIReply } from '../../api/ajax';
 import { FriendLink, WebsiteInfo } from '../../models';
 
-const Footer = (props: { Friends: FriendLink[]; WebsiteInfo: WebsiteInfo }): JSX.Element => {
+const Footer = (props: { Friends: APIReply<FriendLink[]>; WebsiteInfo: APIReply<WebsiteInfo> }): JSX.Element => {
   return (
     <footer className=" tw-bg-gray-800 tw-text-white tw-py-10 tw-px-10 md:tw-px-20 tw-select-none">
       <div className=" md:tw-flex">
@@ -48,7 +49,7 @@ const Footer = (props: { Friends: FriendLink[]; WebsiteInfo: WebsiteInfo }): JSX
             </div>
             <div className="tw-flex tw-justify-start tw-flex-wrap tw-my-3">
               <span className="tw-text-lg tw-font-bold tw-mr-5">{'合作伙伴'}</span>
-              {props.Friends.map((item, index) => {
+              {props.Friends.data?.map((item, index) => {
                 return (
                   <a
                     className="tw-my-1 hover:tw-text-gray-300 tw-cursor-pointer tw-mr-3"
@@ -68,10 +69,10 @@ const Footer = (props: { Friends: FriendLink[]; WebsiteInfo: WebsiteInfo }): JSX
       </div>
       <div className="tw-my-3 tw-flex tw-flex-col md:tw-flex-row tw-justify-center">
         <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{`版权所有 © 2015-${new Date().getFullYear()} ${
-          props.WebsiteInfo.institution
+          props.WebsiteInfo.data?.institution
         }`}</span>
-        <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{props.WebsiteInfo.icp}</span>
-        <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{`Powered By ${props.WebsiteInfo.technology_support}`}</span>
+        <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{props.WebsiteInfo.data?.icp}</span>
+        <span className="tw-mr-5 tw-my-1 tw-text-gray-300">{`Powered By ${props.WebsiteInfo.data?.technology_support}`}</span>
         <a className="tw-mr-5 tw-my-1 tw-text-gray-300 hover:tw-text-white tw-cursor-pointer">{'免责声明'}</a>
       </div>
     </footer>

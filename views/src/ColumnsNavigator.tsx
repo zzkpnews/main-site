@@ -2,10 +2,11 @@ import classNames from 'classnames';
 import { BroadCastBar } from './BroadCastBar';
 import { Dropdown, Menu } from '@arco-design/web-react';
 import { ColumnItem } from '../../models';
+import { APIReply } from '../../api/ajax';
 
-const ColumnsNavigator = (props: { Active: number; Columns: ColumnItem[] }): JSX.Element => {
-  const visible_columns: ColumnItem[] = props.Columns.slice(0, 12);
-  const combined_columns: ColumnItem[] = props.Columns.slice(12);
+const ColumnsNavigator = (props: { Active: number; Columns: APIReply<ColumnItem[]> }): JSX.Element | null => {
+  const visible_columns: ColumnItem[] | undefined = props.Columns.data?.slice(0, 12);
+  const combined_columns: ColumnItem[] | undefined = props.Columns.data?.slice(12);
   return (
     <nav className="tw-px-0 tw-py-1 tw-border-b-2 tw-border-t-2 tw-flex tw-flex-col tw-justify-center tw-align-middle ">
       <div className="tw-my-auto tw-flex tw-flex-wrap tw-justify-center">
@@ -27,7 +28,7 @@ const ColumnsNavigator = (props: { Active: number; Columns: ColumnItem[] }): JSX
         >
           {'首页'}
         </a>
-        {visible_columns.map((item, index) => (
+        {visible_columns?.map((item, index) => (
           <a
             className={classNames(
               'tw-rounded-md',
@@ -48,12 +49,12 @@ const ColumnsNavigator = (props: { Active: number; Columns: ColumnItem[] }): JSX
             {item.title}
           </a>
         ))}
-        {props.Columns.length >= 12 && (
+        {props.Columns.data && props.Columns.data.length >= 12 && (
           <Dropdown
             position="bl"
             droplist={
               <Menu>
-                {combined_columns.map((item, index) => (
+                {combined_columns?.map((item, index) => (
                   <Menu.Item className={'tw-font-bold active:tw-text-red-700'} key={`nav-col-${index}`}>
                     <a className="tw-px-2 tw-py-3" href={`/columns/${item.column_id}`} target={'_blank'}>
                       {item.title}
