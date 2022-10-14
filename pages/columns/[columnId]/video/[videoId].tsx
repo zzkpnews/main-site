@@ -39,7 +39,7 @@ const Video = (props: VideoPageProps) => {
         <ColumnsNavigator Active={currentColumnOrder} Columns={props.ColumnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
-        <div className="tw-flex tw-justify-center tw-my-10">
+        <div className="md:tw-flex tw-justify-center tw-my-10">
           <div className=" tw-basis-2/3">
             <div className=" tw-sticky tw-top-20 tw-border tw-bg-white tw-rounded-xl">
               <div className="tw-py-4 tw-mx-10">
