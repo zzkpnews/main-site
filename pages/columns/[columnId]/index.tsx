@@ -118,24 +118,24 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.columnId as string;
 
-  const fetchedArticleListData = (await fetchNewsItems('column', columnId, 'article')).data.data;
-  const fetchedColumnsData = (await fetchColumnItems()).data.data;
-  const fetchedDefaultListData = (await fetchNewsItems('column', columnId)).data.data;
-  const fetchedFriendsListData = (await fetchFriendLink()).data.data;
-  const fetchedHotListData = (await fetchHotNews()).data.data;
-  const fetchedPagePictureBlock = (await fetchPictureNews(columnId)).data.data;
-  const fetchedVideoListData = (await fetchNewsItems('column', columnId, 'video')).data.data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
+  const response_news_items_in_article = (await fetchNewsItems('column', columnId, 'article')).data.data;
+  const response_column_items = (await fetchColumnItems()).data.data;
+  const response_news_items_in_default = (await fetchNewsItems('column', columnId)).data.data;
+  const response_friend_links = (await fetchFriendLink()).data.data;
+  const response_hot_news_items = (await fetchHotNews()).data.data;
+  const response_picture_news_items = (await fetchPictureNews(columnId)).data.data;
+  const response_news_items_in_video = (await fetchNewsItems('column', columnId, 'video')).data.data;
+  const response_website_info = (await fetchWebsiteInfo()).data.data;
 
   const returnProps: ColumnIndexPageProps = {
-    ArticleNewsItemsData: fetchedArticleListData,
-    ColumnsData: fetchedColumnsData,
-    DefaultNewsItemsData: fetchedDefaultListData,
-    FriendsData: fetchedFriendsListData,
-    HotListData: fetchedHotListData,
-    PictureNewsData: fetchedPagePictureBlock,
-    VideoNewsListData: fetchedVideoListData,
-    WebsiteInfoData: fetchedWebsiteInfoData,
+    ArticleNewsItemsData: response_news_items_in_article,
+    ColumnsData: response_column_items,
+    DefaultNewsItemsData: response_news_items_in_default,
+    FriendsData: response_friend_links,
+    HotListData: response_hot_news_items,
+    PictureNewsData: response_picture_news_items,
+    VideoNewsListData: response_news_items_in_video,
+    WebsiteInfoData: response_website_info,
   };
 
   return {

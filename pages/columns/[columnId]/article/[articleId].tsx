@@ -8,11 +8,11 @@ import {
   fetchFriendLink,
   fetchHotNews,
   fetchPictureNews,
-  fetchWebsiteInfo,
+  fetchWebsiteInfo
 } from '../../../../api/ajax';
 import { useNavigation } from '../../../../hooks';
 import { ArticleNews, ColumnItem, FriendLink, NewsItem, PictureNews, WebsiteInfo } from '../../../../models';
-import { Footer, LogoBadge, ColumnsNavigator, PictureBlock, SideList } from '../../../../views';
+import { ColumnsNavigator, Footer, LogoBadge, PictureBlock, SideList } from '../../../../views';
 
 interface ArticlePageProps {
   ColumnsData: ColumnItem[];
@@ -81,22 +81,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const articleId = context.query.articleId as string;
   const columnId = context.query.columnId as string;
 
-  const fetchedArticleNewsData = (await fetchArticleNews(articleId)).data.data;
-  const fetchedArticleContentData = (await fetchArticleContent(articleId!)).data;
-  const fetchedColumnsData = (await fetchColumnItems()).data.data;
-  const fetchedFriendsListData = (await fetchFriendLink()).data.data;
-  const fetchedHotNewsData = (await fetchHotNews()).data.data;
-  const fetchedPictureBlockData = (await fetchPictureNews(columnId)).data.data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
+  const response_article_news_item = (await fetchArticleNews(articleId)).data.data;
+  const response_article_content = (await fetchArticleContent(articleId!)).data;
+  const response_column_items = (await fetchColumnItems()).data.data;
+  const response_friend_links = (await fetchFriendLink()).data.data;
+  const response_hot_news_items = (await fetchHotNews()).data.data;
+  const response_picture_news_items = (await fetchPictureNews(columnId)).data.data;
+  const response_website_info = (await fetchWebsiteInfo()).data.data;
 
   const returnProps: ArticlePageProps = {
-    ArticleContentData: fetchedArticleContentData,
-    ArticleData: fetchedArticleNewsData,
-    ColumnsData: fetchedColumnsData,
-    FriendsData: fetchedFriendsListData,
-    HotListData: fetchedHotNewsData,
-    PictureNewsData: fetchedPictureBlockData,
-    WebsiteInfoData: fetchedWebsiteInfoData,
+    ArticleContentData: response_article_content,
+    ArticleData: response_article_news_item,
+    ColumnsData: response_column_items,
+    FriendsData: response_friend_links,
+    HotListData: response_hot_news_items,
+    PictureNewsData: response_picture_news_items,
+    WebsiteInfoData: response_website_info,
   };
 
   return {

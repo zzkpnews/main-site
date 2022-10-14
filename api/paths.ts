@@ -1,4 +1,3 @@
-import path from 'path';
 const Server: {
   protocol: 'http' | 'https';
   hostname: string;
@@ -16,15 +15,16 @@ const QueryApiUrl = (api_path: string) => `${Server.protocol}://${Server.hostnam
 // 在这里填写API地址
 export const ApiPaths = {
   NewsItems: QueryApiUrl('news-items'),
-  Columns: QueryApiUrl('columns'),
-  Topics: QueryApiUrl('topics'),
-  Friends: QueryApiUrl('friends'),
-  HomeCarousel: QueryApiUrl('home-carousel'),
-  HotList: QueryApiUrl('hot-list'),
-  Article: QueryApiUrl('article'),
-  Video: QueryApiUrl('video'),
+  ColumnItems: QueryApiUrl('columns'),
+  TopicItems: QueryApiUrl('topics'),
+  FriendLinks: QueryApiUrl('friends'),
+  HomeCarouselNews: QueryApiUrl('home-carousel'),
+  HotNewsItems: QueryApiUrl('hot-list'),
+  ArticleNews: QueryApiUrl('article'),
+  VideoNews: QueryApiUrl('video'),
   WebsiteInfo: QueryApiUrl('website-info'),
   PictureNews: QueryApiUrl('picture-news'),
-  Headline: QueryApiUrl('headline'),
+  HeadlineNews: QueryApiUrl('headline'),
   ArticleContent: QueryApiUrl('article-content'),
+  CreatorItem:QueryApiUrl('get-creator'),
 };

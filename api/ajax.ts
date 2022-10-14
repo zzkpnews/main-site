@@ -49,7 +49,7 @@ export const fetchNewsItems = (
 export const fetchColumnItems = (): AxiosPromise<APIResponse<ColumnItem[]>> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.Columns,
+    url: ApiPaths.ColumnItems,
     responseType: 'json',
   });
 };
@@ -57,7 +57,7 @@ export const fetchColumnItems = (): AxiosPromise<APIResponse<ColumnItem[]>> => {
 export const fetchFriendLink = (): AxiosPromise<APIResponse<FriendLink[]>> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.Friends,
+    url: ApiPaths.FriendLinks,
     responseType: 'json',
   });
 };
@@ -73,7 +73,7 @@ export const fetchWebsiteInfo = (): AxiosPromise<APIResponse<WebsiteInfo>> => {
 export const fetchCarouselNews = (): AxiosPromise<APIResponse<CarouselNews[]>> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.HomeCarousel,
+    url: ApiPaths.HomeCarouselNews,
     responseType: 'json',
   });
 };
@@ -81,7 +81,7 @@ export const fetchCarouselNews = (): AxiosPromise<APIResponse<CarouselNews[]>> =
 export const fetchHotNews = (): AxiosPromise<APIResponse<NewsItem[]>> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.HotList,
+    url: ApiPaths.HotNewsItems,
     responseType: 'json',
   });
 };
@@ -89,7 +89,7 @@ export const fetchHotNews = (): AxiosPromise<APIResponse<NewsItem[]>> => {
 export const fetchArticleNews = (id: string): AxiosPromise<APIResponse<ArticleNews>> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.Article,
+    url: ApiPaths.ArticleNews,
     params: { id: id },
     responseType: 'json',
   });
@@ -98,7 +98,7 @@ export const fetchArticleNews = (id: string): AxiosPromise<APIResponse<ArticleNe
 export const fetchVideoNews = (id: string): AxiosPromise<APIResponse<VideoNews>> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.Video,
+    url: ApiPaths.VideoNews,
     params: { id: id },
     responseType: 'json',
   });
@@ -118,7 +118,7 @@ export const fetchPictureNews = (columnId?: string): AxiosPromise<APIResponse<Pi
 export const fetchHeadLineNews = (): AxiosPromise<APIResponse<HeadLineNews>> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.Headline,
+    url: ApiPaths.HeadlineNews,
     responseType: 'json',
   });
 };
@@ -137,7 +137,11 @@ export const fetchArticleContent = (id: string): AxiosPromise<string> => {
 export const fetchTopicItems = (): AxiosPromise<APIResponse<TopicItem[]>> => {
   return axios({
     method: 'GET',
-    url: ApiPaths.Topics,
+    url: ApiPaths.TopicItems,
     responseType: 'json',
   });
 };
+
+// export const fetchCreator = (id:string):AxiosPromise<APIResponse<>> =>{
+
+// }

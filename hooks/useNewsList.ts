@@ -22,7 +22,8 @@ const useNewsList = (
           set_data([...data, ...fetched_data.data.data]);
         } else {
           set_loadable(false);
-          Message.error({ content: '加载已经到底了！', closable: true });
+          set_loading(false);
+          Message.info({ content: '加载已经到底了！', closable: true });
         }
       })
       .catch(() => {

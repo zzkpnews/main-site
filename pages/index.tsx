@@ -2,23 +2,38 @@ import classNames from 'classnames';
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import {
-  fetchCarouselNews, fetchColumnItems, fetchFriendLink,
-  fetchHeadLineNews, fetchHotNews, fetchNewsItems,
-  fetchPictureNews, fetchTopicItems, fetchWebsiteInfo
+  fetchCarouselNews,
+  fetchColumnItems,
+  fetchFriendLink,
+  fetchHeadLineNews,
+  fetchHotNews,
+  fetchNewsItems,
+  fetchPictureNews,
+  fetchTopicItems,
+  fetchWebsiteInfo,
 } from '../api/ajax';
 import { useNewsList } from '../hooks';
 import {
-  CarouselNews, ColumnItem,
-  FriendLink, HeadLineNews, NewsItem, PictureNews, TopicItem, WebsiteInfo
+  CarouselNews,
+  ColumnItem,
+  FriendLink,
+  HeadLineNews,
+  NewsItem,
+  PictureNews,
+  TopicItem,
+  WebsiteInfo,
 } from '../models';
 import {
-  Carousel, ColumnsNavigator, Footer,
+  Carousel,
+  ColumnsNavigator,
+  Footer,
   HeadBanner,
   Headline,
-  LogoBadge, NewsList,
+  LogoBadge,
+  NewsList,
   PictureBlock,
   SideList,
-  TopicList
+  TopicList,
 } from '../views';
 
 interface HomePageProps {
@@ -48,7 +63,11 @@ const Home = (props: HomePageProps) => {
         <link rel="shortcut icon" href="favicons.ico" type="image/x-icon" />
         <meta name="description" content="中原科技网" />
       </Head>
-      <HeadBanner img_url="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000" href="http://www.baidu.com" />
+      <HeadBanner
+        img_url="https://inews.gtimg.com/newsapp_bt/0/15010706663/1000"
+        href="http://www.baidu.com"
+        open={false}
+      />
       <div className="tw-flex tw-justify-center tw-py-3">
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
@@ -87,26 +106,26 @@ const Home = (props: HomePageProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const fetchedColumnsData = (await fetchColumnItems()).data.data;
-  const fetchedFriendsListData = (await fetchFriendLink()).data.data;
-  const fetchedHeadLineData = (await fetchHeadLineNews()).data.data;
-  const fetchedHomeCarouselData = (await fetchCarouselNews()).data.data;
-  const fetchedHomeListData = (await fetchNewsItems()).data.data;
-  const fetchedHotListData = (await fetchHotNews()).data.data;
-  const fetchedPagePictureBlock = (await fetchPictureNews()).data.data;
-  const fetchedWebsiteInfoData = (await fetchWebsiteInfo()).data.data;
-  const fetchedTopicsData = (await fetchTopicItems()).data.data;
+  const response_column_items = (await fetchColumnItems()).data.data;
+  const response_friend_links = (await fetchFriendLink()).data.data;
+  const response_headline_news = (await fetchHeadLineNews()).data.data;
+  const response_home_carousel_news = (await fetchCarouselNews()).data.data;
+  const response_news_items = (await fetchNewsItems()).data.data;
+  const response_hot_news_items = (await fetchHotNews()).data.data;
+  const response_picture_news_items = (await fetchPictureNews()).data.data;
+  const response_website_info = (await fetchWebsiteInfo()).data.data;
+  const response_topic_items = (await fetchTopicItems()).data.data;
 
   const returnProps: HomePageProps = {
-    CarouselNewsData: fetchedHomeCarouselData,
-    ColumnsData: fetchedColumnsData,
-    FriendsData: fetchedFriendsListData,
-    HeadlineNewsData: fetchedHeadLineData,
-    NewsItemsData: fetchedHomeListData,
-    HotListData: fetchedHotListData,
-    PictureNewsData: fetchedPagePictureBlock,
-    WebsiteInfoData: fetchedWebsiteInfoData,
-    TopicsData: fetchedTopicsData,
+    CarouselNewsData: response_home_carousel_news,
+    ColumnsData: response_column_items,
+    FriendsData: response_friend_links,
+    HeadlineNewsData: response_headline_news,
+    NewsItemsData: response_news_items,
+    HotListData: response_hot_news_items,
+    PictureNewsData: response_picture_news_items,
+    WebsiteInfoData: response_website_info,
+    TopicsData: response_topic_items,
   };
 
   return {
