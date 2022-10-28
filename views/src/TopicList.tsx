@@ -1,9 +1,9 @@
 import React from 'react';
-import { APIReply } from '../../api/ajax';
+import { APIResponse } from '../../api';
 import { TopicItem } from '../../models';
 
 const TopicList = React.memo(
-  (props: { Topics: APIReply<TopicItem[]> }): JSX.Element => {
+  (props: { Topics: APIResponse<TopicItem[]> }): JSX.Element => {
     return (
       <div className="tw-rounded-lg tw-p-4 tw-mx-2">
         <h2 className="tw-font-bold tw-text-lg tw-text-red-700 tw-my-2">{'热点话题'}</h2>

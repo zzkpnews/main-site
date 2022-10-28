@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { APIReply } from '../../api/ajax';
+import { APIResponse } from '../../api';
 import { Button } from '@arco-design/web-react';
 import { HeadBannerNews } from '../../models';
 
 const HeadBanner = React.memo(
-  (props: { data: APIReply<HeadBannerNews> }): JSX.Element | null => {
+  (props: { data: APIResponse<HeadBannerNews> }): JSX.Element | null => {
     const [isClosed, setClosed] = useState<boolean>(false);
     return props.data.data?.open && props.data.data.img_url && !isClosed ? (
       <a href={props.data.data.href} className="tw-select-none" target="_blank" rel="noreferrer">

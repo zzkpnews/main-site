@@ -1,9 +1,10 @@
 import { Button, List, Tag } from '@arco-design/web-react';
 import classNames from 'classnames';
-import { NewsItem } from '../../models/index';
+import { APIResponse } from '../../api';
+import { NewsListItem } from '../../models/data';
 
 const NewsList = (props: {
-  list: NewsItem[];
+  list: APIResponse<NewsListItem[]>;
   loadable: boolean;
   loading: boolean;
   bordered: boolean;
@@ -14,7 +15,7 @@ const NewsList = (props: {
       <List
         bordered={false}
         size={'default'}
-        dataSource={props.list}
+        dataSource={props.list.data}
         render={(item, index) => (
           <List.Item className="hover:tw-bg-gray-200 active:tw-bg-gray-300 tw-cursor-pointer" key={index}>
             <a href={`/columns/${item.column_id}/${item.type}/${item.news_id}`} target={'_blank'}>
@@ -45,7 +46,7 @@ const NewsList = (props: {
                   {((time_stamp) => {
                     const time = new Date(time_stamp * 1000);
                     return `${time.getFullYear()}年${time.getMonth()}月${time.getDay()}日`;
-                  })(item.timestamp)}
+                  })(item.time_stamp)}
                 </span>
                 <Tag color="red" defaultChecked>
                   {item.column_title}

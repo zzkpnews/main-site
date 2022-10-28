@@ -1,12 +1,17 @@
 import { Carousel as ArcoCarousel } from '@arco-design/web-react';
 import React, { useState } from 'react';
-import { APIReply } from '../../api/ajax';
-import { CarouselNews } from '../../models';
+import { APIResponse } from '../../api';
+import { CarouselItem } from '../../models/data';
+import { print_api_error } from '../../utils/error';
 
 const Carousel = React.memo(
-  (props: { data: APIReply<CarouselNews[]> }): JSX.Element => {
-    const [carousel_index, set_carousel_index] = useState<number>(0);
+  (props: { carousel_response: APIResponse<CarouselItem[]> }) => {
+    if (props.carousel_response.code !== 0) {
+      print_api_error('carousel-api', props.carousel_response);
+      return null;
+    }
 
+    const [carousel_index, set_carousel_index] = useState<number>(0);
     return (
       <div className="lg:tw-grid tw-grid-cols-3 tw-justify-around tw-rounded-lg">
         <ArcoCarousel
@@ -19,7 +24,7 @@ const Carousel = React.memo(
           }}
           autoPlay={{ interval: 5000, hoverToPause: true }}
         >
-          {props.data.data?.map((item, index) => (
+          {props.carousel_response.data?.map((item, index) => (
             <img
               src={item.img_url}
               key={`carousel-img-${index}`}
@@ -33,22 +38,24 @@ const Carousel = React.memo(
         <div className="tw-h-96 lg:tw-col-span-1 tw-bg-gray-100 lg:tw-mx-2 tw-rounded-lg tw-flex tw-flex-col tw-justify-center">
           <div className="tw-overflow-y-scroll tw-my-10 tw-px-10">
             <span className="tw-text-center tw-block tw-text-lg tw-font-bold tw-text-gray-600">
-              {props.data.data && props.data.data[carousel_index].lead_title}
+              {props.carousel_response.data && props.carousel_response.data[carousel_index].lead_title}
             </span>
             <h2 className="tw-text-center tw-block tw-text-2xl tw-font-bold tw-my-2">
-              {props.data.data && props.data.data[carousel_index].title}
+              {props.carousel_response.data && props.carousel_response.data[carousel_index].title}
             </h2>
             <span className="tw-text-center tw-block tw-text-lg tw-font-bold tw-text-gray-600">
-              {props.data.data && props.data.data[carousel_index].subtitle}
+              {props.carousel_response.data && props.carousel_response.data[carousel_index].subtitle}
             </span>
-            <span className="tw-mx-10 tw-indent-8">{props.data.data && props.data.data[carousel_index].citation}</span>
+            <span className="tw-mx-10 tw-indent-8">
+              {props.carousel_response.data && props.carousel_response.data[carousel_index].citation}
+            </span>
           </div>
         </div>
       </div>
     );
   },
   (prevProps, nextProps) => {
-    return prevProps.data === nextProps.data;
+    return prevProps.carousel_response === nextProps.carousel_response;
   }
 );
 

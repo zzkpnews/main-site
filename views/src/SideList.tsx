@@ -1,17 +1,22 @@
 import React from 'react';
-import { APIReply } from '../../api/ajax';
+import { APIResponse } from '../../api';
 import { List } from '@arco-design/web-react';
-import { NewsItem } from '../../models';
+import { NewsListItem } from '../../models/data';
+import { print_api_error } from '../../utils/error';
 
 const SideList = React.memo(
-  (props: { title: string; data: APIReply<NewsItem[]> }): JSX.Element => {
+  (props: { title: string; list_response: APIResponse<NewsListItem[]> }) => {
+    if (props.list_response.code !== 0) {
+      print_api_error('hot-list', props.list_response);
+      return null;
+    }
     return (
       <div className="tw-border tw-rounded-lg tw-p-4 tw-mx-2 tw-my-3 tw-bg-white">
         <h2 className="tw-font-bold tw-text-lg tw-text-red-700">{props.title}</h2>
         <List
           size="small"
           bordered={false}
-          dataSource={props.data.data}
+          dataSource={props.list_response.data}
           render={(item, index) => (
             <List.Item className="hover:tw-bg-gray-200" key={index}>
               <a href={`/columns/${item.column_id}/${item.type}/${item.news_id}`} target={'_blank'}>
@@ -51,4 +56,3 @@ const SideList = React.memo(
 );
 
 export { SideList };
-

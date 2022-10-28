@@ -1,26 +1,26 @@
 import classNames from 'classnames';
 import { ColumnItem, FriendLink, NewsItem, PictureNews, VideoNews, WebsiteInfo } from '../../../../models';
 import {
-  APIReply,
-  fetchColumnItems,
-  fetchFriendLink,
-  fetchHotNews,
-  fetchPictureNews,
-  fetchVideoNews,
-  fetchWebsiteInfo,
-} from '../../../../api/ajax';
+  APIResponse,
+  fetch_column_items,
+  fetch_friends,
+  fetch_hot_list,
+  fetch_picture_block,
+  fetch_video_news,
+  fetch_website_summary,
+} from '../../../../api';
 import { Footer, LogoBadge, ColumnsNavigator, PictureBlock, SideList } from '../../../../views';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useNavigation } from '../../../../hooks';
 
 interface VideoPageProps {
-  dataColumnItems: APIReply<ColumnItem[]>;
-  dataFriendLinks: APIReply<FriendLink[]>;
-  dataHotNewsItems: APIReply<NewsItem[]>;
-  dataPictureNewsItems: APIReply<PictureNews>;
-  dataVideoNews: APIReply<VideoNews>;
-  dataWebsiteInfo: APIReply<WebsiteInfo>;
+  dataColumnItems: APIResponse<ColumnItem[]>;
+  dataFriendLinks: APIResponse<FriendLink[]>;
+  dataHotNewsItems: APIResponse<NewsItem[]>;
+  dataPictureNewsItems: APIResponse<PictureNews>;
+  dataVideoNews: APIResponse<VideoNews>;
+  dataWebsiteInfo: APIResponse<WebsiteInfo>;
 }
 
 const Video = (props: VideoPageProps) => {
@@ -37,7 +37,7 @@ const Video = (props: VideoPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnsNavigator Active={currentColumnOrder} Columns={props.dataColumnItems} />
+        <ColumnsNavigator active={currentColumnOrder} column_items_response={props.dataColumnItems} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="md:tw-flex tw-justify-center tw-my-10">
@@ -70,8 +70,8 @@ const Video = (props: VideoPageProps) => {
             </div>
             <PictureBlock data={props.dataPictureNewsItems} />
             <PictureBlock data={props.dataPictureNewsItems} />
-            <SideList title="精彩后面" data={props.dataHotNewsItems} />
-            <SideList title="推荐阅读" data={props.dataHotNewsItems} />
+            <SideList title="精彩后面" list_response={props.dataHotNewsItems} />
+            <SideList title="推荐阅读" list_response={props.dataHotNewsItems} />
           </div>
         </div>
       </main>
@@ -82,12 +82,12 @@ const Video = (props: VideoPageProps) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const videoId = context.query.videoId as string;
-  const response_column_items = await fetchColumnItems();
-  const response_friend_links = await fetchFriendLink();
-  const response_hot_news_items = await fetchHotNews();
-  const response_video_news_item = await fetchVideoNews(videoId);
-  const response_picture_news_item = await fetchPictureNews();
-  const response_website_info = await fetchWebsiteInfo();
+  const response_column_items = await fetch_column_items();
+  const response_friend_links = await fetch_friends();
+  const response_hot_news_items = await fetch_hot_list();
+  const response_video_news_item = await fetch_video_news(videoId);
+  const response_picture_news_item = await fetch_picture_block();
+  const response_website_info = await fetch_website_summary();
 
   const returnProps: VideoPageProps = {
     dataColumnItems: response_column_items,

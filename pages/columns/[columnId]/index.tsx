@@ -2,14 +2,14 @@ import { Tabs } from '@arco-design/web-react';
 import classNames from 'classnames';
 import Head from 'next/head';
 import {
-  APIReply,
-  fetchColumnItems,
-  fetchFriendLink,
-  fetchHotNews,
-  fetchNewsItems,
-  fetchPictureNews,
-  fetchWebsiteInfo,
-} from '../../../api/ajax';
+  APIResponse,
+  fetch_column_items,
+  fetch_friends,
+  fetch_hot_list,
+  fetch_news_list,
+  fetch_picture_block,
+  fetch_website_summary,
+} from '../../../api';
 import { useNavigation, useNewsList } from '../../../hooks';
 import { ColumnItem, FriendLink, NewsItem, PictureNews, WebsiteInfo } from '../../../models';
 import { Footer, LogoBadge, ColumnsNavigator, NewsList, PictureBlock, SideList } from '../../../views';
@@ -17,14 +17,14 @@ import { Footer, LogoBadge, ColumnsNavigator, NewsList, PictureBlock, SideList }
 import type { GetServerSideProps } from 'next';
 
 interface ColumnIndexPageProps {
-  ArticleNewsItemsData: APIReply<NewsItem[]>;
-  ColumnsData: APIReply<ColumnItem[]>;
-  DefaultNewsItemsData: APIReply<NewsItem[]>;
-  FriendsData: APIReply<FriendLink[]>;
-  HotListData: APIReply<NewsItem[]>;
-  PictureNewsData: APIReply<PictureNews>;
-  VideoNewsListData: APIReply<NewsItem[]>;
-  WebsiteInfoData: APIReply<WebsiteInfo>;
+  ArticleNewsItemsData: APIResponse<NewsItem[]>;
+  ColumnsData: APIResponse<ColumnItem[]>;
+  DefaultNewsItemsData: APIResponse<NewsItem[]>;
+  FriendsData: APIResponse<FriendLink[]>;
+  HotListData: APIResponse<NewsItem[]>;
+  PictureNewsData: APIResponse<PictureNews>;
+  VideoNewsListData: APIResponse<NewsItem[]>;
+  WebsiteInfoData: APIResponse<WebsiteInfo>;
 }
 
 const ColumnIndex = (props: ColumnIndexPageProps) => {
@@ -62,7 +62,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
         <LogoBadge title="中原科技网" logosrc="http://localhost:3000/logo.png" />
       </div>
       <header className="lg:tw-sticky tw-top-0 tw-bg-white tw-z-10">
-        <ColumnsNavigator Active={currentColumnOrder} Columns={props.ColumnsData} />
+        <ColumnsNavigator active={currentColumnOrder} column_items_response={props.ColumnsData} />
       </header>
       <main className="tw-min-h-screen tw-px-5 md:tw-px-20">
         <div className="lg:tw-flex tw-justify-center tw-my-10">
@@ -107,7 +107,7 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
             <PictureBlock data={props.PictureNewsData} />
             <PictureBlock data={props.PictureNewsData} />
             <div className=" tw-sticky tw-top-20">
-              <SideList title="推荐阅读" data={props.HotListData} />
+              <SideList title="推荐阅读" list_response={props.HotListData} />
             </div>
           </div>
         </div>
@@ -119,14 +119,14 @@ const ColumnIndex = (props: ColumnIndexPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const columnId = context.query.columnId as string;
 
-  const response_news_items_in_article = await fetchNewsItems('column', columnId, 'article');
-  const response_column_items = await fetchColumnItems();
-  const response_news_items_in_default = await fetchNewsItems('column', columnId);
-  const response_friend_links = await fetchFriendLink();
-  const response_hot_news_items = await fetchHotNews();
-  const response_picture_news_items = await fetchPictureNews();
-  const response_news_items_in_video = await fetchNewsItems('column', columnId, 'video');
-  const response_website_info = await fetchWebsiteInfo();
+  const response_news_items_in_article = await fetch_news_list('column', columnId, 'article');
+  const response_column_items = await fetch_column_items();
+  const response_news_items_in_default = await fetch_news_list('column', columnId);
+  const response_friend_links = await fetch_friends();
+  const response_hot_news_items = await fetch_hot_list();
+  const response_picture_news_items = await fetch_picture_block();
+  const response_news_items_in_video = await fetch_news_list('column', columnId, 'video');
+  const response_website_info = await fetch_website_summary();
 
   const returnProps: ColumnIndexPageProps = {
     ArticleNewsItemsData: response_news_items_in_article,

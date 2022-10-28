@@ -3,16 +3,16 @@ import { BroadCastBar } from './src/BroadCastBar';
 import { ErrorBlock } from './src/ErrorBlock';
 import { Footer } from './src/Footer';
 import { HeadBanner } from './src/HeadBanner';
-import { Headline } from './src/Headline';
+import { HeadlineBar } from './src/HeadlineBar';
 import { LogoBadge } from './src/LogoBadge';
 import { ColumnsNavigator } from './src/ColumnsNavigator';
 import { NewsList } from './src/NewsList';
-import { PictureBlock } from './src/PictureBlock';
+import { PictureNewsBlock } from './src/PictureNewsBlock';
 import { SideList } from './src/SideList';
 import { TopicList } from './src/TopicList';
 
 export {
-  Headline,
+  HeadlineBar,
   BroadCastBar,
   HeadBanner,
   Carousel,
@@ -21,7 +21,7 @@ export {
   LogoBadge,
   ColumnsNavigator,
   NewsList,
-  PictureBlock,
+  PictureNewsBlock,
   SideList,
   TopicList,
 };

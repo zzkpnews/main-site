@@ -1,8 +1,8 @@
 import { FaGithub, FaWeixin } from 'react-icons/fa';
-import { APIReply } from '../../api/ajax';
+import { APIResponse } from '../../api';
 import { FriendLink, WebsiteInfo } from '../../models';
 
-const Footer = (props: { Friends: APIReply<FriendLink[]>; WebsiteInfo: APIReply<WebsiteInfo> }): JSX.Element => {
+const Footer = (props: { Friends: APIResponse<FriendLink[]>; WebsiteInfo: APIResponse<WebsiteInfo> }): JSX.Element => {
   return (
     <footer className=" tw-bg-gray-800 tw-text-white tw-py-10 tw-px-10 md:tw-px-20 tw-select-none">
       <div className=" md:tw-flex">
