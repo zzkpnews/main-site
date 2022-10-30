@@ -1,8 +1,8 @@
-import { Avatar, List, Tabs, Tag } from '@arco-design/web-react';
+import { Avatar, Button, List, Tabs, Tag } from '@arco-design/web-react';
 import { Collapse, Divider } from '@arco-design/web-react';
 const CollapseItem = Collapse.Item;
 
-export const NewsList = () => {
+export const HomePageNewsListBox = () => {
   return (
     <div className="">
       <Tabs defaultActiveTab="1">
@@ -63,6 +63,11 @@ export const NewsList = () => {
               </List.Item>
             )}
           />
+          <div className="flex justify-center my-5">
+            <Button type="primary" size="large">
+              加载更多
+            </Button>
+          </div>
         </Tabs.TabPane>
         <Tabs.TabPane key="2" title={<h3 className="text-red-700 text-xl font-bold mx-1 my-2">专栏</h3>}>
           <div>

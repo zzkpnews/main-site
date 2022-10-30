@@ -1,17 +1,18 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { BooksShowBox } from '../components/BooksShowBox';
 import { HomeCarousel } from '../components/CarouselBox';
 import { Footer } from '../components/Footer';
-import { HeadlineBar } from '../components/HeadlineBar';
-import { NewsList } from '../components/HomeNewsList';
+import { Headline } from '../components/Headline';
+import { HomePageNewsListBox } from '../components/HomePageNewsListBox';
 import { HotListBox } from '../components/HotListBox';
 import { Navigation } from '../components/Navigation';
 import { PictureBox } from '../components/PictureBox';
 import { SpecialNewsBox } from '../components/SpecialNewsBox';
 import { TopicBox } from '../components/TopicBox';
+import { HomePageDebugData } from '../debug/HomePage';
 import { HomeLayout } from '../layouts/HomeLayout';
-import { FriendItem, WebsiteSummary } from '../models/data';
-import { APIResponse } from '../types/response';
+import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '../models/data';
 
 const LHeader = HomeLayout.Header;
 const LMain = HomeLayout.Main;
@@ -22,12 +23,17 @@ const LLeftCol = HomeLayout.LeftCol;
 const LRightCol = HomeLayout.RightCol;
 const LSlot = HomeLayout.Slot;
 
-interface HomePageServerProps {
-  friends: APIResponse<FriendItem[]>;
-  website_summary: APIResponse<WebsiteSummary>;
+export interface HomePageServerProps {
+  booksShowBoxData: BooksShowBoxData;
+  topPictureBoxData: PictureBoxData;
+  leftTopPictureBoxData: PictureBoxData;
+  leftBottomPictureBoxData: PictureBoxData;
+  headlineData: HeadlineData;
+  specialNewsBoxData: SpecialNewsBoxData;
+  hotListBoxData: HotListBoxData;
 }
 
-export default function HomePage() {
+export default function HomePage(props: HomePageServerProps) {
   return (
     <div>
       <Head>
@@ -41,10 +47,10 @@ export default function HomePage() {
       <LMain>
         <LLanding>
           <LSlot>
-            <PictureBox src="https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/assets/common/imgs/china-20-entry-banner/banner_pc.png" />
+            <PictureBox data={props.topPictureBoxData} />
           </LSlot>
           <LSlot>
-            <HeadlineBar />
+            <Headline data={props.headlineData} />
           </LSlot>
           <LSlot>
             <HomeCarousel />
@@ -52,26 +58,26 @@ export default function HomePage() {
         </LLanding>
         <LContainer>
           <LLeftCol>
-            <NewsList />
+            <HomePageNewsListBox />
           </LLeftCol>
           <LRightCol>
             <LSlot>
-              <SpecialNewsBox />
+              <SpecialNewsBox data={props.specialNewsBoxData} />
             </LSlot>
             <LSlot>
-              <HotListBox />
+              <HotListBox data={props.hotListBoxData} />
             </LSlot>
             <LSlot>
               <TopicBox />
             </LSlot>
             <LSlot>
-              <BooksShowBox />
+              <BooksShowBox data={props.booksShowBoxData} />
             </LSlot>
             <LSlot>
-              <PictureBox src="https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/s3fs-public/styles/article_large_full/public/2022-10/2022-10-05t043447z_921512572_rc2xqs933lto_rtrmadp_3_taiwan-economy-chips_0.jpg?2778123" />
+              <PictureBox data={props.leftTopPictureBoxData} />
             </LSlot>
             <LSlot>
-              <PictureBox src="https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/s3fs-public/styles/article_large_crop/public/2022-10/ZB_1030_CJ_doc7ncuxlsoltk11saozcrd_29183017_chngmj.jpg?2778524" />
+              <PictureBox data={props.leftBottomPictureBoxData} />
             </LSlot>
           </LRightCol>
         </LContainer>
@@ -83,6 +89,16 @@ export default function HomePage() {
   );
 }
 
-// export const getServerSideProps: GetServerSideProps<HomePageServerProps> = async () => {
-//   return { props: {} };
-// };
+export const getServerSideProps: GetServerSideProps<HomePageServerProps> = async () => {
+  return {
+    props: {
+      booksShowBoxData: HomePageDebugData.booksShowBoxData,
+      topPictureBoxData: HomePageDebugData.topPictureBoxData,
+      leftBottomPictureBoxData: HomePageDebugData.leftBottomPictureBoxData,
+      leftTopPictureBoxData: HomePageDebugData.leftTopPictureBoxData,
+      headlineData: HomePageDebugData.headlineData,
+      specialNewsBoxData: HomePageDebugData.specialNewsBoxData,
+      hotListBoxData: HomePageDebugData.hotListBoxData,
+    },
+  };
+};

@@ -1,15 +1,15 @@
 export interface NewsListItem {
   news_id: string;
   time_stamp: number;
-  keywords?: string | null;
+  keywords?: string;
   type: 'article' | 'video';
 
   title: string;
-  lead_title?: string | null;
-  subtitle?: string | null;
+  lead_title?: string;
+  subtitle?: string;
 
-  bgimg?: string | null;
-  citation?: string | null;
+  bgimg?: string;
+  citation?: string;
   column_id: string;
   column_title: string;
   creator_id: string;
@@ -22,12 +22,12 @@ export interface CreatorItem {
   phone: string;
   email: string;
 
-  describe?: string | null;
-  qq?: string | null;
-  wechat?: string | null;
-  url?: string | null;
+  describe?: string;
+  qq?: string;
+  wechat?: string;
+  url?: string;
 
-  logo_url?: string | null;
+  logo_url?: string;
 }
 
 export interface ColumnItem {
@@ -42,105 +42,126 @@ export interface TopicItem {
   topic_order: number;
 
   logo_url: string;
-  bgimg?: string | null;
+  bgimg?: string;
   topic_describe: string;
 }
 
 export interface FriendItem {
   title: string;
-  describe?: string | null;
-  url?: string | null;
+  describe?: string;
+  url?: string;
 }
 
-export interface PictureBlock {
-  img_url?: string | null;
-  href?: string | null;
-  describe?: string | null;
+export interface PictureBoxData {
+  img_url?: string;
+  href?: string;
+  describe?: string;
 }
 
 export interface CarouselItem {
   title: string;
-  lead_title?: string | null;
-  subtitle?: string | null;
+  lead_title?: string;
+  subtitle?: string;
 
   img_url: string;
-  citation?: string | null;
-  href?: string | null;
+  citation?: string;
+  href?: string;
 }
 
-export interface Headline {
+export interface HeadlineData {
   title: string;
 
-  lead_title?: string | null;
-  subtitle?: string | null;
+  lead_title?: string;
+  subtitle?: string;
   href: string;
 }
 
 export interface Banner {
   img_url: string;
-  href?: string | null;
-  describe?: string | null;
+  href?: string;
+  describe?: string;
   open: boolean;
 }
 
 export interface ArticleNews {
   news_id: string;
   time_stamp: number;
-  keywords: string | null;
+  keywords: string;
 
   title: string;
-  lead_title: string | null;
-  subtitle: string | null;
+  lead_title: string;
+  subtitle: string;
 
-  bgimg: string | null;
-  citation: string | null;
+  bgimg: string;
+  citation: string;
 
   column_id: string;
   column_title: string;
   creator_id: string;
   creator_title: string;
 
-  author: string | null;
-  editor: string | null;
-  origin: string | null;
-  origin_url: string | null;
+  author: string;
+  editor: string;
+  origin: string;
+  origin_url: string;
 }
 
 export interface VideoNews {
   news_id: string;
   time_stamp: number;
-  keywords?: string | null;
+  keywords?: string;
 
   title: string;
-  lead_title?: string | null;
-  subtitle?: string | null;
+  lead_title?: string;
+  subtitle?: string;
 
-  bgimg?: string | null;
-  citation?: string | null;
+  bgimg?: string;
+  citation?: string;
 
   column_id: string;
   column_title: string;
   creator_id: string;
   creator_title: string;
 
-  author?: string | null;
+  author?: string;
   video_url: string;
-  editor?: string | null;
-  origin?: string | null;
-  origin_url: string | null;
+  editor?: string;
+  origin?: string;
+  origin_url: string;
 }
 
 export interface WebsiteSummary {
   title: string;
-  describe?: string | null;
+  describe?: string;
 
-  address?: string | null;
-  email?: string | null;
-  phone?: string[] | null;
-  wechat?: string | null;
+  address?: string;
+  email?: string;
+  phone?: string[];
+  wechat?: string;
 
-  technology_support?: string | null;
-  icp?: string | null;
-  institution?: string | null;
+  technology_support?: string;
+  icp?: string;
+  institution?: string;
 }
 
+export interface SpecialNewsBoxData {
+  img_url?: string;
+  title: string;
+  lead_title?: string;
+  subtitle?: string;
+  citation?: string;
+  href: string;
+}
+
+export type BooksShowBoxData = {
+  title: string;
+  img_url: string;
+  href: string;
+  citation: string;
+}[];
+
+export type HotListBoxData = {
+  title: string;
+  subtitle?: string;
+  href: string;
+}[];
