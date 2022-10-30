@@ -19,9 +19,13 @@ export const HomeCarousel = () => {
           />
         ))}
       </Carousel>
-      <div className="flex flex-col mx-auto my-auto text-center lg:basis-1/3 h-96">
-        <h2 className="text-xl font-bold hover:text-red-700 cursor-pointer my-3">中国共产党第二十次全国代表大会</h2>
+      <div className="flex flex-col justify-center mx-auto my-auto text-center p-5 lg:basis-1/3 h-72 lg:h-96 ">
+      <h3 className="text-md font-bold text-slate-600">引题引题引题引题引题引题引题引题</h3>
+        <h2 className="text-xl font-bold hover:text-red-700 cursor-pointer my-1">中国共产党第二十次全国代表大会</h2>
         <h3 className="text-lg font-bold text-slate-600">副标题副标题副标题副标题</h3>
+        <p className="text-md text-slate-600 my-3">
+          引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言引言
+        </p>
       </div>
     </div>
   );

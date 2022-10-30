@@ -47,7 +47,7 @@ export const Navigation = () => {
               <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'科普'}</span>
             </Dropdown>
             <Dropdown trigger={'hover'} droplist={dropList} position="bottom">
-              <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'学术'}</span>
+              <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'河南看点'}</span>
             </Dropdown>
             <Dropdown trigger={'hover'} droplist={dropList} position="bottom">
               <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'教育专题'}</span>

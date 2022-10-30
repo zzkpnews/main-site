@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigation } from '../components/Navigation';
+
 export const HomeLayout = {
   Landing: (props: { children?: React.ReactNode }) => {
     return <div className="px-2 my-4">{props.children}</div>;
@@ -13,10 +13,13 @@ export const HomeLayout = {
   Container: (props: { children?: React.ReactNode }) => {
     return <div className="my-0 lg:flex justify-center">{props.children}</div>;
   },
-  RightSlot: (props: { children?: React.ReactNode }) => {
+  Slot: (props: { children?: React.ReactNode }) => {
+    return <div className="my-5">{props.children}</div>;
+  },
+  RightCol: (props: { children?: React.ReactNode }) => {
     return <div className="basis-1/3 m-2">{props.children}</div>;
   },
-  LeftSlot: (props: { children?: React.ReactNode }) => {
+  LeftCol: (props: { children?: React.ReactNode }) => {
     return <div className="basis-2/3 m-2">{props.children}</div>;
   },
 };

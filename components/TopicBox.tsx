@@ -1,20 +1,20 @@
 import { List } from '@arco-design/web-react';
 
-export const HotListBox = () => {
+export const TopicBox = () => {
   return (
-    <div className="bg-slate-50 rounded-md px-2 border-t-7 border-red-800">
-      <h3 className="text-red-700 text-xl font-bold px-4 my-2">
-        热点新闻
-      </h3>
+    <div>
+      <h3 className="text-red-700 text-xl font-bold px-4">话题列表</h3>
       <List
         bordered={false}
+        grid={{ column: 3, gutter: 0, span: 8, justify:"space-around" }}
         dataSource={new Array(5).fill({
           title: 'Beijing Bytedance Technology Co., Ltd.',
           description: 'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.',
         })}
         render={(item, index) => (
           <List.Item key={index}>
-            <List.Item.Meta title={item.title} description={item.description} />
+            <img src="https://pic3.zhimg.com/v2-22a8cbe795199d72ff83e37860663b71_xl.jpg?source=32738c0c" alt="" />
+            sssssss
           </List.Item>
         )}
       />
