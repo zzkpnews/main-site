@@ -1,4 +1,4 @@
-import { HeadlineData } from '../models/data';
+import { HeadlineData } from '../../models/data';
 
 export const Headline = (props: {data:HeadlineData}) => {
   return (

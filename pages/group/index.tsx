@@ -1,9 +1,10 @@
 import { Divider } from '@arco-design/web-react';
 import Head from 'next/head';
-import { Footer } from '../../components/Footer';
-import GroupPageNewsList from '../../components/GroupPageNewsListBox';
-import { Navigation } from '../../components/Navigation';
+import { Footer } from '../../components/Utils/Footer';
+import GroupPageNewsList from '../../components/GroupPage/GroupPageNewsListBox';
+import { Navigation } from '../../components/Utils/Navigation';
 import { GroupLayout } from '../../layouts/GroupLayout';
+import { ScrollToTop } from '../../components/Utils/ScrollToTop';
 const LHeader = GroupLayout.Header;
 const LMain = GroupLayout.Main;
 const LFooter = GroupLayout.Footer;
@@ -26,7 +27,7 @@ export default function GroupPage() {
       </LHeader>
       <LMain>
         <LLanding>
-          <h1 className='text-xl font-bold'>专栏组</h1>
+          <h1 className="text-xl font-bold">专栏组</h1>
           <Divider />
         </LLanding>
         <LLanding>
@@ -36,6 +37,7 @@ export default function GroupPage() {
       <LFooter>
         <Footer></Footer>
       </LFooter>
+      <ScrollToTop />
     </div>
   );
 }

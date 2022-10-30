@@ -1,5 +1,5 @@
 import { List } from '@arco-design/web-react';
-import { HotListBoxData } from '../models/data';
+import { HotListBoxData } from '../../models/data';
 
 export const HotListBox = (props: { data: HotListBoxData }) => {
   return (

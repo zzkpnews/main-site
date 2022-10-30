@@ -1,18 +1,19 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { BooksShowBox } from '../components/BooksShowBox';
-import { HomeCarousel } from '../components/CarouselBox';
-import { Footer } from '../components/Footer';
-import { Headline } from '../components/Headline';
-import { HomePageNewsListBox } from '../components/HomePageNewsListBox';
-import { HotListBox } from '../components/HotListBox';
-import { Navigation } from '../components/Navigation';
-import { PictureBox } from '../components/PictureBox';
-import { SpecialNewsBox } from '../components/SpecialNewsBox';
-import { TopicBox } from '../components/TopicBox';
+import { BooksShowBox } from '../components/HomePage/BooksShowBox';
+import { HomeCarousel } from '../components/Utils/CarouselBox';
+import { Footer } from '../components/Utils/Footer';
+import { Headline } from '../components/HomePage/Headline';
+import { HomePageNewsListBox } from '../components/HomePage/HomePageNewsListBox';
+import { HotListBox } from '../components/Utils/HotListBox';
+import { Navigation } from '../components/Utils/Navigation';
+import { PictureBox } from '../components/Utils/PictureBox';
+import { SpecialNewsBox } from '../components/HomePage/SpecialNewsBox';
+import { TopicBox } from '../components/HomePage/TopicBox';
 import { HomePageDebugData } from '../debug/HomePage';
 import { HomeLayout } from '../layouts/HomeLayout';
 import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '../models/data';
+import { ScrollToTop } from '../components/Utils/ScrollToTop';
 
 const LHeader = HomeLayout.Header;
 const LMain = HomeLayout.Main;
@@ -85,6 +86,7 @@ export default function HomePage(props: HomePageServerProps) {
       <LFooter>
         <Footer />
       </LFooter>
+      <ScrollToTop/>
     </div>
   );
 }

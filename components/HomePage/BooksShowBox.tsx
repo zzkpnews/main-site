@@ -1,5 +1,5 @@
 import { Collapse } from '@arco-design/web-react';
-import { BooksShowBoxData } from '../models/data';
+import { BooksShowBoxData } from '../../models/data';
 const CollapseItem = Collapse.Item;
 
 export const BooksShowBox = (props: { data: BooksShowBoxData }) => {
