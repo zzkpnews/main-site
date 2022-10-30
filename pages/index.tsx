@@ -1,5 +1,7 @@
 import Head from 'next/head';
+import { BooksShowBox } from '../components/BooksShowBox';
 import { HomeCarousel } from '../components/CarouselBox';
+import { Footer } from '../components/Footer';
 import { HeadlineBar } from '../components/HeadlineBar';
 import { NewsList } from '../components/HomeNewsList';
 import { HotListBox } from '../components/HotListBox';
@@ -13,6 +15,7 @@ import { APIResponse } from '../types/response';
 
 const LHeader = HomeLayout.Header;
 const LMain = HomeLayout.Main;
+const LFooter = HomeLayout.Footer;
 const LLanding = HomeLayout.Landing;
 const LContainer = HomeLayout.Container;
 const LLeftCol = HomeLayout.LeftCol;
@@ -53,20 +56,29 @@ export default function HomePage() {
           </LLeftCol>
           <LRightCol>
             <LSlot>
+              <SpecialNewsBox />
+            </LSlot>
+            <LSlot>
               <HotListBox />
+            </LSlot>
+            <LSlot>
+              <TopicBox />
+            </LSlot>
+            <LSlot>
+              <BooksShowBox />
             </LSlot>
             <LSlot>
               <PictureBox src="https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/s3fs-public/styles/article_large_full/public/2022-10/2022-10-05t043447z_921512572_rc2xqs933lto_rtrmadp_3_taiwan-economy-chips_0.jpg?2778123" />
             </LSlot>
             <LSlot>
-              <SpecialNewsBox />
-            </LSlot>
-            <LSlot>
-              <TopicBox />
+              <PictureBox src="https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/s3fs-public/styles/article_large_crop/public/2022-10/ZB_1030_CJ_doc7ncuxlsoltk11saozcrd_29183017_chngmj.jpg?2778524" />
             </LSlot>
           </LRightCol>
         </LContainer>
       </LMain>
+      <LFooter>
+        <Footer />
+      </LFooter>
     </div>
   );
 }

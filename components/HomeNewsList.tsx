@@ -1,4 +1,4 @@
-import { List, Tabs, Tag } from '@arco-design/web-react';
+import { Avatar, List, Tabs, Tag } from '@arco-design/web-react';
 import { Collapse, Divider } from '@arco-design/web-react';
 const CollapseItem = Collapse.Item;
 
@@ -12,6 +12,22 @@ export const NewsList = () => {
             className="w-full"
             size="small"
             dataSource={[
+              'Beijing Bytedance Technology Co., Ltd.',
+              'Bytedance Technology Co., Ltd.',
+              'Beijing Toutiao Technology Co., Ltd.',
+              'Beijing Volcengine Technology Co., Ltd.',
+              'Beijing Bytedance Technology Co., Ltd.',
+              'Bytedance Technology Co., Ltd.',
+              'Beijing Toutiao Technology Co., Ltd.',
+              'Beijing Volcengine Technology Co., Ltd.',
+              'Beijing Bytedance Technology Co., Ltd.',
+              'Bytedance Technology Co., Ltd.',
+              'Beijing Toutiao Technology Co., Ltd.',
+              'Beijing Volcengine Technology Co., Ltd.',
+              'Beijing Bytedance Technology Co., Ltd.',
+              'Bytedance Technology Co., Ltd.',
+              'Beijing Toutiao Technology Co., Ltd.',
+              'Beijing Volcengine Technology Co., Ltd.',
               'Beijing Bytedance Technology Co., Ltd.',
               'Bytedance Technology Co., Ltd.',
               'Beijing Toutiao Technology Co., Ltd.',
@@ -48,7 +64,57 @@ export const NewsList = () => {
             )}
           />
         </Tabs.TabPane>
-        <Tabs.TabPane key="2" title={<h3 className="text-red-700 text-xl font-bold mx-1 my-2">专栏</h3>}></Tabs.TabPane>
+        <Tabs.TabPane key="2" title={<h3 className="text-red-700 text-xl font-bold mx-1 my-2">专栏</h3>}>
+          <div>
+            <div className="flex justify-between">
+              <h3 className="text-lg font-bold">河南看点</h3>
+              <a className="text-lg mx-5">更多</a>
+            </div>
+            <div className="lg:flex">
+              <div className="basis-1/2">
+                <List
+                  bordered={false}
+                  dataSource={new Array(4).fill({
+                    title: 'Beijing Bytedance Technology Co., Ltd.',
+                    description: 'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.',
+                  })}
+                  render={(item, index) => (
+                    <List.Item key={index}>
+                      <List.Item.Meta
+                        avatar={<Avatar shape="square">A</Avatar>}
+                        title={item.title}
+                        description={item.description}
+                      />
+                    </List.Item>
+                  )}
+                />
+              </div>
+              <div className="basis-1/2">
+                <List
+                  bordered={false}
+                  grid={{ span: 12, gutter: 0 }}
+                  dataSource={new Array(3).fill({
+                    title: 'Beijing Bytedance Technology Co., Ltd.',
+                    description: 'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.',
+                  })}
+                  render={(item, index) => (
+                    <List.Item key={index}>
+                      <div>
+                        <img
+                          className=""
+                          src="https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/s3fs-public/styles/article_large_crop/public/2022-10/ZB_1030_CJ_doc7ncuxlsoltk11saozcrd_29183017_chngmj.jpg?2778524"
+                          alt=""
+                        />
+                        <h3 className="text-md font-bold">视频标题视频标题视频标题视频标题视频标题视频标题</h3>
+                      </div>
+                    </List.Item>
+                  )}
+                />
+              </div>
+            </div>
+            <Divider />
+          </div>
+        </Tabs.TabPane>
       </Tabs>
     </div>
   );

@@ -22,4 +22,7 @@ export const HomeLayout = {
   LeftCol: (props: { children?: React.ReactNode }) => {
     return <div className="basis-2/3 m-2">{props.children}</div>;
   },
+  Footer: (props: { children?: React.ReactNode }) => {
+    return <footer className="sticky top-0 z-20">{props.children}</footer>;
+  },
 };

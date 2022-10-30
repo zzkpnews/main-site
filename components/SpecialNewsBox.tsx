@@ -1,4 +1,3 @@
-import { List } from '@arco-design/web-react';
 
 export const SpecialNewsBox = () => {
   return (
