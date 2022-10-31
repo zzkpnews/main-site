@@ -1,4 +1,7 @@
 export const CreatorProfileLayout = {
+  Background:(props: { children?: React.ReactNode }) =>{
+    return <div className="px-0 py-0">{props.children}</div>
+  },
   Landing: (props: { children?: React.ReactNode }) => {
     return <div className="px-2 my-4">{props.children}</div>;
   },

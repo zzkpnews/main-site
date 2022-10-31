@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { CreatorBackground } from '../../components/CreatorProfilePage/CreatorBackground';
 import { CreatorCard } from '../../components/CreatorProfilePage/CreatorCard';
 import { CreatorWorksList } from '../../components/CreatorProfilePage/CreatorNewsList';
 import { BooksShowBox } from '../../components/Utils/BooksShowBox';
@@ -16,6 +17,7 @@ const LContainer = CreatorProfileLayout.Container;
 const LLeftCol = CreatorProfileLayout.LeftCol;
 const LRightCol = CreatorProfileLayout.RightCol;
 const LSlot = CreatorProfileLayout.Slot;
+const LBackground = CreatorProfileLayout.Background;
 
 export default function CreatorProfilePage() {
   return (
@@ -28,13 +30,15 @@ export default function CreatorProfilePage() {
       <LHeader>
         <Navigation />
       </LHeader>
+      <LBackground>
+        <CreatorBackground />
+      </LBackground>
       <LMain>
-        <LLanding>
-          <CreatorCard />
-        </LLanding>
-        <LLanding></LLanding>
         <LContainer>
           <LLeftCol>
+            <LSlot>
+              <CreatorCard />
+            </LSlot>
             <LSlot>
               <CreatorWorksList />
             </LSlot>
@@ -44,10 +48,10 @@ export default function CreatorProfilePage() {
               <HotListBox data={HomePageDebugData.hotListBoxData} />
             </LSlot>
             <LSlot>
-                <PictureBox data={HomePageDebugData.leftBottomPictureBoxData}/>
+              <PictureBox data={HomePageDebugData.leftBottomPictureBoxData} />
             </LSlot>
             <LSlot>
-              <BooksShowBox data={HomePageDebugData.booksShowBoxData} />
+              <PictureBox data={HomePageDebugData.leftTopPictureBoxData} />
             </LSlot>
           </LRightCol>
         </LContainer>

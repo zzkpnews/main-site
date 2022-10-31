@@ -1,15 +1,32 @@
-import { Avatar } from '@arco-design/web-react';
+import { Avatar, Divider } from '@arco-design/web-react';
 
 export const CreatorCard = () => {
   return (
-    <div
-      className="rounded-lg bg-cover bg-center  w-full h-52 flex"
-      style={{
-        backgroundImage:
-          'url(https://static.zaobao.com/s3fs-public/2022-10/2022-09-14t034221z_1576905416_rc2qgw9s33ob_rtrmadp_3_apple-tsmc_0.jpg?VersionId=cxs1lVGq_JYIB87nXE06oLfRL0OJduD8)',
-      }}
-    >
-      <Avatar className="mx-auto my-auto shadow-lg" size={150}>张</Avatar>
+    <div className="">
+      <div className="md:flex">
+        <div className="flex justify-center shrink-0 mx-auto my-auto">
+          <Avatar className="" size={80}>
+            中
+          </Avatar>
+        </div>
+        <div className="my-auto mx-5">
+          <h3 className="text-lg font-bold">中原科技网</h3>
+          <p>
+            介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+          </p>
+          <Divider />
+          <div>
+            <div className="flex">
+              <div className="mr-3">电话：15617613081</div>
+              <div className="mr-3">邮箱：prinorange@outlook.com</div>
+              <a className="hover:text-red-700" href="http://www.baidu.com">
+                官网链接
+              </a>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
