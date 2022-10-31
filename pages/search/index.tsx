@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { SearchBox } from '../../components/SearchPage/SearchBox';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';
@@ -15,6 +16,7 @@ const LRightCol = SearchLayout.RightCol;
 const LSlot = SearchLayout.Slot;
 
 export default function SearchPage() {
+  const router = useRouter();
   return (
     <div>
       <Head>
@@ -27,7 +29,7 @@ export default function SearchPage() {
       </LHeader>
       <LMain>
         <LLanding>
-          <SearchBox />
+          <SearchBox searchWord={router.query.word?.toString()} />
         </LLanding>
       </LMain>
       <LFooter>

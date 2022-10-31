@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { ColumnNewsList } from '../../components/ColumnPage/ColumnNewsList';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';
 import { ScrollToTop } from '../../components/Utils/ScrollToTop';
@@ -25,6 +26,7 @@ export default function ColumnPage() {
       </LHeader>
       <LMain>
         <LLanding>
+            <ColumnNewsList />
         </LLanding>
       </LMain>
       <LFooter>

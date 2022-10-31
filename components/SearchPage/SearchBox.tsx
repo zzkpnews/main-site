@@ -1,11 +1,12 @@
 import { Avatar, Button, Input, List, Space } from '@arco-design/web-react';
 const InputSearch = Input.Search;
-export const SearchBox = () => {
+export const SearchBox = (props: { searchWord?: string }) => {
   return (
     <div className="">
       <div className="flex flex-col justify-center mx-5">
         <h2 className="mx-auto text-3xl font-bold my-5">站内内容搜索</h2>
         <InputSearch
+          value={props.searchWord}
           size="large"
           searchButton="搜索"
           className="mx-auto"
