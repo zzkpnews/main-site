@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { BooksShowBox } from '../components/HomePage/BooksShowBox';
+import { BooksShowBox } from '../components/Utils/BooksShowBox';
 import { HomeCarousel } from '../components/Utils/CarouselBox';
 import { Footer } from '../components/Utils/Footer';
 import { Headline } from '../components/HomePage/Headline';
