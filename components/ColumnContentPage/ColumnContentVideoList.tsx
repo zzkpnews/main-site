@@ -10,6 +10,7 @@ export const ColumnContentVideoList = () => {
         dataSource={new Array(8).fill({
           title: 'Beijing Bytedance Technology Co., Ltd.',
           subtitle: 'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.',
+          href:"/video/test"
         })}
         render={(item, index) => (
           <List.Item key={index}>

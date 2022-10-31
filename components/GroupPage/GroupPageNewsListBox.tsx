@@ -18,10 +18,16 @@ export default function GroupPageNewsList() {
                 dataSource={new Array(8).fill({
                   title: 'Beijing Bytedance Technology Co., Ltd.',
                   subtitle: 'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.',
+                  href: '/article/test',
                 })}
                 render={(item, index) => (
                   <List.Item key={index}>
-                    <a className="cursor-pointer hover:text-red-700" href={item.href} rel="noreferrer" target={'_blank'}>
+                    <a
+                      className="cursor-pointer hover:text-red-700"
+                      href={item.href}
+                      rel="noreferrer"
+                      target={'_blank'}
+                    >
                       <h3 className="text-lg ">{item.title}</h3>
                       {item.subtitle && <h4 className="text-sm my-1 text-gray-600">{item.subtitle}</h4>}
                     </a>
@@ -36,17 +42,23 @@ export default function GroupPageNewsList() {
                 dataSource={new Array(9).fill({
                   title: 'Beijing Bytedance Technology Co., Ltd.',
                   description: 'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.',
+                  href: '/video/test',
                 })}
                 render={(item, index) => (
                   <List.Item key={index}>
-                    <div>
+                    <a
+                      className="cursor-pointer hover:text-red-700"
+                      href={item.href}
+                      rel="noreferrer"
+                      target={'_blank'}
+                    >
                       <img
                         className=""
                         src="https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/s3fs-public/styles/article_large_crop/public/2022-10/ZB_1030_CJ_doc7ncuxlsoltk11saozcrd_29183017_chngmj.jpg?2778524"
                         alt=""
                       />
                       <h3 className="text-md font-bold">视频标题视频标题视频标题视频标题视频标题视频标题</h3>
-                    </div>
+                    </a>
                   </List.Item>
                 )}
               />

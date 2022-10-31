@@ -51,7 +51,7 @@ export const CreatorWorksList = () => {
           dataSource={Array(5).fill(9)}
           render={(item, index) => (
             <List.Item key={index} className="hover:bg-slate-50 active:bg-slate-100 cursor-pointer">
-              <a href="http://www.baidu.com">
+              <a href="/article/test">
                 <div className="lg:flex justify-center">
                   <div className="basis-2/5 my-2">
                     <img
@@ -91,7 +91,7 @@ export const CreatorWorksList = () => {
           dataSource={Array(5).fill(9)}
           render={(item, index) => (
             <List.Item key={index} className="hover:bg-slate-50 active:bg-slate-100 cursor-pointer">
-              <a href="http://www.baidu.com">
+              <a href="/video/test">
                 <div className="lg:flex justify-center">
                   <div className="basis-2/5 my-2">
                     <img

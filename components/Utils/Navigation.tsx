@@ -5,9 +5,15 @@ import { BsMenuButtonWideFill } from 'react-icons/bs';
 const CollapseItem = Collapse.Item;
 const dropList = (
   <Menu>
-    <Menu.Item key="1">Beijing</Menu.Item>
-    <Menu.Item key="2">Shanghai</Menu.Item>
-    <Menu.Item key="3">Guangzhou</Menu.Item>
+    <Menu.Item key="1">
+      <a href="/column/test">Beijing</a>
+    </Menu.Item>
+    <Menu.Item key="2">
+      <a href="/column/test">Shanghai</a>
+    </Menu.Item>
+    <Menu.Item key="3">
+      <a href="/column/test">Guangzhou</a>
+    </Menu.Item>
   </Menu>
 );
 export const Navigation = () => {
