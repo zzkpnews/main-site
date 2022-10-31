@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';
-import { VideoIntroductionBox } from '../../components/VideoContentPage/VideoIntroductionBox';
 import { VideoPlayer } from '../../components/VideoContentPage/VideoPlayer';
 import { VideoPlayList } from '../../components/VideoContentPage/VideoPlayList';
 import { VideoContentLayout } from '../../layouts/VideoContentLayout';
@@ -30,10 +29,6 @@ export default function VideoContentPage() {
           <LLeftCol>
             <LSlot>
               <VideoPlayer />
-              
-            </LSlot>
-            <LSlot>
-              <VideoIntroductionBox />
             </LSlot>
           </LLeftCol>
           <LRightCol>
