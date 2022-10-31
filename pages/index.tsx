@@ -26,12 +26,12 @@ const LSlot = HomeLayout.Slot;
 
 export interface HomePageServerProps {
   booksShowBoxData: BooksShowBoxData;
-  topPictureBoxData: PictureBoxData;
-  leftTopPictureBoxData: PictureBoxData;
-  leftBottomPictureBoxData: PictureBoxData;
   headlineData: HeadlineData;
-  specialNewsBoxData: SpecialNewsBoxData;
   hotListBoxData: HotListBoxData;
+  leftBottomPictureBoxData: PictureBoxData;
+  leftTopPictureBoxData: PictureBoxData;
+  specialNewsBoxData: SpecialNewsBoxData;
+  topPictureBoxData: PictureBoxData;
 }
 
 export default function HomePage(props: HomePageServerProps) {
@@ -95,12 +95,12 @@ export const getServerSideProps: GetServerSideProps<HomePageServerProps> = async
   return {
     props: {
       booksShowBoxData: HomePageDebugData.booksShowBoxData,
-      topPictureBoxData: HomePageDebugData.topPictureBoxData,
+      headlineData: HomePageDebugData.headlineData,
+      hotListBoxData: HomePageDebugData.hotListBoxData,
       leftBottomPictureBoxData: HomePageDebugData.leftBottomPictureBoxData,
       leftTopPictureBoxData: HomePageDebugData.leftTopPictureBoxData,
-      headlineData: HomePageDebugData.headlineData,
       specialNewsBoxData: HomePageDebugData.specialNewsBoxData,
-      hotListBoxData: HomePageDebugData.hotListBoxData,
+      topPictureBoxData: HomePageDebugData.topPictureBoxData,
     },
   };
 };

@@ -6,7 +6,8 @@ export const VideoPlayer = React.memo(
     return (
       <div className="lg:flex flex-col">
         <div className="my-2">
-          <h2 className="text-2xl font-bold my-3">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</h2>
+          <h3 className="text-xl">副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题</h3>
+          <h2 className="text-2xl font-bold my-1">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</h2>
           <h3 className="text-xl">副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题</h3>
         </div>
         <iframe
