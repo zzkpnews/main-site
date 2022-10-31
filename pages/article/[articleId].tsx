@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { ArticleNextListBox } from '../../components/ArticleContentPage/ArticleNextListBox';
 import { ArticleReader } from '../../components/ArticleContentPage/ArticleReader';
-import { BooksShowBox } from '../../components/Utils/BooksShowBox';
+import { BooksShowBox } from '../../components/HomePage/BooksShowBox';
 import { TopicBox } from '../../components/HomePage/TopicBox';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';

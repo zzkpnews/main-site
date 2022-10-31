@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { CreatorBackground } from '../../components/CreatorProfilePage/CreatorBackground';
 import { CreatorCard } from '../../components/CreatorProfilePage/CreatorCard';
 import { CreatorWorksList } from '../../components/CreatorProfilePage/CreatorNewsList';
-import { BooksShowBox } from '../../components/Utils/BooksShowBox';
+import { BooksShowBox } from '../../components/HomePage/BooksShowBox';
 import { Footer } from '../../components/Utils/Footer';
 import { HotListBox } from '../../components/Utils/HotListBox';
 import { Navigation } from '../../components/Utils/Navigation';

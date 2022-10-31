@@ -16,7 +16,7 @@ export const CreatorCard = () => {
           </p>
           <Divider />
           <div>
-            <div className="flex">
+            <div className="md:flex">
               <div className="mr-3">电话：15617613081</div>
               <div className="mr-3">邮箱：prinorange@outlook.com</div>
               <a className="hover:text-red-700" href="http://www.baidu.com">
