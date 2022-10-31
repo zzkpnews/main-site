@@ -17,6 +17,7 @@ const LContainer = ArticleContentLayout.Container;
 const LLeftCol = ArticleContentLayout.LeftCol;
 const LRightCol = ArticleContentLayout.RightCol;
 const LSlot = ArticleContentLayout.Slot;
+const LStickySlot = ArticleContentLayout.StickySlot;
 
 export default function ArticleContentPage() {
   return (
@@ -40,16 +41,16 @@ export default function ArticleContentPage() {
           <LRightCol>
             <LSlot>
               <PictureBox data={HomePageDebugData.leftBottomPictureBoxData}></PictureBox>
-            </LSlot>
-            <LSlot>
-              <ArticleNextListBox data={HomePageDebugData.hotListBoxData} />
-            </LSlot>
-            <LSlot>
-              <TopicBox />
-            </LSlot>
+            </LSlot>            
             <LSlot>
               <BooksShowBox data={HomePageDebugData.booksShowBoxData} />
             </LSlot>
+             <LSlot>
+              <TopicBox />
+            </LSlot>           
+            <LStickySlot>
+              <ArticleNextListBox data={HomePageDebugData.hotListBoxData} />
+            </LStickySlot>
           </LRightCol>
         </LContainer>
       </LMain>

@@ -14,6 +14,9 @@ export const ArticleContentLayout = {
   Slot: (props: { children?: React.ReactNode }) => {
     return <div className="my-5">{props.children}</div>;
   },
+  StickySlot: (props: { children?: React.ReactNode }) => {
+    return <div className="my-5 sticky top-20">{props.children}</div>;
+  },
   RightCol: (props: { children?: React.ReactNode }) => {
     return <div className="basis-1/3 m-2">{props.children}</div>;
   },
