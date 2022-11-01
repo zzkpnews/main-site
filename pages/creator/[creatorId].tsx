@@ -2,22 +2,13 @@ import Head from 'next/head';
 import { CreatorBackground } from '../../components/CreatorProfilePage/CreatorBackground';
 import { CreatorCard } from '../../components/CreatorProfilePage/CreatorCard';
 import { CreatorWorksList } from '../../components/CreatorProfilePage/CreatorNewsList';
-import { BooksShowBox } from '../../components/HomePage/BooksShowBox';
 import { Footer } from '../../components/Utils/Footer';
 import { HotListBox } from '../../components/Utils/HotListBox';
 import { Navigation } from '../../components/Utils/Navigation';
 import { PictureBox } from '../../components/Utils/PictureBox';
 import { HomePageDebugData } from '../../debug/HomePage';
-import { CreatorProfileLayout } from '../../layouts/CreatorProfileLayout';
-const LHeader = CreatorProfileLayout.Header;
-const LMain = CreatorProfileLayout.Main;
-const LFooter = CreatorProfileLayout.Footer;
-const LLanding = CreatorProfileLayout.Landing;
-const LContainer = CreatorProfileLayout.Container;
-const LLeftCol = CreatorProfileLayout.LeftCol;
-const LRightCol = CreatorProfileLayout.RightCol;
-const LSlot = CreatorProfileLayout.Slot;
-const LBackground = CreatorProfileLayout.Background;
+import { LBackground, LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '../../layouts';
+
 
 export default function CreatorProfilePage() {
   return (

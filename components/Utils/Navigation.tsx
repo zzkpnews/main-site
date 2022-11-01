@@ -59,7 +59,7 @@ export const Navigation = () => {
           </Collapse>
         </div>
       </Drawer>
-      <nav className="m-0 border-b py-3 flex justify-between px-5 xl:px-40 lg:px-35 md:px-25 sm:px-20 bg-white">
+      <nav className="m-0 border-b py-3 flex justify-between px-5 xl:px-40 lg:px-35 md:px-25 sm:px-20 bg-white ">
         <div className="flex">
           <img src="/logo.png" className="mr-7 h-9" alt="zzkpnews-logo" />
           <div className="lg:flex my-auto hidden">
