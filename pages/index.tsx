@@ -13,6 +13,7 @@ import { PictureBox } from '../components/Utils/PictureBox';
 import { ScrollToTop } from '../components/Utils/ScrollToTop';
 import { TopBar } from '../components/Utils/TopBar';
 import { HomePageDebugData } from '../debug/HomePage';
+import useMemoryMode from '../hooks/useMemoryMode';
 import { LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LRightCol, LSlot } from '../layouts';
 import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '../models/data';
 
@@ -27,6 +28,7 @@ export interface HomePageServerProps {
 }
 
 export default function HomePage(props: HomePageServerProps) {
+  useMemoryMode(true);
   return (
     <div>
       <Head>
