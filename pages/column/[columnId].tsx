@@ -1,6 +1,7 @@
 import { Divider } from '@arco-design/web-react';
 import Head from 'next/head';
 import { ColumnContentArticleList } from '../../components/ColumnContentPage/ColumnContentArticleList';
+import { ColumnContentHotList } from '../../components/ColumnContentPage/ColumnContentHotList';
 import { ColumnContentVideoList } from '../../components/ColumnContentPage/ColumnContentVideoList';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';
@@ -21,6 +22,10 @@ export default function ColumnContentPage() {
         <Navigation />
       </LHeader>
       <LMain>
+        <LLanding>
+          <ColumnContentHotList />
+        </LLanding>
+        <Divider />
         <LLanding>
           <ColumnContentArticleList />
         </LLanding>
