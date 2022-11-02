@@ -28,7 +28,7 @@ export interface HomePageServerProps {
 }
 
 export default function HomePage(props: HomePageServerProps) {
-  useMemoryMode(true);
+  useMemoryMode();
   return (
     <div>
       <Head>

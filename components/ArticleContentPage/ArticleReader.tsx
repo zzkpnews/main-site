@@ -20,7 +20,7 @@ export const ArticleReader = () => {
         </div>
       </div>
       <Divider />
-      <div className="py-1 px-5 flex justify-between">
+      <div className="flex justify-between mx-5 my-2">
         <div className="flex">
           <Avatar className="mr-2 shrink-0">P</Avatar>
           <div className="mr-2 my-auto">中原科技网</div>

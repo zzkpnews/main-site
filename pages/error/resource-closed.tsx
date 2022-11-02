@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { ResourceClosed } from '../../components/ErrorPage/ResourceClosed';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';
 import { ScrollToTop } from '../../components/Utils/ScrollToTop';
@@ -17,10 +18,8 @@ export default function ResourceClosedPage() {
         <Navigation />
       </LHeader>
       <LMain>
-        <LLanding></LLanding>
         <LContainer>
-          <LLeftCol></LLeftCol>
-          <LRightCol></LRightCol>
+          <ResourceClosed />
         </LContainer>
       </LMain>
       <LFooter>

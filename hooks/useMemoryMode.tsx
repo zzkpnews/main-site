@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 const useMemoryMode = (enabled: boolean = false) => {
   useEffect(() => {
-    if (enabled) {
+    if (enabled && document) {
       document.body.classList.add('memory-mode');
     }
   }, [enabled]);

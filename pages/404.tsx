@@ -1,9 +1,10 @@
 import Head from 'next/head';
+import { ResourceNotFound } from '../components/ErrorPage/ResourceNotFound';
 import { Footer } from '../components/Utils/Footer';
 import { Navigation } from '../components/Utils/Navigation';
 import { ScrollToTop } from '../components/Utils/ScrollToTop';
 import { TopBar } from '../components/Utils/TopBar';
-import { LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LRightCol } from '../layouts';
+import { LFooter, LHeader, LLanding, LMain } from '../layouts';
 export default function Custom404() {
   return (
     <div>
@@ -17,11 +18,9 @@ export default function Custom404() {
         <Navigation />
       </LHeader>
       <LMain>
-        <LLanding></LLanding>
-        <LContainer>
-          <LLeftCol></LLeftCol>
-          <LRightCol></LRightCol>
-        </LContainer>
+        <LLanding>
+          <ResourceNotFound />
+        </LLanding>
       </LMain>
       <LFooter>
         <Footer />

@@ -37,7 +37,7 @@ const LLeftCol = (props: { children?: React.ReactNode }) => {
   return <div className="basis-2/3 m-2">{props.children}</div>;
 };
 const LFooter = (props: { children?: React.ReactNode }) => {
-  return <footer className="sticky top-0 z-20">{props.children}</footer>;
+  return <footer>{props.children}</footer>;
 };
 
 export { LHeader, LBackground, LContainer, LFooter, LLanding, LLeftCol, LMain, LRightCol, LStickySlot, LSlot };
