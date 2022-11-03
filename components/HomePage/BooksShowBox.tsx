@@ -8,11 +8,23 @@ export const BooksShowBox = (props: { data: BooksShowBoxData }) => {
     <div className="bg-slate-50 rounded-sm px-2 pb-3 my-5 border-t-7 border-red-800">
       <div className="flex justify-between">
         <h3 className="text-red-700 text-xl font-bold px-4 my-2">{'书刊推荐'}</h3>
-        <a className="hover:text-red-700 text-lg px-4 my-auto cursor-pointer">{'更多'}</a>
+        <a
+          className="hover:text-red-700 text-lg px-4 my-auto cursor-pointer"
+          href="/book"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {'更多'}
+        </a>
       </div>
       <Collapse accordion>
         {props.data.map((item, index) => (
-          <CollapseItem key={`books-show-box-${index}`} className="px-0" header={item.title} name={`books-item-${index}`}>
+          <CollapseItem
+            key={`books-show-box-${index}`}
+            className="px-0"
+            header={item.title}
+            name={`books-item-${index}`}
+          >
             <a href={item.href} target="_blank" rel="noreferrer">
               <div className="flex">
                 <div className="basis-1/2 mx-1 my-auto">

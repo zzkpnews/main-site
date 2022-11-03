@@ -12,7 +12,7 @@ const LHeader = (props: { children?: React.ReactNode }) => {
 const LMain = (props: { size?: 'large' | 'medium'; children?: React.ReactNode }) => {
   return (
     <main
-      className={classNames(`mx-5 lg:mx-35 md:mx-25 sm:mx-20`, {
+      className={classNames(`mx-5 lg:mx-35 md:mx-25 sm:mx-20 overflow-x-hidden`, {
         'xl:mx-40': props.size === 'medium' || props.size === undefined,
         'xl:mx-35': props.size === 'large',
       })}

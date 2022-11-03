@@ -1,7 +1,7 @@
 import Head from 'next/head';
+import { BooksList } from '../../components/BookPage/BooksList';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';
-import { ScrollToTop } from '../../components/Utils/ScrollToTop';
 import { TopBar } from '../../components/Utils/TopBar';
 import { LFooter, LHeader, LLanding, LMain } from '../../layouts';
 
@@ -19,13 +19,12 @@ export default function BookPage() {
       </LHeader>
       <LMain>
         <LLanding>
-
+          <BooksList />
         </LLanding>
       </LMain>
       <LFooter>
         <Footer />
       </LFooter>
-      <ScrollToTop />
     </div>
   );
 }
