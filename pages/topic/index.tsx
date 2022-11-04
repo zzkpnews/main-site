@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { TopicNewsList } from '../../components/TopicPage/TopicNewsList';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';
 import { ScrollToTop } from '../../components/Utils/ScrollToTop';
@@ -19,6 +20,7 @@ export default function TopicPage() {
       </LHeader>
       <LMain>
         <LLanding>
+          <TopicNewsList />
         </LLanding>
       </LMain>
       <LFooter>

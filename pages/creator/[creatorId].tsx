@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { CreatorBackground } from '../../components/CreatorProfilePage/CreatorBackground';
+import { PageHeaderBackground } from '../../components/Utils/PageHeaderBackground';
 import { CreatorCard } from '../../components/CreatorProfilePage/CreatorCard';
 import { CreatorWorksList } from '../../components/CreatorProfilePage/CreatorNewsList';
 import { Footer } from '../../components/Utils/Footer';
@@ -22,7 +22,7 @@ export default function CreatorProfilePage() {
         <Navigation />
       </LHeader>
       <LBackground>
-        <CreatorBackground />
+        <PageHeaderBackground />
       </LBackground>
       <LMain>
         <LContainer>

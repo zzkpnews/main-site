@@ -1,6 +1,6 @@
 import { Avatar } from '@arco-design/web-react';
 
-export const CreatorBackground = () => {
+export const PageHeaderBackground = () => {
   return (
     <img
       src={

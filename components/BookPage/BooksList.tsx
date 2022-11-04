@@ -1,6 +1,9 @@
 import { List, Pagination } from '@arco-design/web-react';
 
 export const BooksList = () => {
+  const scrollToPageTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <div>
       <div className="m-1 p-2 rounded-lg">
@@ -40,7 +43,7 @@ export const BooksList = () => {
         {/* <LoadingBlock /> */}
       </div>
       <div className="flex justify-center my-2">
-        <Pagination simple total={50} size="small" />
+        <Pagination simple total={50} size="small" onChange={scrollToPageTop} />
       </div>
     </div>
   );

@@ -1,10 +1,12 @@
 import Head from 'next/head';
-import { ColumnNewsList } from '../../components/ColumnPage/ColumnNewsList';
+import { TopicCard } from '../../components/TopicContentPage/TopicCard';
+import { TopicContentNewsList } from '../../components/TopicContentPage/TopicContentNewsList';
 import { Footer } from '../../components/Utils/Footer';
 import { Navigation } from '../../components/Utils/Navigation';
+import { PageHeaderBackground } from '../../components/Utils/PageHeaderBackground';
 import { ScrollToTop } from '../../components/Utils/ScrollToTop';
 import { TopBar } from '../../components/Utils/TopBar';
-import { LFooter, LHeader, LLanding, LMain } from '../../layouts';
+import { LBackground, LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LSlot } from '../../layouts';
 
 export default function TopicContentPage() {
   return (
@@ -18,9 +20,15 @@ export default function TopicContentPage() {
       <LHeader>
         <Navigation />
       </LHeader>
+      <LBackground>
+        <PageHeaderBackground />
+      </LBackground>
       <LMain>
         <LLanding>
-          <ColumnNewsList />
+          <TopicCard />
+        </LLanding>
+        <LLanding>
+          <TopicContentNewsList />
         </LLanding>
       </LMain>
       <LFooter>
