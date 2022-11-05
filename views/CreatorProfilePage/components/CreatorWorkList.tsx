@@ -1,4 +1,4 @@
-import { Avatar, Button, Divider, List, Pagination, Tabs, Tag } from '@arco-design/web-react';
+import { List, Pagination, Tabs, Tag } from '@arco-design/web-react';
 
 export const CreatorWorksList = () => {
   return (

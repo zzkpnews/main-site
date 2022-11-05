@@ -1,10 +1,8 @@
+import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
-import { ColumnNewsList } from '../../components/ColumnIndexPage/components/ColumnNewsList';
-import { Footer } from '../../components/Common/Footer';
-import { Navigation } from '../../components/Common/Navigation';
-import { ScrollToTop } from '../../components/Common/ScrollToTop';
-import { TopBar } from '../../components/Common/TopBar';
-import { LFooter, LHeader, LLanding, LMain } from '../../layouts';
+import { ColumnNewsList } from './components';
+import { LFooter, LHeader, LLanding, LMain } from '@layouts/index';
+import { Navigation, ScrollToTop, TopBar } from 'views/Common';
 
 export default function ColumnIndexPageTemplate() {
   return (

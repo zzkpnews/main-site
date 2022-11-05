@@ -1,11 +1,8 @@
-import GroupPageNewsList from './components/GroupPageNewsListBox';
 import Head from 'next/head';
 import { Divider } from '@arco-design/web-react';
-import { Footer } from '../Common/Footer';
-import { LFooter, LHeader, LLanding, LMain } from 'layouts';
-import { Navigation } from '../Common/Navigation';
-import { ScrollToTop } from '../Common/ScrollToTop';
-import { TopBar } from '../Common/TopBar';
+import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
+import { GroupPageNewsList } from './components';
+import { LFooter, LHeader, LLanding, LMain } from '@layouts/index';
 
 export default function GroupIndexPageTemplate() {
   return (

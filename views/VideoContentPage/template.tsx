@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import { LContainer, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '@layouts/index';
-import { Navigation } from 'components/Common/Navigation';
-import { TopBar } from 'components/Common/TopBar';
-import { VideoPlayer } from './components/VideoPlayer';
-import { VideoPlayList } from './components/VideoPlayList';
+import { Navigation, TopBar } from 'views/Common';
+import { VideoPlayer, VideoPlayList } from './components';
 
 export default function VideoContentPageTemplate() {
   return (

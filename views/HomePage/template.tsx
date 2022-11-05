@@ -1,21 +1,12 @@
-import { GetServerSideProps } from 'next';
-import Head from 'next/head';
-import { BooksShowBox } from './components/BooksShowBox';
-import { Headline } from './components/Headline';
-import useMemoryMode from 'hooks/useMemoryMode';
-import { LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LRightCol, LSlot } from '@layouts/index';
-import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '@models/data';
 import Footer from '@arco-design/web-react/es/Layout/footer';
+import Head from 'next/head';
+import useMemoryMode from '@hooks/useMemoryMode';
+import { BooksShowBox, Headline, HomeCarousel, HomePageNewsListBox, SpecialNewsBox } from './components';
+import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '@models/data';
+import { GetServerSideProps } from 'next';
 import { HomePageDebugData } from '@debug/HomePage';
-import { HomeCarousel } from 'components/Common/CarouselBox';
-import { HotListBox } from 'components/Common/HotListBox';
-import { Navigation } from 'components/Common/Navigation';
-import { PictureBox } from 'components/Common/PictureBox';
-import { ScrollToTop } from 'components/Common/ScrollToTop';
-import { TopBar } from 'components/Common/TopBar';
-import { TopicBox } from 'components/Common/TopicBox';
-import { HomePageNewsListBox } from './components/HomePageNewsListBox';
-import { SpecialNewsBox } from './components/SpecialNewsBox';
+import { HotListBox, Navigation, PictureBox, ScrollToTop, TopBar, TopicBox } from 'views/Common';
+import { LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LRightCol, LSlot } from '@layouts/index';
 
 export interface HomePageServerProps {
   booksShowBoxData: BooksShowBoxData;

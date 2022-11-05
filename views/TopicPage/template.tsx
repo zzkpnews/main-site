@@ -1,10 +1,7 @@
-import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { LFooter, LHeader, LLanding, LMain } from 'layouts';
-import { Navigation } from 'components/Common/Navigation';
-import { ScrollToTop } from 'components/Common/ScrollToTop';
-import { TopBar } from 'components/Common/TopBar';
-import { TopicNewsList } from './components/TopicNewsList';
+import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
+import { TopicNewsList } from './components';
 
 export default function TopicIndexPageTemplate() {
   return (

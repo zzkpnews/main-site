@@ -1,13 +1,8 @@
-import { Divider } from '@arco-design/web-react';
 import Head from 'next/head';
-import { Footer } from '../Common/Footer';
-import { Navigation } from '../Common/Navigation';
-import { ScrollToTop } from '../Common/ScrollToTop';
-import { TopBar } from '../../components/Common/TopBar';
-import { GroupContentArticleList } from './components/GroupContentArticleList';
-import { LContainer, LFooter, LHeader, LLanding, LMain } from 'layouts';
-import { GroupContentHotList } from './components/GroupContentHotList';
-import { GroupContentVideoList } from './components/GroupContentVideoList';
+import { Divider } from '@arco-design/web-react';
+import { GroupContentArticleList, GroupContentHotList, GroupContentVideoList } from './components';
+import { LContainer, LFooter, LHeader, LLanding, LMain } from '@layouts/index';
+import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
 
 export default function GroupContentPageTemplate() {
   return (

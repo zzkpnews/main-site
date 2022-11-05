@@ -1,13 +1,9 @@
+import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
-import { PageHeaderBackground } from '../Common/PageHeaderBackground';
-import { CreatorCard } from './components/CreatorCard';
-import { CreatorWorksList } from './components/CreatorNewsList';
-import { Footer } from '../Common/Footer';
-import { HotListBox } from '../Common/HotListBox';
-import { Navigation } from '../Common/Navigation';
-import { PictureBox } from '../Common/PictureBox';
-import { HomePageDebugData } from '../../debug/HomePage';
-import { LBackground, LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot } from 'layouts';
+import { CreatorCard, CreatorWorksList } from './components';
+import { HomePageDebugData } from '@debug/HomePage';
+import { HotListBox, Navigation, PageHeaderBackground, PictureBox } from 'views/Common';
+import { LBackground, LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '@layouts/index';
 
 export default function CreatorProfilePageTemplate() {
   return (

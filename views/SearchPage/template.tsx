@@ -1,10 +1,8 @@
 import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { LFooter, LHeader, LLanding, LMain } from '@layouts/index';
-import { Navigation } from 'components/Common/Navigation';
-import { ScrollToTop } from 'components/Common/ScrollToTop';
-import { SearchBox } from './components/SearchBox';
-import { TopBar } from 'components/Common/TopBar';
+import { Navigation, ScrollToTop, TopBar } from 'views/Common';
+import { SearchBox } from './components';
 import { useRouter } from 'next/router';
 
 export default function SearchPageTemplate() {
