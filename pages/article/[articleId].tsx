@@ -3,13 +3,13 @@ import { ArticleNextListBox } from '../../components/ArticleContentPage/ArticleN
 import { ArticleReader } from '../../components/ArticleContentPage/ArticleReader';
 import { BooksShowBox } from '../../components/HomePage/BooksShowBox';
 import { TopicBox } from '../../components/HomePage/TopicBox';
-import { Footer } from '../../components/Utils/Footer';
-import { Navigation } from '../../components/Utils/Navigation';
-import { PictureBox } from '../../components/Utils/PictureBox';
-import { ScrollToTop } from '../../components/Utils/ScrollToTop';
-import { TopBar } from '../../components/Utils/TopBar';
+import { Footer } from '../../components/Common/Footer';
+import { Navigation } from '../../components/Common/Navigation';
+import { PictureBox } from '../../components/Common/PictureBox';
+import { ScrollToTop } from '../../components/Common/ScrollToTop';
+import { TopBar } from '../../components/Common/TopBar';
 import { HomePageDebugData } from '../../debug/HomePage';
-import { LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot, LStickySlot } from '../../layouts/';
+import { LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot, LStickySlot } from '../../layouts';
 
 export default function ArticleContentPage() {
   return (

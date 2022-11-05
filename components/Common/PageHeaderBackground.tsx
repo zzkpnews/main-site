@@ -1,4 +1,3 @@
-import { Avatar } from '@arco-design/web-react';
 
 export const PageHeaderBackground = () => {
   return (

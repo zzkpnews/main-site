@@ -3,10 +3,10 @@ import Head from 'next/head';
 import { ColumnContentArticleList } from '../../components/ColumnContentPage/ColumnContentArticleList';
 import { ColumnContentHotList } from '../../components/ColumnContentPage/ColumnContentHotList';
 import { ColumnContentVideoList } from '../../components/ColumnContentPage/ColumnContentVideoList';
-import { Footer } from '../../components/Utils/Footer';
-import { Navigation } from '../../components/Utils/Navigation';
-import { ScrollToTop } from '../../components/Utils/ScrollToTop';
-import { TopBar } from '../../components/Utils/TopBar';
+import { Footer } from '../../components/Common/Footer';
+import { Navigation } from '../../components/Common/Navigation';
+import { ScrollToTop } from '../../components/Common/ScrollToTop';
+import { TopBar } from '../../components/Common/TopBar';
 import { LContainer, LFooter, LHeader, LLanding, LMain } from '../../layouts';
 
 export default function ColumnContentPage() {
@@ -22,6 +22,10 @@ export default function ColumnContentPage() {
         <Navigation />
       </LHeader>
       <LMain>
+        <LLanding>
+          <h2 className="text-2xl font-bold text-red-700">社会</h2>
+          <Divider />
+        </LLanding>
         <LLanding>
           <ColumnContentHotList />
         </LLanding>

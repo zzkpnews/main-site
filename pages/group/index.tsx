@@ -1,10 +1,10 @@
 import { Divider } from '@arco-design/web-react';
 import Head from 'next/head';
 import GroupPageNewsList from '../../components/GroupPage/GroupPageNewsListBox';
-import { Footer } from '../../components/Utils/Footer';
-import { Navigation } from '../../components/Utils/Navigation';
-import { ScrollToTop } from '../../components/Utils/ScrollToTop';
-import { TopBar } from '../../components/Utils/TopBar';
+import { Footer } from '../../components/Common/Footer';
+import { Navigation } from '../../components/Common/Navigation';
+import { ScrollToTop } from '../../components/Common/ScrollToTop';
+import { TopBar } from '../../components/Common/TopBar';
 import { LFooter, LHeader, LLanding, LMain } from '../../layouts';
 
 export default function GroupPage() {

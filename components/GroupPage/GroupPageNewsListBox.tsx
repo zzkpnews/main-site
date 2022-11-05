@@ -1,4 +1,4 @@
-import { Avatar, Divider, List } from '@arco-design/web-react';
+import { Divider, List } from '@arco-design/web-react';
 import { useId } from 'react';
 
 export default function GroupPageNewsList() {
@@ -8,7 +8,7 @@ export default function GroupPageNewsList() {
         <div key={useId()}>
           <div className="flex justify-between">
             <h3 className="text-xl font-bold text-red-700">河南看点</h3>
-            <a className="text-lg mx-5">更多</a>
+            <a className="text-lg mx-5" href="/group/example">更多</a>
           </div>
           <div className="xl:flex">
             <div className="basis-1/2 my-auto">

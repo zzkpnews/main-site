@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { TopicCard } from '../../components/TopicContentPage/TopicCard';
 import { TopicContentNewsList } from '../../components/TopicContentPage/TopicContentNewsList';
-import { Footer } from '../../components/Utils/Footer';
-import { Navigation } from '../../components/Utils/Navigation';
-import { PageHeaderBackground } from '../../components/Utils/PageHeaderBackground';
-import { ScrollToTop } from '../../components/Utils/ScrollToTop';
-import { TopBar } from '../../components/Utils/TopBar';
+import { Footer } from '../../components/Common/Footer';
+import { Navigation } from '../../components/Common/Navigation';
+import { PageHeaderBackground } from '../../components/Common/PageHeaderBackground';
+import { ScrollToTop } from '../../components/Common/ScrollToTop';
+import { TopBar } from '../../components/Common/TopBar';
 import { LBackground, LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LSlot } from '../../layouts';
 
 export default function TopicContentPage() {

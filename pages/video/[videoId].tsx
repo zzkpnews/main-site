@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import { Navigation } from '../../components/Utils/Navigation';
-import { TopBar } from '../../components/Utils/TopBar';
+import { Navigation } from '../../components/Common/Navigation';
+import { TopBar } from '../../components/Common/TopBar';
 import { VideoPlayer } from '../../components/VideoContentPage/VideoPlayer';
 import { VideoPlayList } from '../../components/VideoContentPage/VideoPlayList';
-import { LContainer, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '../../layouts/';
+import { LContainer, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '../../layouts';
 
 export default function VideoContentPage() {
   return (

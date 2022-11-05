@@ -3,10 +3,10 @@ import Head from 'next/head';
 import { GroupContentArticleList } from '../../components/GroupContentPage/GroupContentArticleList';
 import { GroupContentHotList } from '../../components/GroupContentPage/GroupContentHotList';
 import { GroupContentVideoList } from '../../components/GroupContentPage/GroupContentVideoList';
-import { Footer } from '../../components/Utils/Footer';
-import { Navigation } from '../../components/Utils/Navigation';
-import { ScrollToTop } from '../../components/Utils/ScrollToTop';
-import { TopBar } from '../../components/Utils/TopBar';
+import { Footer } from '../../components/Common/Footer';
+import { Navigation } from '../../components/Common/Navigation';
+import { ScrollToTop } from '../../components/Common/ScrollToTop';
+import { TopBar } from '../../components/Common/TopBar';
 import { LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LRightCol } from '../../layouts';
 
 export default function GroupContentPage() {

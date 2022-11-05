@@ -8,7 +8,9 @@ export const ColumnNewsList = () => {
         <div key={useId()}>
           <div className="flex justify-between my-5">
             <h3 className="text-xl font-bold text-red-700">河南看点</h3>
-            <a className="text-lg mx-5 hover:text-red-700 cursor-pointer">更多</a>
+            <a className="text-lg mx-5 hover:text-red-700 cursor-pointer" href="/column/test">
+              更多
+            </a>
           </div>
           <div className="xl:flex">
             <div className="basis-2/3 my-auto">

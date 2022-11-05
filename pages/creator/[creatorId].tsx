@@ -1,11 +1,11 @@
 import Head from 'next/head';
-import { PageHeaderBackground } from '../../components/Utils/PageHeaderBackground';
+import { PageHeaderBackground } from '../../components/Common/PageHeaderBackground';
 import { CreatorCard } from '../../components/CreatorProfilePage/CreatorCard';
 import { CreatorWorksList } from '../../components/CreatorProfilePage/CreatorNewsList';
-import { Footer } from '../../components/Utils/Footer';
-import { HotListBox } from '../../components/Utils/HotListBox';
-import { Navigation } from '../../components/Utils/Navigation';
-import { PictureBox } from '../../components/Utils/PictureBox';
+import { Footer } from '../../components/Common/Footer';
+import { HotListBox } from '../../components/Common/HotListBox';
+import { Navigation } from '../../components/Common/Navigation';
+import { PictureBox } from '../../components/Common/PictureBox';
 import { HomePageDebugData } from '../../debug/HomePage';
 import { LBackground, LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '../../layouts';
 

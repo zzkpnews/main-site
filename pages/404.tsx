@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { ResourceNotFound } from '../components/ErrorPage/ResourceNotFound';
-import { Footer } from '../components/Utils/Footer';
-import { Navigation } from '../components/Utils/Navigation';
-import { ScrollToTop } from '../components/Utils/ScrollToTop';
-import { TopBar } from '../components/Utils/TopBar';
+import { Footer } from '../components/Common/Footer';
+import { Navigation } from '../components/Common/Navigation';
+import { ScrollToTop } from '../components/Common/ScrollToTop';
+import { TopBar } from '../components/Common/TopBar';
 import { LFooter, LHeader, LLanding, LMain } from '../layouts';
 export default function Custom404() {
   return (

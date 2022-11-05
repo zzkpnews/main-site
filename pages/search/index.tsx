@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { SearchBox } from '../../components/SearchPage/SearchBox';
-import { Footer } from '../../components/Utils/Footer';
-import { Navigation } from '../../components/Utils/Navigation';
-import { ScrollToTop } from '../../components/Utils/ScrollToTop';
-import { TopBar } from '../../components/Utils/TopBar';
-import { LFooter, LHeader, LLanding, LMain } from '../../layouts/';
+import { Footer } from '../../components/Common/Footer';
+import { Navigation } from '../../components/Common/Navigation';
+import { ScrollToTop } from '../../components/Common/ScrollToTop';
+import { TopBar } from '../../components/Common/TopBar';
+import { LFooter, LHeader, LLanding, LMain } from '../../layouts';
 
 export default function SearchPage() {
   const router = useRouter();

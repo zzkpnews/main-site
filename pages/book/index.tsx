@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import { BooksList } from '../../components/BookPage/BooksList';
-import { Footer } from '../../components/Utils/Footer';
-import { Navigation } from '../../components/Utils/Navigation';
-import { TopBar } from '../../components/Utils/TopBar';
+import { BooksList } from '../../components/BookIndexPage/BooksList';
+import { Footer } from '../../components/Common/Footer';
+import { Navigation } from '../../components/Common/Navigation';
+import { TopBar } from '../../components/Common/TopBar';
 import { LFooter, LHeader, LLanding, LMain } from '../../layouts';
 
 export default function BookPage() {
