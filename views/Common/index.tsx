@@ -1,7 +1,7 @@
 import { Footer } from './Footer';
 import { LoadingBlock } from './LoadingBlock';
 import { Navigation } from './Navigation';
-import { PageHeaderBackground } from './PageHeaderBackground';
+import { HeaderBackground } from './HeaderBackground';
 import { PictureBox } from './PictureBox';
 import { ScrollToTop } from './ScrollToTop';
 import { TopBar } from './TopBar';
@@ -13,7 +13,7 @@ export {
   LoadingBlock,
   Navigation,
   HotListBox,
-  PageHeaderBackground,
+  HeaderBackground,
   PictureBox,
   ScrollToTop,
   TopBar,

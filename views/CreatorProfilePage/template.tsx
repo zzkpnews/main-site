@@ -2,7 +2,7 @@ import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { CreatorCard, CreatorWorksList } from './components';
 import { HomePageDebugData } from '@debug/HomePage';
-import { HotListBox, Navigation, PageHeaderBackground, PictureBox } from 'views/Common';
+import { HotListBox, Navigation, HeaderBackground, PictureBox } from 'views/Common';
 import { LBackground, LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '@layouts/index';
 
 export default function CreatorProfilePageTemplate() {
@@ -17,7 +17,7 @@ export default function CreatorProfilePageTemplate() {
         <Navigation />
       </LHeader>
       <LBackground>
-        <PageHeaderBackground />
+        <HeaderBackground />
       </LBackground>
       <LMain>
         <LContainer>

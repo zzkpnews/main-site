@@ -1,5 +1,5 @@
 
-export const PageHeaderBackground = () => {
+export const HeaderBackground = () => {
   return (
     <img
       src={

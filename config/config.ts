@@ -1,6 +1,6 @@
-import { FrontServerConfig } from '@type/config';
+import { ServerConfig } from '@type/config';
 
-export const config: FrontServerConfig = {
+export const config: ServerConfig = {
   api_server: {
     protocol: 'http',
     hostname: 'localhost',

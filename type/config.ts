@@ -1,4 +1,4 @@
-export interface FrontServerConfig {
+export interface ServerConfig {
   api_server: {
     protocol: 'http' | 'https';
     hostname: string;
