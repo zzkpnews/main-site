@@ -1,4 +1,4 @@
-import ColumnIndexPageTemplate from 'components/ColumnIndexPage/template';
+import ColumnIndexPageTemplate from "views/ColumnIndexPage/template";
 
 export default function ColumnIndexPage() {
   return <ColumnIndexPageTemplate />;

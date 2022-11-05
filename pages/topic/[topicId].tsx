@@ -1,4 +1,4 @@
-import TopicContentPageTemplate from 'components/TopicContentPage/template';
+import TopicContentPageTemplate from "views/TopicContentPage/template";
 
 export default function TopicContentPage() {
   return <TopicContentPageTemplate />;

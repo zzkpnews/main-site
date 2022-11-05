@@ -1,4 +1,4 @@
-import GroupIndexPageTemplate from 'components/GroupPage/template';
+import GroupIndexPageTemplate from "views/GroupPage/template";
 
 export default function GroupIndexPage() {
   return <GroupIndexPageTemplate />;

@@ -1,4 +1,4 @@
-import VideoContentPageTemplate from 'components/VideoContentPage/template';
+import VideoContentPageTemplate from 'views/VideoContentPage/template';
 
 export default function VideoContentPage() {
   return <VideoContentPageTemplate />;

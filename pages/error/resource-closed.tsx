@@ -1,10 +1,9 @@
+import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
-import { ResourceClosed } from '../../components/ErrorPage/components/ResourceClosed';
-import { Footer } from '../../components/Common/Footer';
-import { Navigation } from '../../components/Common/Navigation';
-import { ScrollToTop } from '../../components/Common/ScrollToTop';
-import { TopBar } from '../../components/Common/TopBar';
-import { LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LRightCol } from '../../layouts';
+import { LContainer, LFooter, LHeader, LMain } from '../../layouts';
+import { Navigation, ScrollToTop, TopBar } from 'views/Common';
+import { ResourceClosed } from 'views/ErrorPage/components/ResourceClosed';
+
 export default function ResourceClosedPage() {
   return (
     <div>

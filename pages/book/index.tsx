@@ -1,4 +1,4 @@
-import BookIndexPageTemplate from 'components/BookIndexPage/template';
+import BookIndexPageTemplate from "views/BookIndexPage/template";
 
 export default function BookIndexPage() {
   return <BookIndexPageTemplate />;

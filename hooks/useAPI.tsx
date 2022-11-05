@@ -5,7 +5,7 @@ import { APIData } from 'type/response';
 
 type APIRequestMethod = 'GET' | 'POST';
 
-export const useAPI = <DataModel,>(api_path: string, method: APIRequestMethod, withToken: boolean, token: string) => {
+const useAPI = <DataModel,>(api_path: string, method: APIRequestMethod, withToken: boolean, token: string) => {
   let result_data: APIData<DataModel> = {
     code: 0,
   };
@@ -29,3 +29,5 @@ export const useAPI = <DataModel,>(api_path: string, method: APIRequestMethod, w
   }
   return [result_data, loading, run];
 };
+
+export default useAPI;
