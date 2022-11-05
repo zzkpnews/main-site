@@ -1,5 +1,5 @@
 import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '@models/data';
-import HomePageTemplate from 'components/HomePage/template';
+import HomePageTemplate from 'views/HomePage/template';
 import useMemoryMode from 'hooks/useMemoryMode';
 import { GetServerSideProps } from 'next';
 import { HomePageDebugData } from '../debug/HomePage';

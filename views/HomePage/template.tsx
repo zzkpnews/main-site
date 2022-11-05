@@ -1,11 +1,10 @@
-import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import useMemoryMode from '@hooks/useMemoryMode';
 import { BooksShowBox, Headline, HomeCarousel, HomePageNewsListBox, SpecialNewsBox } from './components';
 import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '@models/data';
+import { Footer, HotListBox, Navigation, PictureBox, ScrollToTop, TopBar, TopicBox } from 'views/Common';
 import { GetServerSideProps } from 'next';
 import { HomePageDebugData } from '@debug/HomePage';
-import { HotListBox, Navigation, PictureBox, ScrollToTop, TopBar, TopicBox } from 'views/Common';
 import { LContainer, LFooter, LHeader, LLanding, LLeftCol, LMain, LRightCol, LSlot } from '@layouts/index';
 
 export interface HomePageServerProps {
