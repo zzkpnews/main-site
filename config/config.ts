@@ -1,4 +1,4 @@
-import { FrontServerConfig } from '../types/config';
+import { FrontServerConfig } from '../type/config';
 
 export const config: FrontServerConfig = {
   api_server: {

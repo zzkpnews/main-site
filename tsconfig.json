@@ -18,9 +18,12 @@
     "paths": {
       "@config/*": ["./config/*"],
       "@hooks/*": ["./hooks/*"],
-      "@types/*": ["./types/*"],
-      "@utils/*": ["./utils/*"],
-      "@models/*": ["./models/*"]
+      "@type/*": ["type/*"],
+      "@utils/*": ["utils/*"],
+      "@models/*": ["./models/*"],
+      "@debug/*": ["./debug/*"],
+      "@layouts/*": ["./layouts/*"],
+      "@styles/*": ["./styles/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
