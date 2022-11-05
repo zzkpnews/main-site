@@ -1,15 +1,15 @@
+import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { ArticleNextListBox } from './components/ArticleNextListBox';
 import { ArticleReader } from './components/ArticleReader';
-import { BooksShowBox } from '../HomePage/components/BooksShowBox';
-import { TopicBox } from '../Common/TopicBox';
-import { Footer } from '../Common/Footer';
-import { Navigation } from '../Common/Navigation';
-import { PictureBox } from '../Common/PictureBox';
-import { ScrollToTop } from '../Common/ScrollToTop';
-import { TopBar } from '../Common/TopBar';
-import { HomePageDebugData } from '../../debug/HomePage';
+import { BooksShowBox } from 'views/HomePage/components/BooksShowBox';
+import { HomePageDebugData } from '@debug/HomePage';
 import { LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot, LStickySlot } from 'layouts';
+import { Navigation } from 'views/Common/Navigation';
+import { PictureBox } from 'views/Common/PictureBox';
+import { ScrollToTop } from 'views/Common/ScrollToTop';
+import { TopBar } from 'views/Common/TopBar';
+import { TopicBox } from 'views/Common/TopicBox';
 
 export const ArticleContentPageTemplate = () => {
   return (
