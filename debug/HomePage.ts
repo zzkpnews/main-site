@@ -6,7 +6,7 @@ export const HomePageDebugData: HomePageServerProps = {
     title: '《河南科技报》2022年3月29日《中原围棋》专版',
     citation:
       '河南省围棋协会第二届第四次常务理事会议在郑州召开。中国围棋协会原副主席黄进先、河南省发改委体制改革处副处长严静波、河南省社会组织管理局副局长张新志、河南省围棋协会主席马望、协会常务理事和媒体等出席会议。会议由协会秘书长汪见虹九段主持。',
-    href: 'https://www.baidu.com',
+    href: '/book/example',
   }),
   topPictureBoxData: {
     href: 'http://www.baidu.com',

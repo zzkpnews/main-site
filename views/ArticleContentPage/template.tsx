@@ -1,9 +1,8 @@
-import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { BooksShowBox } from 'views/HomePage/components/BooksShowBox';
 import { HomePageDebugData } from '@debug/HomePage';
 import { LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot, LStickySlot } from '@layouts/index';
-import { Navigation, PictureBox, ScrollToTop, TopBar, TopicBox } from 'views/Common';
+import { Footer, Navigation, PictureBox, ScrollToTop, TopBar, TopicBox } from 'views/Common';
 import { ArticleNextListBox, ArticleReader } from './components';
 
 export const ArticleContentPageTemplate = () => {

@@ -1,8 +1,8 @@
-import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '@models/data';
 import HomePageTemplate from 'views/HomePage/template';
-import useMemoryMode from 'hooks/useMemoryMode';
+import { BooksShowBoxData, HeadlineData, HotListBoxData, PictureBoxData, SpecialNewsBoxData } from '@models/data';
 import { GetServerSideProps } from 'next';
 import { HomePageDebugData } from '../debug/HomePage';
+import { useMemoryMode } from '@hooks/index';
 
 export interface HomePageServerProps {
   booksShowBoxData: BooksShowBoxData;

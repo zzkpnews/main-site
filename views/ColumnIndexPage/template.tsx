@@ -1,8 +1,7 @@
-import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { ColumnNewsList } from './components';
 import { LFooter, LHeader, LLanding, LMain } from '@layouts/index';
-import { Navigation, ScrollToTop, TopBar } from 'views/Common';
+import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
 
 export default function ColumnIndexPageTemplate() {
   return (

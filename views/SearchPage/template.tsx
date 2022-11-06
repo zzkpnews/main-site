@@ -1,7 +1,6 @@
-import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { LFooter, LHeader, LLanding, LMain } from '@layouts/index';
-import { Navigation, ScrollToTop, TopBar } from 'views/Common';
+import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
 import { SearchBox } from './components';
 import { useRouter } from 'next/router';
 

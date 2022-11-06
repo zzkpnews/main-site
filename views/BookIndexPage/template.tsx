@@ -1,8 +1,7 @@
-import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { BooksList } from './components';
 import { LFooter, LHeader, LLanding, LMain } from '@layouts/index';
-import { Navigation, TopBar } from 'views/Common';
+import { Footer, Navigation, TopBar } from 'views/Common';
 
 export default function BookIndexPageTemplate() {
   return (

@@ -13,7 +13,7 @@ export const BooksList = () => {
           dataSource={new Array(12).fill({
             title: 'Beijing Bytedance Technology Co., Ltd.',
             subtitle: 'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.',
-            href: '/video/test',
+            href: '/book/example',
           })}
           render={(item, index) => (
             <List.Item key={index}>

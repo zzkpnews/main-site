@@ -1,9 +1,8 @@
-import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { ColumnContentArticleList, ColumnContentHotList, ColumnContentVideoList } from './components';
 import { Divider } from '@arco-design/web-react';
 import { LContainer, LFooter, LHeader, LLanding, LMain } from '@layouts/index';
-import { Navigation, ScrollToTop, TopBar } from 'views/Common';
+import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
 
 export default function ColumnContentPageTemplate() {
   return (

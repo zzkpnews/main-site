@@ -7,7 +7,7 @@ import { ScrollToTop } from './ScrollToTop';
 import { TopBar } from './TopBar';
 import { TopicBox } from './TopicBox';
 import { HotListBox } from './HotListBox';
-
+import { PageSEO } from './PageSEO';
 export {
   Footer,
   LoadingBlock,
@@ -18,4 +18,5 @@ export {
   ScrollToTop,
   TopBar,
   TopicBox,
+  PageSEO,
 };

@@ -1,7 +1,6 @@
-import Footer from '@arco-design/web-react/es/Layout/footer';
 import Head from 'next/head';
 import { LBackground, LFooter, LHeader, LLanding, LMain } from '@layouts/index';
-import { Navigation, HeaderBackground, ScrollToTop, TopBar } from 'views/Common';
+import { Navigation, HeaderBackground, ScrollToTop, TopBar, Footer } from 'views/Common';
 import { TopicCard, TopicContentNewsList } from './components';
 
 export default function TopicContentPageTemplate() {
