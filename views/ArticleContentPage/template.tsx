@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { BooksShowBox } from 'views/HomePage/components/BooksShowBox';
-import { HomePageDebugData } from '@debug/HomePage';
-import { LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot, LStickySlot } from '@layouts/index';
+import { HomePageDebugData } from '@/debug/HomePage';
+import { LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot, LStickySlot } from '@/layouts/index';
 import { Footer, Navigation, PictureBox, ScrollToTop, TopBar, TopicBox } from 'views/Common';
 import { ArticleNextListBox, ArticleReader } from './components';
 

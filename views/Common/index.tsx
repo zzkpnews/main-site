@@ -5,8 +5,8 @@ import { HeaderBackground } from './HeaderBackground';
 import { PictureBox } from './PictureBox';
 import { ScrollToTop } from './ScrollToTop';
 import { TopBar } from './TopBar';
-import { TopicBox } from './TopicBox';
-import { HotListBox } from './HotListBox';
+import { TopicBox } from '../HomePage/components/TopicBox';
+import { HotListBox } from '../HomePage/components/HotListBox';
 import { PageSEO } from './PageSEO';
 export {
   Footer,

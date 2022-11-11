@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { LFooter, LHeader, LLanding, LMain } from '@layouts/index';
+import { LFooter, LHeader, LLanding, LMain } from '@/layouts/index';
 import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
 import { TopicNewsList } from './components';
 

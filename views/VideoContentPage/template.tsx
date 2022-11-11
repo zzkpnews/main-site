@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { LContainer, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '@layouts/index';
+import { LContainer, LHeader, LLeftCol, LMain, LRightCol, LSlot } from '@/layouts/index';
 import { Navigation, TopBar } from 'views/Common';
 import { VideoPlayer, VideoPlayList } from './components';
 

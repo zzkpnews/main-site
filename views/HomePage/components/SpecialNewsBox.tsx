@@ -1,4 +1,4 @@
-import { SpecialNewsBoxData } from '../../models/data';
+import { SpecialNewsBoxData } from '@/models/data';
 
 export const SpecialNewsBox = (props: { data: SpecialNewsBoxData }) => {
   return (

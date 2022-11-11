@@ -1,4 +1,4 @@
-import { ServerConfig } from '@type/config';
+import { ServerConfig } from '@/type/config';
 
 export const config: ServerConfig = {
   api_server: {

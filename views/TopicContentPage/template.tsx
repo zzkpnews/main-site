@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { LBackground, LFooter, LHeader, LLanding, LMain } from '@layouts/index';
+import { LBackground, LFooter, LHeader, LLanding, LMain } from '@/layouts/index';
 import { Navigation, HeaderBackground, ScrollToTop, TopBar, Footer } from 'views/Common';
 import { TopicCard, TopicContentNewsList } from './components';
 

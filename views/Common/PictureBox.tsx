@@ -1,4 +1,4 @@
-import { PictureBoxData } from '../../models/data';
+import { PictureBoxData } from '@/models/data';
 
 export const PictureBox = (props: { data?: PictureBoxData }) => {
   if (!props.data?.img_url) return null;
