@@ -1,4 +1,4 @@
-import { VideoPlayList } from './VideoPlayList';
-import { VideoPlayer } from './VideoPlayer';
+import { PlayList } from './PlayList';
+import { Player } from './Player';
 
-export { VideoPlayList, VideoPlayer };
+export { PlayList, Player as VideoPlayer };

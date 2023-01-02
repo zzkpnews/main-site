@@ -18,8 +18,8 @@
     "paths": {
       "@/config/*": ["./config/*"],
       "@/hooks/*": ["./hooks/*"],
-      "@/type/*": ["type/*"],
-      "@/utils/*": ["utils/*"],
+      "@/type/*": ["./type/*"],
+      "@/utils/*": ["./utils/*"],
       "@/models/*": ["./models/*"],
       "@/debug/*": ["./debug/*"],
       "@/layouts/*": ["./layouts/*"],

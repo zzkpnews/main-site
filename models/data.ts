@@ -1,3 +1,5 @@
+export type NewsType = 'article' | 'video';
+
 export interface NewsListItem {
   news_id: string;
   time_stamp: number;
@@ -97,8 +99,11 @@ export interface ArticleNews {
 
   column_id: string;
   column_title: string;
+
   creator_id: string;
   creator_title: string;
+  creator_logo: string;
+  creator_introduction: string;
 
   author: string;
   editor: string;
@@ -120,8 +125,11 @@ export interface VideoNews {
 
   column_id: string;
   column_title: string;
+
   creator_id: string;
   creator_title: string;
+  creator_logo: string;
+  creator_introduction: string;
 
   author?: string;
   video_url: string;
@@ -129,6 +137,25 @@ export interface VideoNews {
   origin?: string;
   origin_url: string;
 }
+
+export type VideoPlayList = {
+  news_id: string;
+
+  title: string;
+  subtitle?: string;
+  bgimg: string;
+}[];
+
+export type TopicNewsListData = {
+  topic_title: string;
+  topic_id: string;
+  list: {
+    news_id: string;
+    title: string;
+    subtitle?: string;
+    type: NewsType;
+  }[];
+}[];
 
 export interface WebsiteSummary {
   title: string;
@@ -165,3 +192,9 @@ export type HotListBoxData = {
   subtitle?: string;
   href: string;
 }[];
+
+export interface APIData<DataModel> {
+  code: number;
+  message?: string;
+  content?: DataModel;
+}

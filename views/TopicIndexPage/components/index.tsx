@@ -1,3 +1,3 @@
-import { TopicNewsList } from './TopicNewsList';
+import { NewsList } from './NewsList';
 
-export { TopicNewsList };
+export { NewsList as TopicNewsList };

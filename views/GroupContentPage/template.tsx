@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Divider } from '@arco-design/web-react';
 import { GroupContentArticleList, GroupContentHotList, GroupContentVideoList } from './components';
-import { LContainer, LFooter, LHeader, LLanding, LMain } from '@layouts/index';
+import { LContainer, LFooter, LHeader, LLanding, LMain } from '@/layouts/index';
 import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
 
 export default function GroupContentPageTemplate() {

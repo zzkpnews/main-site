@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Divider } from '@arco-design/web-react';
 import { Footer, Navigation, ScrollToTop, TopBar } from 'views/Common';
 import { GroupPageNewsList } from './components';
-import { LFooter, LHeader, LLanding, LMain } from '@layouts/index';
+import { LFooter, LHeader, LLanding, LMain } from '@/layouts/index';
 
 export default function GroupIndexPageTemplate() {
   return (
