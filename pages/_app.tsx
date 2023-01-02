@@ -1,9 +1,9 @@
-import '@styles/globals.css';
+import '@/styles/globals.css';
 import '@arco-themes/react-sorghum/css/arco.css';
 import type { AppProps } from 'next/app';
 import { configResponsive } from 'ahooks';
 import { DefaultSeo } from 'next-seo';
-import { default_seo_config } from '@config/seo.config';
+import { default_seo_config } from '@/config/seo.config';
 import 'views/BookContentPage/components/BookReader.css';
 configResponsive({
   sm: 640,

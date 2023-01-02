@@ -22,6 +22,7 @@
       "@/utils/*": ["./utils/*"],
       "@/models/*": ["./models/*"],
       "@/debug/*": ["./debug/*"],
+      "@/views/*": ["./views/*"],
       "@/layouts/*": ["./layouts/*"],
       "@/styles/*": ["./styles/*"],
     }
