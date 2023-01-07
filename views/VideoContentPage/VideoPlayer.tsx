@@ -3,7 +3,7 @@ import { APIData, VideoNews } from '@/models/data';
 import { Avatar, Button } from '@arco-design/web-react';
 import React from 'react';
 
-export const Player = React.memo(
+export const VideoPlayer = React.memo(
   (props: { data: APIData<VideoNews> }) => {
     return (
       <div className="lg:flex flex-col">

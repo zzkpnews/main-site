@@ -1,7 +1,7 @@
 import { Divider, List } from '@arco-design/web-react';
 import { useId } from 'react';
 
-export const NewsList = () => {
+export const TopicNewsList = () => {
   return (
     <div>
       {Array(6).fill(

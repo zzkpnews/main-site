@@ -1,10 +1,10 @@
-import { Avatar, Button, Input, List, Space } from '@arco-design/web-react';
+import { Button, Input, List } from '@arco-design/web-react';
 const InputSearch = Input.Search;
 export const SearchBox = (props: { searchWord?: string }) => {
   return (
     <div className="">
       <div className="flex flex-col justify-center mx-5">
-        <h2 className="mx-auto text-3xl font-bold my-5">站内内容搜索</h2>
+        <h2 className="mx-auto text-3xl font-bold my-5">{"站内内容搜索"}</h2>
         <InputSearch
           value={props.searchWord}
           size="large"
@@ -35,7 +35,7 @@ export const SearchBox = (props: { searchWord?: string }) => {
       </div>
       <div className="flex justify-center my-5">
         <Button type="primary" size="large">
-          加载更多
+          {"加载更多"}
         </Button>
       </div>
     </div>

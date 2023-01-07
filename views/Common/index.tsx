@@ -1,5 +1,3 @@
-import { HotListBox } from "../HomePage/components/HotListBox";
-import { TopicBox } from "../HomePage/components/TopicBox";
 import { ErrorBlock } from "./ErrorBlock";
 import { Footer } from "./Footer";
 import { HeaderBackground } from "./HeaderBackground";
@@ -13,13 +11,11 @@ export {
   ErrorBlock,
   Footer,
   HeaderBackground,
-  HotListBox,
   LoadingBlock,
   Navigation,
   PageSEO,
   PictureBox,
   ScrollToTop,
   TopBar,
-  TopicBox,
 };
 

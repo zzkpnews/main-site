@@ -1,9 +1,8 @@
-import Head from "next/head";
-import { TopBar, Navigation, ScrollToTop, Footer, PageSEO } from "views/Common";
-import { ResourceNotFound } from "views/ErrorPage/components/ResourceNotFound";
+import { ServerError } from "@/views/Error500Page";
+import { LFooter, LHeader, LLanding, LMain } from "@/views/layout";
+import { Footer, Navigation, PageSEO, ScrollToTop, TopBar } from "views/Common";
 
-import { LFooter, LHeader, LLanding, LMain } from "../layouts";
-export default function Custom500() {
+const Custom500 = () => {
   return (
     <>
       <PageSEO
@@ -16,7 +15,7 @@ export default function Custom500() {
       </LHeader>
       <LMain>
         <LLanding>
-          <ResourceNotFound />
+          <ServerError />
         </LLanding>
       </LMain>
       <LFooter>
@@ -25,4 +24,6 @@ export default function Custom500() {
       <ScrollToTop />
     </>
   );
-}
+};
+
+export default Custom500;

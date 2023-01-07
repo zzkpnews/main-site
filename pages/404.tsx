@@ -1,9 +1,14 @@
-import Head from "next/head";
-import { TopBar, Navigation, ScrollToTop, Footer, PageSEO } from "views/Common";
-import { ResourceNotFound } from "views/ErrorPage/components/ResourceNotFound";
+import {
+  Footer,
+  Navigation,
+  PageSEO,
+  ScrollToTop,
+  TopBar,
+} from "@/views/Common";
+import { ResourceNotFound } from "@/views/Error404Page";
+import { LFooter, LHeader, LLanding, LMain } from "@/views/layout";
 
-import { LFooter, LHeader, LLanding, LMain } from "../layouts";
-export default function Custom404() {
+const Custom404 = () => {
   return (
     <div>
       <PageSEO title="当前页面走丢了..." describe="页面未找到" />
@@ -22,4 +27,6 @@ export default function Custom404() {
       <ScrollToTop />
     </div>
   );
-}
+};
+
+export default Custom404;
