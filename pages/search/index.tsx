@@ -3,9 +3,9 @@ import {
   Navigation,
   PageSEO,
   ScrollToTop,
-  TopBar,
+  TopBar
 } from "@/views/Common";
-import { LFooter, LHeader, LLanding, LMain } from "@/views/layout";
+import { Container, Row } from "@/views/layout/layout";
 import { SearchBox } from "@/views/SearchPage";
 import { useRouter } from "next/router";
 
@@ -15,17 +15,13 @@ const SearchPage = () => {
     <>
       <PageSEO title="搜索 | 中原科技网" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain>
-        <LLanding>
+      <Navigation />
+      <Container>
+        <Row>
           <SearchBox searchWord={search_word} />
-        </LLanding>
-      </LMain>
-      <LFooter>
-        <Footer />
-      </LFooter>
+        </Row>
+      </Container>
+      <Footer />
       <ScrollToTop />
     </>
   );

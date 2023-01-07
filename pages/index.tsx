@@ -4,7 +4,7 @@ import {
   HeadlineData,
   HotListBoxData,
   PictureBoxData,
-  SpecialNewsBoxData,
+  SpecialNewsBoxData
 } from "@/models/data";
 import {
   Footer,
@@ -12,7 +12,7 @@ import {
   PageSEO,
   PictureBox,
   ScrollToTop,
-  TopBar,
+  TopBar
 } from "@/views/Common";
 import {
   BooksShowBox,
@@ -21,18 +21,9 @@ import {
   HomePageNewsListBox,
   HotListBox,
   SpecialNewsBox,
-  TopicBox,
+  TopicBox
 } from "@/views/HomePage";
-import {
-  LContainer,
-  LFooter,
-  LHeader,
-  LLanding,
-  LLeftCol,
-  LMain,
-  LRightCol,
-  LSlot,
-} from "@/views/layout";
+import { Col, Container, Row } from "@/views/layout/layout";
 import { GetServerSideProps } from "next";
 
 export interface HomePageServerProps {
@@ -50,50 +41,30 @@ const HomePage = (props: HomePageServerProps) => {
     <>
       <PageSEO title="中原科技网" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain>
-        <LLanding>
-          <LSlot>
+      <Navigation />
+      <Container>
+        <Row>
+          <div className="mx-2">
             <PictureBox data={props.topPictureBoxData} />
-          </LSlot>
-          <LSlot>
             <Headline data={props.headlineData} />
-          </LSlot>
-          <LSlot>
             <HomeCarousel />
-          </LSlot>
-        </LLanding>
-        <LContainer>
-          <LLeftCol>
+          </div>
+        </Row>
+        <Row>
+          <Col numerator={2} denominator={3}>
             <HomePageNewsListBox />
-          </LLeftCol>
-          <LRightCol>
-            <LSlot>
-              <SpecialNewsBox data={props.specialNewsBoxData} />
-            </LSlot>
-            <LSlot>
-              <HotListBox data={props.hotListBoxData} />
-            </LSlot>
-            <LSlot>
-              <TopicBox />
-            </LSlot>
-            <LSlot>
-              <BooksShowBox data={props.booksShowBoxData} />
-            </LSlot>
-            <LSlot>
-              <PictureBox data={props.leftTopPictureBoxData} />
-            </LSlot>
-            <LSlot>
-              <PictureBox data={props.leftBottomPictureBoxData} />
-            </LSlot>
-          </LRightCol>
-        </LContainer>
-      </LMain>
-      <LFooter>
+          </Col>
+          <Col numerator={1} denominator={3}>
+            <SpecialNewsBox data={props.specialNewsBoxData} />
+            <HotListBox data={props.hotListBoxData} />
+            <TopicBox />
+            <BooksShowBox data={props.booksShowBoxData} />
+            <PictureBox data={props.leftTopPictureBoxData} />
+            <PictureBox data={props.leftBottomPictureBoxData} />
+          </Col>
+        </Row>
+      </Container>
         <Footer />
-      </LFooter>
       <ScrollToTop />
     </>
   );

@@ -3,7 +3,7 @@ import { HotListBoxData } from '@/models/data';
 
 export const ArticleNextListBox = (props: { data: HotListBoxData }) => {
   return (
-    <div className="bg-slate-50 rounded-sm px-2 border-t-7 border-red-800">
+    <div className="bg-slate-50 rounded-sm px-2 border-t-7 border-red-800 my-5 sticky top-20">
       <List
         bordered={false}
         dataSource={props.data}

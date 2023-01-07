@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 const useMemoryMode = (enabled: boolean = false) => {
   useEffect(() => {
     if (enabled && document) {
-      document.body.classList.add('memory-mode');
+      document.body.classList.add("memory-mode");
     }
   }, [enabled]);
 };

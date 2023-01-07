@@ -25,7 +25,7 @@ export const ArticleReader = () => {
           <Avatar className="mr-2 shrink-0">P</Avatar>
           <div className="mr-2 my-auto">中原科技网</div>
         </div>
-        <Button type="primary" className="my-auto" href="https://www.baidu.com" target="blank">
+        <Button type="primary" className="my-auto" href="/creator/me" target="blank">
           主页
         </Button>
       </div>

@@ -1,5 +1,5 @@
 import { BooksList } from "@/views/BookIndexPage";
-import { LFooter, LHeader, LLanding, LMain } from "@/views/layout";
+import { Container, Row } from "@/views/layout/layout";
 import { Footer, Navigation, PageSEO, TopBar } from "views/Common";
 
 const BookIndexPage = () => {
@@ -7,17 +7,13 @@ const BookIndexPage = () => {
     <>
       <PageSEO title="所有书刊 | 中原科技网" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain>
-        <LLanding>
+      <Navigation />
+      <Container>
+        <Row>
           <BooksList />
-        </LLanding>
-      </LMain>
-      <LFooter>
-        <Footer />
-      </LFooter>
+        </Row>
+      </Container>
+      <Footer />
     </>
   );
 };

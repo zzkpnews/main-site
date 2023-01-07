@@ -1,15 +1,23 @@
-import type { ArgumentTypes } from 'type/utils';
-import { useRequest } from 'ahooks';
-import axios, { AxiosStatic } from 'axios';
-import { APIData } from 'type/response';
+import { APIData } from "@/models/data";
+import { useRequest } from "ahooks";
+import axios, { AxiosStatic } from "axios";
+import type { ArgumentTypes } from "types/utils";
 
-type APIRequestMethod = 'GET' | 'POST';
+type APIRequestMethod = "GET" | "POST";
 
-const useAPI = <DataModel,>(api_path: string, method: APIRequestMethod, withToken: boolean, token: string) => {
+const useAPI = <DataModel,>(
+  api_path: string,
+  method: APIRequestMethod,
+  withToken: boolean,
+  token: string
+) => {
   let result_data: APIData<DataModel> = {
     code: 0,
   };
-  const { data, error, loading, run } = useRequest<APIData<DataModel>, ArgumentTypes<AxiosStatic>>(axios, {
+  const { data, error, loading, run } = useRequest<
+    APIData<DataModel>,
+    ArgumentTypes<AxiosStatic>
+  >(axios, {
     defaultParams: [
       api_path,
       {

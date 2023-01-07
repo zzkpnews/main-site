@@ -10,7 +10,7 @@ import {
   GroupContentHotList,
   GroupContentVideoList
 } from "@/views/GroupContentPage";
-import { LContainer, LFooter, LHeader, LLanding, LMain } from "@/views/layout";
+import { Container, Row } from "@/views/layout/layout";
 import { Divider } from "@arco-design/web-react";
 
 const GroupContentPage = () => {
@@ -18,26 +18,21 @@ const GroupContentPage = () => {
     <>
       <PageSEO title="河南看点 | 中原科技网" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain>
-        <LLanding>
+      <Navigation />
+      <Container>
+        <Row>
           <GroupContentHotList />
-        </LLanding>
+        </Row>
         <Divider />
-        <LLanding>
+        <Row>
           <GroupContentArticleList />
-        </LLanding>
+        </Row>
         <Divider />
-        <LLanding>
+        <Row>
           <GroupContentVideoList />
-        </LLanding>
-        <LContainer></LContainer>
-      </LMain>
-      <LFooter>
-        <Footer />
-      </LFooter>
+        </Row>
+      </Container>
+      <Footer />
       <ScrollToTop />
     </>
   );

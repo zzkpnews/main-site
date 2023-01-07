@@ -6,7 +6,7 @@ import {
   TopBar
 } from "@/views/Common";
 import { GroupPageNewsList } from "@/views/GroupIndexPage";
-import { LFooter, LHeader, LLanding, LMain } from "@/views/layout";
+import { Container, Row } from "@/views/layout/layout";
 import { Divider } from "@arco-design/web-react";
 
 const GroupIndexPage = () => {
@@ -14,21 +14,17 @@ const GroupIndexPage = () => {
     <>
       <PageSEO title="专栏组 | 中原科技网" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain>
-        <LLanding>
+      <Navigation />
+      <Container>
+        <Row>
           <h1 className="text-xl font-bold">{"专栏组"}</h1>
           <Divider />
-        </LLanding>
-        <LLanding>
+        </Row>
+        <Row>
           <GroupPageNewsList />
-        </LLanding>
-      </LMain>
-      <LFooter>
-        <Footer></Footer>
-      </LFooter>
+        </Row>
+      </Container>
+      <Footer />
       <ScrollToTop />
     </>
   );

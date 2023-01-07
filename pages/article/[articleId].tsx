@@ -8,44 +8,28 @@ import {
   ScrollToTop,
   TopBar
 } from "@/views/Common";
-import { BooksShowBox, TopicBox } from "@/views/HomePage";
-import { LContainer, LFooter, LHeader, LLeftCol, LMain, LRightCol, LSlot, LStickySlot } from "@/views/layout";
+import { BooksShowBox } from "@/views/HomePage";
+import { Col, Container, Row } from "@/views/layout/layout";
 
 export const ArticleContentPage = () => {
   return (
     <>
       <PageSEO title="中原科技网" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain>
-        <LContainer>
-          <LLeftCol>
-            <LSlot>
-              <ArticleReader />
-            </LSlot>
-            <LSlot></LSlot>
-          </LLeftCol>
-          <LRightCol>
-            <LSlot>
-              <PictureBox data={HomePageDebugData.leftBottomPictureBoxData} />
-            </LSlot>
-            <LSlot>
-              <BooksShowBox data={HomePageDebugData.booksShowBoxData} />
-            </LSlot>
-            <LSlot>
-              <TopicBox />
-            </LSlot>
-            <LStickySlot>
-              <ArticleNextListBox data={HomePageDebugData.hotListBoxData} />
-            </LStickySlot>
-          </LRightCol>
-        </LContainer>
-      </LMain>
-      <LFooter>
-        <Footer />
-      </LFooter>
+      <Navigation />
+      <Container>
+        <Row>
+          <Col numerator={2} denominator={3}>
+            <ArticleReader />
+          </Col>
+          <Col numerator={1} denominator={3}>
+            <PictureBox data={HomePageDebugData.leftBottomPictureBoxData} />
+            <BooksShowBox data={HomePageDebugData.booksShowBoxData} />
+            <ArticleNextListBox data={HomePageDebugData.hotListBoxData} />
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
       <ScrollToTop />
     </>
   );

@@ -1,16 +1,16 @@
 import {
   ColumnContentArticleList,
   ColumnContentHotList,
-  ColumnContentVideoList
+  ColumnContentVideoList,
 } from "@/views/ColumnContentPage";
 import {
   Footer,
   Navigation,
   PageSEO,
   ScrollToTop,
-  TopBar
+  TopBar,
 } from "@/views/Common";
-import { LContainer, LFooter, LHeader, LLanding, LMain } from "@/views/layout";
+import { Container, Row } from "@/views/layout/layout";
 import { Divider } from "@arco-design/web-react";
 
 const ColumnContentPage = () => {
@@ -18,30 +18,25 @@ const ColumnContentPage = () => {
     <>
       <PageSEO title="社会 | 中原科技网" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain>
-        <LLanding>
+      <Navigation />
+      <Container>
+        <Row>
           <h2 className="text-2xl font-bold text-red-700">社会</h2>
-          <Divider />
-        </LLanding>
-        <LLanding>
+        </Row>
+        <Divider />
+        <Row>
           <ColumnContentHotList />
-        </LLanding>
+        </Row>
         <Divider />
-        <LLanding>
+        <Row>
           <ColumnContentArticleList />
-        </LLanding>
+        </Row>
         <Divider />
-        <LLanding>
+        <Row>
           <ColumnContentVideoList />
-        </LLanding>
-        <LContainer></LContainer>
-      </LMain>
-      <LFooter>
-        <Footer />
-      </LFooter>
+        </Row>
+      </Container>
+      <Footer />
       <ScrollToTop />
     </>
   );

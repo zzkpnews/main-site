@@ -1,19 +1,17 @@
-import { ServerError } from "@/views/Error500Page";
+import { ResourceClosed } from "@/views/Error403Page";
 import { Container, Row } from "@/views/layout/layout";
+
 import { Footer, Navigation, PageSEO, ScrollToTop, TopBar } from "views/Common";
 
-const Custom500 = () => {
+const Error403Page = () => {
   return (
     <>
-      <PageSEO
-        title="服务器发生严重错误 | 中原科技网"
-        describe="当前页面发生错误"
-      />
+      <PageSEO title="内容已关闭 | 中原科技网" />
       <TopBar />
       <Navigation />
       <Container>
         <Row>
-          <ServerError />
+          <ResourceClosed />
         </Row>
       </Container>
       <Footer />
@@ -22,4 +20,4 @@ const Custom500 = () => {
   );
 };
 
-export default Custom500;
+export default Error403Page;

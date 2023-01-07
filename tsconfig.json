@@ -18,12 +18,12 @@
     "paths": {
       "@/config/*": ["./config/*"],
       "@/hooks/*": ["./hooks/*"],
-      "@/type/*": ["./type/*"],
+      "@/types/*": ["types/*"],
       "@/utils/*": ["./utils/*"],
       "@/models/*": ["./models/*"],
       "@/debug/*": ["./debug/*"],
       "@/views/*": ["./views/*"],
-      "@/styles/*": ["./styles/*"],
+      "@/styles/*": ["./styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

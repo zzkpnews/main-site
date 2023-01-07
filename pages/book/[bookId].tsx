@@ -1,5 +1,5 @@
 import { PageSEO } from "@/views/Common";
-import { LMain } from "@/views/layout";
+import { Container } from "@/views/layout/layout";
 import dynamic from "next/dynamic";
 
 const DynamicBookReader = dynamic(
@@ -14,9 +14,9 @@ export const BookContentPageTemplate = () => {
   return (
     <>
       <PageSEO title="中原科技网" />
-      <LMain>
+      <Container>
         <DynamicBookReader />
-      </LMain>
+      </Container>
     </>
   );
 };

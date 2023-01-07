@@ -1,12 +1,5 @@
 import { Navigation, PageSEO, TopBar } from "@/views/Common";
-import {
-  LContainer,
-  LHeader,
-  LLeftCol,
-  LMain,
-  LRightCol,
-  LSlot
-} from "@/views/layout";
+import { Col, Container, Row } from "@/views/layout/layout";
 import { PlayList, VideoPlayer } from "@/views/VideoContentPage";
 
 export default function VideoContentPage() {
@@ -14,23 +7,17 @@ export default function VideoContentPage() {
     <>
       <PageSEO title="视频新闻页面" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain size="large">
-        <LContainer>
-          <LLeftCol>
-            <LSlot>
-              <VideoPlayer data={undefined} />
-            </LSlot>
-          </LLeftCol>
-          <LRightCol>
-            <LSlot>
-              <PlayList data={undefined} />
-            </LSlot>
-          </LRightCol>
-        </LContainer>
-      </LMain>
+      <Navigation />
+      <Container size="large">
+        <Row>
+          <Col numerator={2} denominator={3}>
+            <VideoPlayer data={undefined} />
+          </Col>
+          <Col numerator={1} denominator={3}>
+            <PlayList data={undefined} />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

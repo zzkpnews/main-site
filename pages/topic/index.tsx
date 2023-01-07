@@ -5,7 +5,7 @@ import {
   ScrollToTop,
   TopBar,
 } from "@/views/Common";
-import { LFooter, LHeader, LLanding, LMain } from "@/views/layout";
+import { Container, Row } from "@/views/layout/layout";
 import { TopicNewsList } from "@/views/TopicIndexPage";
 
 const TopicIndexPage = () => {
@@ -13,17 +13,13 @@ const TopicIndexPage = () => {
     <>
       <PageSEO title="话题 | 中原科技网" />
       <TopBar />
-      <LHeader>
-        <Navigation />
-      </LHeader>
-      <LMain>
-        <LLanding>
+      <Navigation />
+      <Container>
+        <Row>
           <TopicNewsList />
-        </LLanding>
-      </LMain>
-      <LFooter>
-        <Footer />
-      </LFooter>
+        </Row>
+      </Container>
+      <Footer />
       <ScrollToTop />
     </>
   );
