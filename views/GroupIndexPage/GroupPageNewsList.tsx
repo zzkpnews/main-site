@@ -7,9 +7,9 @@ export const GroupPageNewsList = () => {
       {Array(6).fill(
         <div key={useId()}>
           <div className="flex justify-between">
-            <h3 className="text-xl font-bold text-red-700">河南看点</h3>
+            <h3 className="text-xl font-bold text-red-700">{"河南看点"}</h3>
             <a className="text-lg mx-5" href="/group/example">
-              更多
+              {"更多"}
             </a>
           </div>
           <div className="xl:flex">

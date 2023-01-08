@@ -13,8 +13,6 @@ import {
 import { Container, Row } from "@/views/layout";
 import { Divider } from "@arco-design/web-react";
 
-
-
 const GroupContentPage = () => {
   return (
     <>

@@ -24,7 +24,7 @@ export const ArticleContentPage = () => {
           </Col>
           <Col numerator={1} denominator={3}>
             <PictureBox data={HomePageDebugData.leftBottomPictureBoxData} />
-            <BooksShowBox data={HomePageDebugData.booksShowBoxData} />
+            <BooksShowBox initialData={HomePageDebugData.booksShowBoxData} />
             <ArticleNextListBox data={HomePageDebugData.hotListBoxData} />
           </Col>
         </Row>

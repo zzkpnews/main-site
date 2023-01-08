@@ -1,10 +1,10 @@
-export type NewsType = 'article' | 'video';
+export type NewsType = "article" | "video";
 
 export interface NewsListItem {
   news_id: string;
   time_stamp: number;
   keywords?: string;
-  type: 'article' | 'video';
+  type: "article" | "video";
 
   title: string;
   lead_title?: string;
@@ -38,6 +38,14 @@ export interface ColumnItem {
   column_order: string;
 }
 
+export interface ColumnIndexItem {
+  column_id: string;
+  title: string;
+  column_order: string;
+  recent_news: NewsListItem[];
+  hot_news: NewsListItem[];
+}
+
 export interface TopicItem {
   topic_id: string;
   title: string;
@@ -67,7 +75,7 @@ export interface CarouselItem {
 
   img_url: string;
   citation?: string;
-  href?: string;
+  url?: string;
 }
 
 export interface HeadlineData {
@@ -75,7 +83,7 @@ export interface HeadlineData {
 
   lead_title?: string;
   subtitle?: string;
-  href: string;
+  url: string;
 }
 
 export interface Banner {
@@ -183,7 +191,7 @@ export interface SpecialNewsBoxData {
 export type BooksShowBoxData = {
   title: string;
   img_url: string;
-  href: string;
+  book_id: string;
   citation: string;
 }[];
 

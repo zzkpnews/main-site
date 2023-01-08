@@ -55,10 +55,10 @@ const HomePage = (props: HomePageServerProps) => {
             <HomeNewsListBox />
           </Col>
           <Col numerator={1} denominator={3}>
-            <SpecialNewsBox data={props.specialNewsBoxData} />
+            <SpecialNewsBox initialData={props.specialNewsBoxData} />
             <HotListBox data={props.hotListBoxData} />
             <TopicBox />
-            <BooksShowBox data={props.booksShowBoxData} />
+            <BooksShowBox initialData={props.booksShowBoxData} />
             <PictureBox data={props.leftTopPictureBoxData} />
             <PictureBox data={props.leftBottomPictureBoxData} />
           </Col>

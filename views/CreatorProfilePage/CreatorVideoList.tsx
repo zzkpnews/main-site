@@ -1,10 +1,11 @@
 import { NewsListItem } from "@/models/data";
 import { timestampToTime } from "@/utils/time";
-import { Button, List, Tag } from "@arco-design/web-react";
+import { List, Tag, Pagination } from "@arco-design/web-react";
 
-export const HomeNewsListBox = (props: { initialData: NewsListItem[] }) => {
+export const CreatorVideoList = (props: { initialData?: NewsListItem[] }) => {
   return (
-    <div>
+    <>
+      {" "}
       <List
         bordered={false}
         className="w-full"
@@ -15,11 +16,11 @@ export const HomeNewsListBox = (props: { initialData: NewsListItem[] }) => {
             key={index}
             className="hover:bg-slate-50 active:bg-slate-100 cursor-pointer"
           >
-            <a href={`/${item.type}/${item.news_id}`}>
+            <a href={`/video/${item.news_id}`}>
               <div className="lg:flex justify-center">
                 <div className="basis-2/5 my-2">
                   <img
-                    className="rounded-md my-auto"
+                    className="rounded-md"
                     src={item.bgimg}
                     alt={item.citation}
                   />
@@ -28,7 +29,7 @@ export const HomeNewsListBox = (props: { initialData: NewsListItem[] }) => {
                   <div className="mx-auto text-md font-bold">
                     {item.lead_title}
                   </div>
-                  <h2 className="mx-auto text-xl font-bold">{item.title}</h2>
+                  <h3 className="mx-auto text-xl font-bold">{item.title}</h3>
                   <div className="mx-auto text-md font-bold">
                     {item.subtitle}
                   </div>
@@ -48,10 +49,8 @@ export const HomeNewsListBox = (props: { initialData: NewsListItem[] }) => {
         )}
       />
       <div className="flex justify-center my-5">
-        <Button type="primary" size="large">
-          {"加载更多"}
-        </Button>
+        <Pagination simple total={50} size="small" />
       </div>
-    </div>
+    </>
   );
 };

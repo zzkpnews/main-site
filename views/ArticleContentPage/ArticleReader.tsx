@@ -6,6 +6,7 @@ export const ArticleReader = () => {
       <img
         className="w-full max-h-96 object-cover rounded-t-lg"
         src="https://static.zaobao.com/s3fs-public/styles/article_large_full/public/2022-10/ZB_1031_CJ_doc7ndt906k74n6g1j2ods_30172825_loohh.jpg?VersionId=Z0g7VtIlJoS8dyMUClchQ2uN52WWAhNz&itok=tDxxn9-X"
+        alt=""
       />
       <div className="px-5 py-2">
         <h3 className="text-md">
@@ -37,7 +38,7 @@ export const ArticleReader = () => {
           href="/creator/me"
           target="blank"
         >
-          主页
+          {"主页"}
         </Button>
       </div>
       <div className="p-5">

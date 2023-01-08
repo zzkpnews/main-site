@@ -1,11 +1,15 @@
 import { HomePageDebugData } from "@/debug/HomePage";
 import { Footer, HeaderBackground, Navigation, PageSEO } from "@/views/Common";
 import {
+  CreatorArticleList,
+  CreatorBooksList,
   CreatorCard,
   CreatorHotListBox,
-  CreatorWorksList,
+  CreatorRecentNewsList,
+  CreatorVideoList,
 } from "@/views/CreatorProfilePage";
 import { Col, Container, Row } from "@/views/layout";
+import { Tabs } from "@arco-design/web-react";
 
 const CreatorProfilePage = () => {
   return (
@@ -19,16 +23,60 @@ const CreatorProfilePage = () => {
       />
       <Container>
         <CreatorCard
-          title={"中原科技网"}
-          phone={"15617613081"}
-          email={"643431636@qq.com"}
+          initialData={{
+            creator_id: "me",
+            title: "中原科技网",
+            phone: "15617613081",
+            email: "643431636@qq.com",
+          }}
         />
         <Row>
           <Col numerator={2} denominator={3}>
-            <CreatorWorksList />
+            <Tabs defaultActiveTab="1">
+              <Tabs.TabPane
+                key="1"
+                title={
+                  <h3 className="text-red-700 text-xl font-bold mx-1 my-2">
+                    {"最新"}
+                  </h3>
+                }
+              >
+                <CreatorRecentNewsList />
+              </Tabs.TabPane>
+              <Tabs.TabPane
+                key="2"
+                title={
+                  <h3 className="text-red-700 text-xl font-bold mx-1 my-2">
+                    {"文章"}
+                  </h3>
+                }
+              >
+                <CreatorArticleList />
+              </Tabs.TabPane>
+              <Tabs.TabPane
+                key="3"
+                title={
+                  <h3 className="text-red-700 text-xl font-bold mx-1 my-2">
+                    {"视频"}
+                  </h3>
+                }
+              >
+                <CreatorVideoList />
+              </Tabs.TabPane>
+              <Tabs.TabPane
+                key="4"
+                title={
+                  <h3 className="text-red-700 text-xl font-bold mx-1 my-2">
+                    {"书刊"}
+                  </h3>
+                }
+              >
+                <CreatorBooksList />
+              </Tabs.TabPane>
+            </Tabs>
           </Col>
           <Col numerator={1} denominator={3}>
-            <CreatorHotListBox data={HomePageDebugData.hotListBoxData} />
+            <CreatorHotListBox initialData={HomePageDebugData.hotListBoxData} />
           </Col>
         </Row>
       </Container>

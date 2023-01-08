@@ -7,6 +7,7 @@ import { PageSEO } from "./PageSEO";
 import { PictureBox } from "./PictureBox";
 import { ScrollToTop } from "./ScrollToTop";
 import { TopBar } from "./TopBar";
+import { EmptyBlock } from "./EmptyBlock";
 export {
   ErrorBlock,
   Footer,
@@ -17,5 +18,5 @@ export {
   PictureBox,
   ScrollToTop,
   TopBar,
+  EmptyBlock,
 };
-

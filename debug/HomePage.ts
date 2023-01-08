@@ -25,7 +25,7 @@ export const HomePageDebugData: HomePageServerProps = {
       "https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/s3fs-public/styles/article_large_crop/public/2022-10/ZB_1030_CJ_doc7ncuxlsoltk11saozcrd_29183017_chngmj.jpg?2778524",
   },
   headlineData: {
-    href: "https://www.baidu.com",
+    url: "https://www.baidu.com",
     lead_title: "习近平在开幕仪式上发表重要讲话",
     title: "中国共产党第二十次全国代表大会今日开幕",
   },

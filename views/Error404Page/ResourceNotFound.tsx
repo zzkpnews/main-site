@@ -1,5 +1,5 @@
-import { Button } from '@arco-design/web-react';
-import { GiDeadWood } from 'react-icons/gi';
+import { Button } from "@arco-design/web-react";
+import { GiDeadWood } from "react-icons/gi";
 export const ResourceNotFound = () => {
   const backToLastPage = () => {
     window.history.back();
@@ -9,10 +9,15 @@ export const ResourceNotFound = () => {
       <div className="flex flex-col justify-center">
         <GiDeadWood className="mx-auto" size="180px" />
         <h2 className="text-center text-3xl my-2 font-bold">
-          <div>{'资源未找到'}</div>
-          <div>{'404 NOT FOUND'}</div>
+          <div className="my-2">{"你来到了一片荒芜之地"}</div>
+          <div>{"404 NOT FOUND"}</div>
         </h2>
-        <Button type="primary" size="large" className="mx-auto my-3" onClick={backToLastPage}>
+        <Button
+          type="primary"
+          size="large"
+          className="mx-auto my-3"
+          onClick={backToLastPage}
+        >
           {"返回上一页"}
         </Button>
       </div>

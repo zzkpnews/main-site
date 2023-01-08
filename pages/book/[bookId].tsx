@@ -10,7 +10,7 @@ const DynamicBookReader = dynamic(
   }
 );
 
-export const BookContentPageTemplate = () => {
+export const BookContentPage = () => {
   return (
     <>
       <PageSEO title="中原科技网" />
@@ -21,4 +21,4 @@ export const BookContentPageTemplate = () => {
   );
 };
 
-export default BookContentPageTemplate;
+export default BookContentPage;

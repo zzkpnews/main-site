@@ -3,7 +3,7 @@ import { List, Pagination } from '@arco-design/web-react';
 export const ColumnContentVideoList = () => {
   return (
     <div>
-      <h3 className="text-xl font-bold text-gray-600">视频</h3>
+      <h3 className="text-xl font-bold text-gray-600">{"视频"}</h3>
       <List
         bordered={false}
         grid={{ md: 6, lg: 6, gutter: 0 }}
