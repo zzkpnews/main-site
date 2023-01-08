@@ -8,8 +8,8 @@ type APIRequestMethod = "GET" | "POST";
 const useAPI = <DataModel,>(
   api_path: string,
   method: APIRequestMethod,
-  withToken: boolean,
-  token: string
+  withToken: boolean = false,
+  token?: string
 ) => {
   let result_data: APIData<DataModel> = {
     code: 0,

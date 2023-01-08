@@ -1,7 +1,10 @@
+import { DefaultSeoProps } from "next-seo";
+
 export interface ServerConfig {
   api_server: {
-    protocol: 'http' | 'https';
+    enableHttps: boolean;
     hostname: string;
     port: number;
   };
+  seo?: DefaultSeoProps;
 }

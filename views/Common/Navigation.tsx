@@ -66,28 +66,28 @@ export const Navigation = () => {
             <img src="/logo.png" className="mr-7 h-9" alt="zzkpnews-logo" />
           </a>
           <div className="lg:flex my-auto hidden">
-            <a className="hover:text-red-700 cursor-pointer text-base mx-5" href="/">
+            <a className="hover:text-red-700 cursor-pointer text-base mx-4" href="/">
               {'首页'}
             </a>
             <Dropdown trigger={'hover'} droplist={dropList} position="bottom">
-              <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'观察'}</span>
+              <span className="hover:text-red-700 cursor-pointer text-base mx-4">{'观察'}</span>
             </Dropdown>
             <Dropdown trigger={'hover'} droplist={dropList} position="bottom">
-              <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'评论'}</span>
+              <span className="hover:text-red-700 cursor-pointer text-base mx-4">{'评论'}</span>
             </Dropdown>
             <Dropdown trigger={'hover'} droplist={dropList} position="bottom">
-              <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'科普'}</span>
+              <span className="hover:text-red-700 cursor-pointer text-base mx-4">{'科普'}</span>
             </Dropdown>
             <Dropdown trigger={'hover'} droplist={dropList} position="bottom">
-              <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'河南看点'}</span>
+              <span className="hover:text-red-700 cursor-pointer text-base mx-4">{'河南看点'}</span>
             </Dropdown>
             <Dropdown trigger={'hover'} droplist={dropList} position="bottom">
-              <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'教育专题'}</span>
+              <span className="hover:text-red-700 cursor-pointer text-base mx-4">{'教育专题'}</span>
             </Dropdown>
             <Dropdown trigger={'hover'} droplist={dropList} position="bottom">
-              <span className="hover:text-red-700 cursor-pointer text-base mx-5">{'疫情报道'}</span>
+              <span className="hover:text-red-700 cursor-pointer text-base mx-4">{'疫情报道'}</span>
             </Dropdown>
-            <a className="hover:text-red-700 cursor-pointer text-base mx-5" href="/">
+            <a className="hover:text-red-700 cursor-pointer text-base mx-4" href="/">
               {'更多'}
             </a>
           </div>

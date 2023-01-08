@@ -3,7 +3,7 @@ import {
   Navigation,
   PageSEO,
   ScrollToTop,
-  TopBar
+  TopBar,
 } from "@/views/Common";
 import { GroupPageNewsList } from "@/views/GroupIndexPage";
 import { Container, Row } from "@/views/layout/layout";
@@ -12,7 +12,10 @@ import { Divider } from "@arco-design/web-react";
 const GroupIndexPage = () => {
   return (
     <>
-      <PageSEO title="专栏组 | 中原科技网" />
+      <PageSEO
+        title="专栏组 | 中原科技网"
+        describe="中原科技网专栏组，根据分类并聚集特色专栏，网罗天下信息。"
+      />
       <TopBar />
       <Navigation />
       <Container>

@@ -2,7 +2,7 @@ import { ServerError } from "@/views/Error500Page";
 import { Container, Row } from "@/views/layout/layout";
 import { Footer, Navigation, PageSEO, ScrollToTop, TopBar } from "views/Common";
 
-const Custom500 = () => {
+const Error500Page = () => {
   return (
     <>
       <PageSEO
@@ -22,4 +22,4 @@ const Custom500 = () => {
   );
 };
 
-export default Custom500;
+export default Error500Page;

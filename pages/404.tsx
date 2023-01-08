@@ -8,7 +8,7 @@ import {
 import { ResourceNotFound } from "@/views/Error404Page";
 import { Container, Row } from "@/views/layout/layout";
 
-const Custom404 = () => {
+const Error404Page = () => {
   return (
     <>
       <PageSEO title="当前页面走丢了..." describe="页面未找到" />
@@ -25,4 +25,4 @@ const Custom404 = () => {
   );
 };
 
-export default Custom404;
+export default Error404Page;

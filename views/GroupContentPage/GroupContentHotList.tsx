@@ -3,7 +3,7 @@ import { List } from '@arco-design/web-react';
 export const GroupContentHotList = () => {
   return (
     <div>
-      <h3 className="text-xl font-bold text-gray-600">专栏组热点</h3>
+      <h3 className="text-xl font-bold text-gray-600">{"专栏组热点"}</h3>
       <List
         bordered={false}
         grid={{ md: 12, lg: 12, gutter: 0 }}

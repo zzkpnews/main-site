@@ -10,8 +10,8 @@ export const Container = (props: {
       className={classNames(
         "md:px-30 lg:px-30 min-h-[60vh] px-5 sm:px-20 bg-cover",
         {
-          "xl:mx-40": props.size === "medium" || props.size === undefined,
-          "xl:mx-35": props.size === "large",
+          "xl:mx-20": props.size === "medium" || props.size === undefined,
+          "xl:mx-40": props.size === "large",
         }
       )}
     >

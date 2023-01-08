@@ -3,7 +3,7 @@ import { Footer, HeaderBackground, Navigation, PageSEO } from "@/views/Common";
 import {
   CreatorCard,
   CreatorHotListBox,
-  CreatorWorksList
+  CreatorWorksList,
 } from "@/views/CreatorProfilePage";
 import { Col, Container, Row } from "@/views/layout/layout";
 
@@ -14,9 +14,11 @@ const CreatorProfilePage = () => {
       <Navigation />
       <HeaderBackground />
       <Container>
-        <Row>
-          <CreatorCard />
-        </Row>
+        <CreatorCard
+          title={"中原科技网"}
+          phone={"15617613081"}
+          email={"643431636@qq.com"}
+        />
         <Row>
           <Col numerator={2} denominator={3}>
             <CreatorWorksList />
