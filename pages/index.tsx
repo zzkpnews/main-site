@@ -18,12 +18,12 @@ import {
   BooksShowBox,
   Headline,
   HomeCarousel,
-  HomePageNewsListBox,
+  HomeNewsListBox,
   HotListBox,
   SpecialNewsBox,
   TopicBox
 } from "@/views/HomePage";
-import { Col, Container, Row } from "@/views/layout/layout";
+import { Col, Container, Row } from "@/views/layout";
 import { GetServerSideProps } from "next";
 
 export interface HomePageServerProps {
@@ -52,7 +52,7 @@ const HomePage = (props: HomePageServerProps) => {
         </Row>
         <Row>
           <Col numerator={2} denominator={3}>
-            <HomePageNewsListBox />
+            <HomeNewsListBox />
           </Col>
           <Col numerator={1} denominator={3}>
             <SpecialNewsBox data={props.specialNewsBoxData} />

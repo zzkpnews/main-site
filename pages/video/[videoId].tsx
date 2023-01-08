@@ -1,8 +1,8 @@
 import { Footer, Navigation, PageSEO, TopBar } from "@/views/Common";
-import { Col, Container, Row } from "@/views/layout/layout";
+import { Col, Container, Row } from "@/views/layout";
 import { PlayList, VideoPlayer } from "@/views/VideoContentPage";
 
-export default function VideoContentPage() {
+export const VideoContentPage = () => {
   return (
     <>
       <PageSEO title="视频新闻页面" />
@@ -52,4 +52,6 @@ export default function VideoContentPage() {
       <Footer />
     </>
   );
-}
+};
+
+export default VideoContentPage;

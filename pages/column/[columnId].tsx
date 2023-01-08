@@ -10,7 +10,7 @@ import {
   ScrollToTop,
   TopBar,
 } from "@/views/Common";
-import { Container, Row } from "@/views/layout/layout";
+import { Container, Row } from "@/views/layout";
 import { Divider } from "@arco-design/web-react";
 
 const ColumnContentPage = () => {

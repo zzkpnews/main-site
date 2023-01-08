@@ -1,11 +1,9 @@
-export const HeaderBackground = () => {
-  return (
+export const HeaderBackground = (props: { imageUrl?: string }) => {
+  return props.imageUrl ? (
     <img
-      src={
-        "https://static.zaobao.com/s3fs-public/2022-10/2022-09-14t034221z_1576905416_rc2qgw9s33ob_rtrmadp_3_apple-tsmc_0.jpg?VersionId=cxs1lVGq_JYIB87nXE06oLfRL0OJduD8"
-      }
+      src={props.imageUrl}
       className="object-cover object-center w-full h-60 flex"
-      alt=""
+      alt="header"
     />
-  );
+  ) : null;
 };

@@ -5,7 +5,7 @@ import {
   ScrollToTop,
   TopBar,
 } from "@/views/Common";
-import { Container, Row } from "@/views/layout/layout";
+import { Container, Row } from "@/views/layout";
 import { SearchBox } from "@/views/SearchPage";
 import { useRouter } from "next/router";
 

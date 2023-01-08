@@ -9,7 +9,7 @@ import {
   TopBar
 } from "@/views/Common";
 import { BooksShowBox } from "@/views/HomePage";
-import { Col, Container, Row } from "@/views/layout/layout";
+import { Col, Container, Row } from "@/views/layout";
 
 export const ArticleContentPage = () => {
   return (

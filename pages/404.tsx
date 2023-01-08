@@ -6,7 +6,7 @@ import {
   TopBar
 } from "@/views/Common";
 import { ResourceNotFound } from "@/views/Error404Page";
-import { Container, Row } from "@/views/layout/layout";
+import { Container, Row } from "@/views/layout";
 
 const Error404Page = () => {
   return (

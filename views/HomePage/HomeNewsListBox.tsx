@@ -1,6 +1,6 @@
 import { Button, List, Tag } from '@arco-design/web-react';
 
-export const HomePageNewsListBox = () => {
+export const HomeNewsListBox = () => {
   return (
     <div className="">
       <List
@@ -33,9 +33,9 @@ export const HomePageNewsListBox = () => {
           <List.Item key={index} className="hover:bg-slate-50 active:bg-slate-100 cursor-pointer">
             <a href="http://www.baidu.com">
               <div className="lg:flex justify-center">
-                <div className="basis-2/5 my-2">
+                <div className="basis-2/5 my-2 my-auto">
                   <img
-                    className="rounded-md"
+                    className="rounded-md my-auto"
                     src="http://cpc.people.com.cn/NMediaFile/2022/1025/MAIN202210250016363698160563703.jpg"
                     alt=""
                   />
