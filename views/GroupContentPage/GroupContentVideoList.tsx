@@ -1,8 +1,8 @@
-import { NewsListItem } from "@/models/data";
+import { NewsItem } from "@/models/data";
 import { List, Pagination } from "@arco-design/web-react";
 
 export const GroupContentVideoList = (props: {
-  initialData?: NewsListItem[];
+  initialData?: NewsItem[];
 }) => {
   return (
     <div>

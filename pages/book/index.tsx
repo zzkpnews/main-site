@@ -1,5 +1,5 @@
 import { BooksList } from "@/views/BookIndexPage";
-import { Container, Row } from "@/views/layout";
+import { Container, Row } from "@/views/Layout";
 import { Footer, Navigation, PageSEO, TopBar } from "views/Common";
 
 const BookIndexPage = () => {

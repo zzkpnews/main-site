@@ -5,7 +5,7 @@ import {
   ScrollToTop,
   TopBar,
 } from "@/views/Common";
-import { Container, Row } from "@/views/layout";
+import { Container, Row } from "@/views/Layout";
 import { TopicNewsList } from "@/views/TopicIndexPage";
 
 const TopicIndexPage = () => {

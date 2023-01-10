@@ -1,5 +1,5 @@
 import { PageSEO } from "@/views/Common";
-import { Container } from "@/views/layout";
+import { Container } from "@/views/Layout";
 import dynamic from "next/dynamic";
 
 const DynamicBookReader = dynamic(

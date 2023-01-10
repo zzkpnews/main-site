@@ -1,13 +1,16 @@
+import { BookItem } from "@/models/data";
 import { HomePageServerProps } from "../pages";
 
 export const HomePageDebugData: HomePageServerProps = {
-  booksShowBoxData: Array(5).fill({
+  booksShowBoxData: Array<BookItem>(5).fill({
     img_url:
       "https://www.zzkpnews.com/d/file/p/2022/04-11/02d4aeb6554fc5c349d543d4f95b599f.jpg",
     title: "《河南科技报》2022年3月29日《中原围棋》专版",
     citation:
       "河南省围棋协会第二届第四次常务理事会议在郑州召开。中国围棋协会原副主席黄进先、河南省发改委体制改革处副处长严静波、河南省社会组织管理局副局长张新志、河南省围棋协会主席马望、协会常务理事和媒体等出席会议。会议由协会秘书长汪见虹九段主持。",
-    href: "/book/example",
+    book_id:"",
+    time_stamp:1233
+    
   }),
   topPictureBoxData: {
     href: "http://www.baidu.com",

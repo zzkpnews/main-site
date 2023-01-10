@@ -1,8 +1,8 @@
-import { NewsListItem } from "@/models/data";
+import { NewsItem } from "@/models/data";
 import { timestampToTime } from "@/utils/time";
 import { Button, List, Tag } from "@arco-design/web-react";
 
-export const HomeNewsListBox = (props: { initialData: NewsListItem[] }) => {
+export const HomeNewsList = (props: { initialData?: NewsItem[] }) => {
   return (
     <div>
       <List

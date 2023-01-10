@@ -1,7 +1,7 @@
 import { TopicItem } from "@/models/data";
 import { List } from "@arco-design/web-react";
 
-export const TopicBox = (props: { initialData: TopicItem[] }) => {
+export const TopicBox = (props: { initialData?: TopicItem[] }) => {
   return (
     <div>
       <div className="flex justify-between">

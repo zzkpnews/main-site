@@ -1,9 +1,9 @@
-import { BooksShowBoxData } from "@/models/data";
+import { BookItem } from "@/models/data";
 import { Collapse } from "@arco-design/web-react";
 const CollapseItem = Collapse.Item;
 
-export const BooksShowBox = (props: { initialData: BooksShowBoxData }) => {
-  if (props.initialData.length < 1) return null;
+export const BooksShowBox = (props: { initialData?: BookItem[] }) => {
+  if (props.initialData == null || props.initialData.length < 1) return null;
   return (
     <div className="bg-slate-50 rounded-sm px-2 pb-3 my-5 border-t-7 border-red-800">
       <div className="flex justify-between">

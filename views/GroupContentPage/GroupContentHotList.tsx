@@ -1,8 +1,8 @@
-import { NewsListItem } from "@/models/data";
+import { NewsItem } from "@/models/data";
 import { List } from "@arco-design/web-react";
 
 export const GroupContentHotList = (props: {
-  initialData?: NewsListItem[];
+  initialData?: NewsItem[];
 }) => {
   return (
     <div>

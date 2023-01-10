@@ -6,7 +6,7 @@ import {
   ScrollToTop,
   TopBar
 } from "@/views/Common";
-import { Container, Row } from "@/views/layout";
+import { Container, Row } from "@/views/Layout";
 
 const ColumnIndexPage = () => {
   return (

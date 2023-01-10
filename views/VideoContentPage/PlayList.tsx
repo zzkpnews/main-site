@@ -1,8 +1,7 @@
-import type { APIData, VideoPlayList } from "@/models/data";
+import type { NewsItem } from "@/models/data";
 import { List } from "@arco-design/web-react";
-import { ErrorBlock } from "views/Common";
 
-export const PlayList = (props: { data?: VideoPlayList }) => {
+export const PlayList = (props: { initialData?: NewsItem[] }) => {
   // if (props.data!.code >= 400) {
   //   return <ErrorBlock code={props.data?.code} message={props.data?.message} />;
   // }
@@ -10,7 +9,7 @@ export const PlayList = (props: { data?: VideoPlayList }) => {
     <div className="bg-slate-50 rounded-sm px-2 pb-3 my-5 border-t-7 border-red-800">
       <List
         bordered={false}
-        dataSource={props.data}
+        dataSource={props.initialData}
         render={(item, index) => (
           <List.Item
             className="hover:bg-slate-100 hover:text-red-700 cursor-pointer"

@@ -8,7 +8,7 @@ import {
   CreatorRecentNewsList,
   CreatorVideoList,
 } from "@/views/CreatorProfilePage";
-import { Col, Container, Row } from "@/views/layout";
+import { Col, Container, Row } from "@/views/Layout";
 import { Tabs } from "@arco-design/web-react";
 
 const CreatorProfilePage = () => {

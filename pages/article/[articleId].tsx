@@ -9,7 +9,7 @@ import {
   TopBar
 } from "@/views/Common";
 import { BooksShowBox } from "@/views/HomePage";
-import { Col, Container, Row } from "@/views/layout";
+import { Col, Container, Row } from "@/views/Layout";
 
 export const ArticleContentPage = () => {
   return (
@@ -23,7 +23,7 @@ export const ArticleContentPage = () => {
             <ArticleReader />
           </Col>
           <Col numerator={1} denominator={3}>
-            <PictureBox data={HomePageDebugData.leftBottomPictureBoxData} />
+            <PictureBox initialData={HomePageDebugData.leftBottomPictureBoxData} />
             <BooksShowBox initialData={HomePageDebugData.booksShowBoxData} />
             <ArticleNextListBox data={HomePageDebugData.hotListBoxData} />
           </Col>

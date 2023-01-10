@@ -1,3 +1,4 @@
+import { BookItem } from "@/models/data";
 import { Avatar, InputNumber, Pagination } from "@arco-design/web-react";
 import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -5,7 +6,7 @@ import { SizeMe } from "react-sizeme";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-export const BookReader = () => {
+export const BookReader = (props: { initialData: BookItem }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [scale, setScale] = useState(1);
   const [pagesCount, setPagesCount] = useState(0);

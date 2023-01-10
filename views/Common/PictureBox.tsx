@@ -1,12 +1,12 @@
 import { PictureBoxData } from '@/models/data';
 
-export const PictureBox = (props: { data?: PictureBoxData }) => {
-  if (!props.data?.img_url) return null;
-  return props.data.href ? (
-    <a href={props.data.href} target="_blank" rel="noreferrer">
-      <img src={props.data.img_url} className="min-h-30 my-3 w-full rounded-md object-cover" alt={props.data.describe} />
+export const PictureBox = (props: { initialData?: PictureBoxData }) => {
+  if (!props.initialData?.img_url) return null;
+  return props.initialData.href ? (
+    <a href={props.initialData.href} target="_blank" rel="noreferrer">
+      <img src={props.initialData.img_url} className="min-h-30 my-3 w-full rounded-md object-cover" alt={props.initialData.describe} />
     </a>
   ) : (
-    <img src={props.data.img_url} className="min-h-30 my-3 w-full rounded-md object-cover" alt={props.data.describe} />
+    <img src={props.initialData.img_url} className="min-h-30 my-3 w-full rounded-md object-cover" alt={props.initialData.describe} />
   );
 };

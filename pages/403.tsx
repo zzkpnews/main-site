@@ -1,5 +1,5 @@
 import { ResourceClosed } from "@/views/Error403Page";
-import { Container, Row } from "@/views/layout";
+import { Container, Row } from "@/views/Layout";
 
 import { Footer, Navigation, PageSEO, ScrollToTop, TopBar } from "views/Common";
 

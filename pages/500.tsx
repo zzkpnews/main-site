@@ -1,5 +1,5 @@
 import { ServerError } from "@/views/Error500Page";
-import { Container, Row } from "@/views/layout";
+import { Container, Row } from "@/views/Layout";
 import { Footer, Navigation, PageSEO, ScrollToTop, TopBar } from "views/Common";
 
 const Error500Page = () => {

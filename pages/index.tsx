@@ -1,11 +1,5 @@
-import { HomePageDebugData } from "@/debug/HomePage";
-import {
-  BooksShowBoxData,
-  HeadlineData,
-  HotListBoxData,
-  PictureBoxData,
-  SpecialNewsBoxData
-} from "@/models/data";
+import { DebugHomePageTemplate } from "@/debug/api/template/HomePage";
+import { HomePageTemplate } from "@/models/template";
 import {
   Footer,
   Navigation,
@@ -23,48 +17,45 @@ import {
   SpecialNewsBox,
   TopicBox
 } from "@/views/HomePage";
-import { Col, Container, Row } from "@/views/layout";
+import { Col, Container, Row } from "@/views/Layout";
 import { GetServerSideProps } from "next";
 
 export interface HomePageServerProps {
-  booksShowBoxData: BooksShowBoxData;
-  headlineData: HeadlineData;
-  hotListBoxData: HotListBoxData;
-  leftBottomPictureBoxData: PictureBoxData;
-  leftTopPictureBoxData: PictureBoxData;
-  specialNewsBoxData: SpecialNewsBoxData;
-  topPictureBoxData: PictureBoxData;
+  template: HomePageTemplate;
 }
 
 const HomePage = (props: HomePageServerProps) => {
   return (
     <>
-      <PageSEO title="中原科技网" />
+      <PageSEO
+        title={props.template.page_common.website_summary.title}
+        describe={props.template.page_common.website_summary.describe}
+      />
       <TopBar />
       <Navigation />
       <Container>
         <Row>
           <div className="mx-2">
-            <PictureBox data={props.topPictureBoxData} />
-            <Headline data={props.headlineData} />
-            <HomeCarousel />
+            <PictureBox initialData={props.template.top_picture_box} />
+            <Headline initialData={props.template.headline} />
+            <HomeCarousel initialData={props.template.carousel_news} />
           </div>
         </Row>
         <Row>
           <Col numerator={2} denominator={3}>
-            <HomeNewsListBox />
+            <HomeNewsListBox initialData={props.template.home_news_list} />
           </Col>
           <Col numerator={1} denominator={3}>
-            <SpecialNewsBox initialData={props.specialNewsBoxData} />
-            <HotListBox data={props.hotListBoxData} />
+            <SpecialNewsBox initialData={props.template.special_news_list} />
+            <HotListBox data={props.template.home_hot_list} />
             <TopicBox />
-            <BooksShowBox initialData={props.booksShowBoxData} />
-            <PictureBox data={props.leftTopPictureBoxData} />
-            <PictureBox data={props.leftBottomPictureBoxData} />
+            <BooksShowBox initialData={props.template.books_show_box} />
+            <PictureBox initialData={props.template.left_top_picture_box} />
+            <PictureBox initialData={props.template.left_bottom_picture_box} />
           </Col>
         </Row>
       </Container>
-        <Footer />
+      <Footer />
       <ScrollToTop />
     </>
   );
@@ -75,13 +66,7 @@ export const getServerSideProps: GetServerSideProps<
 > = async () => {
   return {
     props: {
-      booksShowBoxData: HomePageDebugData.booksShowBoxData,
-      headlineData: HomePageDebugData.headlineData,
-      hotListBoxData: HomePageDebugData.hotListBoxData,
-      leftBottomPictureBoxData: HomePageDebugData.leftBottomPictureBoxData,
-      leftTopPictureBoxData: HomePageDebugData.leftTopPictureBoxData,
-      specialNewsBoxData: HomePageDebugData.specialNewsBoxData,
-      topPictureBoxData: HomePageDebugData.topPictureBoxData,
+      template: DebugHomePageTemplate,
     },
   };
 };

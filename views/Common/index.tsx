@@ -1,6 +1,6 @@
 import { ErrorBlock } from "./ErrorBlock";
 import { Footer } from "./Footer";
-import { HeaderBackground } from "./HeaderBackground";
+import { HeaderBackground } from "./HeaderImage";
 import { LoadingBlock } from "./LoadingBlock";
 import { Navigation } from "./Navigation";
 import { PageSEO } from "./PageSEO";

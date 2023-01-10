@@ -1,6 +1,6 @@
 export type NewsType = "article" | "video";
 
-export interface NewsListItem {
+export interface NewsItem {
   news_id: string;
   time_stamp: number;
   keywords?: string;
@@ -42,8 +42,8 @@ export interface ColumnIndexItem {
   column_id: string;
   title: string;
   column_order: string;
-  recent_news: NewsListItem[];
-  hot_news: NewsListItem[];
+  recent_news: NewsItem[];
+  hot_news: NewsItem[];
 }
 
 export interface TopicItem {
@@ -111,7 +111,7 @@ export interface ArticleNews {
   creator_id: string;
   creator_title: string;
   creator_logo: string;
-  creator_introduction: string;
+  creator_describe: string;
 
   author: string;
   editor: string;
@@ -146,14 +146,6 @@ export interface VideoNews {
   origin_url: string;
 }
 
-export type VideoPlayList = {
-  news_id: string;
-
-  title: string;
-  subtitle?: string;
-  bgimg: string;
-}[];
-
 export type TopicNewsListData = {
   topic_title: string;
   topic_id: string;
@@ -179,27 +171,13 @@ export interface WebsiteSummary {
   institution?: string;
 }
 
-export interface SpecialNewsBoxData {
-  img_url?: string;
-  title: string;
-  lead_title?: string;
-  subtitle?: string;
-  citation?: string;
-  href: string;
-}
-
-export type BooksShowBoxData = {
+export type BookItem = {
   title: string;
   img_url: string;
   book_id: string;
   citation: string;
-}[];
-
-export type HotListBoxData = {
-  title: string;
-  subtitle?: string;
-  href: string;
-}[];
+  time_stamp: number;
+};
 
 export interface APIData<DataModel> {
   code: number;

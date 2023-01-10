@@ -1,5 +1,5 @@
 import { Footer, Navigation, PageSEO, TopBar } from "@/views/Common";
-import { Col, Container, Row } from "@/views/layout";
+import { Col, Container, Row } from "@/views/Layout";
 import { PlayList, VideoPlayer } from "@/views/VideoContentPage";
 
 export const VideoContentPage = () => {
@@ -12,7 +12,7 @@ export const VideoContentPage = () => {
         <Row>
           <Col numerator={2} denominator={3}>
             <VideoPlayer
-              data={{
+              initialData={{
                 news_id: "string",
                 time_stamp: 1673141102,
                 keywords: "string",
@@ -38,7 +38,7 @@ export const VideoContentPage = () => {
           </Col>
           <Col numerator={1} denominator={3}>
             <PlayList
-              data={Array(5).fill({
+              initialData={Array(5).fill({
                 news_id: "aaa",
                 title: "This is the titleThis is the titleThis is the title",
                 subtitle: "This is subtitle",
