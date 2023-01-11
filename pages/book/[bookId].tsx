@@ -1,3 +1,4 @@
+import { BookContentPageTemplate } from "@/models/template";
 import { PageSEO } from "@/views/Common";
 import { Container } from "@/views/Layout";
 import dynamic from "next/dynamic";
@@ -10,12 +11,16 @@ const DynamicBookReader = dynamic(
   }
 );
 
-export const BookContentPage = () => {
+export const BookContentPage = (props: BookContentPageTemplate) => {
   return (
     <>
-      <PageSEO title="中原科技网" />
+      <PageSEO
+        title={`${props.book.title} | 中原科技网书刊`}
+        describe={props.book.citation}
+        keywords={props.book.keywords}
+      />
       <Container>
-        <DynamicBookReader />
+        <DynamicBookReader initialData={props.book} />
       </Container>
     </>
   );

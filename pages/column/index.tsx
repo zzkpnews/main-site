@@ -1,4 +1,5 @@
-import { ColumnNewsList } from "@/views/ColumnIndexPage";
+import { ColumnIndexPageTemplate } from "@/models/template";
+import { ColumnNewsIndexList } from "@/views/ColumnIndexPage";
 import {
   Footer,
   Navigation,
@@ -8,7 +9,7 @@ import {
 } from "@/views/Common";
 import { Container, Row } from "@/views/Layout";
 
-const ColumnIndexPage = () => {
+const ColumnIndexPage = (props: ColumnIndexPageTemplate) => {
   return (
     <>
       <PageSEO title="所有专栏 | 中原科技网" />
@@ -16,10 +17,12 @@ const ColumnIndexPage = () => {
       <Navigation />
       <Container>
         <Row>
-          <ColumnNewsList />
+          <ColumnNewsIndexList initialData={props.news_list} />
         </Row>
       </Container>
-      <Footer />
+      <Footer
+        initialData={{ friends: props.page_common.website_summary.friends }}
+      />
       <ScrollToTop />
     </>
   );

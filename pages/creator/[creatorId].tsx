@@ -1,4 +1,4 @@
-import { HomePageDebugData } from "@/debug/HomePage";
+import { CreatorProfilePageTemplate } from "@/models/template";
 import { Footer, HeaderBackground, Navigation, PageSEO } from "@/views/Common";
 import {
   CreatorArticleList,
@@ -11,25 +11,14 @@ import {
 import { Col, Container, Row } from "@/views/Layout";
 import { Tabs } from "@arco-design/web-react";
 
-const CreatorProfilePage = () => {
+const CreatorProfilePage = (props: CreatorProfilePageTemplate) => {
   return (
     <>
-      <PageSEO title="张宇腾的创作 | 中原科技网" />
+      <PageSEO title={`${props.creator.title}的创作 | 中原科技网`} />
       <Navigation />
-      <HeaderBackground
-        imageUrl={
-          "https://static.zaobao.com/s3fs-public/2022-10/2022-09-14t034221z_1576905416_rc2qgw9s33ob_rtrmadp_3_apple-tsmc_0.jpg?VersionId=cxs1lVGq_JYIB87nXE06oLfRL0OJduD8"
-        }
-      />
+      <HeaderBackground imageUrl={props.creator.bgimg} />
       <Container>
-        <CreatorCard
-          initialData={{
-            creator_id: "me",
-            title: "中原科技网",
-            phone: "15617613081",
-            email: "643431636@qq.com",
-          }}
-        />
+        <CreatorCard initialData={props.creator} />
         <Row>
           <Col numerator={2} denominator={3}>
             <Tabs defaultActiveTab="1">
@@ -41,7 +30,7 @@ const CreatorProfilePage = () => {
                   </h3>
                 }
               >
-                <CreatorRecentNewsList />
+                <CreatorRecentNewsList initialData={props.recent_list} />
               </Tabs.TabPane>
               <Tabs.TabPane
                 key="2"
@@ -51,7 +40,7 @@ const CreatorProfilePage = () => {
                   </h3>
                 }
               >
-                <CreatorArticleList />
+                <CreatorArticleList initialData={props.article_list} />
               </Tabs.TabPane>
               <Tabs.TabPane
                 key="3"
@@ -61,7 +50,7 @@ const CreatorProfilePage = () => {
                   </h3>
                 }
               >
-                <CreatorVideoList />
+                <CreatorVideoList initialData={props.video_list} />
               </Tabs.TabPane>
               <Tabs.TabPane
                 key="4"
@@ -71,16 +60,18 @@ const CreatorProfilePage = () => {
                   </h3>
                 }
               >
-                <CreatorBooksList />
+                <CreatorBooksList initialData={props.book_list} />
               </Tabs.TabPane>
             </Tabs>
           </Col>
           <Col numerator={1} denominator={3}>
-            <CreatorHotListBox initialData={HomePageDebugData.hotListBoxData} />
+            <CreatorHotListBox initialData={props.hot_list} />
           </Col>
         </Row>
       </Container>
-      <Footer />
+      <Footer
+        initialData={{ friends: props.page_common.website_summary.friends }}
+      />
     </>
   );
 };

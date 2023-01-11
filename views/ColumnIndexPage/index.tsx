@@ -1,3 +1,3 @@
-import { ColumnNewsList } from './ColumnNewsList';
+import { ColumnNewsIndexList } from './ColumnNewsIndexList';
 
-export { ColumnNewsList };
+export { ColumnNewsIndexList };

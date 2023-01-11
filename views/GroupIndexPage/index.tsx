@@ -1,3 +1,3 @@
-import { GroupPageNewsList } from './GroupPageNewsList';
+import { GroupIndexList } from "./GroupIndexList";
 
-export {GroupPageNewsList}
+export { GroupIndexList };

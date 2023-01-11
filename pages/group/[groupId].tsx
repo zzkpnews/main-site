@@ -1,3 +1,4 @@
+import { GroupContentPageTemplate } from "@/models/template";
 import {
   Footer,
   Navigation,
@@ -13,26 +14,28 @@ import {
 import { Container, Row } from "@/views/Layout";
 import { Divider } from "@arco-design/web-react";
 
-const GroupContentPage = () => {
+const GroupContentPage = (props: GroupContentPageTemplate) => {
   return (
     <>
-      <PageSEO title="河南看点 | 中原科技网" />
+      <PageSEO title={`${props.group?.title} | 中原科技网`} />
       <TopBar />
       <Navigation />
       <Container>
         <Row>
-          <GroupContentHotList />
+          <GroupContentHotList initialData={props.hot_list}  />
         </Row>
         <Divider />
         <Row>
-          <GroupContentArticleList />
+          <GroupContentArticleList initialData={props.article_list} />
         </Row>
         <Divider />
         <Row>
-          <GroupContentVideoList />
+          <GroupContentVideoList initialData={props.video_list} />
         </Row>
       </Container>
-      <Footer />
+      <Footer
+        initialData={{ friends: props.page_common?.website_summary.friends }}
+      />
       <ScrollToTop />
     </>
   );

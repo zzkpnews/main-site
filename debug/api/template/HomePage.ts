@@ -138,7 +138,7 @@ export const DebugHomePageTemplate: HomePageTemplate = {
     img_url:
       "https://www.zzkpnews.com/d/file/p/2022/05-11/fff27bfb05f3e81ded5dfa3992432af6.jpg",
   },
-  special_news_list: {
+  special_news: {
     bgimg:
       "https://static.zaobao.com/s3fs-public/styles/article_large_full/public/2023-01/file7odzenc2p9jbrh8qnrm.jpg?VersionId=xavhIcUObYowGXuz4hXGz2xxqt3ENNNx&itok=glptG0H6",
     title: "“猪肠粉叔”走了 买不到“每条1元”熟客不舍",

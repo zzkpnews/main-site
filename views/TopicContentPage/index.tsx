@@ -1,4 +1,5 @@
-import { TopicCard } from './TopicCard';
-import { TopicContentNewsList } from './TopicContentNewsList';
+import { TopicCard } from "./TopicCard";
+import { TopicNewsList } from "./TopicContentNewsList";
 
-export { TopicCard, TopicContentNewsList };
+export { TopicCard, TopicNewsList };
+

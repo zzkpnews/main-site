@@ -1,8 +1,15 @@
+import { BookIndexPageTemplate } from "@/models/template";
 import { BooksList } from "@/views/BookIndexPage";
+import {
+  Footer,
+  Navigation,
+  PageSEO,
+  ScrollToTop,
+  TopBar
+} from "@/views/Common";
 import { Container, Row } from "@/views/Layout";
-import { Footer, Navigation, PageSEO, TopBar } from "views/Common";
 
-const BookIndexPage = () => {
+const BookIndexPage = (props: BookIndexPageTemplate) => {
   return (
     <>
       <PageSEO title="所有书刊 | 中原科技网" />
@@ -10,10 +17,13 @@ const BookIndexPage = () => {
       <Navigation />
       <Container>
         <Row>
-          <BooksList />
+          <BooksList initialData={props.book_list} />
         </Row>
       </Container>
-      <Footer />
+      <Footer
+        initialData={{ friends: props.page_common.website_summary.friends }}
+      />
+      <ScrollToTop />
     </>
   );
 };

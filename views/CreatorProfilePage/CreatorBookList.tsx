@@ -1,37 +1,38 @@
-import { List, Pagination } from '@arco-design/web-react';
+import { BookItem } from "@/models/data";
+import { timestampToTime } from "@/utils/time";
+import { List, Pagination } from "@arco-design/web-react";
 
-export const CreatorBooksList = () => {
+export const CreatorBooksList = (props: { initialData: BookItem[] }) => {
   const scrollToPageTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
     <div>
       <div className="m-1 p-2 rounded-lg">
         <List
           bordered={false}
-          dataSource={new Array(5).fill({
-            title: 'Beijing Bytedance Technology Co., Ltd.',
-            subtitle: 'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.',
-            href: '/book/example',
-          })}
-          render={(item, index) => (
+          dataSource={props.initialData}
+          render={(item) => (
             <List.Item>
-              <a className="cursor-pointer hover:text-red-700" href={item.href} rel="noreferrer" target={'_blank'}>
+              <a
+                className="cursor-pointer hover:text-red-700"
+                href={`/book/${item.book_id}`}
+                rel="noreferrer"
+                target={"_blank"}
+              >
                 <div className="my-auto mx-1 py-2 md:flex">
                   <img
                     className="my-auto mx-auto rounded-md object-cover h-32 w-24"
-                    src="https://oss-alpha-static-zaobao.oss-cn-hongkong.aliyuncs.com/s3fs-public/styles/article_large_crop/public/2022-10/ZB_1030_CJ_doc7ncuxlsoltk11saozcrd_29183017_chngmj.jpg?2778524"
-                    alt=""
+                    src={item.img_url}
+                    alt={item.citation}
                   />
                   <div className="mx-2 my-3">
                     <h3 className="text-lg font-bold">{item.title}</h3>
-                    <p className="text-md text-gray-600">
-                      {
-                        'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.Beijing ByteDance Technology Co.'
-                      }
-                    </p>
+                    <p className="text-md text-gray-600">{item.citation}</p>
                     <div className="flex justify-end">
-                      <div className="text-md">2022年09月19日</div>
+                      <div className="text-md">
+                        {timestampToTime(item.time_stamp)}
+                      </div>
                     </div>
                   </div>
                 </div>

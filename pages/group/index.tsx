@@ -1,3 +1,4 @@
+import { GroupIndexPageTemplate } from "@/models/template";
 import {
   Footer,
   Navigation,
@@ -5,11 +6,11 @@ import {
   ScrollToTop,
   TopBar,
 } from "@/views/Common";
-import { GroupPageNewsList } from "@/views/GroupIndexPage";
+import { GroupIndexList } from "@/views/GroupIndexPage";
 import { Container, Row } from "@/views/Layout";
 import { Divider } from "@arco-design/web-react";
 
-const GroupIndexPage = () => {
+const GroupIndexPage = (props: GroupIndexPageTemplate) => {
   return (
     <>
       <PageSEO
@@ -20,14 +21,18 @@ const GroupIndexPage = () => {
       <Navigation />
       <Container>
         <Row>
-          <h1 className="text-xl font-bold">{"专栏组"}</h1>
-          <Divider />
+          <div>
+            <h1 className="text-xl font-bold">{"专栏组"}</h1>
+            <Divider />
+          </div>
         </Row>
         <Row>
-          <GroupPageNewsList />
+          <GroupIndexList initialData={props.group_index} />
         </Row>
       </Container>
-      <Footer />
+      <Footer
+        initialData={{ friends: props.page_common?.website_summary.friends }}
+      />
       <ScrollToTop />
     </>
   );

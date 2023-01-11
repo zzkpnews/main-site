@@ -1,3 +1,4 @@
+import { TopicContentPageTemplate } from "@/models/template";
 import {
   Footer,
   HeaderBackground,
@@ -7,24 +8,26 @@ import {
   TopBar
 } from "@/views/Common";
 import { Container, Row } from "@/views/Layout";
-import { TopicCard, TopicContentNewsList } from "@/views/TopicContentPage";
+import { TopicCard, TopicNewsList } from "@/views/TopicContentPage";
 
-const TopicContentPage = () => {
+const TopicContentPage = (props: TopicContentPageTemplate) => {
   return (
     <>
-      <PageSEO title="河南戏剧 话题 | 中原科技网" />
+      <PageSEO title={`${props.topic.title}话题 | 中原科技网`} />
       <TopBar />
       <Navigation />
       <HeaderBackground />
       <Container>
         <Row>
-          <TopicCard />
+          <TopicCard initialData={props.topic} />
         </Row>
         <Row>
-          <TopicContentNewsList />
+          <TopicNewsList initialData={props.news_list} />
         </Row>
       </Container>
-      <Footer />
+      <Footer
+        initialData={{ friends: props.page_common?.website_summary.friends }}
+      />
       <ScrollToTop />
     </>
   );

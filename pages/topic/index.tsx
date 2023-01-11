@@ -1,3 +1,4 @@
+import { TopicIndexPageTemplate } from "@/models/template";
 import {
   Footer,
   Navigation,
@@ -6,9 +7,9 @@ import {
   TopBar,
 } from "@/views/Common";
 import { Container, Row } from "@/views/Layout";
-import { TopicNewsList } from "@/views/TopicIndexPage";
+import { TopicIndexList } from "@/views/TopicIndexPage";
 
-const TopicIndexPage = () => {
+const TopicIndexPage = (props: TopicIndexPageTemplate) => {
   return (
     <>
       <PageSEO title="话题 | 中原科技网" />
@@ -16,10 +17,12 @@ const TopicIndexPage = () => {
       <Navigation />
       <Container>
         <Row>
-          <TopicNewsList />
+          <TopicIndexList />
         </Row>
       </Container>
-      <Footer />
+      <Footer
+        initialData={{ friends: props.page_common?.website_summary.friends }}
+      />
       <ScrollToTop />
     </>
   );

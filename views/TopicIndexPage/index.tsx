@@ -1,3 +1,3 @@
-import { TopicNewsList } from "./TopicNewsList";
+import { TopicIndexList } from "./TopicIndexList";
 
-export { TopicNewsList };
+export { TopicIndexList };

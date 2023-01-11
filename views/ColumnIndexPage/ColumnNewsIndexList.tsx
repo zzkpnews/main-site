@@ -2,7 +2,7 @@ import { ColumnIndexItem } from "@/models/data";
 import { Divider, List } from "@arco-design/web-react";
 import { EmptyBlock } from "../Common";
 
-export const ColumnNewsList = (props: { initialData?: ColumnIndexItem[] }) => {
+export const ColumnNewsIndexList = (props: { initialData?: ColumnIndexItem[] }) => {
   if (props.initialData == null || props.initialData.length === 0) {
     return <EmptyBlock />;
   }
